@@ -1,0 +1,211 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "> Add Status Comments",
+    "aliasName": null,
+    "tag": null,
+    "description": null,
+    "isActive": true,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "lastModifyDate": 1644571994,
+    "collection": "\/api\/3\/workflow_collections\/c1ca92eb-8ec4-4dba-9a3d-156bf0a1abc2",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/659b6d97-872b-422d-a673-de29ee0a5673",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Wait for a sec",
+            "description": null,
+            "arguments": {
+                "delay": {
+                    "days": 0,
+                    "hours": 0,
+                    "weeks": 0,
+                    "minutes": 0,
+                    "seconds": 1
+                }
+            },
+            "status": null,
+            "top": "300",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/6832e556-b9c7-497a-babe-feda3bd27dbf",
+            "uuid": "360a797f-3c53-4b9f-87a6-88834adb0eb9",
+            "id": 14695
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Add Status Guiding Comment",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "type": {
+                        "id": 248,
+                        "@id": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                        "icon": null,
+                        "uuid": "ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                        "@type": "Picklist",
+                        "color": null,
+                        "display": "Comment",
+                        "@context": "\/api\/3\/contexts\/Picklist",
+                        "listName": "\/api\/3\/picklist_names\/0841c1eb-a0a3-4abd-b29c-9f68e4d9b14f",
+                        "itemValue": "Comment",
+                        "orderIndex": 1
+                    },
+                    "alerts": "{{vars.input.records[0]['@id']}}",
+                    "people": [],
+                    "content": "<p>{{globalVars.Action_Icon}} Start the investigation by setting the alert <span style=\"text-decoration: underline;\">Status<\/span> to :<span style=\"font-size: 12pt;\"> <strong>&lt; Investigating &gt;<\/strong><\/span><\/p>",
+                    "__replace": "",
+                    "isImportant": false,
+                    "peopleUpdated": false
+                },
+                "_showJson": false,
+                "operation": "Overwrite",
+                "collection": "\/api\/3\/comments",
+                "__recommend": [],
+                "fieldOperation": {
+                    "recordTags": "Overwrite"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
+            "uuid": "4e4ee5ba-ce71-4c8d-9580-9a5c8966fc94",
+            "id": 14694
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Add Guiding Comment",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "type": {
+                        "id": 248,
+                        "@id": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                        "icon": null,
+                        "uuid": "ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                        "@type": "Picklist",
+                        "color": null,
+                        "display": "Comment",
+                        "@context": "\/api\/3\/contexts\/Picklist",
+                        "listName": "\/api\/3\/picklist_names\/0841c1eb-a0a3-4abd-b29c-9f68e4d9b14f",
+                        "itemValue": "Comment",
+                        "orderIndex": 1
+                    },
+                    "alerts": "{{vars.input.records[0]['@id']}}",
+                    "people": [],
+                    "content": "<p>{{globalVars.Action_Icon}} Run Investigation <span style=\"text-decoration: underline;\">Playbook<\/span>: <strong><span style=\"font-size: 12pt;\">&lt; Phishing Alert Enrichment and Investigation &gt;<\/span><\/strong><\/p>",
+                    "__replace": "",
+                    "isImportant": false,
+                    "peopleUpdated": false
+                },
+                "_showJson": false,
+                "operation": "Overwrite",
+                "collection": "\/api\/3\/comments",
+                "__recommend": [],
+                "fieldOperation": {
+                    "recordTags": "Overwrite"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "436",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
+            "uuid": "523c0eec-5f54-44b1-9d29-1ad2d0d0420b",
+            "id": 14696
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "resource": "alerts",
+                "resources": [
+                    "alerts"
+                ],
+                "step_variables": {
+                    "input": {
+                        "params": [],
+                        "records": [
+                            "{{vars.input.records[0]}}"
+                        ]
+                    }
+                },
+                "fieldbasedtrigger": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "OR",
+                    "filters": [
+                        {
+                            "type": "primitive",
+                            "field": "source",
+                            "value": "User Reported",
+                            "operator": "eq",
+                            "_operator": "eq"
+                        },
+                        {
+                            "type": "primitive",
+                            "field": "source",
+                            "value": "Email Server",
+                            "operator": "eq",
+                            "_operator": "eq"
+                        }
+                    ]
+                }
+            },
+            "status": null,
+            "top": "30",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/ea155646-3821-4542-9702-b246da430a8d",
+            "uuid": "659b6d97-872b-422d-a673-de29ee0a5673",
+            "id": 14697
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Add Status Guiding Comment -> Wait for a sec",
+            "targetStep": "\/api\/3\/workflow_steps\/360a797f-3c53-4b9f-87a6-88834adb0eb9",
+            "sourceStep": "\/api\/3\/workflow_steps\/4e4ee5ba-ce71-4c8d-9580-9a5c8966fc94",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "110b13b7-cc45-44ca-a49f-b1ef3d1ff9ba"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Wait for a sec -> Add Guiding Comment",
+            "targetStep": "\/api\/3\/workflow_steps\/523c0eec-5f54-44b1-9d29-1ad2d0d0420b",
+            "sourceStep": "\/api\/3\/workflow_steps\/360a797f-3c53-4b9f-87a6-88834adb0eb9",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "878483d1-260c-45c5-aba8-190130017d5c"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Add Status Guiding Comment",
+            "targetStep": "\/api\/3\/workflow_steps\/4e4ee5ba-ce71-4c8d-9580-9a5c8966fc94",
+            "sourceStep": "\/api\/3\/workflow_steps\/659b6d97-872b-422d-a673-de29ee0a5673",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "da5fe416-d535-4153-8e26-1242e3e98ee3"
+        }
+    ],
+    "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "uuid": "daa8cba5-8d20-4698-a833-d28909b76f94",
+    "recordTags": [
+        "Comments"
+    ],
+    "id": 2746,
+    "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "createDate": 1644566510,
+    "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "modifyDate": 1644571995,
+    "owners": [],
+    "isPrivate": false
+}

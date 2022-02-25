@@ -1,0 +1,355 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "B - Phishing Incident Response",
+    "aliasName": null,
+    "tag": null,
+    "description": "Tracks affected mailboxes and neutralize the malicious content",
+    "isActive": true,
+    "debug": true,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "lastModifyDate": 1644566314,
+    "collection": "\/api\/3\/workflow_collections\/c1ca92eb-8ec4-4dba-9a3d-156bf0a1abc2",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/5df18865-d783-46ff-9c9e-29b4ff82da34",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Indicators Malicious",
+            "description": null,
+            "arguments": {
+                "conditions": [
+                    {
+                        "option": "yes",
+                        "step_iri": "\/api\/3\/workflow_steps\/34de933a-f287-480d-b8d7-5cab7557531c",
+                        "condition": "{{ \"Malicious\" in vars.indicator_reputation }}"
+                    },
+                    {
+                        "option": "no",
+                        "default": true,
+                        "step_iri": "\/api\/3\/workflow_steps\/e7bf4df0-3ba3-43a4-8f50-63339c7baf59"
+                    }
+                ]
+            },
+            "status": null,
+            "top": "440",
+            "left": "520",
+            "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+            "uuid": "2486a702-3855-449b-960e-8fb2972732e2",
+            "id": 10738
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Delete Phishing Emails",
+            "description": null,
+            "arguments": {
+                "when": "{{vars.email_recipients | length > 0}}",
+                "for_each": {
+                    "item": "{{vars.email_recipients}}",
+                    "parallel": false,
+                    "condition": ""
+                },
+                "arguments": {
+                    "Target_Email": "{{vars.item}}",
+                    "Email_Subject": "{{vars.source_data.headers.subject}}"
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/278d9d4b-4613-49b7-8757-6c1fed75b35e"
+            },
+            "status": null,
+            "top": "860",
+            "left": "320",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "2de4414f-8f3c-498b-bdce-5f9b0d634397",
+            "id": 10742
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Indicators Reputation",
+            "description": null,
+            "arguments": {
+                "indicator_reputation": "{%for iri in vars.indicators_reputation_iri%}{{(iri|fromIRI).itemValue}}{%endfor%}"
+            },
+            "status": null,
+            "top": "300",
+            "left": "520",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "315554c8-6678-4819-bd3c-4fee71dc4fce",
+            "id": 10739
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Block Email Sender",
+            "description": null,
+            "arguments": {
+                "name": "Fortinet FortiMail",
+                "config": "08e5bd89-c76c-45d0-9fbe-5f1643f86ee4",
+                "params": {
+                    "profile_name": "Inbound_Session",
+                    "email_address": "{{vars.email_sender}}"
+                },
+                "message": {
+                    "tags": [],
+                    "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                    "tenant": "",
+                    "content": "<p>The Phishing Email sender: <strong><span style=\"font-size: 12pt;\">{{vars.email_sender}}<\/span><\/strong> has been <span style=\"font-size: 16px;\"><strong>&nbsp;<\/strong><\/span><span class=\"badge badge-pill badge-danger\" style=\"background: #e31b1d; color: #fff;\">Blocked<\/span> on the Secure Email Gateway<\/p>",
+                    "records": ""
+                },
+                "version": "1.1.0",
+                "connector": "fortinet-fortimail",
+                "operation": "block_sender_address",
+                "mock_result": "{\n  \"data\": {\n    \"mkey\": \"{{vars.email_sender}}\",\n    \"objectID\": \"ProfSessionSenderBlacklist:{{vars.email_sender}}\",\n    \"reqAction\": 2,\n    \"nodePermission\": 3\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
+                "ignore_errors": true,
+                "operationTitle": "Block Sender Address",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "580",
+            "left": "320",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "34de933a-f287-480d-b8d7-5cab7557531c",
+            "id": 10740
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "route": "6562b9b3-274a-4093-a921-1394fa8d80fa",
+                "resources": [
+                    "incidents"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                    "input": {
+                        "params": [],
+                        "records": "{{vars.input.records}}"
+                    },
+                    "incident_data": "{{(vars.input.records[0]['@id'] + \"?$relationships=true\")|fromIRI}}"
+                },
+                "displayConditions": {
+                    "incidents": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": [
+                            {
+                                "type": "object",
+                                "field": "category",
+                                "value": "\/api\/3\/picklists\/703222e8-f69a-11e7-8c3f-9a214cf093ae",
+                                "_value": {
+                                    "@id": "\/api\/3\/picklists\/703222e8-f69a-11e7-8c3f-9a214cf093ae",
+                                    "itemValue": "Phishing"
+                                },
+                                "operator": "eq"
+                            }
+                        ]
+                    }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "singleRecordExecution": true
+            },
+            "status": null,
+            "top": "40",
+            "left": "520",
+            "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "uuid": "5df18865-d783-46ff-9c9e-29b4ff82da34",
+            "id": 14661
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Notify Recipients",
+            "description": null,
+            "arguments": {
+                "config": "88c3d39c-2fa9-4731-b00d-29815008f17c",
+                "params": {
+                    "cc": "",
+                    "to": "{{vars.input.records[0].receipientEmailAddress}}",
+                    "bcc": "",
+                    "from": "",
+                    "type": "Manual Input",
+                    "content": "<p>The reported Phishing email with:<br>- Subject: &lt;&lt; {{vars.source_data.headers.subject}} &gt;&gt;&nbsp;<br>- Sent by :&nbsp; {{vars.email_from}}<br>Is deemed <span style=\"background-color: #e67e23;\">&lt;&lt;Malicious&gt;<\/span>&gt;, Sender will be been blocked on the secure email gateway and the received email will be **moved to Trash**.<\/p>\n<p><br><br>SoC Team<\/p>",
+                    "subject": "SOC: Phishing Email Detected",
+                    "iri_list": "",
+                    "body_type": "Rich Text",
+                    "file_name": "",
+                    "file_path": ""
+                },
+                "message": {
+                    "tags": [],
+                    "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                    "tenant": "",
+                    "content": "<ul>\n<li>Email recipients <span style=\"font-size: 12pt;\"><strong>&lt; notified &gt;<\/strong><\/span><\/li>\n<li><span style=\"letter-spacing: 0.76px;\">Email blocked on the secure email gateway<\/span><\/li>\n<li><span style=\"letter-spacing: 0.76px;\">Received email will be <span style=\"font-size: 12pt;\"><span class=\"badge badge-pill badge-danger\" style=\"background: #e31b1d; color: #fff;\">Deleted<\/span><\/span>&nbsp;(moved to Trash).<\/span><\/li>\n<\/ul>",
+                    "records": ""
+                },
+                "version": "2.4.2",
+                "from_str": "admin@example.com",
+                "connector": "smtp",
+                "operation": "send_email_new",
+                "mock_result": "{\n  \"data\": null,\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
+                "operationTitle": "Send Email",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "720",
+            "left": "320",
+            "stepType": "\/api\/3\/workflow_step_types\/4c0019b2-055c-44d0-968c-678a0c2d762e",
+            "uuid": "b5fc627e-57ca-4c49-b733-4dcb4220e4a3",
+            "id": 14662
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "False positive Alert",
+            "description": null,
+            "arguments": {
+                "message": {
+                    "tags": [],
+                    "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                    "tenant": "",
+                    "content": "<p><span style=\"background-color:yellow;color:black;font-weight:bold\">Automatic Alert Closure<\/span><\/p>\n\n<p> No malicious indicators were found in the reported email. Due to this the alert was closed <span style=\"background-color:#1E6E23;color:#FFF;font-weight:bold\">[ Automatically ]<\/span> and no further action is required.<\/p>",
+                    "records": ""
+                },
+                "resource": {
+                    "status": {
+                        "id": 246,
+                        "@id": "\/api\/3\/picklists\/fac53e73-8d16-4189-98d5-95fbd1555232",
+                        "icon": null,
+                        "@type": "Picklist",
+                        "color": null,
+                        "display": "Closed",
+                        "listName": "\/api\/3\/picklist_names\/33e964a9-d607-49f2-813c-7ce46141815a",
+                        "itemValue": "Closed",
+                        "orderIndex": 4
+                    },
+                    "ackDate": "{{globalVars.Current_Date}}",
+                    "severity": {
+                        "id": 12,
+                        "@id": "\/api\/3\/picklists\/0d609b08-45e0-469f-8910-41145c0b7c03",
+                        "icon": null,
+                        "@type": "Picklist",
+                        "color": "#157DD9",
+                        "display": "Minimal",
+                        "listName": "\/api\/3\/picklist_names\/4e80cba3-032f-48b4-ac03-17e3ec247aac",
+                        "itemValue": "Minimal",
+                        "orderIndex": 0
+                    },
+                    "resolveddate": "{{globalVars.Current_Date}}"
+                },
+                "_showJson": false,
+                "operation": "Overwrite",
+                "collection": "{{vars.input.records[0]['@id']}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/incidents",
+                "fieldOperation": {
+                    "recordTags": "Overwrite"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "580",
+            "left": "720",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "uuid": "e7bf4df0-3ba3-43a4-8f50-63339c7baf59",
+            "id": 10737
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Alert Attributes",
+            "description": null,
+            "arguments": {
+                "source_data": "{{vars.input.records[0].sourcedata|toDict}}",
+                "email_sender": "{{vars.input.records[0].senderEmailAddress}}",
+                "email_recipients": "{{vars.input.records[0].receipientEmailAddress.split(', ')}}",
+                "indicators_reputation_iri": "{{ vars.incident_data.indicators|json_query(\"[].reputation\") }}"
+            },
+            "status": null,
+            "top": "180",
+            "left": "520",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "f3c3db4e-3c7d-42cc-b046-52da2beff683",
+            "id": 10741
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Get Alert Attributes",
+            "targetStep": "\/api\/3\/workflow_steps\/f3c3db4e-3c7d-42cc-b046-52da2beff683",
+            "sourceStep": "\/api\/3\/workflow_steps\/5df18865-d783-46ff-9c9e-29b4ff82da34",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "615ba7d3-5eb2-4c77-aca9-61129f56362a"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Alert Attributes -> Get Indicators Reputation",
+            "targetStep": "\/api\/3\/workflow_steps\/315554c8-6678-4819-bd3c-4fee71dc4fce",
+            "sourceStep": "\/api\/3\/workflow_steps\/f3c3db4e-3c7d-42cc-b046-52da2beff683",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "663950b8-95eb-4511-9569-c6c84eedee7e"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Indicators Malicious -> Block Email Sender",
+            "targetStep": "\/api\/3\/workflow_steps\/34de933a-f287-480d-b8d7-5cab7557531c",
+            "sourceStep": "\/api\/3\/workflow_steps\/2486a702-3855-449b-960e-8fb2972732e2",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "6dd627ad-72a0-40c3-beb4-ac1148f6eaf6"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Block Email Sender -> Notify Recipients",
+            "targetStep": "\/api\/3\/workflow_steps\/b5fc627e-57ca-4c49-b733-4dcb4220e4a3",
+            "sourceStep": "\/api\/3\/workflow_steps\/34de933a-f287-480d-b8d7-5cab7557531c",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "8b48dc0b-d79e-4d18-83cc-c332e502fe58"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Notify Recipients -> Delete Phishing Emails",
+            "targetStep": "\/api\/3\/workflow_steps\/2de4414f-8f3c-498b-bdce-5f9b0d634397",
+            "sourceStep": "\/api\/3\/workflow_steps\/b5fc627e-57ca-4c49-b733-4dcb4220e4a3",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "9a39c686-0e97-49e4-bb6a-727fc6695478"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Indicators Malicious -> False positive Alert",
+            "targetStep": "\/api\/3\/workflow_steps\/e7bf4df0-3ba3-43a4-8f50-63339c7baf59",
+            "sourceStep": "\/api\/3\/workflow_steps\/2486a702-3855-449b-960e-8fb2972732e2",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "d744eb9d-54c7-4c8a-af87-98cf2bf7a3d3"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Indicators Reputation -> Indicators Malicious",
+            "targetStep": "\/api\/3\/workflow_steps\/2486a702-3855-449b-960e-8fb2972732e2",
+            "sourceStep": "\/api\/3\/workflow_steps\/315554c8-6678-4819-bd3c-4fee71dc4fce",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "f4bab1f6-8c9d-417b-bce3-ef33085506cc"
+        }
+    ],
+    "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "uuid": "fdc96f8f-740f-44a2-95f1-fd86bb2d05fa",
+    "recordTags": [
+        "IncidentResponse"
+    ],
+    "id": 2092,
+    "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "createDate": 1641194551,
+    "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "modifyDate": 1644566318,
+    "owners": [],
+    "isPrivate": false
+}
