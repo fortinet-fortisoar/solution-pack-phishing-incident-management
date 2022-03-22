@@ -1,0 +1,687 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "> Subroutine: Escalate Alert to Incident",
+    "aliasName": null,
+    "tag": null,
+    "description": null,
+    "isActive": true,
+    "debug": true,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [
+        "alert_data",
+        "alert_description_source_data",
+        "mitre_technique_data"
+    ],
+    "synchronous": false,
+    "lastModifyDate": 1644835606,
+    "collection": "\/api\/3\/workflow_collections\/c1ca92eb-8ec4-4dba-9a3d-156bf0a1abc2",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/e134f9f0-7d25-4cde-8e7b-e189531a507e",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "w0",
+            "description": null,
+            "arguments": {
+                "delay": {
+                    "days": 0,
+                    "hours": 0,
+                    "weeks": 0,
+                    "minutes": 0,
+                    "seconds": 5
+                }
+            },
+            "status": null,
+            "top": "303",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/6832e556-b9c7-497a-babe-feda3bd27dbf",
+            "uuid": "096520c5-35b0-4feb-8320-7a0c67eb0453",
+            "id": 14682
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Set Escalate Status on Alert",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "state": {
+                        "id": 125,
+                        "@id": "\/api\/3\/picklists\/8675a07f-2d0d-4e3a-89af-4822b8341df8",
+                        "icon": null,
+                        "@type": "Picklist",
+                        "color": null,
+                        "display": "Ready to Investigate",
+                        "listName": "\/api\/3\/picklist_names\/2f9ed741-25fe-475a-9f12-64336288eebf",
+                        "itemValue": "Ready to Investigate",
+                        "orderIndex": 4
+                    },
+                    "status": {
+                        "id": 246,
+                        "@id": "\/api\/3\/picklists\/fac53e73-8d16-4189-98d5-95fbd1555232",
+                        "icon": null,
+                        "uuid": "fac53e73-8d16-4189-98d5-95fbd1555232",
+                        "@type": "Picklist",
+                        "color": null,
+                        "display": "Closed",
+                        "listName": "\/api\/3\/picklist_names\/33e964a9-d607-49f2-813c-7ce46141815a",
+                        "itemValue": "Closed",
+                        "orderIndex": 4
+                    },
+                    "severity": {
+                        "id": 119,
+                        "@id": "\/api\/3\/picklists\/7efa2220-39bb-44e4-961f-ac368776e3b0",
+                        "icon": null,
+                        "@type": "Picklist",
+                        "color": "#e31b1d",
+                        "display": "Critical",
+                        "listName": "\/api\/3\/picklist_names\/4e80cba3-032f-48b4-ac03-17e3ec247aac",
+                        "itemValue": "Critical",
+                        "orderIndex": 4
+                    },
+                    "emailFrom": "{{vars.input.params['alert_description_source_data'][\"Email Sender\"] or None}}",
+                    "description": "{{vars.alert_to_escalate.description or \"<br>\"}}\n<p><span style=\"background-color:yellow;color:black;font-weight:bold\">Alert has been escalated to an Incident with ID: <\/span><span style=\"color:orange;font-weight:bold\">{{vars.steps.Escalate_Alert_to_Incident.id}}<\/span><\/p>\n<span style=\"color:orange;font-weight:bold\">Escalation reason:<\/span>   Malicious Indicator(s) Found",
+                    "closureNotes": "Ticket Escalated to T2, it is being investigated as Ticket: **{{vars.steps.Escalate_Alert_to_Incident.id}}**",
+                    "senderDomain": "{%if vars.input.params['alert_description_source_data'][\"Email Sender\"]%}{{vars.input.params['alert_description_source_data'][\"Email Sender\"].split('@')[1]}}{%endif%}",
+                    "closureReason": {
+                        "id": 249,
+                        "@id": "\/api\/3\/picklists\/672aef13-a684-422e-be6c-15e10ec49915",
+                        "icon": null,
+                        "uuid": "672aef13-a684-422e-be6c-15e10ec49915",
+                        "@type": "Picklist",
+                        "color": null,
+                        "display": "Duplicate",
+                        "listName": "\/api\/3\/picklist_names\/4ebacea1-88cd-4ea8-9dcc-385bea42cc59",
+                        "itemValue": "Duplicate",
+                        "orderIndex": 1
+                    },
+                    "escalationReason": "<p><span style=\"color:red;font-weight:bold\">Malicious Indicator Detected !<\/span><\/p>",
+                    "senderEmailAddress": "{{vars.input.params['alert_description_source_data'][\"Email Sender\"] or None}}",
+                    "escalatedtoincident": {
+                        "id": 6807,
+                        "@id": "\/api\/3\/picklists\/fa12313b-66af-4a2e-864e-a5f19241b734",
+                        "icon": null,
+                        "@type": "Picklist",
+                        "color": "#bf0a0a",
+                        "display": "Yes",
+                        "listName": "\/api\/3\/picklist_names\/e131cc54-9ae4-43c9-b830-af6e331fe024",
+                        "itemValue": "Yes",
+                        "orderIndex": 0
+                    }
+                },
+                "_showJson": false,
+                "operation": "Create New",
+                "collection": "{{vars.alert_to_escalate[\"@id\"]}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/alerts",
+                "fieldOperation": {
+                    "recordTags": "Append"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "846",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "uuid": "0d74570a-288f-4d2f-aa94-69105c29ad91",
+            "id": 10658
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "w2",
+            "description": null,
+            "arguments": {
+                "delay": {
+                    "days": 0,
+                    "hours": 0,
+                    "weeks": 0,
+                    "minutes": 0,
+                    "seconds": 3
+                }
+            },
+            "status": null,
+            "top": "1386",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/6832e556-b9c7-497a-babe-feda3bd27dbf",
+            "uuid": "2828f062-5f15-431e-9a07-51f16cc48ed9",
+            "id": 14684
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Escalate Alert to Incident",
+            "description": null,
+            "arguments": {
+                "message": {
+                    "tags": [],
+                    "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                    "tenant": "",
+                    "content": "<p>{{globalVars.Exclamation_Icon}} Alert has been <span style=\"background: #e31b1d; color: #fff;\" class=\"badge badge-pill badge-danger\">Escalated<\/span> due to malicious indicator<\/p>",
+                    "records": ""
+                },
+                "resource": {
+                    "name": "{{vars.alert_to_escalate.name+', ID: '+(vars.alert_to_escalate.id|string)  or 'Escalated Incident'}}",
+                    "phase": {
+                        "id": 136,
+                        "@id": "\/api\/3\/picklists\/bb740542-f699-11e7-8c3f-9a214cf093ae",
+                        "icon": null,
+                        "@type": "Picklist",
+                        "color": null,
+                        "display": "Detection",
+                        "@context": "\/api\/3\/contexts\/Picklist",
+                        "listName": "\/api\/3\/picklist_names\/b862eb1f-b385-40ca-baa7-5a1b1f91a651",
+                        "itemValue": "Detection",
+                        "orderIndex": 0
+                    },
+                    "users": "{{vars.linked_users_iris}}",
+                    "alerts": "{{vars.alert_to_escalate[\"@id\"]}}",
+                    "assets": "{{vars.linked_assets_iris}}",
+                    "owners": "{{vars.alert_to_escalate.owners.0[\"@id\"]}}",
+                    "resSla": {
+                        "id": 281,
+                        "@id": "\/api\/3\/picklists\/72979f64-e8b9-4888-a965-957e0ec24818",
+                        "icon": null,
+                        "@type": "Picklist",
+                        "color": "#808080",
+                        "display": "Awaiting Action",
+                        "@context": "\/api\/3\/contexts\/Picklist",
+                        "listName": "\/api\/3\/picklist_names\/fe36a8f2-fcba-4221-b4ab-1081f596b153",
+                        "itemValue": "Awaiting Action",
+                        "orderIndex": 2
+                    },
+                    "source": "{{vars.alert_description_source_data['Email Reporter']}}",
+                    "status": {
+                        "id": 109,
+                        "@id": "\/api\/3\/picklists\/bb73fe9e-f699-11e7-8c3f-9a214cf093ae",
+                        "icon": null,
+                        "@type": "Picklist",
+                        "color": null,
+                        "display": "Open",
+                        "@context": "\/api\/3\/contexts\/Picklist",
+                        "listName": "\/api\/3\/picklist_names\/a549e41c-31ca-406d-89ae-eab3de5c06c4",
+                        "itemValue": "Open",
+                        "orderIndex": 0
+                    },
+                    "metrics": "{{vars.alert_to_escalate.metrics or None}}",
+                    "category": {
+                        "id": 177,
+                        "@id": "\/api\/3\/picklists\/703222e8-f69a-11e7-8c3f-9a214cf093ae",
+                        "icon": null,
+                        "uuid": "703222e8-f69a-11e7-8c3f-9a214cf093ae",
+                        "@type": "Picklist",
+                        "color": null,
+                        "display": "Phishing",
+                        "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                        "itemValue": "Phishing",
+                        "orderIndex": 10
+                    },
+                    "fileName": "{{vars.alert_to_escalate.fileName or None}}",
+                    "filehash": "{{vars.alert_to_escalate.fileHash or None}}",
+                    "severity": "{{vars.alert_to_escalate.severity[\"@id\"] or None}}",
+                    "slaState": {
+                        "id": 281,
+                        "@id": "\/api\/3\/picklists\/72979f64-e8b9-4888-a965-957e0ec24818",
+                        "icon": null,
+                        "@type": "Picklist",
+                        "color": "#808080",
+                        "display": "Awaiting Action",
+                        "@context": "\/api\/3\/contexts\/Picklist",
+                        "listName": "\/api\/3\/picklist_names\/fe36a8f2-fcba-4221-b4ab-1081f596b153",
+                        "itemValue": "Awaiting Action",
+                        "orderIndex": 2
+                    },
+                    "sourceIP": "{{vars.alert_to_escalate.sourceIp or None}}",
+                    "sourceId": "{{vars.alert_to_escalate.sourceId}}-{{globalVars.Current_Date}}",
+                    "__replace": "",
+                    "deviceUID": "{{vars.alert_to_escalate.deviceUID or None}}",
+                    "indicators": "{{vars.linked_indicator_incidents}}",
+                    "sourcedata": "{{vars.alert_to_escalate.sourcedata|toDict|toJSON}}",
+                    "description": "{{vars.alert_description_source_data | json2html(row_fields=[], template=\"Stylized with row selection\", display=\"Vertical\", styling=true, table_style={})}}",
+                    "processName": "{{vars.alert_to_escalate.processName or None}}",
+                    "targetAsset": "{{vars.alert_to_escalate.targetAsset}}",
+                    "affectedUser": "{{vars.alert_to_escalate.userName or None}}",
+                    "incidentLead": "{{vars.alert_to_escalate.incidentLead or None}}",
+                    "senderDomain": "{{vars.input.params['alert_description_source_data']['Email Sender'].split('@')[1] or None}}",
+                    "destinationIP": "{{vars.alert_to_escalate.destinationIp}}",
+                    "mitreattackid": "{{vars.input.params['mitre_technique_data'].mitreId}}",
+                    "slaPercentage": 0,
+                    "dateOfIncident": "{{globalVars.Current_Date}}",
+                    "mitretechniques": "{{vars.input.params['mitre_technique_data']['@id']}}",
+                    "confirmationDate": "{{globalVars.Current_Date}}",
+                    "impactAssessments": "Accounts** {{vars.alert_description_source_data['Email Recipient(s)']}}** are potentially compromised",
+                    "senderEmailAddress": "{{vars.input.params['alert_description_source_data']['Email Sender'] or None}}",
+                    "receipientEmailAddress": "{{vars.alert_description_source_data['Email Recipient(s)']}}"
+                },
+                "_showJson": false,
+                "operation": "Overwrite",
+                "collection": "\/api\/3\/incidents",
+                "__recommend": [],
+                "tagsOperation": "OverwriteTags",
+                "fieldOperation": {
+                    "category": "Overwrite",
+                    "recordTags": "Overwrite"
+                },
+                "step_variables": {
+                    "incident": "{{ vars.result }}"
+                }
+            },
+            "status": null,
+            "top": "711",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
+            "uuid": "2b8e7c0e-0d2b-47b5-8d36-33bd71b7bcb1",
+            "id": 10657
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Related Objects Data",
+            "description": null,
+            "arguments": {
+                "source_ip": "{%set tmp_headers=vars.alert_to_escalate.emailHeaders|toDict%}{%if tmp_headers.received|length >0%}{{tmp_headers.received[-1]|regex_search('(?:[0-9]{1,3}\\.){3}[0-9]{1,3}')}}{%endif%}",
+                "linked_users_iris": "{{(vars.alert_to_escalate|json_query('users[].\\\"@id\\\"'))|unique}}",
+                "linked_assets_iris": "{{(vars.alert_to_escalate|json_query('assets[].\\\"@id\\\"'))|unique}}",
+                "__amend_description": "#Count the number of Malicious or Suspicious Indicators#\n{%set tmp_indic=[]%}\n{%set tmp_iris=vars.alert_to_escalate.indicators|json_query('[].reputation')%}\n{%if tmp_iris|length>0%}\n{%for entry in tmp_iris%}\n{{tmp_indic.append(entry|fromIRI)}}\n{%endfor%}\n{%endif%}\n{%if tmp_indic|length > 0%}\n{%set tmp_verdicts=(tmp_indic|json_query('[].itemValue'))|join(' ')%}\n{%set tmp_verdicts_count=tmp_verdicts|regex_findall('Malicious|Suspicious')|length%}\n{%endif%}\n{{vars.alert_description_source_data.update({\"Malicious Indicators Count\":vars.red_style.format(tmp_verdicts_count)})}}",
+                "attachment_filename": "{%set tmp_ind=vars.alert_to_escalate|json_query('indicators[]')|json_query('[?file != null]')%}{%if tmp_ind|length>0%}{{tmp_ind.0.value}}{%endif%}",
+                "linked_comments_iri": "{{(vars.alert_to_escalate|json_query('comments[].\\\"@id\\\"'))|unique}}",
+                "__amend_description_groups": "{%for user in vars.users_memberof%}{%if user.1 and vars.critical_group in user.1%}{{vars.alert_description_source_data.update({\"High Risk Target User\":vars.red_style.format(user.0)})}}{%endif%}{%endfor%}",
+                "linked_indicator_incidents": "{{(vars.alert_to_escalate|json_query('indicators[].\\\"@id\\\"'))|unique}}"
+            },
+            "status": null,
+            "top": "575",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "4313710c-36db-4268-a9d0-f330c39997ba",
+            "id": 10655
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Attachment Hinting Comment",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "type": {
+                        "id": 248,
+                        "@id": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                        "icon": null,
+                        "uuid": "ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                        "@type": "Picklist",
+                        "color": null,
+                        "display": "Comment",
+                        "@context": "\/api\/3\/contexts\/Picklist",
+                        "listName": "\/api\/3\/picklist_names\/0841c1eb-a0a3-4abd-b29c-9f68e4d9b14f",
+                        "itemValue": "Comment",
+                        "orderIndex": 1
+                    },
+                    "people": [],
+                    "content": "<div>\n<div>{{globalVars.Hint_Icon}} Expand the Incident <span style=\"text-decoration: underline;\">description<\/span> and check if any of the targeted users is a high profile one. Users <span style=\"text-decoration: underline;\">Active Directory<\/span> details can be found at <span style=\"font-size: 12pt;\"><strong>Correlations &gt;&nbsp; Users<\/strong><\/span><\/div>\n<\/div>",
+                    "__replace": "",
+                    "incidents": "{{vars.incident['@id']}}",
+                    "isImportant": false,
+                    "peopleUpdated": false
+                },
+                "_showJson": false,
+                "operation": "Overwrite",
+                "collection": "\/api\/3\/comments",
+                "__recommend": [],
+                "fieldOperation": {
+                    "recordTags": "Overwrite"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "1521",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
+            "uuid": "44970ca4-cb53-4ae9-a3e1-a2ff31a0f90e",
+            "id": 14683
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Add Start Guiding Comment",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "type": {
+                        "id": 248,
+                        "@id": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                        "icon": null,
+                        "uuid": "ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                        "@type": "Picklist",
+                        "color": null,
+                        "display": "Comment",
+                        "@context": "\/api\/3\/contexts\/Picklist",
+                        "listName": "\/api\/3\/picklist_names\/0841c1eb-a0a3-4abd-b29c-9f68e4d9b14f",
+                        "itemValue": "Comment",
+                        "orderIndex": 1
+                    },
+                    "people": [],
+                    "content": "<p>{{globalVars.Action_Icon}} As T2 Analyst start the Incident Management by setting the Incident <span style=\"text-decoration: underline;\">Status <\/span>to :<span style=\"font-size: 12pt;\"> <strong>&lt; In Progress &gt; <\/strong><span style=\"font-size: 10pt;\">and its <span style=\"text-decoration: underline;\">Phase <\/span>status to : <\/span><strong>&lt; Confirmation &gt;&nbsp;<\/strong><\/span><\/p>",
+                    "__replace": "",
+                    "incidents": "{{vars.incident['@id']}}",
+                    "isImportant": false,
+                    "peopleUpdated": false
+                },
+                "_showJson": false,
+                "operation": "Overwrite",
+                "collection": "\/api\/3\/comments",
+                "__recommend": [],
+                "fieldOperation": {
+                    "recordTags": "Overwrite"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "981",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
+            "uuid": "486503b6-b354-4cce-a131-eca9e7c5c394",
+            "id": 14342
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Add Indicator Guiding Comment",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "type": {
+                        "id": 248,
+                        "@id": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                        "icon": null,
+                        "uuid": "ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                        "@type": "Picklist",
+                        "color": null,
+                        "display": "Comment",
+                        "@context": "\/api\/3\/contexts\/Picklist",
+                        "listName": "\/api\/3\/picklist_names\/0841c1eb-a0a3-4abd-b29c-9f68e4d9b14f",
+                        "itemValue": "Comment",
+                        "orderIndex": 1
+                    },
+                    "people": [],
+                    "content": "<div>\n<div style=\"text-align: left;\">{{globalVars.Hint_Icon}} Browse to Indicators Tab and review the malicious Indicators, there are <span style=\"font-size: 12pt;\"><strong>{{vars.alert_description_source_data[\"Malicious Indicators Count\"]}}<\/strong><\/span>&nbsp;of them<\/div>\n<\/div>",
+                    "__replace": "",
+                    "incidents": "{{vars.incident['@id']}}",
+                    "isImportant": false,
+                    "peopleUpdated": false
+                },
+                "_showJson": false,
+                "operation": "Overwrite",
+                "collection": "\/api\/3\/comments",
+                "__recommend": [],
+                "fieldOperation": {
+                    "recordTags": "Overwrite"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "1251",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
+            "uuid": "4b4be26f-c7c0-4ae7-b2b8-54d18701a1f5",
+            "id": 14359
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Configuration",
+            "description": null,
+            "arguments": {
+                "critical_group": "C_LEVEL"
+            },
+            "status": null,
+            "top": "167",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "7c798bbb-4c25-47ad-84ae-85342420628b",
+            "id": 14681
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "w3",
+            "description": null,
+            "arguments": {
+                "delay": {
+                    "days": 0,
+                    "hours": 0,
+                    "weeks": 0,
+                    "minutes": 0,
+                    "seconds": 3
+                }
+            },
+            "status": null,
+            "top": "1656",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/6832e556-b9c7-497a-babe-feda3bd27dbf",
+            "uuid": "7d489e84-e544-465f-b454-87e1fb379743",
+            "id": 14362
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Alert Data",
+            "description": null,
+            "arguments": {
+                "users_memberof": "{{vars.input.params['alert_data'].users|json_query('[][userName,memberOf]')}}",
+                "alert_to_escalate": "{{vars.input.params['alert_data']}}",
+                "mitre_technique_data": "{{vars.input.params['mitre_technique_data']}}",
+                "alert_description_source_data": "{{vars.input.params['alert_description_source_data']}}"
+            },
+            "status": null,
+            "top": "439",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "90845f3b-7076-4241-9058-ce52d8ad61ff",
+            "id": 10654
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "w1",
+            "description": null,
+            "arguments": {
+                "delay": {
+                    "days": 0,
+                    "hours": 0,
+                    "weeks": 0,
+                    "minutes": 0,
+                    "seconds": 3
+                }
+            },
+            "status": null,
+            "top": "1116",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/6832e556-b9c7-497a-babe-feda3bd27dbf",
+            "uuid": "e04cb14f-85d3-4b2d-a6ae-67117fab86fc",
+            "id": 14361
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "step_variables": {
+                    "input": {
+                        "params": []
+                    },
+                    "red_style": "<span style=\"background-color:red;color:white;font-weight:bold; border: 1px solid; padding: 5px; box-shadow: 0px 2px 8px green;\">{}<\/span>"
+                }
+            },
+            "status": null,
+            "top": "31",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+            "uuid": "e134f9f0-7d25-4cde-8e7b-e189531a507e",
+            "id": 10659
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Add Attachment Guiding Comment",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "type": {
+                        "id": 248,
+                        "@id": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                        "icon": null,
+                        "uuid": "ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                        "@type": "Picklist",
+                        "color": null,
+                        "display": "Comment",
+                        "@context": "\/api\/3\/contexts\/Picklist",
+                        "listName": "\/api\/3\/picklist_names\/0841c1eb-a0a3-4abd-b29c-9f68e4d9b14f",
+                        "itemValue": "Comment",
+                        "orderIndex": 1
+                    },
+                    "people": [],
+                    "content": "<div>\n<div>{{globalVars.Action_Icon}} Open the file Attachment indicator <strong><span style=\"font-size: 12pt;\">{{vars.attachment_filename}}<\/span><\/strong> and run the playbook: <span style=\"font-size: 12pt;\"><strong>&lt; Extract and Process Text From File &gt;<\/strong><\/span> to extract, rate the indicators within the file<\/div>\n<\/div>",
+                    "__replace": "",
+                    "incidents": "{{vars.incident['@id']}}",
+                    "isImportant": false,
+                    "peopleUpdated": false
+                },
+                "_showJson": false,
+                "operation": "Overwrite",
+                "collection": "\/api\/3\/comments",
+                "__recommend": [],
+                "fieldOperation": {
+                    "recordTags": "Overwrite"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "1791",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
+            "uuid": "f1921547-cfbc-4410-b831-308badf49ccc",
+            "id": 14360
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Copy  of Add Attachment Guiding Comment -> w2",
+            "targetStep": "\/api\/3\/workflow_steps\/7d489e84-e544-465f-b454-87e1fb379743",
+            "sourceStep": "\/api\/3\/workflow_steps\/44970ca4-cb53-4ae9-a3e1-a2ff31a0f90e",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "168a5b53-1274-4311-9dff-2fcd698e21e9"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "w0 -> Get Alert Data",
+            "targetStep": "\/api\/3\/workflow_steps\/90845f3b-7076-4241-9058-ce52d8ad61ff",
+            "sourceStep": "\/api\/3\/workflow_steps\/096520c5-35b0-4feb-8320-7a0c67eb0453",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "21e95373-5223-44a5-af4f-68014665a507"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "w1 -> Add Indicator Guiding Comment",
+            "targetStep": "\/api\/3\/workflow_steps\/4b4be26f-c7c0-4ae7-b2b8-54d18701a1f5",
+            "sourceStep": "\/api\/3\/workflow_steps\/e04cb14f-85d3-4b2d-a6ae-67117fab86fc",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "4234bb15-0982-4eed-8435-265aad2f1b61"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Copy  of w1 -> Add Attachment Guiding Comment",
+            "targetStep": "\/api\/3\/workflow_steps\/f1921547-cfbc-4410-b831-308badf49ccc",
+            "sourceStep": "\/api\/3\/workflow_steps\/7d489e84-e544-465f-b454-87e1fb379743",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "4fc9a9b6-b016-4f0b-8f88-78f5e2afdb0f"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Escalate Status on Alert -> Add Start Guiding Comment",
+            "targetStep": "\/api\/3\/workflow_steps\/486503b6-b354-4cce-a131-eca9e7c5c394",
+            "sourceStep": "\/api\/3\/workflow_steps\/0d74570a-288f-4d2f-aa94-69105c29ad91",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "57636e9f-dfa9-4ecc-8e7f-07f4cbba125d"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Alert Data -> Get Related Objects Data",
+            "targetStep": "\/api\/3\/workflow_steps\/4313710c-36db-4268-a9d0-f330c39997ba",
+            "sourceStep": "\/api\/3\/workflow_steps\/90845f3b-7076-4241-9058-ce52d8ad61ff",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "6d907f38-735b-420e-9f80-6f666c7ae25e"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Add Start Guiding Comment -> w1",
+            "targetStep": "\/api\/3\/workflow_steps\/e04cb14f-85d3-4b2d-a6ae-67117fab86fc",
+            "sourceStep": "\/api\/3\/workflow_steps\/486503b6-b354-4cce-a131-eca9e7c5c394",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "78d0aef1-8cd6-4929-99cd-7e55ccf4f41a"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Copy  of w2 -> Copy  of Add Attachment Guiding Comment",
+            "targetStep": "\/api\/3\/workflow_steps\/44970ca4-cb53-4ae9-a3e1-a2ff31a0f90e",
+            "sourceStep": "\/api\/3\/workflow_steps\/2828f062-5f15-431e-9a07-51f16cc48ed9",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "d72ebafe-076e-48ab-b342-a56f9af79409"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Configuration -> w0",
+            "targetStep": "\/api\/3\/workflow_steps\/096520c5-35b0-4feb-8320-7a0c67eb0453",
+            "sourceStep": "\/api\/3\/workflow_steps\/7c798bbb-4c25-47ad-84ae-85342420628b",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "d85b7d52-d47e-4833-8c95-52e74441b676"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Related Objects Data -> Escalate Alert to Incident",
+            "targetStep": "\/api\/3\/workflow_steps\/2b8e7c0e-0d2b-47b5-8d36-33bd71b7bcb1",
+            "sourceStep": "\/api\/3\/workflow_steps\/4313710c-36db-4268-a9d0-f330c39997ba",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "dad52518-0632-403e-bbd0-273b93d4ea4f"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Escalate Alert to Incident -> Set Escalate Status on Alert",
+            "targetStep": "\/api\/3\/workflow_steps\/0d74570a-288f-4d2f-aa94-69105c29ad91",
+            "sourceStep": "\/api\/3\/workflow_steps\/2b8e7c0e-0d2b-47b5-8d36-33bd71b7bcb1",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "dccbf1d6-4f17-4a2f-b120-69e04ebfbf68"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Add Indicator Guiding Comment -> Copy  of w2",
+            "targetStep": "\/api\/3\/workflow_steps\/2828f062-5f15-431e-9a07-51f16cc48ed9",
+            "sourceStep": "\/api\/3\/workflow_steps\/4b4be26f-c7c0-4ae7-b2b8-54d18701a1f5",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "e274a334-07bf-48c2-9f3e-4cc678fcb438"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Copy  of Get Alert Data",
+            "targetStep": "\/api\/3\/workflow_steps\/7c798bbb-4c25-47ad-84ae-85342420628b",
+            "sourceStep": "\/api\/3\/workflow_steps\/e134f9f0-7d25-4cde-8e7b-e189531a507e",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "f99d743f-8156-4dd0-ba17-f5d7419149f8"
+        }
+    ],
+    "priority": null,
+    "uuid": "d6cf6c97-068c-4573-aadb-493101aa4542",
+    "recordTags": [
+        "Phishing",
+        "Escalation"
+    ],
+    "id": 2085,
+    "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "createDate": 1641194550,
+    "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "modifyDate": 1644835607,
+    "owners": [],
+    "isPrivate": false
+}
