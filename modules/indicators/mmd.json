@@ -26,6 +26,362 @@
     "writable": true,
     "attributes": [
         {
+            "@id": "\/api\/3\/attribute_metadatas\/5a6bb0b4-8545-457a-a21a-6a7c9b549a4b",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "filehashSHA1",
+            "length": 0,
+            "orderIndex": 30,
+            "formType": "filehash",
+            "dataSource": [],
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "_enableRange": false,
+                "maxlength": 10485761,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonClass": "btn btn-default btn-sm",
+                "buttonIcon": "",
+                "buttonText": ""
+            },
+            "dataSourceFilters": [],
+            "defaultValue": null,
+            "tooltip": "",
+            "visibility": [
+                {
+                    "filters": [
+                        {
+                            "_value": {
+                                "@id": "\/api\/3\/picklists\/0162241b-f5bf-4917-a150-00e920be47bd",
+                                "itemValue": "File"
+                            },
+                            "field": "typeofindicator",
+                            "operator": "eq",
+                            "type": "object",
+                            "value": "\/api\/3\/picklists\/0162241b-f5bf-4917-a150-00e920be47bd"
+                        }
+                    ],
+                    "limit": 30,
+                    "logic": "AND",
+                    "sort": []
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "sattrib": "\/api\/3\/staging_model_metadatas\/67558c20-fe29-4789-b3f7-2e3c9e902c96",
+            "uuid": "5a6bb0b4-8545-457a-a21a-6a7c9b549a4b",
+            "displayName": "{{ filehashSHA1 }}",
+            "descriptions": {
+                "singular": "FileHash SHA1"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/ad9b8761-a471-4a9c-b08e-63414ecc67d9",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "filehashSHA256",
+            "length": 0,
+            "orderIndex": 31,
+            "formType": "filehash",
+            "dataSource": [],
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "_enableRange": false,
+                "maxlength": 10485761,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonClass": "btn btn-default btn-sm",
+                "buttonIcon": "",
+                "buttonText": ""
+            },
+            "dataSourceFilters": [],
+            "defaultValue": null,
+            "tooltip": "",
+            "visibility": [
+                {
+                    "filters": [
+                        {
+                            "_value": {
+                                "@id": "\/api\/3\/picklists\/0162241b-f5bf-4917-a150-00e920be47bd",
+                                "display": "File",
+                                "itemValue": "File"
+                            },
+                            "field": "typeofindicator",
+                            "operator": "eq",
+                            "type": "object",
+                            "value": "\/api\/3\/picklists\/0162241b-f5bf-4917-a150-00e920be47bd"
+                        }
+                    ],
+                    "limit": 30,
+                    "logic": "AND",
+                    "sort": []
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "sattrib": "\/api\/3\/staging_model_metadatas\/67558c20-fe29-4789-b3f7-2e3c9e902c96",
+            "uuid": "ad9b8761-a471-4a9c-b08e-63414ecc67d9",
+            "displayName": "{{ filehashSHA256 }}",
+            "descriptions": {
+                "singular": "FileHash SHA256"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/87c0ffbf-aaba-4954-b3ab-71b0f55df64d",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "uuid",
+            "length": 36,
+            "orderIndex": 15,
+            "formType": null,
+            "dataSource": [],
+            "searchable": false,
+            "peerReplicable": true,
+            "system": true,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "maxlength": 1024,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": true,
+            "unique": false,
+            "recommend": false,
+            "sattrib": "\/api\/3\/staging_model_metadatas\/67558c20-fe29-4789-b3f7-2e3c9e902c96",
+            "uuid": "87c0ffbf-aaba-4954-b3ab-71b0f55df64d",
+            "displayName": "{{ uuid }}",
+            "descriptions": {
+                "singular": "UUID"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/f11fdb07-e585-403a-8b26-66581eb179ed",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "collection",
+            "length": null,
+            "orderIndex": 1,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "sattrib": "\/api\/3\/staging_model_metadatas\/67558c20-fe29-4789-b3f7-2e3c9e902c96",
+            "uuid": "f11fdb07-e585-403a-8b26-66581eb179ed",
+            "displayName": "{{ collection }}",
+            "descriptions": {
+                "singular": "Collection"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/7ed1c63f-e262-45b7-9eae-56a7dbd5e5fe",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "feed",
+            "length": null,
+            "orderIndex": 2,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "sattrib": "\/api\/3\/staging_model_metadatas\/67558c20-fe29-4789-b3f7-2e3c9e902c96",
+            "uuid": "7ed1c63f-e262-45b7-9eae-56a7dbd5e5fe",
+            "displayName": "{{ feed }}",
+            "descriptions": {
+                "singular": "Feed"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/ba693463-ddb7-4633-8fca-4f825790e5c8",
+            "@type": "AttributeMetadata",
+            "type": "incidents",
+            "name": "incidents",
+            "length": null,
+            "orderIndex": 22,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "incidents"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "indicators",
+            "ownsRelationship": false,
+            "validation": {
+                "maxlength": -1,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "sattrib": "\/api\/3\/staging_model_metadatas\/67558c20-fe29-4789-b3f7-2e3c9e902c96",
+            "uuid": "ba693463-ddb7-4633-8fca-4f825790e5c8",
+            "displayName": "{{ incidents }}",
+            "descriptions": {
+                "singular": "Incidents"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/14f78756-4967-4653-a680-c0faf14b9fd8",
+            "@type": "AttributeMetadata",
+            "type": "attachments",
+            "name": "attachments",
+            "length": null,
+            "orderIndex": 23,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "attachments"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "indicators",
+            "ownsRelationship": true,
+            "validation": {
+                "maxlength": -1,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "sattrib": "\/api\/3\/staging_model_metadatas\/67558c20-fe29-4789-b3f7-2e3c9e902c96",
+            "uuid": "14f78756-4967-4653-a680-c0faf14b9fd8",
+            "displayName": "{{ attachments }}",
+            "descriptions": {
+                "singular": "Attachments"
+            }
+        },
+        {
             "@id": "\/api\/3\/attribute_metadatas\/9d2afbb2-c68f-4d03-b96b-af054efd7489",
             "@type": "AttributeMetadata",
             "type": "warrooms",
@@ -66,6 +422,138 @@
             "displayName": "{{ warrooms }}",
             "descriptions": {
                 "singular": "War Rooms"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/10bb6c0d-ced5-4f5e-8492-524eb07079de",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "sources",
+            "length": 1024,
+            "orderIndex": 16,
+            "formType": "text",
+            "dataSource": [],
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": true,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "maxlength": 1024,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "sattrib": "\/api\/3\/staging_model_metadatas\/67558c20-fe29-4789-b3f7-2e3c9e902c96",
+            "uuid": "10bb6c0d-ced5-4f5e-8492-524eb07079de",
+            "displayName": "{{ sources }}",
+            "descriptions": {
+                "singular": "Sources"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/0b483e50-d572-4191-93f9-73bee0d49e58",
+            "@type": "AttributeMetadata",
+            "type": "emails",
+            "name": "emails",
+            "length": null,
+            "orderIndex": 17,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "emails"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "indicators",
+            "ownsRelationship": true,
+            "validation": {
+                "_enableRange": false,
+                "maxlength": 10485761,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": [],
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "sattrib": "\/api\/3\/staging_model_metadatas\/67558c20-fe29-4789-b3f7-2e3c9e902c96",
+            "uuid": "0b483e50-d572-4191-93f9-73bee0d49e58",
+            "displayName": "{{ emails }}",
+            "descriptions": {
+                "singular": "Emails"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/6b092d7f-7d19-4676-b93d-a42a9d5e2699",
+            "@type": "AttributeMetadata",
+            "type": "companies",
+            "name": "companies",
+            "length": null,
+            "orderIndex": 21,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "companies"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "indicators",
+            "ownsRelationship": true,
+            "validation": {
+                "maxlength": -1,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "sattrib": "\/api\/3\/staging_model_metadatas\/67558c20-fe29-4789-b3f7-2e3c9e902c96",
+            "uuid": "6b092d7f-7d19-4676-b93d-a42a9d5e2699",
+            "displayName": "{{ companies }}",
+            "descriptions": {
+                "singular": "Companies"
             }
         },
         {
@@ -337,141 +825,6 @@
             "displayName": "{{ assets }}",
             "descriptions": {
                 "singular": "Assets"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/6b092d7f-7d19-4676-b93d-a42a9d5e2699",
-            "@type": "AttributeMetadata",
-            "type": "companies",
-            "name": "companies",
-            "length": null,
-            "orderIndex": 21,
-            "formType": "manyToMany",
-            "dataSource": {
-                "model": "companies"
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": true,
-            "inversedField": "indicators",
-            "ownsRelationship": true,
-            "validation": {
-                "maxlength": -1,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/67558c20-fe29-4789-b3f7-2e3c9e902c96",
-            "uuid": "6b092d7f-7d19-4676-b93d-a42a9d5e2699",
-            "displayName": "{{ companies }}",
-            "descriptions": {
-                "singular": "Companies"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/ba693463-ddb7-4633-8fca-4f825790e5c8",
-            "@type": "AttributeMetadata",
-            "type": "incidents",
-            "name": "incidents",
-            "length": null,
-            "orderIndex": 22,
-            "formType": "manyToMany",
-            "dataSource": {
-                "model": "incidents"
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": true,
-            "inversedField": "indicators",
-            "ownsRelationship": false,
-            "validation": {
-                "maxlength": -1,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/67558c20-fe29-4789-b3f7-2e3c9e902c96",
-            "uuid": "ba693463-ddb7-4633-8fca-4f825790e5c8",
-            "displayName": "{{ incidents }}",
-            "descriptions": {
-                "singular": "Incidents"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/14f78756-4967-4653-a680-c0faf14b9fd8",
-            "@type": "AttributeMetadata",
-            "type": "attachments",
-            "name": "attachments",
-            "length": null,
-            "orderIndex": 23,
-            "formType": "manyToMany",
-            "dataSource": {
-                "model": "attachments"
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": true,
-            "inversedField": "indicators",
-            "ownsRelationship": true,
-            "validation": {
-                "maxlength": -1,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/67558c20-fe29-4789-b3f7-2e3c9e902c96",
-            "uuid": "14f78756-4967-4653-a680-c0faf14b9fd8",
-            "displayName": "{{ attachments }}",
-            "descriptions": {
-                "singular": "Attachments"
             }
         },
         {
@@ -824,137 +1177,6 @@
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/5a6bb0b4-8545-457a-a21a-6a7c9b549a4b",
-            "@type": "AttributeMetadata",
-            "type": "string",
-            "name": "filehashSHA1",
-            "length": 0,
-            "orderIndex": 30,
-            "formType": "filehash",
-            "dataSource": [],
-            "searchable": true,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonClass": "btn btn-default btn-sm",
-                "buttonIcon": "",
-                "buttonText": ""
-            },
-            "dataSourceFilters": [],
-            "defaultValue": null,
-            "tooltip": "",
-            "visibility": [
-                {
-                    "filters": [
-                        {
-                            "_value": {
-                                "@id": "\/api\/3\/picklists\/0162241b-f5bf-4917-a150-00e920be47bd",
-                                "itemValue": "File"
-                            },
-                            "field": "typeofindicator",
-                            "operator": "eq",
-                            "type": "object",
-                            "value": "\/api\/3\/picklists\/0162241b-f5bf-4917-a150-00e920be47bd"
-                        }
-                    ],
-                    "limit": 30,
-                    "logic": "AND",
-                    "sort": []
-                }
-            ],
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/67558c20-fe29-4789-b3f7-2e3c9e902c96",
-            "uuid": "5a6bb0b4-8545-457a-a21a-6a7c9b549a4b",
-            "displayName": "{{ filehashSHA1 }}",
-            "descriptions": {
-                "singular": "FileHash SHA1"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/ad9b8761-a471-4a9c-b08e-63414ecc67d9",
-            "@type": "AttributeMetadata",
-            "type": "string",
-            "name": "filehashSHA256",
-            "length": 0,
-            "orderIndex": 31,
-            "formType": "filehash",
-            "dataSource": [],
-            "searchable": true,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonClass": "btn btn-default btn-sm",
-                "buttonIcon": "",
-                "buttonText": ""
-            },
-            "dataSourceFilters": [],
-            "defaultValue": null,
-            "tooltip": "",
-            "visibility": [
-                {
-                    "filters": [
-                        {
-                            "_value": {
-                                "@id": "\/api\/3\/picklists\/0162241b-f5bf-4917-a150-00e920be47bd",
-                                "display": "File",
-                                "itemValue": "File"
-                            },
-                            "field": "typeofindicator",
-                            "operator": "eq",
-                            "type": "object",
-                            "value": "\/api\/3\/picklists\/0162241b-f5bf-4917-a150-00e920be47bd"
-                        }
-                    ],
-                    "limit": 30,
-                    "logic": "AND",
-                    "sort": []
-                }
-            ],
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/67558c20-fe29-4789-b3f7-2e3c9e902c96",
-            "uuid": "ad9b8761-a471-4a9c-b08e-63414ecc67d9",
-            "displayName": "{{ filehashSHA256 }}",
-            "descriptions": {
-                "singular": "FileHash SHA256"
-            }
-        },
-        {
             "@id": "\/api\/3\/attribute_metadatas\/f42784b3-2112-4e8b-8643-5ea9fadaca84",
             "@type": "AttributeMetadata",
             "type": "string",
@@ -1136,136 +1358,6 @@
             "displayName": "{{ campaigns }}",
             "descriptions": {
                 "singular": "Campaigns"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/87c0ffbf-aaba-4954-b3ab-71b0f55df64d",
-            "@type": "AttributeMetadata",
-            "type": "string",
-            "name": "uuid",
-            "length": 36,
-            "orderIndex": 13,
-            "formType": null,
-            "dataSource": [],
-            "searchable": false,
-            "peerReplicable": true,
-            "system": true,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "maxlength": 1024,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": true,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/67558c20-fe29-4789-b3f7-2e3c9e902c96",
-            "uuid": "87c0ffbf-aaba-4954-b3ab-71b0f55df64d",
-            "displayName": "{{ uuid }}",
-            "descriptions": {
-                "singular": "UUID"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/10bb6c0d-ced5-4f5e-8492-524eb07079de",
-            "@type": "AttributeMetadata",
-            "type": "string",
-            "name": "sources",
-            "length": 1024,
-            "orderIndex": 16,
-            "formType": "text",
-            "dataSource": [],
-            "searchable": true,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": true,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "maxlength": 1024,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/67558c20-fe29-4789-b3f7-2e3c9e902c96",
-            "uuid": "10bb6c0d-ced5-4f5e-8492-524eb07079de",
-            "displayName": "{{ sources }}",
-            "descriptions": {
-                "singular": "Sources"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/0b483e50-d572-4191-93f9-73bee0d49e58",
-            "@type": "AttributeMetadata",
-            "type": "emails",
-            "name": "emails",
-            "length": null,
-            "orderIndex": 17,
-            "formType": "manyToMany",
-            "dataSource": {
-                "model": "emails"
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": true,
-            "inversedField": "indicators",
-            "ownsRelationship": true,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": [],
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/67558c20-fe29-4789-b3f7-2e3c9e902c96",
-            "uuid": "0b483e50-d572-4191-93f9-73bee0d49e58",
-            "displayName": "{{ emails }}",
-            "descriptions": {
-                "singular": "Emails"
             }
         },
         {

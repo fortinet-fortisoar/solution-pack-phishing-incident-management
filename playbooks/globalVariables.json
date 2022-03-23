@@ -42,6 +42,12 @@
         "default_value": "<span style=\"background-color:orange;color:black;border-radius: 4px;font-size:8mm;\">&#9788;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Hint<\/font><\/span>"
     },
     {
+        "id": 20,
+        "name": "Demo_mode",
+        "value": "true",
+        "default_value": "true"
+    },
+    {
         "id": 1,
         "name": "Current_Date",
         "value": "{{arrow.utcnow().timestamp}}",
@@ -60,9 +66,9 @@
         "default_value": "20"
     },
     {
-        "id": 20,
-        "name": "Demo_mode",
-        "value": "false",
-        "default_value": "true"
+        "id": 6,
+        "name": "Tomorrow_Date",
+        "value": "{{arrow.utcnow().shift(hours=+24).timestamp}}",
+        "default_value": "{{arrow.utcnow().shift(hours=+24).timestamp}}"
     }
 ]

@@ -11,26 +11,32 @@
                             {
                                 "type": "formGroup",
                                 "config": {
-                                    "wid": "29ef6d1c-cb61-41e1-ae99-4d6a36357710",
+                                    "wid": "42966078-be7b-4e43-aca3-d8ed00c2fcae",
                                     "rows": [
                                         {
                                             "columns": [
                                                 {
                                                     "fields": [
                                                         {
-                                                            "name": "title",
+                                                            "name": "name",
                                                             "highlightMode": true,
                                                             "linky": true,
                                                             "readOnly": false
                                                         },
                                                         {
-                                                            "name": "description",
+                                                            "name": "huntStart",
                                                             "highlightMode": true,
                                                             "linky": true,
                                                             "readOnly": false
                                                         },
                                                         {
-                                                            "name": "steps",
+                                                            "name": "huntEnd",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": false
+                                                        },
+                                                        {
+                                                            "name": "recordTags",
                                                             "highlightMode": true,
                                                             "linky": true,
                                                             "readOnly": false
@@ -45,11 +51,10 @@
                         ]
                     }
                 ],
-                "wid": "d636a8b8-4d8a-42ef-8e37-1e90ce86e718"
+                "wid": "31406cbf-6e5f-4aa0-835b-88bdf1f163e4"
             }
         ],
-        "wid": "6a16f6a2-596a-45c2-a70b-6ef48955aef3",
-        "style": "col-lg-12"
+        "wid": "3cf7786e-e8bd-4c16-b419-adc2d5c42ebf"
     },
-    "uuid": "modules-scenario-form"
+    "uuid": "modules-hunt-form"
 }

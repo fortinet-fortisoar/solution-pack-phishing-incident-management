@@ -11,10 +11,10 @@
     "remoteExecutableFlag": false,
     "parameters": [],
     "synchronous": false,
-    "lastModifyDate": 1644572107,
+    "lastModifyDate": 1648031656,
     "collection": "\/api\/3\/workflow_collections\/c1ca92eb-8ec4-4dba-9a3d-156bf0a1abc2",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/77c04bac-1e80-496e-8347-de609f56f441",
+    "triggerStep": "\/api\/3\/workflow_steps\/f4222a03-40e9-475b-8fc5-aaf5bba6a4c1",
     "steps": [
         {
             "@type": "WorkflowStep",
@@ -36,7 +36,7 @@
                         "orderIndex": 1
                     },
                     "people": [],
-                    "content": "<p>{{vars.action}} if the case is confirmed <strong>True Positive<\/strong> browse to <span style=\"font-size: 12pt;\"><strong>Incident <\/strong><span style=\"font-size: 10pt;\">module, set the <span style=\"text-decoration: underline;\">Phase<\/span> to <span style=\"font-size: 12pt;\"><strong>&lt; Eradication &gt; <\/strong><\/span>and use the<\/span><strong> <\/strong><strong>Execute <\/strong><span style=\"font-size: 10pt;\">button <\/span><\/span>to run the remediation <span style=\"text-decoration: underline;\">Playbook<\/span> <span style=\"font-size: 12pt;\"><strong>&lt; Phishing Incident Response &gt;&nbsp;<\/strong><\/span><\/p>",
+                    "content": "<p>{{vars.action}} if the case is confirmed <strong>True Positive<\/strong> browse to <span style=\"font-size: 12pt;\"><strong>Incident <\/strong><span style=\"font-size: 10pt;\">module, set the <span style=\"text-decoration: underline;\">Phase<\/span> to <span style=\"font-size: 12pt;\"><strong>&lt; Containment &gt; <\/strong><\/span>and use the<\/span><strong> <\/strong><strong>Execute <\/strong><span style=\"font-size: 10pt;\">button <\/span><\/span>to run the containment <span style=\"text-decoration: underline;\">Playbook<\/span> <span style=\"font-size: 12pt;\"><strong>&lt; Phishing Incident Response &gt;&nbsp;<\/strong><\/span><\/p>",
                     "__replace": "",
                     "indicators": "{{vars.input.records[0]['@id']}}",
                     "isImportant": false,
@@ -55,8 +55,8 @@
             "top": "165",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
-            "uuid": "0520fd5f-195e-47ca-90a9-c35db352b8cd",
-            "id": 14659
+            "uuid": "4b99a4c1-62ce-4ff1-818b-af5bc5e80eb9",
+            "id": 15388
         },
         {
             "@type": "WorkflowStep",
@@ -122,19 +122,19 @@
             "top": "30",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/9300bf69-5063-486d-b3a6-47eb9da24872",
-            "uuid": "77c04bac-1e80-496e-8347-de609f56f441",
-            "id": 14660
+            "uuid": "f4222a03-40e9-475b-8fc5-aaf5bba6a4c1",
+            "id": 15389
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
             "name": "Start -> Add Guiding Comment",
-            "targetStep": "\/api\/3\/workflow_steps\/0520fd5f-195e-47ca-90a9-c35db352b8cd",
-            "sourceStep": "\/api\/3\/workflow_steps\/77c04bac-1e80-496e-8347-de609f56f441",
+            "targetStep": "\/api\/3\/workflow_steps\/4b99a4c1-62ce-4ff1-818b-af5bc5e80eb9",
+            "sourceStep": "\/api\/3\/workflow_steps\/f4222a03-40e9-475b-8fc5-aaf5bba6a4c1",
             "label": null,
             "isExecuted": false,
-            "uuid": "a26cb570-2ed4-4d26-94c6-f25c5a827c57"
+            "uuid": "4b770a1b-f314-401e-b7be-c23ae2352522"
         }
     ],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
@@ -142,11 +142,11 @@
     "recordTags": [
         "Comments"
     ],
-    "id": 2740,
+    "id": 2909,
     "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "createDate": 1644413026,
+    "createDate": 1647947520,
     "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "modifyDate": 1644572108,
+    "modifyDate": 1648031659,
     "owners": [],
     "isPrivate": false
 }

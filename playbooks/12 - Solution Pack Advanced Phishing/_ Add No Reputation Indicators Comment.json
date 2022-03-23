@@ -11,10 +11,10 @@
     "remoteExecutableFlag": false,
     "parameters": [],
     "synchronous": false,
-    "lastModifyDate": 1644646949,
+    "lastModifyDate": 1647947519,
     "collection": "\/api\/3\/workflow_collections\/c1ca92eb-8ec4-4dba-9a3d-156bf0a1abc2",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/43776721-a4b3-438a-8000-b78ba77ecb55",
+    "triggerStep": "\/api\/3\/workflow_steps\/cf11345e-cd7a-43f4-917e-d52987e52b6a",
     "steps": [
         {
             "@type": "WorkflowStep",
@@ -55,8 +55,8 @@
             "top": "165",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
-            "uuid": "21372085-9b8b-4329-beb3-f15357674cd6",
-            "id": 14658
+            "uuid": "24c0c8c4-cea5-4a66-b58e-816282822865",
+            "id": 15390
         },
         {
             "@type": "WorkflowStep",
@@ -139,19 +139,19 @@
             "top": "30",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/9300bf69-5063-486d-b3a6-47eb9da24872",
-            "uuid": "43776721-a4b3-438a-8000-b78ba77ecb55",
-            "id": 14657
+            "uuid": "cf11345e-cd7a-43f4-917e-d52987e52b6a",
+            "id": 15391
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
             "name": "Start -> Add Guiding Comment",
-            "targetStep": "\/api\/3\/workflow_steps\/21372085-9b8b-4329-beb3-f15357674cd6",
-            "sourceStep": "\/api\/3\/workflow_steps\/43776721-a4b3-438a-8000-b78ba77ecb55",
+            "targetStep": "\/api\/3\/workflow_steps\/24c0c8c4-cea5-4a66-b58e-816282822865",
+            "sourceStep": "\/api\/3\/workflow_steps\/cf11345e-cd7a-43f4-917e-d52987e52b6a",
             "label": null,
             "isExecuted": false,
-            "uuid": "d2f8dcf9-c7d0-4599-b110-1d79421b5541"
+            "uuid": "248657a4-38a3-4a6b-b4f1-35ad3390d28a"
         }
     ],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
@@ -159,11 +159,11 @@
     "recordTags": [
         "Comments"
     ],
-    "id": 2739,
+    "id": 2910,
     "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "createDate": 1644412438,
+    "createDate": 1647947520,
     "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "modifyDate": 1644646952,
+    "modifyDate": 1647947520,
     "owners": [],
     "isPrivate": false
 }

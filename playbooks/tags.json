@@ -1,13 +1,14 @@
 [
-    "IncidentResponse",
-    "PostCreate",
     "Use-Case",
     "FortiSOAR SOC Simulator",
-    "Subroutine",
-    "Enrichment",
     "Parsing",
     "Investigation",
+    "IncidentResponse",
+    "Comments",
+    "PostCreate",
+    "Subroutine",
     "Phishing",
     "Escalation",
-    "Comments"
+    "Enrichment",
+    "Threat_Hunting"
 ]

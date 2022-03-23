@@ -14,25 +14,24 @@
         "Email_Subject"
     ],
     "synchronous": false,
-    "lastModifyDate": 1644475625,
+    "lastModifyDate": 1647947519,
     "collection": "\/api\/3\/workflow_collections\/c1ca92eb-8ec4-4dba-9a3d-156bf0a1abc2",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/4ac16b7f-ab2c-468d-a472-65e02aa76cf8",
+    "triggerStep": "\/api\/3\/workflow_steps\/a111a4b9-4c7c-4fff-a590-d879deeeaf42",
     "steps": [
         {
             "@type": "WorkflowStep",
-            "name": "Get Email Address",
+            "name": "Compute Message IDs",
             "description": null,
             "arguments": {
-                "target_email": "{{vars.input.params['Target_Email']}}",
-                "email_subject": "{{vars.input.params['Email_Subject']}}"
+                "message_ids": "{%if vars.email_search_results.emails%}{{(vars.email_search_results.emails|json_query(\"[].headers.[\\\"Message-ID\\\"]\"))|flatten(levels=1)}}{%else%}<161521630813.1257.6206494626344010218@fortisoar-53>{%endif%}"
             },
             "status": null,
-            "top": "167",
+            "top": "574",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "11a92f91-f29f-4e90-9221-bfe862c0a049",
-            "id": 10699
+            "uuid": "6618d5f6-1715-48c4-a4ae-0cd89706d06d",
+            "id": 15430
         },
         {
             "@type": "WorkflowStep",
@@ -66,43 +65,8 @@
             "top": "303",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "402477b0-0973-440c-8423-e47eab57d4a4",
-            "id": 10697
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Start",
-            "description": null,
-            "arguments": {
-                "step_variables": {
-                    "input": {
-                        "params": {
-                            "Target_Email": "{{ vars.Target_Email }}",
-                            "Email_Subject": "{{ vars.Email_Subject }}"
-                        }
-                    }
-                }
-            },
-            "status": null,
-            "top": "31",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
-            "uuid": "4ac16b7f-ab2c-468d-a472-65e02aa76cf8",
-            "id": 10698
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Compute Message IDs",
-            "description": null,
-            "arguments": {
-                "message_ids": "{%if vars.email_search_results.emails%}{{(vars.email_search_results.emails|json_query(\"[].headers.[\\\"Message-ID\\\"]\"))|flatten(levels=1)}}{%else%}<161521630813.1257.6206494626344010218@fortisoar-53>{%endif%}"
-            },
-            "status": null,
-            "top": "574",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "578d2628-5b3c-4d13-a603-3aa806ff8938",
-            "id": 10696
+            "uuid": "8be25735-2677-4785-b348-e28981477a9d",
+            "id": 15428
         },
         {
             "@type": "WorkflowStep",
@@ -143,8 +107,44 @@
             "top": "709",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "6b4a0774-2f1e-473d-b6d5-3f9272b71616",
-            "id": 10695
+            "uuid": "96820d19-0be6-4e2d-9b76-31b5a8f15869",
+            "id": 15431
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "step_variables": {
+                    "input": {
+                        "params": {
+                            "Target_Email": "{{ vars.Target_Email }}",
+                            "Email_Subject": "{{ vars.Email_Subject }}"
+                        }
+                    }
+                }
+            },
+            "status": null,
+            "top": "31",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+            "uuid": "a111a4b9-4c7c-4fff-a590-d879deeeaf42",
+            "id": 15429
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Email Address",
+            "description": null,
+            "arguments": {
+                "target_email": "{{vars.input.params['Target_Email']}}",
+                "email_subject": "{{vars.input.params['Email_Subject']}}"
+            },
+            "status": null,
+            "top": "167",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "e306a15a-2713-4af1-977b-11df3e54eac3",
+            "id": 15427
         },
         {
             "@type": "WorkflowStep",
@@ -157,55 +157,55 @@
             "top": "439",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "ac378777-d57a-4954-b8d5-ebff96eb1a60",
-            "id": 10700
+            "uuid": "fc1de13c-73e4-4115-a13d-ebc017c17353",
+            "id": 15432
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
             "name": "Search Target Inbox -> Copy  of Compute Message IDs",
-            "targetStep": "\/api\/3\/workflow_steps\/ac378777-d57a-4954-b8d5-ebff96eb1a60",
-            "sourceStep": "\/api\/3\/workflow_steps\/402477b0-0973-440c-8423-e47eab57d4a4",
+            "targetStep": "\/api\/3\/workflow_steps\/fc1de13c-73e4-4115-a13d-ebc017c17353",
+            "sourceStep": "\/api\/3\/workflow_steps\/8be25735-2677-4785-b348-e28981477a9d",
             "label": null,
             "isExecuted": false,
-            "uuid": "7b071422-7a12-4e7f-bee0-3d42b2732ae4"
+            "uuid": "85d51ce9-fb17-4726-a5ee-6415ebfb5a4a"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Compute Message IDs -> Move to trash",
-            "targetStep": "\/api\/3\/workflow_steps\/6b4a0774-2f1e-473d-b6d5-3f9272b71616",
-            "sourceStep": "\/api\/3\/workflow_steps\/578d2628-5b3c-4d13-a603-3aa806ff8938",
+            "targetStep": "\/api\/3\/workflow_steps\/96820d19-0be6-4e2d-9b76-31b5a8f15869",
+            "sourceStep": "\/api\/3\/workflow_steps\/6618d5f6-1715-48c4-a4ae-0cd89706d06d",
             "label": null,
             "isExecuted": false,
-            "uuid": "80a1be46-11a4-4aea-a733-d038b064388a"
+            "uuid": "52c5cc59-bba4-4267-9014-945c6abb5999"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy  of Compute Message IDs -> Compute Message IDs",
-            "targetStep": "\/api\/3\/workflow_steps\/578d2628-5b3c-4d13-a603-3aa806ff8938",
-            "sourceStep": "\/api\/3\/workflow_steps\/ac378777-d57a-4954-b8d5-ebff96eb1a60",
+            "targetStep": "\/api\/3\/workflow_steps\/6618d5f6-1715-48c4-a4ae-0cd89706d06d",
+            "sourceStep": "\/api\/3\/workflow_steps\/fc1de13c-73e4-4115-a13d-ebc017c17353",
             "label": null,
             "isExecuted": false,
-            "uuid": "8a4b8477-10b9-4a75-acfb-1f94070beb62"
+            "uuid": "52925f9a-c77d-4f3e-93be-fdb3a169b43b"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Start -> Get Email Address",
-            "targetStep": "\/api\/3\/workflow_steps\/11a92f91-f29f-4e90-9221-bfe862c0a049",
-            "sourceStep": "\/api\/3\/workflow_steps\/4ac16b7f-ab2c-468d-a472-65e02aa76cf8",
+            "targetStep": "\/api\/3\/workflow_steps\/e306a15a-2713-4af1-977b-11df3e54eac3",
+            "sourceStep": "\/api\/3\/workflow_steps\/a111a4b9-4c7c-4fff-a590-d879deeeaf42",
             "label": null,
             "isExecuted": false,
-            "uuid": "bde53979-9fb8-4fcd-9372-55feeb0b6ac5"
+            "uuid": "4d8abacb-c025-417b-9fb7-bda9c7483d9e"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Get Email Address -> Search Target Inbox",
-            "targetStep": "\/api\/3\/workflow_steps\/402477b0-0973-440c-8423-e47eab57d4a4",
-            "sourceStep": "\/api\/3\/workflow_steps\/11a92f91-f29f-4e90-9221-bfe862c0a049",
+            "targetStep": "\/api\/3\/workflow_steps\/8be25735-2677-4785-b348-e28981477a9d",
+            "sourceStep": "\/api\/3\/workflow_steps\/e306a15a-2713-4af1-977b-11df3e54eac3",
             "label": null,
             "isExecuted": false,
-            "uuid": "cf7d38d3-affb-4dce-9316-823425acb6e9"
+            "uuid": "59ad55fa-772a-495d-ad69-140f2d81c5fb"
         }
     ],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
@@ -213,11 +213,11 @@
     "recordTags": [
         "Subroutine"
     ],
-    "id": 2088,
+    "id": 2915,
     "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "createDate": 1641194550,
+    "createDate": 1647947520,
     "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "modifyDate": 1644475627,
+    "modifyDate": 1647947520,
     "owners": [],
     "isPrivate": false
 }

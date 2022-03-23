@@ -1,0 +1,412 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "D - Quarantine Infected Assets",
+    "aliasName": null,
+    "tag": null,
+    "description": "Block Infected Assets on FortiGate",
+    "isActive": true,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "lastModifyDate": 1648052921,
+    "collection": "\/api\/3\/workflow_collections\/c1ca92eb-8ec4-4dba-9a3d-156bf0a1abc2",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/3fe1b220-b417-4ee5-a538-8fd6028198b2",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Wait for C1",
+            "description": null,
+            "arguments": {
+                "delay": {
+                    "days": 0,
+                    "hours": 0,
+                    "weeks": 0,
+                    "minutes": 0,
+                    "seconds": 2
+                }
+            },
+            "status": null,
+            "top": "705",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/6832e556-b9c7-497a-babe-feda3bd27dbf",
+            "uuid": "020c9c24-e57f-477a-9307-3ad41e959321",
+            "id": 15618
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create Asset Recovery Task",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "name": "Asset {{vars.input.records[0].ip}} Recovery",
+                    "type": {
+                        "id": 122,
+                        "@id": "\/api\/3\/picklists\/826ad76d-e418-4928-9bc9-ea552ebcc5f9",
+                        "icon": null,
+                        "uuid": "826ad76d-e418-4928-9bc9-ea552ebcc5f9",
+                        "@type": "Picklist",
+                        "color": null,
+                        "display": "Incident Response",
+                        "listName": "\/api\/3\/picklist_names\/b837e375-76af-4ba5-b6a1-bd1c3cd27292",
+                        "itemValue": "Incident Response",
+                        "orderIndex": 6
+                    },
+                    "dueBy": "{{globalVars.Tomorrow_Date}}",
+                    "priority": {
+                        "id": 139,
+                        "@id": "\/api\/3\/picklists\/90088ebe-0a7d-4aa6-9c9c-93b937a4e4f8",
+                        "icon": null,
+                        "uuid": "90088ebe-0a7d-4aa6-9c9c-93b937a4e4f8",
+                        "@type": "Picklist",
+                        "color": "#e36c29",
+                        "display": "High",
+                        "listName": "\/api\/3\/picklist_names\/bea9a490-50d1-4597-8ad9-24422e10676e",
+                        "itemValue": "High",
+                        "orderIndex": 2
+                    },
+                    "taskdata": "Recover Infected Asset:\n- {{vars.input.records[0].ip}}",
+                    "__replace": "",
+                    "incidents": "{{vars.linked_incidents_iris}}",
+                    "description": "Recover Infected Asset:\n- {{vars.input.records[0].ip}}"
+                },
+                "_showJson": false,
+                "operation": "Overwrite",
+                "collection": "\/api\/3\/tasks",
+                "__recommend": [],
+                "fieldOperation": {
+                    "recordTags": "Overwrite"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "435",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
+            "uuid": "180346eb-0f89-4bd2-bbd8-5f0408cc09d2",
+            "id": 15583
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "route": "c180a804-f500-41cd-88e7-a84dd94acced",
+                "resources": [
+                    "assets"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                    "input": {
+                        "params": [],
+                        "records": "{{vars.input.records}}"
+                    },
+                    "useMockOutput": "{{globalVars.Demo_mode}}",
+                    "linked_incidents": "{{(vars.input.records[0]['@id']+\"\/incidents\")|fromIRI}}"
+                },
+                "displayConditions": {
+                    "assets": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": [
+                            {
+                                "type": "primitive",
+                                "field": "ip",
+                                "value": "false",
+                                "operator": "isnull",
+                                "_operator": "isnull"
+                            }
+                        ]
+                    }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "singleRecordExecution": true
+            },
+            "status": null,
+            "top": "30",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "uuid": "3fe1b220-b417-4ee5-a538-8fd6028198b2",
+            "id": 15580
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Add Recovery Guiding Comment",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "type": {
+                        "id": 248,
+                        "@id": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                        "icon": null,
+                        "uuid": "ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                        "@type": "Picklist",
+                        "color": null,
+                        "display": "Comment",
+                        "@context": "\/api\/3\/contexts\/Picklist",
+                        "listName": "\/api\/3\/picklist_names\/0841c1eb-a0a3-4abd-b29c-9f68e4d9b14f",
+                        "itemValue": "Comment",
+                        "orderIndex": 1
+                    },
+                    "people": [],
+                    "content": "<div>\n<div>{{globalVars.Hint_Icon}} Recovery Tasks have been created automatically to remediate the infected Assets, check them out in the Tasks TAB<\/div>\n<\/div>",
+                    "__replace": "",
+                    "incidents": "{{vars.linked_incidents_iris}}",
+                    "isImportant": false,
+                    "peopleUpdated": false
+                },
+                "_showJson": false,
+                "operation": "Overwrite",
+                "collection": "\/api\/3\/comments",
+                "__recommend": [],
+                "fieldOperation": {
+                    "recordTags": "Overwrite"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "570",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
+            "uuid": "773720e8-5b28-42a4-9d38-cc63303ca0df",
+            "id": 15584
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Add Dashboard Hint Comment",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "type": {
+                        "id": 248,
+                        "@id": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                        "icon": null,
+                        "uuid": "ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                        "@type": "Picklist",
+                        "color": null,
+                        "display": "Comment",
+                        "@context": "\/api\/3\/contexts\/Picklist",
+                        "listName": "\/api\/3\/picklist_names\/0841c1eb-a0a3-4abd-b29c-9f68e4d9b14f",
+                        "itemValue": "Comment",
+                        "orderIndex": 1
+                    },
+                    "people": [],
+                    "content": "<div>\n<div>{{globalVars.Hint_Icon}} After running few cases check the <span style=\"font-size: 12pt;\"><strong>&lt;&lt; <\/strong><strong>Phishing Case Management &gt;&gt;<\/strong><\/span> Dashboard<\/div>\n<\/div>",
+                    "__replace": "",
+                    "incidents": "{{vars.linked_incidents_iris}}",
+                    "isImportant": false,
+                    "peopleUpdated": false
+                },
+                "_showJson": false,
+                "operation": "Overwrite",
+                "collection": "\/api\/3\/comments",
+                "__recommend": [],
+                "fieldOperation": {
+                    "recordTags": "Overwrite"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "1110",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
+            "uuid": "92b74c2b-1411-4015-a15d-ca8ed3bd6d72",
+            "id": 15620
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Linked Incident",
+            "description": null,
+            "arguments": {
+                "linked_incidents_iris": "{%if vars.linked_incidents[\"hydra:member\"]|length > 0%}{{vars.linked_incidents[\"hydra:member\"]|json_query(\"[][\\\"@id\\\"][]\")}}{%endif%}"
+            },
+            "status": null,
+            "top": "300",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "b4a150c6-fd40-4ea4-b4ec-b738225a0f8d",
+            "id": 15582
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Wait for C2",
+            "description": null,
+            "arguments": {
+                "delay": {
+                    "days": 0,
+                    "hours": 0,
+                    "weeks": 0,
+                    "minutes": 0,
+                    "seconds": 2
+                }
+            },
+            "status": null,
+            "top": "975",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/6832e556-b9c7-497a-babe-feda3bd27dbf",
+            "uuid": "b75d8912-4122-471a-ae56-b37f8aa44a20",
+            "id": 15619
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Aftermath Guiding Comment",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "type": {
+                        "id": 248,
+                        "@id": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                        "icon": null,
+                        "uuid": "ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                        "@type": "Picklist",
+                        "color": null,
+                        "display": "Comment",
+                        "@context": "\/api\/3\/contexts\/Picklist",
+                        "listName": "\/api\/3\/picklist_names\/0841c1eb-a0a3-4abd-b29c-9f68e4d9b14f",
+                        "itemValue": "Comment",
+                        "orderIndex": 1
+                    },
+                    "people": [],
+                    "content": "<p>{{globalVars.Action_Icon}} Once all Tasks are marked: <span style=\"font-size: 12pt;\"><strong>Completed<\/strong><\/span>, set the Phase to <strong><span style=\"font-size: 12pt;\">&lt;&lt; Aftermath &gt;&gt; <\/span><\/strong>and close the incident by changing the status to <span style=\"font-size: 12pt;\"><strong>&lt;&lt; Resolved &gt;&gt;<\/strong><\/span><\/p>",
+                    "__replace": "",
+                    "incidents": "{{vars.linked_incidents_iris}}",
+                    "isImportant": false,
+                    "peopleUpdated": false
+                },
+                "_showJson": false,
+                "operation": "Overwrite",
+                "collection": "\/api\/3\/comments",
+                "__recommend": [],
+                "fieldOperation": {
+                    "recordTags": "Overwrite"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "840",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
+            "uuid": "f3578c9a-cc8d-45bb-861c-08023cb5f727",
+            "id": 15592
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Block Infected Asset",
+            "description": null,
+            "arguments": {
+                "name": "Fortinet FortiGate",
+                "config": "1ac63337-4320-441f-8f37-69af4721e414",
+                "params": {
+                    "vdom": "",
+                    "method": "Quarantine Based",
+                    "ip_addresses": "{{vars.input.records[0].ip}}",
+                    "time_to_live": "12 Hour"
+                },
+                "version": "5.0.0",
+                "connector": "fortigate-firewall",
+                "operation": "block_ip",
+                "mock_result": "{\n  \"data\": {\n    \"newly_blocked\": [\n      \"{{vars.input.records[0].ip}}\"\n    ],\n    \"vdom_not_exist\": [],\n    \"already_blocked\": [],\n    \"error_with_block\": []\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
+                "operationTitle": "Block IP Address",
+                "pickFromTenant": false,
+                "step_variables": []
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "f545d280-b739-46b3-b0fb-d6ebabf3608e",
+            "id": 15581
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Block Infected Asset",
+            "targetStep": "\/api\/3\/workflow_steps\/f545d280-b739-46b3-b0fb-d6ebabf3608e",
+            "sourceStep": "\/api\/3\/workflow_steps\/3fe1b220-b417-4ee5-a538-8fd6028198b2",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "f7779ea5-3714-416b-adcc-4299eb7b0f07"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Block Infected Asset -> Get Linked Incident",
+            "targetStep": "\/api\/3\/workflow_steps\/b4a150c6-fd40-4ea4-b4ec-b738225a0f8d",
+            "sourceStep": "\/api\/3\/workflow_steps\/f545d280-b739-46b3-b0fb-d6ebabf3608e",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "309099a2-cffa-42c3-b0b0-6379b01648e2"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Linked Incident -> Create Asset Recovery Task",
+            "targetStep": "\/api\/3\/workflow_steps\/180346eb-0f89-4bd2-bbd8-5f0408cc09d2",
+            "sourceStep": "\/api\/3\/workflow_steps\/b4a150c6-fd40-4ea4-b4ec-b738225a0f8d",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "5e086401-092e-4af2-9f7f-683c95850d04"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Create Asset Recovery Task -> Add Guiding Comment",
+            "targetStep": "\/api\/3\/workflow_steps\/773720e8-5b28-42a4-9d38-cc63303ca0df",
+            "sourceStep": "\/api\/3\/workflow_steps\/180346eb-0f89-4bd2-bbd8-5f0408cc09d2",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "e369e542-0a56-463b-8ebb-4ade9597e12f"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Add Recovery Guiding Comment -> Wait",
+            "targetStep": "\/api\/3\/workflow_steps\/020c9c24-e57f-477a-9307-3ad41e959321",
+            "sourceStep": "\/api\/3\/workflow_steps\/773720e8-5b28-42a4-9d38-cc63303ca0df",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "88de898b-aa0f-4bf1-bd25-a1c54658ab17"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Wait -> Aftermath Guiding Comment",
+            "targetStep": "\/api\/3\/workflow_steps\/f3578c9a-cc8d-45bb-861c-08023cb5f727",
+            "sourceStep": "\/api\/3\/workflow_steps\/020c9c24-e57f-477a-9307-3ad41e959321",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "a673e340-6c51-44c2-a2b3-2c1315baf0da"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Aftermath Guiding Comment -> Wait for C2",
+            "targetStep": "\/api\/3\/workflow_steps\/b75d8912-4122-471a-ae56-b37f8aa44a20",
+            "sourceStep": "\/api\/3\/workflow_steps\/f3578c9a-cc8d-45bb-861c-08023cb5f727",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "38a68475-eb9e-4c68-a996-7b097dfcec5f"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Wait for C2 -> Add Dashboard Hint Comment",
+            "targetStep": "\/api\/3\/workflow_steps\/92b74c2b-1411-4015-a15d-ca8ed3bd6d72",
+            "sourceStep": "\/api\/3\/workflow_steps\/b75d8912-4122-471a-ae56-b37f8aa44a20",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "4bf221ef-166f-4e62-903f-1b050dbf52e0"
+        }
+    ],
+    "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "uuid": "2385067e-db40-4804-bca4-00e3a7b3e995",
+    "recordTags": [
+        "IncidentResponse"
+    ],
+    "id": 2932,
+    "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "createDate": 1648029166,
+    "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "modifyDate": 1648052921,
+    "owners": [],
+    "isPrivate": false
+}

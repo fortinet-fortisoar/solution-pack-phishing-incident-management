@@ -30,7 +30,7 @@
         },
         "configurations": [
             {
-                "id": 66,
+                "id": 106,
                 "config_id": "a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
                 "status": 1,
                 "name": "MitreC",
@@ -50,26 +50,28 @@
         ],
         "dataImports": [
             {
-                "id": 11,
+                "id": 15,
                 "name": "Ingestion_mitre-attack_MitreC_a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
                 "description": "Metadata for Ingestion_mitre-attack_MitreC_a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
                 "status": null,
                 "created_by": "3451141c-bac6-467c-8d72-85e0fab569ce",
                 "modified_by": "3451141c-bac6-467c-8d72-85e0fab569ce",
-                "owners": [],
+                "owners": [
+                    "public"
+                ],
                 "sample_data": [],
                 "data_mapping": [],
                 "playbooks": [],
-                "created_at": "2022-01-03T06:33:44.361137Z",
-                "modified_at": "2022-01-03T06:33:44.361174Z",
+                "created_at": "2022-03-22T11:12:03.316953Z",
+                "modified_at": "2022-03-22T11:12:03.316985Z",
                 "metadata": {
-                    "scheduleId": "gAAAAABhq4Dbcf99K-BfkXCbaT0nmhc8JRfJqW9iAu-DrFo4bjrS_AzgqRXx2KibDaNP1ocAiiEi4AZRtCc-EGf1H718fVNQEQ==",
+                    "scheduleId": "gAAAAABiOa8Dmb_Y1Pgpnh4DApGpQmg8QngKBQ_syD0wc0ymXiGqAGZ4vc37K3rF-8WiQL-ePkjkJh2ssPLfQW8fE2LvO_vUww==",
                     "scheduleName": "Ingestion_mitre-attack_MitreC_a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
                     "scheduleStatus": true
                 },
                 "configuration": "a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
                 "schedule": {
-                    "id": "gAAAAABiCjNdMwzlc29l4HdnZ-gYL79YpL17HrBdMIjCih5Wk3KpCxcSFeXeP_K8c_TCXofg1poNOE9sNRjJQq7VQwK5NubjXQ==",
+                    "id": "gAAAAABiO1URWLwk-W6HRNXiWdnn4NfsXBP7rDqwP3s3pUQmGdKR4oxZAeRNGSbxnP__jT_Y6kyYx9EUlJIAUE-qyYApCpVarw==",
                     "crontab": {
                         "id": 4,
                         "minute": "*\/5",
@@ -108,8 +110,8 @@
                     "start_time": null,
                     "enabled": false,
                     "last_run_at": null,
-                    "total_run_count": 5965,
-                    "date_changed": "2021-12-25T07:58:05.462249Z",
+                    "total_run_count": 0,
+                    "date_changed": "2022-03-22T11:12:03.211582Z",
                     "description": "Ingestion_mitre-attack_MitreC_a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
                     "solar": null,
                     "clocked": null
@@ -141,11 +143,30 @@
                             "remoteExecutableFlag": false,
                             "parameters": [],
                             "synchronous": false,
-                            "lastModifyDate": 1638629572,
+                            "lastModifyDate": 1647947522,
                             "collection": "\/api\/3\/workflow_collections\/a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
                             "versions": [],
-                            "triggerStep": "\/api\/3\/workflow_steps\/32c0883c-a830-414f-af8b-d2eb9a48b6e9",
+                            "triggerStep": "\/api\/3\/workflow_steps\/2d54ab53-e904-44ac-aeb3-c4fd277b007b",
                             "steps": [
+                                {
+                                    "@type": "WorkflowStep",
+                                    "name": "Start",
+                                    "description": null,
+                                    "arguments": {
+                                        "step_variables": {
+                                            "input": {
+                                                "params": []
+                                            },
+                                            "_configuration_schema": "[\n  {\n    \"title\": \"Matriced to pull\",\n    \"name\": \"matrices\",\n    \"type\": \"multiselect\",\n    \"tooltip\": \"Select one or more matrices\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"options\": [\n      \"Enterprise\",\n      \"Mobile\",\n      \"ICS\"\n    ],\n    \"options\": [\"Enterprise\", \"Mobile\", \"ICS\"],\n    \"value\": [\"Enterprise\"]\n  }\n]"
+                                        }
+                                    },
+                                    "status": null,
+                                    "top": "30",
+                                    "left": "125",
+                                    "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+                                    "uuid": "2d54ab53-e904-44ac-aeb3-c4fd277b007b",
+                                    "id": 15442
+                                },
                                 {
                                     "@type": "WorkflowStep",
                                     "name": "Fetch Sample Data",
@@ -165,27 +186,8 @@
                                     "top": "120",
                                     "left": "320",
                                     "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-                                    "uuid": "0140e002-d3da-4a82-8317-df012458d391",
-                                    "id": 9510
-                                },
-                                {
-                                    "@type": "WorkflowStep",
-                                    "name": "Start",
-                                    "description": null,
-                                    "arguments": {
-                                        "step_variables": {
-                                            "input": {
-                                                "params": []
-                                            },
-                                            "_configuration_schema": "[\n  {\n    \"title\": \"Matriced to pull\",\n    \"name\": \"matrices\",\n    \"type\": \"multiselect\",\n    \"tooltip\": \"Select one or more matrices\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"options\": [\n      \"Enterprise\",\n      \"Mobile\",\n      \"ICS\"\n    ],\n    \"options\": [\"Enterprise\", \"Mobile\", \"ICS\"],\n    \"value\": [\"Enterprise\"]\n  }\n]"
-                                        }
-                                    },
-                                    "status": null,
-                                    "top": "30",
-                                    "left": "125",
-                                    "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
-                                    "uuid": "32c0883c-a830-414f-af8b-d2eb9a48b6e9",
-                                    "id": 9509
+                                    "uuid": "734ebb52-3c3d-4855-8af4-ebdbf262be19",
+                                    "id": 15441
                                 },
                                 {
                                     "@type": "WorkflowStep",
@@ -201,28 +203,28 @@
                                     "top": "240",
                                     "left": "480",
                                     "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-                                    "uuid": "9ff4ff9b-5b78-43fc-8a9a-3302b2bfec27",
-                                    "id": 9508
+                                    "uuid": "bd7cb554-9612-4f39-a6ca-fb55918ef024",
+                                    "id": 15443
                                 }
                             ],
                             "routes": [
                                 {
                                     "@type": "WorkflowRoute",
                                     "name": "Start -> Fetch Sample Data",
-                                    "targetStep": "\/api\/3\/workflow_steps\/0140e002-d3da-4a82-8317-df012458d391",
-                                    "sourceStep": "\/api\/3\/workflow_steps\/32c0883c-a830-414f-af8b-d2eb9a48b6e9",
+                                    "targetStep": "\/api\/3\/workflow_steps\/734ebb52-3c3d-4855-8af4-ebdbf262be19",
+                                    "sourceStep": "\/api\/3\/workflow_steps\/2d54ab53-e904-44ac-aeb3-c4fd277b007b",
                                     "label": null,
                                     "isExecuted": false,
-                                    "uuid": "9ef4d5df-5971-42e3-9bf1-4491bc3e6f2c"
+                                    "uuid": "021a9a3d-bf3e-40e9-ad8e-5248f4076456"
                                 },
                                 {
                                     "@type": "WorkflowRoute",
                                     "name": "Fetch Sample Data -> Configuration",
-                                    "targetStep": "\/api\/3\/workflow_steps\/9ff4ff9b-5b78-43fc-8a9a-3302b2bfec27",
-                                    "sourceStep": "\/api\/3\/workflow_steps\/0140e002-d3da-4a82-8317-df012458d391",
+                                    "targetStep": "\/api\/3\/workflow_steps\/bd7cb554-9612-4f39-a6ca-fb55918ef024",
+                                    "sourceStep": "\/api\/3\/workflow_steps\/734ebb52-3c3d-4855-8af4-ebdbf262be19",
                                     "label": null,
                                     "isExecuted": false,
-                                    "uuid": "b0c55865-c777-4dad-82de-c1e9b8a12598"
+                                    "uuid": "0cb6d4c3-a6a9-45e2-92d6-11ca1b347ff7"
                                 }
                             ],
                             "priority": null,
@@ -232,11 +234,11 @@
                                 "fetch",
                                 "mitre-attack"
                             ],
-                            "id": 1901,
+                            "id": 2918,
                             "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                            "createDate": 1638629514,
+                            "createDate": 1647947522,
                             "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                            "modifyDate": 1638629585,
+                            "modifyDate": 1647947522,
                             "owners": [],
                             "isPrivate": false
                         },
@@ -253,10 +255,10 @@
                             "remoteExecutableFlag": false,
                             "parameters": [],
                             "synchronous": false,
-                            "lastModifyDate": 1638629584,
+                            "lastModifyDate": 1647947522,
                             "collection": "\/api\/3\/workflow_collections\/a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
                             "versions": [],
-                            "triggerStep": "\/api\/3\/workflow_steps\/833eb531-868f-47aa-8741-015fc2cbeb14",
+                            "triggerStep": "\/api\/3\/workflow_steps\/c347308b-d5c1-4d91-ab28-de07c05deac6",
                             "steps": [
                                 {
                                     "@type": "WorkflowStep",
@@ -286,8 +288,8 @@
                                     "top": "120",
                                     "left": "320",
                                     "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
-                                    "uuid": "4f2dda57-c069-4101-89d3-749262dd9958",
-                                    "id": 9511
+                                    "uuid": "42df169c-a59e-4e44-887f-85fcc1a54e53",
+                                    "id": 15444
                                 },
                                 {
                                     "@type": "WorkflowStep",
@@ -304,19 +306,19 @@
                                     "top": "30",
                                     "left": "125",
                                     "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
-                                    "uuid": "833eb531-868f-47aa-8741-015fc2cbeb14",
-                                    "id": 9512
+                                    "uuid": "c347308b-d5c1-4d91-ab28-de07c05deac6",
+                                    "id": 15445
                                 }
                             ],
                             "routes": [
                                 {
                                     "@type": "WorkflowRoute",
                                     "name": "Start -> Create Record",
-                                    "targetStep": "\/api\/3\/workflow_steps\/4f2dda57-c069-4101-89d3-749262dd9958",
-                                    "sourceStep": "\/api\/3\/workflow_steps\/833eb531-868f-47aa-8741-015fc2cbeb14",
+                                    "targetStep": "\/api\/3\/workflow_steps\/42df169c-a59e-4e44-887f-85fcc1a54e53",
+                                    "sourceStep": "\/api\/3\/workflow_steps\/c347308b-d5c1-4d91-ab28-de07c05deac6",
                                     "label": null,
                                     "isExecuted": false,
-                                    "uuid": "507aac63-cd25-4e90-978a-bcffe4cede1d"
+                                    "uuid": "e4fce65a-f9bc-406e-b5c6-b5c4f7ba2ef8"
                                 }
                             ],
                             "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
@@ -326,11 +328,11 @@
                                 "create",
                                 "mitre-attack"
                             ],
-                            "id": 1902,
+                            "id": 2919,
                             "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                            "createDate": 1638629514,
+                            "createDate": 1647947522,
                             "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                            "modifyDate": 1638629585,
+                            "modifyDate": 1647947522,
                             "owners": [],
                             "isPrivate": false
                         },
@@ -347,10 +349,10 @@
                             "remoteExecutableFlag": false,
                             "parameters": [],
                             "synchronous": false,
-                            "lastModifyDate": 1628755460,
+                            "lastModifyDate": 1647947522,
                             "collection": "\/api\/3\/workflow_collections\/a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
                             "versions": [],
-                            "triggerStep": "\/api\/3\/workflow_steps\/1c5d732f-bca9-466c-b4e5-73f9f8413d69",
+                            "triggerStep": "\/api\/3\/workflow_steps\/0136c754-35db-4ba1-a900-10fbc68acb9c",
                             "steps": [
                                 {
                                     "@type": "WorkflowStep",
@@ -367,8 +369,25 @@
                                     "top": "40",
                                     "left": "40",
                                     "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
-                                    "uuid": "1c5d732f-bca9-466c-b4e5-73f9f8413d69",
-                                    "id": 9513
+                                    "uuid": "0136c754-35db-4ba1-a900-10fbc68acb9c",
+                                    "id": 15446
+                                },
+                                {
+                                    "@type": "WorkflowStep",
+                                    "name": "Fetch",
+                                    "description": null,
+                                    "arguments": {
+                                        "arguments": [],
+                                        "apply_async": false,
+                                        "step_variables": [],
+                                        "workflowReference": "\/api\/3\/workflows\/b58bd09e-6bfc-4184-b0e9-8c829e2a3349"
+                                    },
+                                    "status": null,
+                                    "top": "140",
+                                    "left": "240",
+                                    "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+                                    "uuid": "90961aab-244f-4ad0-8254-0bde11d1cddf",
+                                    "id": 15448
                                 },
                                 {
                                     "@type": "WorkflowStep",
@@ -401,45 +420,28 @@
                                     "top": "280",
                                     "left": "440",
                                     "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-                                    "uuid": "27df8803-07a5-4bee-98e4-bbc16076221f",
-                                    "id": 9514
-                                },
-                                {
-                                    "@type": "WorkflowStep",
-                                    "name": "Fetch",
-                                    "description": null,
-                                    "arguments": {
-                                        "arguments": [],
-                                        "apply_async": false,
-                                        "step_variables": [],
-                                        "workflowReference": "\/api\/3\/workflows\/b58bd09e-6bfc-4184-b0e9-8c829e2a3349"
-                                    },
-                                    "status": null,
-                                    "top": "140",
-                                    "left": "240",
-                                    "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-                                    "uuid": "72671867-9c5e-4b36-a809-4ca54b8bd936",
-                                    "id": 9515
+                                    "uuid": "ef08bc30-6b74-44c2-ba5c-5959dd764404",
+                                    "id": 15447
                                 }
                             ],
                             "routes": [
                                 {
                                     "@type": "WorkflowRoute",
                                     "name": "Fetch -> Fetch And Create",
-                                    "targetStep": "\/api\/3\/workflow_steps\/27df8803-07a5-4bee-98e4-bbc16076221f",
-                                    "sourceStep": "\/api\/3\/workflow_steps\/72671867-9c5e-4b36-a809-4ca54b8bd936",
+                                    "targetStep": "\/api\/3\/workflow_steps\/ef08bc30-6b74-44c2-ba5c-5959dd764404",
+                                    "sourceStep": "\/api\/3\/workflow_steps\/90961aab-244f-4ad0-8254-0bde11d1cddf",
                                     "label": null,
                                     "isExecuted": false,
-                                    "uuid": "0e2e2394-0be6-49a7-8c76-0135cbc3ec77"
+                                    "uuid": "0bca5c8c-fd82-4c00-b297-69a912265c3d"
                                 },
                                 {
                                     "@type": "WorkflowRoute",
                                     "name": "Start -> Fetch",
-                                    "targetStep": "\/api\/3\/workflow_steps\/72671867-9c5e-4b36-a809-4ca54b8bd936",
-                                    "sourceStep": "\/api\/3\/workflow_steps\/1c5d732f-bca9-466c-b4e5-73f9f8413d69",
+                                    "targetStep": "\/api\/3\/workflow_steps\/90961aab-244f-4ad0-8254-0bde11d1cddf",
+                                    "sourceStep": "\/api\/3\/workflow_steps\/0136c754-35db-4ba1-a900-10fbc68acb9c",
                                     "label": null,
                                     "isExecuted": false,
-                                    "uuid": "8f5a4405-bf3b-4292-ae58-6f809f44e042"
+                                    "uuid": "a2972245-fe6b-42c6-867a-688ca8737a44"
                                 }
                             ],
                             "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
@@ -449,16 +451,16 @@
                                 "ingest",
                                 "mitre-attack"
                             ],
-                            "id": 1903,
+                            "id": 2920,
                             "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                            "createDate": 1638629514,
+                            "createDate": 1647947522,
                             "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                            "modifyDate": 1638629585,
+                            "modifyDate": 1647947522,
                             "owners": [],
                             "isPrivate": false,
                             "schedules": [
                                 {
-                                    "id": "gAAAAABiCjNcFJ9x3EVuQDC80rODzGSRqpMuAr45y-PceLS-0oyNhWuvDIDlyuZjmfLTM5ybk99A7hDTW8D2B_s2_vLCQjYolA==",
+                                    "id": "gAAAAABiO1URvA6DuJBVvzqJhp2D4NcJmufCDh-IpF19fDAPQ2scX4ZeiyD9OkobiLmpwGY6hye8xdo2K732HaXdmoOaGZtSvw==",
                                     "crontab": {
                                         "id": 4,
                                         "minute": "*\/5",
@@ -497,8 +499,8 @@
                                     "start_time": null,
                                     "enabled": false,
                                     "last_run_at": null,
-                                    "total_run_count": 5965,
-                                    "date_changed": "2021-12-25T07:58:05.462249Z",
+                                    "total_run_count": 0,
+                                    "date_changed": "2022-03-22T11:12:03.211582Z",
                                     "description": "Ingestion_mitre-attack_MitreC_a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
                                     "solar": null,
                                     "clocked": null
@@ -508,11 +510,11 @@
                     ],
                     "image": null,
                     "uuid": "a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                    "id": 178,
+                    "id": 262,
                     "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                    "createDate": 1638629512,
+                    "createDate": 1647947522,
                     "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                    "modifyDate": 1638629512,
+                    "modifyDate": 1647947522,
                     "recordTags": []
                 }
             ],
@@ -538,7 +540,7 @@
         },
         "configurations": [
             {
-                "id": 4,
+                "id": 107,
                 "config_id": "f2c545de-65df-43c5-bfe1-40c8e8a3300b",
                 "status": 1,
                 "name": "Demo",
