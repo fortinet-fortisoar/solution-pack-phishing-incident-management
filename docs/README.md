@@ -1,11 +1,16 @@
-# Advanced Phishing Incident Management
+# Phishing Incident Management
 
 Guided Simulation where a series of automation workflows guides your investigation via the Workspace comments. Comments tagged as *Actions* represent the tasks the analyst must do. *Hints* are simply suggestions
 
-[![Solution Pack Video](https://img.youtube.com/vi/eQ0G_Tgr_4M/0.jpg)](https://www.youtube.com/embed/eQ0G_Tgr_4M)
+|  |  |
+| --- | --- |
+|[![Solution Pack Video](https://img.youtube.com/vi/eQ0G_Tgr_4M/0.jpg)](https://www.youtube.com/embed/eQ0G_Tgr_4M)|[![Solution Pack Video](https://img.youtube.com/vi/nO4wxCDoxd0/0.jpg)](https://www.youtube.com/embed/nO4wxCDoxd0)
+|[Solution Pack Video Introduction](https://www.youtube.com/embed/eQ0G_Tgr_4M)|[Solution Pack Video Part 2](https://www.youtube.com/embed/nO4wxCDoxd0)|
 
-[Solution Pack Video Introduction](https://www.youtube.com/embed/eQ0G_Tgr_4M)
 
+
+
+                                   
 ### 1) Prerequisites
 
 **Generic Prerequisites:**
@@ -90,3 +95,4 @@ You need to set the below global variables in the playbook editor (**Automation 
 - Fix Playbook: Case management / Alert > [05] Update Ack and Response Due dates (Post Severity Change)
     - Open the step: **Update Reset Resp SLA Condition** and replace its content with:
 ```(vars.input.records[0].respSlaStatus.itemValue == ("SLAState" | picklist("Awaiting Action", "itemValue")) and 'Closed' not in vars.input.records[0].status.itemValue) or vars.input.records[0].respSlaStatus.itemValue == ("SLAState" | picklist("NA", "itemValue")) and (vars.input.records[0].status.itemValue != vars.sla_time_list.alertResTrackedOn)```
+- If you use on the default enrichment playbooks the list of indicators in `/opt/cyops-integrations/integrations/connectors/fortisoar-soc-simulator_1_0_9/threat_intelligence` must be populated with known indicators to VirusTotal(tm). Alternatively you can use the modular enrichment collection available [here](https://github.com/fortinet-fortisoar/solution-pack-enrichment-modular)

@@ -5,7 +5,7 @@
     "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
     "createDate": 1647951698,
     "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "modifyDate": 1648052338,
+    "modifyDate": 1648122934,
     "displayName": "Phishing Case Management",
     "type": "rows",
     "templateType": "dashboard",
@@ -198,7 +198,7 @@
                                     "query": {
                                         "sort": [],
                                         "limit": 30,
-                                        "logic": "OR",
+                                        "logic": "AND",
                                         "filters": [
                                             {
                                                 "field": "status",
@@ -287,8 +287,8 @@
                                             },
                                             {
                                                 "operator": "select",
-                                                "alias": "createDate",
-                                                "field": "createDate"
+                                                "alias": "assigneddate",
+                                                "field": "assigneddate"
                                             }
                                         ]
                                     },
@@ -297,7 +297,7 @@
                                         "fieldName": "severity",
                                         "timeScope": "day",
                                         "dateFormat": "%b %e",
-                                        "dateFieldName": "createDate"
+                                        "dateFieldName": "assigneddate"
                                     },
                                     "aggregate": true,
                                     "wid": "e6e3f129-6109-4816-bca4-f641e5c34aa5",
@@ -316,6 +316,47 @@
                                 "type": "performanceMetrics",
                                 "config": {
                                     "wid": "15c3d9e2-d3bd-4529-a6f4-b4b8f069c669",
+                                    "showSavings": "dollar",
+                                    "includeFailedPlaybooks": true,
+                                    "excludeConfigActions": true,
+                                    "days": 30,
+                                    "showPercentageChanges": true,
+                                    "metricsType": "timeToX",
+                                    "title": "MTTA",
+                                    "resource": "incidents",
+                                    "query": {
+                                        "sort": [],
+                                        "limit": 30,
+                                        "logic": "AND",
+                                        "filters": [
+                                            {
+                                                "field": "category",
+                                                "operator": "eq",
+                                                "value": "{{lbl_Incident_Type}}",
+                                                "_value": {
+                                                    "display": "",
+                                                    "itemValue": "",
+                                                    "@id": "{{lbl_Incident_Type}}"
+                                                },
+                                                "type": "object"
+                                            }
+                                        ]
+                                    },
+                                    "opration": "mean",
+                                    "toDateField": "ackDate",
+                                    "fromDateField": "createDate",
+                                    "timeRange": "createDate",
+                                    "grouping": {
+                                        "primary": [],
+                                        "secondary": []
+                                    },
+                                    "cardLayout": true
+                                }
+                            },
+                            {
+                                "type": "performanceMetrics",
+                                "config": {
+                                    "wid": "fe2f9ff5-52d7-4477-bb2c-6b9c5b4237c6",
                                     "showSavings": "dollar",
                                     "includeFailedPlaybooks": true,
                                     "excludeConfigActions": true,
@@ -362,114 +403,6 @@
                                     },
                                     "cardLayout": true
                                 }
-                            },
-                            {
-                                "type": "performanceMetrics",
-                                "config": {
-                                    "wid": "a1fbb070-2a46-4090-a05e-6ed03f6b38e0",
-                                    "showSavings": "dollar",
-                                    "includeFailedPlaybooks": true,
-                                    "excludeConfigActions": true,
-                                    "days": 30,
-                                    "showPercentageChanges": true,
-                                    "metricsType": "totalCount",
-                                    "resource": "incidents",
-                                    "query": {
-                                        "sort": [],
-                                        "limit": 30,
-                                        "logic": "AND",
-                                        "filters": [
-                                            {
-                                                "logic": "AND",
-                                                "filters": [
-                                                    {
-                                                        "field": "resDueBy",
-                                                        "operator": "lt",
-                                                        "value": "{{getRelativeDate(0,0,0,0,1,\"start\")}}",
-                                                        "type": "datetime"
-                                                    }
-                                                ],
-                                                "_field": "resDueBy",
-                                                "_value": {
-                                                    "differenceType": "mins",
-                                                    "differenceValue": 1
-                                                },
-                                                "_operator": "lt",
-                                                "type": "datetime"
-                                            },
-                                            {
-                                                "field": "category",
-                                                "operator": "eq",
-                                                "value": "{{lbl_Incident_Type}}",
-                                                "_value": {
-                                                    "display": "",
-                                                    "itemValue": "",
-                                                    "@id": "{{lbl_Incident_Type}}"
-                                                },
-                                                "type": "object"
-                                            }
-                                        ]
-                                    },
-                                    "title": "Overdue Incidents",
-                                    "timeRange": "createDate",
-                                    "grouping": {
-                                        "primary": [],
-                                        "secondary": []
-                                    }
-                                }
-                            }
-                        ],
-                        "style": "col-lg-3"
-                    },
-                    {
-                        "widgets": [
-                            {
-                                "type": "relationshipCount",
-                                "config": {
-                                    "wid": "48b7db1f-1797-497d-be7b-aadd9725de6b",
-                                    "widgetAlwaysDisplay": true,
-                                    "query": {
-                                        "sort": [
-                                            {
-                                                "field": "createDate",
-                                                "direction": "ASC"
-                                            }
-                                        ],
-                                        "limit": 2147483647,
-                                        "logic": "AND",
-                                        "filters": [],
-                                        "aggregates": [
-                                            {
-                                                "operator": "count",
-                                                "alias": "total",
-                                                "field": "users.uuid"
-                                            },
-                                            {
-                                                "operator": "groupby",
-                                                "alias": "createDate",
-                                                "field": "createDate"
-                                            }
-                                        ]
-                                    },
-                                    "mapping": {
-                                        "assignedToPerson": "",
-                                        "firstGrouping": "createDate",
-                                        "secondGrouping": "users"
-                                    },
-                                    "aggregate": true,
-                                    "title": "Target",
-                                    "chart": "relationshipBar",
-                                    "resource": "incidents",
-                                    "primaryDataSourceLabel": "incident",
-                                    "resourceRelationship": "users",
-                                    "queryRelationship": {
-                                        "sort": [],
-                                        "limit": 30,
-                                        "logic": "AND",
-                                        "filters": []
-                                    },
-                                    "relatedDataSourceLabel": "users"
-                                }
                             }
                         ],
                         "style": "col-lg-3"
@@ -480,6 +413,69 @@
                                 "type": "lineItem",
                                 "config": {
                                     "wid": "72765ccb-5ec1-4534-9210-ddd6910fb12b",
+                                    "query": {
+                                        "sort": [],
+                                        "limit": 10,
+                                        "logic": "AND",
+                                        "filters": [
+                                            {
+                                                "logic": "OR",
+                                                "filters": [
+                                                    {
+                                                        "field": "type",
+                                                        "operator": "eq",
+                                                        "value": "\/api\/3\/picklists\/0b3ef6f9-eb29-4ab9-ac98-98364bd1a3aa",
+                                                        "_value": {
+                                                            "itemValue": "Phishing",
+                                                            "@id": "\/api\/3\/picklists\/0b3ef6f9-eb29-4ab9-ac98-98364bd1a3aa"
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    {
+                                                        "field": "type",
+                                                        "operator": "eq",
+                                                        "value": "\/api\/3\/picklists\/c145394b-069a-449b-a05e-67980d0f4b82",
+                                                        "_value": {
+                                                            "itemValue": "Suspicious Email",
+                                                            "@id": "\/api\/3\/picklists\/c145394b-069a-449b-a05e-67980d0f4b82"
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "logic": "AND",
+                                                "filters": [
+                                                    {
+                                                        "field": "senderDomain",
+                                                        "operator": "neq",
+                                                        "_operator": "neq",
+                                                        "value": "fortielab.com",
+                                                        "type": "primitive"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "mapping": {
+                                        "assignedToPerson": ""
+                                    },
+                                    "columns": [
+                                        "emailTo"
+                                    ],
+                                    "title": "Targeted Users",
+                                    "module": "alerts"
+                                }
+                            }
+                        ],
+                        "style": "col-lg-3"
+                    },
+                    {
+                        "widgets": [
+                            {
+                                "type": "lineItem",
+                                "config": {
+                                    "wid": "9152c44f-1ee4-4015-9d91-6194aea28ed6",
                                     "query": {
                                         "sort": [],
                                         "limit": 10,

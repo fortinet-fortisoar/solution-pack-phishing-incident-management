@@ -24,3 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Infected assets quarantine playbook
 - Recovery tasks created and linked to incident
 - Phishing case management dashboard
+
+## TODO
+- Full automation mode: A playbook to manage all manual tasks
+- Populate data for dashboard using a Soc Simulator/Create Alert
