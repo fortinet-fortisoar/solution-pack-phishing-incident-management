@@ -1,6 +1,8 @@
 # Phishing Incident Management
 
-Guided Simulation where a series of automation workflows guides your investigation via the Workspace comments. Comments tagged as *Actions* represent the tasks the analyst must do. *Hints* are simply suggestions
+**Compatibility:** 7.2+
+
+Scripted Simulation where a series of automation workflows guide your investigation via the workspace comments. Comments tagged as *Actions* represent the tasks the analyst must do. *Hints* are simply suggestions.
 
 |  |  |
 | --- | --- |

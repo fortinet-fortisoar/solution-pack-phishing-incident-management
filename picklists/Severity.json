@@ -13,8 +13,7 @@
             "color": "#157DD9",
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/4e80cba3-032f-48b4-ac03-17e3ec247aac",
-            "uuid": "0d609b08-45e0-469f-8910-41145c0b7c03",
-            "id": 12
+            "uuid": "0d609b08-45e0-469f-8910-41145c0b7c03"
         },
         {
             "@id": "\/api\/3\/picklists\/40187287-89fc-4e9c-b717-e9443d57eedb",
@@ -24,8 +23,7 @@
             "color": "#DE7A13",
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/4e80cba3-032f-48b4-ac03-17e3ec247aac",
-            "uuid": "40187287-89fc-4e9c-b717-e9443d57eedb",
-            "id": 56
+            "uuid": "40187287-89fc-4e9c-b717-e9443d57eedb"
         },
         {
             "@id": "\/api\/3\/picklists\/58d0753f-f7e4-403b-953c-b0f521eab759",
@@ -35,8 +33,7 @@
             "color": "#28B35C",
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/4e80cba3-032f-48b4-ac03-17e3ec247aac",
-            "uuid": "58d0753f-f7e4-403b-953c-b0f521eab759",
-            "id": 83
+            "uuid": "58d0753f-f7e4-403b-953c-b0f521eab759"
         },
         {
             "@id": "\/api\/3\/picklists\/7efa2220-39bb-44e4-961f-ac368776e3b0",
@@ -46,8 +43,7 @@
             "color": "#e31b1d",
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/4e80cba3-032f-48b4-ac03-17e3ec247aac",
-            "uuid": "7efa2220-39bb-44e4-961f-ac368776e3b0",
-            "id": 119
+            "uuid": "7efa2220-39bb-44e4-961f-ac368776e3b0"
         },
         {
             "@id": "\/api\/3\/picklists\/b3c20a3a-ecfd-4adc-a225-0205968e6793",
@@ -57,10 +53,8 @@
             "color": "#D2AC1A",
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/4e80cba3-032f-48b4-ac03-17e3ec247aac",
-            "uuid": "b3c20a3a-ecfd-4adc-a225-0205968e6793",
-            "id": 177
+            "uuid": "b3c20a3a-ecfd-4adc-a225-0205968e6793"
         }
     ],
-    "uuid": "4e80cba3-032f-48b4-ac03-17e3ec247aac",
-    "id": 9
+    "uuid": "4e80cba3-032f-48b4-ac03-17e3ec247aac"
 }

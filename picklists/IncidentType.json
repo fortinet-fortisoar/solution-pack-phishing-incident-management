@@ -13,8 +13,7 @@
             "color": null,
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "4e8c71d0-8fba-4313-8b01-ab336cc1af2a",
-            "id": 68
+            "uuid": "4e8c71d0-8fba-4313-8b01-ab336cc1af2a"
         },
         {
             "@id": "\/api\/3\/picklists\/590f216a-a582-47b8-9d94-17a066ed234c",
@@ -24,8 +23,7 @@
             "color": null,
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "590f216a-a582-47b8-9d94-17a066ed234c",
-            "id": 84
+            "uuid": "590f216a-a582-47b8-9d94-17a066ed234c"
         },
         {
             "@id": "\/api\/3\/picklists\/70321398-f69a-11e7-8c3f-9a214cf093ae",
@@ -35,8 +33,7 @@
             "color": null,
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "70321398-f69a-11e7-8c3f-9a214cf093ae",
-            "id": 99
+            "uuid": "70321398-f69a-11e7-8c3f-9a214cf093ae"
         },
         {
             "@id": "\/api\/3\/picklists\/70321690-f69a-11e7-8c3f-9a214cf093ae",
@@ -46,8 +43,7 @@
             "color": null,
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "70321690-f69a-11e7-8c3f-9a214cf093ae",
-            "id": 364
+            "uuid": "70321690-f69a-11e7-8c3f-9a214cf093ae"
         },
         {
             "@id": "\/api\/3\/picklists\/703217da-f69a-11e7-8c3f-9a214cf093ae",
@@ -57,8 +53,7 @@
             "color": null,
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "703217da-f69a-11e7-8c3f-9a214cf093ae",
-            "id": 169
+            "uuid": "703217da-f69a-11e7-8c3f-9a214cf093ae"
         },
         {
             "@id": "\/api\/3\/picklists\/70321a1e-f69a-11e7-8c3f-9a214cf093ae",
@@ -68,8 +63,7 @@
             "color": null,
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "70321a1e-f69a-11e7-8c3f-9a214cf093ae",
-            "id": 170
+            "uuid": "70321a1e-f69a-11e7-8c3f-9a214cf093ae"
         },
         {
             "@id": "\/api\/3\/picklists\/70321e9c-f69a-11e7-8c3f-9a214cf093ae",
@@ -79,8 +73,7 @@
             "color": null,
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "70321e9c-f69a-11e7-8c3f-9a214cf093ae",
-            "id": 179
+            "uuid": "70321e9c-f69a-11e7-8c3f-9a214cf093ae"
         },
         {
             "@id": "\/api\/3\/picklists\/70321ffa-f69a-11e7-8c3f-9a214cf093ae",
@@ -90,8 +83,7 @@
             "color": null,
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "70321ffa-f69a-11e7-8c3f-9a214cf093ae",
-            "id": 174
+            "uuid": "70321ffa-f69a-11e7-8c3f-9a214cf093ae"
         },
         {
             "@id": "\/api\/3\/picklists\/70322432-f69a-11e7-8c3f-9a214cf093ae",
@@ -101,8 +93,7 @@
             "color": null,
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "70322432-f69a-11e7-8c3f-9a214cf093ae",
-            "id": 168
+            "uuid": "70322432-f69a-11e7-8c3f-9a214cf093ae"
         },
         {
             "@id": "\/api\/3\/picklists\/7032255e-f69a-11e7-8c3f-9a214cf093ae",
@@ -112,107 +103,7 @@
             "color": null,
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "7032255e-f69a-11e7-8c3f-9a214cf093ae",
-            "id": 172
-        },
-        {
-            "@id": "\/api\/3\/picklists\/836d97af-6022-42b4-8b0a-1c3cab73a7ea",
-            "@type": "Picklist",
-            "itemValue": "Unauthorized Access",
-            "orderIndex": 16,
-            "color": null,
-            "icon": null,
-            "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "836d97af-6022-42b4-8b0a-1c3cab73a7ea",
-            "id": 123
-        },
-        {
-            "@id": "\/api\/3\/picklists\/8fea3472-6bd7-4bbf-a080-ca4e778617f8",
-            "@type": "Picklist",
-            "itemValue": "Other",
-            "orderIndex": 12,
-            "color": null,
-            "icon": null,
-            "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "8fea3472-6bd7-4bbf-a080-ca4e778617f8",
-            "id": 365
-        },
-        {
-            "@id": "\/api\/3\/picklists\/9c50d999-f17f-40ac-8830-b3417893db70",
-            "@type": "Picklist",
-            "itemValue": "Elevation of Privilege",
-            "orderIndex": 21,
-            "color": null,
-            "icon": null,
-            "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "9c50d999-f17f-40ac-8830-b3417893db70",
-            "id": 151
-        },
-        {
-            "@id": "\/api\/3\/picklists\/bb741514-f699-11e7-8c3f-9a214cf093ae",
-            "@type": "Picklist",
-            "itemValue": "Denial of Service",
-            "orderIndex": 3,
-            "color": null,
-            "icon": null,
-            "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "bb741514-f699-11e7-8c3f-9a214cf093ae",
-            "id": 171
-        },
-        {
-            "@id": "\/api\/3\/picklists\/bb7417b2-f699-11e7-8c3f-9a214cf093ae",
-            "@type": "Picklist",
-            "itemValue": "Vendor \/ 3rd Party Error",
-            "orderIndex": 16,
-            "color": null,
-            "icon": null,
-            "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "bb7417b2-f699-11e7-8c3f-9a214cf093ae",
-            "id": 184
-        },
-        {
-            "@id": "\/api\/3\/picklists\/f79c54d8-f69a-11e7-8c3f-9a214cf093ae",
-            "@type": "Picklist",
-            "itemValue": "Reconnaissance and Probing",
-            "orderIndex": 12,
-            "color": null,
-            "icon": null,
-            "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "f79c54d8-f69a-11e7-8c3f-9a214cf093ae",
-            "id": 180
-        },
-        {
-            "@id": "\/api\/3\/picklists\/f79c5618-f69a-11e7-8c3f-9a214cf093ae",
-            "@type": "Picklist",
-            "itemValue": "Unsuccessful Activity Attempt",
-            "orderIndex": 14,
-            "color": null,
-            "icon": null,
-            "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "f79c5618-f69a-11e7-8c3f-9a214cf093ae",
-            "id": 182
-        },
-        {
-            "@id": "\/api\/3\/picklists\/f79c5744-f69a-11e7-8c3f-9a214cf093ae",
-            "@type": "Picklist",
-            "itemValue": "Malicious Logic",
-            "orderIndex": 7,
-            "color": null,
-            "icon": null,
-            "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "f79c5744-f69a-11e7-8c3f-9a214cf093ae",
-            "id": 175
-        },
-        {
-            "@id": "\/api\/3\/picklists\/f79c585c-f69a-11e7-8c3f-9a214cf093ae",
-            "@type": "Picklist",
-            "itemValue": "User Level Intrusion",
-            "orderIndex": 15,
-            "color": null,
-            "icon": null,
-            "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "f79c585c-f69a-11e7-8c3f-9a214cf093ae",
-            "id": 183
+            "uuid": "7032255e-f69a-11e7-8c3f-9a214cf093ae"
         },
         {
             "@id": "\/api\/3\/picklists\/703218fc-f69a-11e7-8c3f-9a214cf093ae",
@@ -222,19 +113,97 @@
             "color": null,
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "703218fc-f69a-11e7-8c3f-9a214cf093ae",
-            "id": 102
+            "uuid": "703218fc-f69a-11e7-8c3f-9a214cf093ae"
         },
         {
-            "@id": "\/api\/3\/picklists\/703222e8-f69a-11e7-8c3f-9a214cf093ae",
+            "@id": "\/api\/3\/picklists\/836d97af-6022-42b4-8b0a-1c3cab73a7ea",
             "@type": "Picklist",
-            "itemValue": "Phishing",
-            "orderIndex": 10,
+            "itemValue": "Unauthorized Access",
+            "orderIndex": 16,
             "color": null,
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "703222e8-f69a-11e7-8c3f-9a214cf093ae",
-            "id": 177
+            "uuid": "836d97af-6022-42b4-8b0a-1c3cab73a7ea"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/8fea3472-6bd7-4bbf-a080-ca4e778617f8",
+            "@type": "Picklist",
+            "itemValue": "Other",
+            "orderIndex": 12,
+            "color": null,
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+            "uuid": "8fea3472-6bd7-4bbf-a080-ca4e778617f8"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/9c50d999-f17f-40ac-8830-b3417893db70",
+            "@type": "Picklist",
+            "itemValue": "Elevation of Privilege",
+            "orderIndex": 21,
+            "color": null,
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+            "uuid": "9c50d999-f17f-40ac-8830-b3417893db70"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/bb741514-f699-11e7-8c3f-9a214cf093ae",
+            "@type": "Picklist",
+            "itemValue": "Denial of Service",
+            "orderIndex": 3,
+            "color": null,
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+            "uuid": "bb741514-f699-11e7-8c3f-9a214cf093ae"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/bb7417b2-f699-11e7-8c3f-9a214cf093ae",
+            "@type": "Picklist",
+            "itemValue": "Vendor \/ 3rd Party Error",
+            "orderIndex": 16,
+            "color": null,
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+            "uuid": "bb7417b2-f699-11e7-8c3f-9a214cf093ae"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/f79c54d8-f69a-11e7-8c3f-9a214cf093ae",
+            "@type": "Picklist",
+            "itemValue": "Reconnaissance and Probing",
+            "orderIndex": 12,
+            "color": null,
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+            "uuid": "f79c54d8-f69a-11e7-8c3f-9a214cf093ae"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/f79c5618-f69a-11e7-8c3f-9a214cf093ae",
+            "@type": "Picklist",
+            "itemValue": "Unsuccessful Activity Attempt",
+            "orderIndex": 14,
+            "color": null,
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+            "uuid": "f79c5618-f69a-11e7-8c3f-9a214cf093ae"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/f79c5744-f69a-11e7-8c3f-9a214cf093ae",
+            "@type": "Picklist",
+            "itemValue": "Malicious Logic",
+            "orderIndex": 7,
+            "color": null,
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+            "uuid": "f79c5744-f69a-11e7-8c3f-9a214cf093ae"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/f79c585c-f69a-11e7-8c3f-9a214cf093ae",
+            "@type": "Picklist",
+            "itemValue": "User Level Intrusion",
+            "orderIndex": 15,
+            "color": null,
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+            "uuid": "f79c585c-f69a-11e7-8c3f-9a214cf093ae"
         },
         {
             "@id": "\/api\/3\/picklists\/f79c4b3c-f69a-11e7-8c3f-9a214cf093ae",
@@ -244,8 +213,17 @@
             "color": null,
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "f79c4b3c-f69a-11e7-8c3f-9a214cf093ae",
-            "id": 238
+            "uuid": "f79c4b3c-f69a-11e7-8c3f-9a214cf093ae"
+        },
+        {
+            "@id": "\/api\/3\/picklists\/703222e8-f69a-11e7-8c3f-9a214cf093ae",
+            "@type": "Picklist",
+            "itemValue": "Phishing",
+            "orderIndex": 10,
+            "color": null,
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+            "uuid": "703222e8-f69a-11e7-8c3f-9a214cf093ae"
         },
         {
             "@id": "\/api\/3\/picklists\/f79c5316-f69a-11e7-8c3f-9a214cf093ae",
@@ -255,10 +233,8 @@
             "color": null,
             "icon": null,
             "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
-            "uuid": "f79c5316-f69a-11e7-8c3f-9a214cf093ae",
-            "id": 178
+            "uuid": "f79c5316-f69a-11e7-8c3f-9a214cf093ae"
         }
     ],
-    "uuid": "f3938848-6220-4b27-af2d-a5329cf63656",
-    "id": 20
+    "uuid": "f3938848-6220-4b27-af2d-a5329cf63656"
 }

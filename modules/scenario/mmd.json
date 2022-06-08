@@ -1,12 +1,13 @@
 {
     "@context": "\/api\/3\/contexts\/StagingModelMetadata",
-    "@id": "\/api\/3\/staging_model_metadatas\/bb0712a6-d90d-4f8b-9f23-d79e34bdbf62",
+    "@id": "\/api\/3\/staging_model_metadatas\/9b5dd903-4ec9-4e1e-b440-8156b4fb0af6",
     "@type": "StagingModelMetadata",
     "type": "scenario",
     "parentType": null,
     "tableName": "scenario",
     "ownable": false,
     "userOwnable": false,
+    "queueable": false,
     "trackable": true,
     "taggable": true,
     "peerReplicable": false,
@@ -16,53 +17,7 @@
     "writable": true,
     "attributes": [
         {
-            "@id": "\/api\/3\/attribute_metadatas\/c4796794-3ed3-4a08-a801-804225cb1053",
-            "@type": "AttributeMetadata",
-            "type": "string",
-            "name": "configuration",
-            "length": null,
-            "orderIndex": 1,
-            "formType": "text",
-            "dataSource": null,
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "required": false,
-                "minlength": 0,
-                "maxlength": 10485761
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonText": "",
-                "buttonIcon": "",
-                "buttonClass": "btn btn-default btn-sm"
-            },
-            "dataSourceFilters": null,
-            "defaultValue": "",
-            "tooltip": null,
-            "visibility": false,
-            "htmlEscape": null,
-            "orphanRemoval": null,
-            "readable": null,
-            "writeable": true,
-            "identifier": null,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/bb0712a6-d90d-4f8b-9f23-d79e34bdbf62",
-            "uuid": "c4796794-3ed3-4a08-a801-804225cb1053",
-            "displayName": "{{ configuration }}",
-            "descriptions": {
-                "singular": "Configuration"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/70713c89-8237-4804-9ec1-b934d19d88b5",
+            "@id": "\/api\/3\/attribute_metadatas\/74592051-a86c-42f0-befc-fb73ef7f29fa",
             "@type": "AttributeMetadata",
             "type": "object",
             "name": "steps",
@@ -100,67 +55,22 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/bb0712a6-d90d-4f8b-9f23-d79e34bdbf62",
-            "uuid": "70713c89-8237-4804-9ec1-b934d19d88b5",
+            "uuid": "74592051-a86c-42f0-befc-fb73ef7f29fa",
             "displayName": "{{ steps }}",
             "descriptions": {
                 "singular": "Steps"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/7969a32a-ceef-4491-804a-c7ab8f559ace",
-            "@type": "AttributeMetadata",
-            "type": "comments",
-            "name": "comments",
-            "length": 0,
-            "orderIndex": 5,
-            "formType": "manyToMany",
-            "dataSource": {
-                "model": "comments"
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": true,
-            "inversedField": "scenario",
-            "ownsRelationship": false,
-            "validation": {
-                "required": false,
-                "minlength": 0,
-                "maxlength": 10485761,
-                "_enableRange": false
-            },
-            "bulkAction": [],
-            "dataSourceFilters": [],
-            "defaultValue": null,
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/bb0712a6-d90d-4f8b-9f23-d79e34bdbf62",
-            "uuid": "7969a32a-ceef-4491-804a-c7ab8f559ace",
-            "displayName": "{{ comments }}",
-            "descriptions": {
-                "singular": "Comments"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/10e202e7-1ec4-4fde-bff9-f5381e3b175c",
+            "@id": "\/api\/3\/attribute_metadatas\/840d94ab-51b8-4782-ab37-5b0bdbfcbf69",
             "@type": "AttributeMetadata",
             "type": "string",
-            "name": "createdAlertsID",
-            "length": 0,
-            "orderIndex": 6,
-            "formType": "textarea",
-            "dataSource": [],
-            "searchable": true,
+            "name": "configuration",
+            "length": null,
+            "orderIndex": 1,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
             "peerReplicable": true,
             "system": false,
             "encrypted": false,
@@ -179,6 +89,49 @@
                 "buttonIcon": "",
                 "buttonClass": "btn btn-default btn-sm"
             },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": false,
+            "htmlEscape": null,
+            "orphanRemoval": null,
+            "readable": null,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "840d94ab-51b8-4782-ab37-5b0bdbfcbf69",
+            "displayName": "{{ configuration }}",
+            "descriptions": {
+                "singular": "Configuration"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/64308afb-66ce-4081-91fe-08c257c720e8",
+            "@type": "AttributeMetadata",
+            "type": "comments",
+            "name": "comments",
+            "length": 0,
+            "orderIndex": 5,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "comments"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "scenario",
+            "ownsRelationship": true,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": [],
             "dataSourceFilters": [],
             "defaultValue": null,
             "tooltip": "",
@@ -190,15 +143,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/bb0712a6-d90d-4f8b-9f23-d79e34bdbf62",
-            "uuid": "10e202e7-1ec4-4fde-bff9-f5381e3b175c",
-            "displayName": "{{ createdAlertsID }}",
+            "uuid": "64308afb-66ce-4081-91fe-08c257c720e8",
+            "displayName": "{{ comments }}",
             "descriptions": {
-                "singular": "Created Alerts ID"
+                "singular": "Comments"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/70474f08-6a83-46d5-bf01-9832c2a3435a",
+            "@id": "\/api\/3\/attribute_metadatas\/7b795797-5ef5-4026-880a-a4b4381bcb00",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "title",
@@ -237,15 +189,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/bb0712a6-d90d-4f8b-9f23-d79e34bdbf62",
-            "uuid": "70474f08-6a83-46d5-bf01-9832c2a3435a",
+            "uuid": "7b795797-5ef5-4026-880a-a4b4381bcb00",
             "displayName": "{{ title }}",
             "descriptions": {
                 "singular": "Title"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/67eff2ad-006b-461f-b6ee-273cccd8cabf",
+            "@id": "\/api\/3\/attribute_metadatas\/54e289b1-99b5-4950-a4b7-c332756d366b",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "description",
@@ -284,17 +235,70 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/bb0712a6-d90d-4f8b-9f23-d79e34bdbf62",
-            "uuid": "67eff2ad-006b-461f-b6ee-273cccd8cabf",
+            "uuid": "54e289b1-99b5-4950-a4b7-c332756d366b",
             "displayName": "{{ description }}",
             "descriptions": {
                 "singular": "Description"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/c208c3a6-a027-4ed6-acc5-229830617ff4",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "createdAlertsID",
+            "length": 0,
+            "orderIndex": 6,
+            "formType": "textarea",
+            "dataSource": [],
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": [],
+            "defaultValue": null,
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "c208c3a6-a027-4ed6-acc5-229830617ff4",
+            "displayName": "{{ createdAlertsID }}",
+            "descriptions": {
+                "singular": "Created Alerts ID"
             }
         }
     ],
     "system": false,
     "module": "scenario",
-    "uuid": "bb0712a6-d90d-4f8b-9f23-d79e34bdbf62",
+    "softDeleteable": false,
+    "archivable": false,
+    "paused": false,
+    "partitionBy": "modifyDate",
+    "archivalCriteria": {
+        "keep_primary_data_for": 24,
+        "delete_primary_data_after": 60
+    },
+    "archivalFilters": [],
+    "uuid": "9b5dd903-4ec9-4e1e-b440-8156b4fb0af6",
     "displayName": "{{ title }}",
     "descriptions": {
         "singular": "Scenario",

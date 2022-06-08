@@ -2,10 +2,6 @@
     "@context": "\/api\/3\/contexts\/Dashboard",
     "@type": "Dashboard",
     "uuid": "53b5ab07-1d01-43db-ad16-ffab7c7cd74e",
-    "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "createDate": 1647951698,
-    "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "modifyDate": 1648122934,
     "displayName": "Phishing Case Management",
     "type": "rows",
     "templateType": "dashboard",
@@ -245,115 +241,6 @@
                     {
                         "widgets": [
                             {
-                                "type": "chart",
-                                "config": {
-                                    "query": {
-                                        "sort": [
-                                            {
-                                                "field": "severity.orderIndex",
-                                                "direction": "ASC"
-                                            }
-                                        ],
-                                        "limit": 2147483647,
-                                        "logic": "AND",
-                                        "filters": [
-                                            {
-                                                "field": "type",
-                                                "operator": "eq",
-                                                "value": "{{lbl_alert_type}}",
-                                                "_value": {
-                                                    "display": "",
-                                                    "itemValue": "",
-                                                    "@id": "{{lbl_alert_type}}"
-                                                },
-                                                "type": "object"
-                                            }
-                                        ],
-                                        "aggregates": [
-                                            {
-                                                "operator": "select",
-                                                "alias": "severity",
-                                                "field": "severity.itemValue"
-                                            },
-                                            {
-                                                "operator": "select",
-                                                "alias": "color",
-                                                "field": "severity.color"
-                                            },
-                                            {
-                                                "operator": "select",
-                                                "alias": "orderIndex",
-                                                "field": "severity.orderIndex"
-                                            },
-                                            {
-                                                "operator": "select",
-                                                "alias": "assigneddate",
-                                                "field": "assigneddate"
-                                            }
-                                        ]
-                                    },
-                                    "mapping": {
-                                        "assignedToPerson": "",
-                                        "fieldName": "severity",
-                                        "timeScope": "day",
-                                        "dateFormat": "%b %e",
-                                        "dateFieldName": "assigneddate"
-                                    },
-                                    "aggregate": true,
-                                    "wid": "e6e3f129-6109-4816-bca4-f641e5c34aa5",
-                                    "resource": "alerts",
-                                    "chart": "timeseries",
-                                    "title": "Alerts Timeline",
-                                    "widgetAlwaysDisplay": true
-                                }
-                            }
-                        ],
-                        "style": "col-lg-3"
-                    },
-                    {
-                        "widgets": [
-                            {
-                                "type": "performanceMetrics",
-                                "config": {
-                                    "wid": "15c3d9e2-d3bd-4529-a6f4-b4b8f069c669",
-                                    "showSavings": "dollar",
-                                    "includeFailedPlaybooks": true,
-                                    "excludeConfigActions": true,
-                                    "days": 30,
-                                    "showPercentageChanges": true,
-                                    "metricsType": "timeToX",
-                                    "title": "MTTA",
-                                    "resource": "incidents",
-                                    "query": {
-                                        "sort": [],
-                                        "limit": 30,
-                                        "logic": "AND",
-                                        "filters": [
-                                            {
-                                                "field": "category",
-                                                "operator": "eq",
-                                                "value": "{{lbl_Incident_Type}}",
-                                                "_value": {
-                                                    "display": "",
-                                                    "itemValue": "",
-                                                    "@id": "{{lbl_Incident_Type}}"
-                                                },
-                                                "type": "object"
-                                            }
-                                        ]
-                                    },
-                                    "opration": "mean",
-                                    "toDateField": "ackDate",
-                                    "fromDateField": "createDate",
-                                    "timeRange": "createDate",
-                                    "grouping": {
-                                        "primary": [],
-                                        "secondary": []
-                                    },
-                                    "cardLayout": true
-                                }
-                            },
-                            {
                                 "type": "performanceMetrics",
                                 "config": {
                                     "wid": "fe2f9ff5-52d7-4477-bb2c-6b9c5b4237c6",
@@ -405,7 +292,53 @@
                                 }
                             }
                         ],
-                        "style": "col-lg-3"
+                        "style": "col-lg-4"
+                    },
+                    {
+                        "widgets": [
+                            {
+                                "type": "performanceMetrics",
+                                "config": {
+                                    "wid": "15c3d9e2-d3bd-4529-a6f4-b4b8f069c669",
+                                    "showSavings": "dollar",
+                                    "includeFailedPlaybooks": true,
+                                    "excludeConfigActions": true,
+                                    "days": 30,
+                                    "showPercentageChanges": true,
+                                    "metricsType": "timeToX",
+                                    "title": "MTTA",
+                                    "resource": "incidents",
+                                    "query": {
+                                        "sort": [],
+                                        "limit": 30,
+                                        "logic": "AND",
+                                        "filters": [
+                                            {
+                                                "field": "category",
+                                                "operator": "eq",
+                                                "value": "{{lbl_Incident_Type}}",
+                                                "_value": {
+                                                    "display": "",
+                                                    "itemValue": "",
+                                                    "@id": "{{lbl_Incident_Type}}"
+                                                },
+                                                "type": "object"
+                                            }
+                                        ]
+                                    },
+                                    "opration": "mean",
+                                    "toDateField": "ackDate",
+                                    "fromDateField": "discoveredOn",
+                                    "timeRange": "createDate",
+                                    "grouping": {
+                                        "primary": [],
+                                        "secondary": []
+                                    },
+                                    "cardLayout": true
+                                }
+                            }
+                        ],
+                        "style": "col-lg-4"
                     },
                     {
                         "widgets": [
@@ -415,45 +348,18 @@
                                     "wid": "72765ccb-5ec1-4534-9210-ddd6910fb12b",
                                     "query": {
                                         "sort": [],
-                                        "limit": 10,
+                                        "limit": 5,
                                         "logic": "AND",
                                         "filters": [
                                             {
-                                                "logic": "OR",
-                                                "filters": [
-                                                    {
-                                                        "field": "type",
-                                                        "operator": "eq",
-                                                        "value": "\/api\/3\/picklists\/0b3ef6f9-eb29-4ab9-ac98-98364bd1a3aa",
-                                                        "_value": {
-                                                            "itemValue": "Phishing",
-                                                            "@id": "\/api\/3\/picklists\/0b3ef6f9-eb29-4ab9-ac98-98364bd1a3aa"
-                                                        },
-                                                        "type": "object"
-                                                    },
-                                                    {
-                                                        "field": "type",
-                                                        "operator": "eq",
-                                                        "value": "\/api\/3\/picklists\/c145394b-069a-449b-a05e-67980d0f4b82",
-                                                        "_value": {
-                                                            "itemValue": "Suspicious Email",
-                                                            "@id": "\/api\/3\/picklists\/c145394b-069a-449b-a05e-67980d0f4b82"
-                                                        },
-                                                        "type": "object"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "logic": "AND",
-                                                "filters": [
-                                                    {
-                                                        "field": "senderDomain",
-                                                        "operator": "neq",
-                                                        "_operator": "neq",
-                                                        "value": "fortielab.com",
-                                                        "type": "primitive"
-                                                    }
-                                                ]
+                                                "field": "type",
+                                                "operator": "eq",
+                                                "value": "\/api\/3\/picklists\/c145394b-069a-449b-a05e-67980d0f4b82",
+                                                "_value": {
+                                                    "itemValue": "Suspicious Email",
+                                                    "@id": "\/api\/3\/picklists\/c145394b-069a-449b-a05e-67980d0f4b82"
+                                                },
+                                                "type": "object"
                                             }
                                         ]
                                     },
@@ -461,77 +367,15 @@
                                         "assignedToPerson": ""
                                     },
                                     "columns": [
-                                        "emailTo"
+                                        "userName"
                                     ],
                                     "title": "Targeted Users",
-                                    "module": "alerts"
+                                    "module": "alerts",
+                                    "assignedToSetting": "onlyMe"
                                 }
                             }
                         ],
-                        "style": "col-lg-3"
-                    },
-                    {
-                        "widgets": [
-                            {
-                                "type": "lineItem",
-                                "config": {
-                                    "wid": "9152c44f-1ee4-4015-9d91-6194aea28ed6",
-                                    "query": {
-                                        "sort": [],
-                                        "limit": 10,
-                                        "logic": "AND",
-                                        "filters": [
-                                            {
-                                                "logic": "OR",
-                                                "filters": [
-                                                    {
-                                                        "field": "type",
-                                                        "operator": "eq",
-                                                        "value": "\/api\/3\/picklists\/0b3ef6f9-eb29-4ab9-ac98-98364bd1a3aa",
-                                                        "_value": {
-                                                            "itemValue": "Phishing",
-                                                            "@id": "\/api\/3\/picklists\/0b3ef6f9-eb29-4ab9-ac98-98364bd1a3aa"
-                                                        },
-                                                        "type": "object"
-                                                    },
-                                                    {
-                                                        "field": "type",
-                                                        "operator": "eq",
-                                                        "value": "\/api\/3\/picklists\/c145394b-069a-449b-a05e-67980d0f4b82",
-                                                        "_value": {
-                                                            "itemValue": "Suspicious Email",
-                                                            "@id": "\/api\/3\/picklists\/c145394b-069a-449b-a05e-67980d0f4b82"
-                                                        },
-                                                        "type": "object"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "logic": "AND",
-                                                "filters": [
-                                                    {
-                                                        "field": "senderDomain",
-                                                        "operator": "neq",
-                                                        "_operator": "neq",
-                                                        "value": "fortielab.com",
-                                                        "type": "primitive"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    "mapping": {
-                                        "assignedToPerson": ""
-                                    },
-                                    "columns": [
-                                        "senderDomain"
-                                    ],
-                                    "title": "Phishing Sender Domains",
-                                    "module": "alerts"
-                                }
-                            }
-                        ],
-                        "style": "col-lg-3"
+                        "style": "col-lg-4"
                     }
                 ],
                 "wid": "10d7cf0e-d920-486c-b4b5-05b65f9c3938",
@@ -539,6 +383,143 @@
                 "_collapsed": false,
                 "collapsible": false,
                 "collapsibleIndex": 0
+            },
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "chart",
+                                "config": {
+                                    "query": {
+                                        "sort": [
+                                            {
+                                                "field": "severity.orderIndex",
+                                                "direction": "ASC"
+                                            }
+                                        ],
+                                        "limit": 2147483647,
+                                        "logic": "AND",
+                                        "filters": [
+                                            {
+                                                "field": "type",
+                                                "operator": "eq",
+                                                "value": "{{lbl_alert_type}}",
+                                                "_value": {
+                                                    "display": "",
+                                                    "itemValue": "",
+                                                    "@id": "{{lbl_alert_type}}"
+                                                },
+                                                "type": "object"
+                                            }
+                                        ],
+                                        "aggregates": [
+                                            {
+                                                "operator": "select",
+                                                "alias": "severity",
+                                                "field": "severity.itemValue"
+                                            },
+                                            {
+                                                "operator": "select",
+                                                "alias": "color",
+                                                "field": "severity.color"
+                                            },
+                                            {
+                                                "operator": "select",
+                                                "alias": "orderIndex",
+                                                "field": "severity.orderIndex"
+                                            },
+                                            {
+                                                "operator": "select",
+                                                "alias": "alertDetectionDate",
+                                                "field": "alertDetectionDate"
+                                            }
+                                        ]
+                                    },
+                                    "mapping": {
+                                        "assignedToPerson": "",
+                                        "fieldName": "severity",
+                                        "timeScope": "day",
+                                        "dateFormat": "%b %e",
+                                        "dateFieldName": "alertDetectionDate"
+                                    },
+                                    "aggregate": true,
+                                    "wid": "e6e3f129-6109-4816-bca4-f641e5c34aa5",
+                                    "resource": "alerts",
+                                    "chart": "timeseries",
+                                    "title": "Alerts Timeline",
+                                    "widgetAlwaysDisplay": true,
+                                    "assignedToSetting": "onlyMe"
+                                }
+                            }
+                        ],
+                        "style": "col-lg-9"
+                    },
+                    {
+                        "widgets": [
+                            {
+                                "type": "chart",
+                                "config": {
+                                    "wid": "f4a5654a-9e3d-4cb1-96e6-9ff099050c8d",
+                                    "widgetAlwaysDisplay": true,
+                                    "query": {
+                                        "sort": [
+                                            {
+                                                "field": "type.orderIndex",
+                                                "direction": "ASC"
+                                            },
+                                            {
+                                                "field": "senderDomain",
+                                                "direction": "ASC"
+                                            }
+                                        ],
+                                        "limit": 2147483647,
+                                        "logic": "AND",
+                                        "filters": [],
+                                        "aggregates": [
+                                            {
+                                                "operator": "countdistinct",
+                                                "field": "*",
+                                                "alias": "total"
+                                            },
+                                            {
+                                                "operator": "groupby",
+                                                "alias": "type",
+                                                "field": "type.itemValue"
+                                            },
+                                            {
+                                                "operator": "groupby",
+                                                "alias": "firstOrderIndex",
+                                                "field": "type.orderIndex"
+                                            },
+                                            {
+                                                "operator": "groupby",
+                                                "alias": "senderDomain",
+                                                "field": "senderDomain"
+                                            }
+                                        ]
+                                    },
+                                    "mapping": {
+                                        "assignedToPerson": "",
+                                        "firstGrouping": "type",
+                                        "secondGrouping": "senderDomain"
+                                    },
+                                    "assignedToSetting": "onlyMe",
+                                    "aggregate": true,
+                                    "title": "Top Spammer Domains",
+                                    "resource": "alerts",
+                                    "chart": "bar",
+                                    "barStyle": "horizontal"
+                                }
+                            }
+                        ],
+                        "style": "col-lg-3"
+                    }
+                ],
+                "wid": "d6a95850-ac9f-42f7-b364-bfbd6f9bdd10",
+                "collapsible": false,
+                "collapsibleIndex": 0,
+                "_collapsed": false
             },
             {
                 "columns": [
@@ -1128,7 +1109,10 @@
                 "_collapsed": false
             }
         ],
-        "wid": "ec834d77-403b-4dfa-abda-719402adbb17"
+        "wid": "ec834d77-403b-4dfa-abda-719402adbb17",
+        "metadata": {
+            "customTemplateTitle": "Dashboard"
+        }
     },
     "filterArray": [
         {

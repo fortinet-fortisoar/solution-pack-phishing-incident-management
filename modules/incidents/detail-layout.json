@@ -265,13 +265,13 @@
                                                                                                         "readOnly": false
                                                                                                     },
                                                                                                     {
-                                                                                                        "name": "impactedAsset",
+                                                                                                        "name": "nextsteps",
                                                                                                         "highlightMode": true,
                                                                                                         "linky": true,
                                                                                                         "readOnly": false
                                                                                                     },
                                                                                                     {
-                                                                                                        "name": "malwareHash",
+                                                                                                        "name": "incidentsummary",
                                                                                                         "highlightMode": true,
                                                                                                         "linky": true,
                                                                                                         "readOnly": false
@@ -601,7 +601,7 @@
                                                                                             }
                                                                                         },
                                                                                         "icon": "fa fa-star",
-                                                                                        "show": false
+                                                                                        "show": true
                                                                                     },
                                                                                     {
                                                                                         "title": "Correlations",
@@ -624,7 +624,7 @@
                                                                                             }
                                                                                         },
                                                                                         "icon": "fa fa-exchange",
-                                                                                        "show": true
+                                                                                        "show": false
                                                                                     },
                                                                                     {
                                                                                         "title": "Tasks",
@@ -801,11 +801,6 @@
                 "id": "\/api\/3\/workflows\/1cc7391f-6c01-491f-a1ec-d6b03035d8d5",
                 "name": "Generate Incident Summary Report",
                 "icon": "icon icon-reports"
-            },
-            {
-                "id": "\/api\/3\/workflows\/575ec2d1-9317-460b-ab13-0586fd73d082",
-                "name": "Launch War Room - Incidents",
-                "icon": "fa fa-rocket"
             }
         ],
         "fields": [
@@ -940,7 +935,8 @@
                     "picklistBar": "severity"
                 }
             }
-        }
+        },
+        "metadata": []
     },
     "uuid": "modules-incidents-detail"
 }

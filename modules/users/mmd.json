@@ -1,12 +1,13 @@
 {
     "@context": "\/api\/3\/contexts\/StagingModelMetadata",
-    "@id": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
+    "@id": "\/api\/3\/staging_model_metadatas\/a477b64f-fea1-4568-93cb-0c844be2e4b4",
     "@type": "StagingModelMetadata",
     "type": "users",
     "parentType": null,
     "tableName": "users",
     "ownable": true,
     "userOwnable": false,
+    "queueable": false,
     "trackable": true,
     "taggable": true,
     "peerReplicable": false,
@@ -52,7 +53,6 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "951522cf-f00a-4624-8286-0927da36640d",
             "displayName": "{{ incidents }}",
             "descriptions": {
@@ -98,7 +98,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "b082fad9-d140-4c98-bd53-5ba7743d4f5e",
             "displayName": "{{ mobileNumber }}",
             "descriptions": {
@@ -144,7 +143,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "9da0eb4f-b517-4403-b61d-8764beaba8a7",
             "displayName": "{{ jobTitle }}",
             "descriptions": {
@@ -185,7 +183,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "524bf877-4278-44ae-b78b-ac3f63060363",
             "displayName": "{{ memberOf }}",
             "descriptions": {
@@ -231,7 +228,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "cef714d5-b0fc-449d-a659-0a2e88c672d0",
             "displayName": "{{ email }}",
             "descriptions": {
@@ -277,7 +273,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "e9990da4-396e-4daa-9c45-85d8fddd298a",
             "displayName": "{{ whenUserCreated }}",
             "descriptions": {
@@ -323,7 +318,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "5835032a-a939-444c-9b16-43ce77fca417",
             "displayName": "{{ reportsTo }}",
             "descriptions": {
@@ -369,7 +363,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "97250b5b-6519-49d5-98b3-ca42ca5e270d",
             "displayName": "{{ department }}",
             "descriptions": {
@@ -415,7 +408,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "8a5a5efe-9733-4871-a202-7e721088f9df",
             "displayName": "{{ passwordLastSet }}",
             "descriptions": {
@@ -461,7 +453,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "8ddbb7a1-073f-4e28-a746-6264fc5ab73d",
             "displayName": "{{ managerEmail }}",
             "descriptions": {
@@ -507,7 +498,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "89ce6044-1bb1-4fca-b306-fca748250d33",
             "displayName": "{{ managerPhoneNumber }}",
             "descriptions": {
@@ -553,7 +543,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "d8952cc7-ee31-41db-b59f-e13edb8caa83",
             "displayName": "{{ primaryGroup }}",
             "descriptions": {
@@ -599,7 +588,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "f6e5d761-9022-456d-8507-dd9816e6dac9",
             "displayName": "{{ sourceData }}",
             "descriptions": {
@@ -624,7 +612,7 @@
             "gridColumn": false,
             "collection": true,
             "inversedField": "users",
-            "ownsRelationship": false,
+            "ownsRelationship": true,
             "validation": {
                 "required": false,
                 "minlength": 0,
@@ -643,7 +631,6 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "82784a6f-5847-45c3-ba58-f0fcffc08806",
             "displayName": "{{ assets }}",
             "descriptions": {
@@ -668,7 +655,7 @@
             "gridColumn": false,
             "collection": true,
             "inversedField": "users",
-            "ownsRelationship": false,
+            "ownsRelationship": true,
             "validation": {
                 "required": false,
                 "minlength": 0,
@@ -687,7 +674,6 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "140dffca-9b9a-4ad0-8ecf-0c597314dff5",
             "displayName": "{{ alerts }}",
             "descriptions": {
@@ -734,7 +720,6 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "1a8831a4-63e6-4254-a1c0-be1091446cc3",
             "displayName": "{{ domain }}",
             "descriptions": {
@@ -781,7 +766,6 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "91c92275-2e13-4461-afca-05a177aa31fe",
             "displayName": "{{ lastLogin }}",
             "descriptions": {
@@ -827,7 +811,6 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "d16c181e-0fdd-4fd2-84b8-e09a8f873638",
             "displayName": "{{ securityId }}",
             "descriptions": {
@@ -873,7 +856,6 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/958ed885-695d-4fee-be43-c1fc408f0e47",
             "uuid": "a9236469-44bf-463c-bd5a-cf9b6270c6b3",
             "displayName": "{{ userName }}",
             "descriptions": {
@@ -883,7 +865,16 @@
     ],
     "system": false,
     "module": "users",
-    "uuid": "958ed885-695d-4fee-be43-c1fc408f0e47",
+    "softDeleteable": false,
+    "archivable": false,
+    "paused": false,
+    "partitionBy": "modifyDate",
+    "archivalCriteria": {
+        "keep_primary_data_for": 24,
+        "delete_primary_data_after": 60
+    },
+    "archivalFilters": [],
+    "uuid": "a477b64f-fea1-4568-93cb-0c844be2e4b4",
     "displayName": "{{ securityid }}",
     "descriptions": {
         "singular": "User",

@@ -16,7 +16,14 @@
                                     "picklistFieldReadOnly": false,
                                     "titleFieldReadOnly": false,
                                     "titleFieldLinky": true,
-                                    "titleField": "title"
+                                    "titleField": "title",
+                                    "featuredRelationship": {
+                                        "field": null,
+                                        "preText": "Under Investigation In",
+                                        "query": null,
+                                        "statusField": null,
+                                        "sort": []
+                                    }
                                 }
                             },
                             {
@@ -30,7 +37,8 @@
                         "style": "col-lg-12"
                     }
                 ],
-                "wid": "4e00b377-61f9-4227-a2f0-4961e878a532"
+                "wid": "4e00b377-61f9-4227-a2f0-4961e878a532",
+                "_collapsed": false
             },
             {
                 "columns": [
@@ -84,7 +92,7 @@
                                                 }
                                             },
                                             "icon": "icon icon-alert",
-                                            "show": true
+                                            "show": false
                                         },
                                         {
                                             "title": "Source",
@@ -132,13 +140,14 @@
                                                                     "style": "col-lg-12"
                                                                 }
                                                             ],
-                                                            "wid": "be72cc3c-4336-4e2e-838b-52d36f21d24a"
+                                                            "wid": "be72cc3c-4336-4e2e-838b-52d36f21d24a",
+                                                            "_collapsed": false
                                                         }
                                                     ]
                                                 }
                                             },
                                             "icon": "icon icon-running-playbooks",
-                                            "show": false
+                                            "show": true
                                         }
                                     ],
                                     "wid": "83044353-f9cf-4bd4-b737-a43c61dd9859",
@@ -149,22 +158,24 @@
                         "style": "col-lg-12"
                     }
                 ],
-                "wid": "93a1399a-bbef-4675-bf20-61af50f98072"
+                "wid": "93a1399a-bbef-4675-bf20-61af50f98072",
+                "_collapsed": false
             }
         ],
         "actionButtons": [
             {
                 "id": "\/api\/3\/workflows\/a10522ac-2622-40bd-ad79-4487d9a1d7d7",
                 "name": "Run Scenario",
-                "icon": "fa fa-play"
+                "icon": "fa fa-check"
             },
             {
-                "id": "\/api\/3\/workflows\/98506caa-32ab-429d-9c0f-42d92a71b5d1",
+                "id": "\/api\/3\/workflows\/845ea0c5-8ee9-4bc2-879c-b7639140f4e8",
                 "name": "Reset Scenario",
                 "icon": "fa fa-trash-o"
             }
         ],
-        "wid": "bbb4522a-1f19-4a2c-ad2f-a4b0f7a4ace0"
+        "wid": "bbb4522a-1f19-4a2c-ad2f-a4b0f7a4ace0",
+        "metadata": []
     },
     "uuid": "modules-scenario-detail"
 }

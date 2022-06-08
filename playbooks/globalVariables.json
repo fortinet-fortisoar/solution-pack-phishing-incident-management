@@ -1,74 +1,68 @@
 [
     {
-        "id": 16,
-        "name": "Excludelist_IPs",
-        "value": "8.8.8.8,10.1.1.2",
-        "default_value": "8.8.8.8,10.1.1.2"
-    },
-    {
-        "id": 17,
-        "name": "Excludelist_URLs",
-        "value": "https:\/\/www.google.com,https:\/\/mail.yahoo.com\/login.html,https:\/\/www.office.com\/,http:\/\/www.w3.org\/1999\/xhtml",
-        "default_value": "https:\/\/www.google.com,https:\/\/mail.yahoo.com\/login.html,https:\/\/www.office.com\/,"
-    },
-    {
-        "id": 29,
-        "name": "Excludelist_Hosts",
-        "value": "www.fortielab.com,NA",
-        "default_value": "www.fortielab.com"
-    },
-    {
-        "id": 18,
-        "name": "Excludelist_Domains",
-        "value": "google.com,yahoo.com,fortinet.net,cybersponse.com,gmail.com,outlook.com,microsoft.com,fortielab.com",
-        "default_value": "google.com,yahoo.com,fortinet.net,cybersponse.com,gmail.com,outlook.com,microsoft.com"
-    },
-    {
-        "id": 31,
-        "name": "Exclamation_Icon",
-        "value": "<span style=\"color: red; font-size: 6mm;\">\u26a0<\/span>",
-        "default_value": "<span style=\"color: red; font-size: 6mm;\">\u26a0<\/span>"
-    },
-    {
-        "id": 30,
-        "name": "Action_Icon",
-        "value": "<span style=\"background-color:red;color:black;border-radius: 4px;font-size:8mm;\">&#10159;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Action<\/font><\/span>",
-        "default_value": "<span style=\"background-color:red;color:black;border-radius: 4px;font-size:8mm;\">&#10159;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Action<\/font><\/span>"
-    },
-    {
-        "id": 32,
-        "name": "Hint_Icon",
-        "value": "<span style=\"background-color:orange;color:black;border-radius: 4px;font-size:8mm;\">&#9788;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Hint<\/font><\/span>",
-        "default_value": "<span style=\"background-color:orange;color:black;border-radius: 4px;font-size:8mm;\">&#9788;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Hint<\/font><\/span>"
-    },
-    {
         "id": 20,
         "name": "Demo_mode",
         "value": "true",
         "default_value": "true"
     },
     {
-        "id": 1,
-        "name": "Current_Date",
-        "value": "{{arrow.utcnow().timestamp}}",
-        "default_value": "{{arrow.utcnow().timestamp}}"
-    },
-    {
-        "id": 19,
-        "name": "Indicator_type_map",
-        "value": "{ \"attachmentNames\":\"File\",\"commandLine\": \"Process\",\"computerName\":\"Host\",\"decodedCommandLine\":\"Process\",\"destinationIp\": \"IP Address\",\"destinationPort\":\"Port\",\"domain\":\"Domain\",\"dllLoaded\": \"Process\",\"emailFrom\":\"Email Address\",\"emailCc\":\"Email Address\",\"emailTo\":\"Email Address\",\"fileHash\": \"FileHash-MD5\",\"parentProcessCmdLine\": \"Process\",\"parentProcessName\": \"Process\",\"recipientEmailAddress\":\"Email Address\",\"registryKey\": \"Registry\",\"registryKeyValue\": \"Registry\",\"reporter\":\"Email Address\",\"returnPath\":\"Email Address\",\"senderDomain\":\"Domain\",\"senderEmailAddress\": \"Email Address\",\"services\": \"Process\",\"sourceIp\": \"IP Address\",\"sourcePort\":\"Port\",\"sourceProcess\": \"Process\",\"targetAsset\":\"Host\",\"targetProcess\": \"Process\",\"url\": \"URL\",\"userName\": \"User\",\"userDetails\": \"User\",\"urlFull\": \"URL\",\"parentProcessName\": \"Process\",\"otherRecipients\": \"Email Address\"}",
-        "default_value": "{ \"attachmentNames\":\"File\",\"commandLine\": \"Process\",\"computerName\":\"Host\",\"decodedCommandLine\":\"Process\",\"destinationIp\": \"IP Address\",\"destinationPort\":\"Port\",\"domain\":\"Domain\",\"dllLoaded\": \"Process\",\"emailFrom\":\"Email Address\",\"emailCc\":\"Email Address\",\"emailTo\":\"Email Address\",\"fileHash\": \"FileHash-MD5\",\"parentProcessCmdLine\": \"Process\",\"parentProcessName\": \"Process\",\"recipientEmailAddress\":\"Email Address\",\"registryKey\": \"Registry\",\"registryKeyValue\": \"Registry\",\"reporter\":\"Email Address\",\"returnPath\":\"Email Address\",\"senderDomain\":\"Domain\",\"senderEmailAddress\": \"Email Address\",\"services\": \"Process\",\"sourceIp\": \"IP Address\",\"sourcePort\":\"Port\",\"sourceProcess\": \"Process\",\"targetAsset\":\"Host\",\"targetProcess\": \"Process\",\"url\": \"URL\",\"userName\": \"User\",\"userDetails\": \"User\",\"urlFull\": \"URL\",\"parentProcessName\": \"Process\",\"otherRecipients\": \"Email Address\"}"
-    },
-    {
-        "id": 25,
+        "id": 8,
         "name": "Default_Indicator_TTL_Days",
         "value": "20",
         "default_value": "20"
     },
     {
-        "id": 6,
+        "id": 12,
+        "name": "Excludelist_IPs",
+        "value": "8.8.8.8,10.1.1.2",
+        "default_value": "8.8.8.8,10.1.1.2"
+    },
+    {
+        "id": 13,
+        "name": "Excludelist_URLs",
+        "value": "https:\/\/www.google.com,https:\/\/mail.yahoo.com\/login.html,https:\/\/www.office.com\/",
+        "default_value": "https:\/\/www.google.com,https:\/\/mail.yahoo.com\/login.html,https:\/\/www.office.com\/"
+    },
+    {
+        "id": 14,
+        "name": "Excludelist_Domains",
+        "value": "google.com,yahoo.com,fortinet.net,cybersponse.com,gmail.com,outlook.com,microsoft.com,fortinet.com,twitter.com,facebook.com,linkedin.com,instagram.com,fortiguard.com,forticloud.comm,fortielab.com",
+        "default_value": "google.com,yahoo.com,fortinet.net,cybersponse.com,gmail.com,outlook.com,microsoft.com,fortinet.com,twitter.com,facebook.com,linkedin.com,instagram.com,fortiguard.com,forticloud.com"
+    },
+    {
+        "id": 11,
+        "name": "Indicator_Type_Map",
+        "value": "{ \"attachmentNames\":\"File\",\"commandLine\": \"Process\",\"computerName\":\"Host\",\"decodedCommandLine\":\"Process\",\"destinationIp\": \"IP Address\",\"destinationPort\":\"Port\",\"domain\":\"Domain\",\"dllLoaded\": \"Process\",\"emailFrom\":\"Email Address\",\"emailCc\":\"Email Address\",\"emailTo\":\"Email Address\",\"fileHash\": \"FileHash-MD5\",\"parentProcessCmdLine\": \"Process\",\"parentProcessName\": \"Process\",\"recipientEmailAddress\":\"Email Address\",\"registryKey\": \"Registry\",\"registryKeyValue\": \"Registry\",\"reporter\":\"Email Address\",\"returnPath\":\"Email Address\",\"senderDomain\":\"Domain\",\"senderEmailAddress\": \"Email Address\",\"services\": \"Process\",\"sourceIp\": \"IP Address\",\"sourcePort\":\"Port\",\"sourceProcess\": \"Process\",\"targetAsset\":\"Host\",\"targetProcess\": \"Process\",\"url\": \"URL\",\"userName\": \"User\",\"userDetails\": \"User\",\"urlFull\": \"URL\",\"parentProcessName\": \"Process\",\"otherRecipients\": \"Email Address\"}",
+        "default_value": "{ \"attachmentNames\":\"File\",\"commandLine\": \"Process\",\"computerName\":\"Host\",\"decodedCommandLine\":\"Process\",\"destinationIp\": \"IP Address\",\"destinationPort\":\"Port\",\"domain\":\"Domain\",\"dllLoaded\": \"Process\",\"emailFrom\":\"Email Address\",\"emailCc\":\"Email Address\",\"emailTo\":\"Email Address\",\"fileHash\": \"FileHash-MD5\",\"parentProcessCmdLine\": \"Process\",\"parentProcessName\": \"Process\",\"recipientEmailAddress\":\"Email Address\",\"registryKey\": \"Registry\",\"registryKeyValue\": \"Registry\",\"reporter\":\"Email Address\",\"returnPath\":\"Email Address\",\"senderDomain\":\"Domain\",\"senderEmailAddress\": \"Email Address\",\"services\": \"Process\",\"sourceIp\": \"IP Address\",\"sourcePort\":\"Port\",\"sourceProcess\": \"Process\",\"targetAsset\":\"Host\",\"targetProcess\": \"Process\",\"url\": \"URL\",\"userName\": \"User\",\"userDetails\": \"User\",\"urlFull\": \"URL\",\"parentProcessName\": \"Process\",\"otherRecipients\": \"Email Address\"}"
+    },
+    {
+        "id": 26,
         "name": "Tomorrow_Date",
         "value": "{{arrow.utcnow().shift(hours=+24).timestamp}}",
         "default_value": "{{arrow.utcnow().shift(hours=+24).timestamp}}"
+    },
+    {
+        "id": 24,
+        "name": "Hint_Icon",
+        "value": "<span style=\"background-color:orange;color:black;border-radius: 4px;font-size:8mm;\">&#9788;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Hint<\/font><\/span>",
+        "default_value": "<span style=\"background-color:orange;color:black;border-radius: 4px;font-size:8mm;\">&#9788;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Hint<\/font><\/span>"
+    },
+    {
+        "id": 23,
+        "name": "Action_Icon",
+        "value": "<span style=\"background-color:red;color:black;border-radius: 4px;font-size:8mm;\">&#10159;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Action<\/font><\/span>",
+        "default_value": "<span style=\"background-color:red;color:black;border-radius: 4px;font-size:8mm;\">&#10159;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Action<\/font><\/span>"
+    },
+    {
+        "id": 10,
+        "name": "Current_Date",
+        "value": "{{arrow.utcnow().timestamp}}",
+        "default_value": "{{arrow.utcnow().timestamp}}"
+    },
+    {
+        "id": 22,
+        "name": "Exclamation_Icon",
+        "value": "<span style=\"color: red; font-size: 6mm;\">\u26a0<\/span>",
+        "default_value": "<span style=\"color: red; font-size: 6mm;\">\u26a0<\/span>"
     }
 ]

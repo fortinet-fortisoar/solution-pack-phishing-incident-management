@@ -1,12 +1,13 @@
 {
     "@context": "\/api\/3\/contexts\/StagingModelMetadata",
-    "@id": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
+    "@id": "\/api\/3\/staging_model_metadatas\/d9f4e630-4b91-4b4f-b95b-05475576abb4",
     "@type": "StagingModelMetadata",
     "type": "incidents",
     "parentType": null,
     "tableName": "incidents",
     "ownable": true,
-    "userOwnable": false,
+    "userOwnable": true,
+    "queueable": true,
     "trackable": true,
     "taggable": true,
     "peerReplicable": true,
@@ -24,7 +25,7 @@
     "writable": true,
     "attributes": [
         {
-            "@id": "\/api\/3\/attribute_metadatas\/1e367c59-40c7-47e5-9db4-70e0fb519b06",
+            "@id": "\/api\/3\/attribute_metadatas\/ead9e16a-8312-42ea-869f-783eaff8ee6b",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "metrics",
@@ -80,15 +81,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "1e367c59-40c7-47e5-9db4-70e0fb519b06",
+            "uuid": "ead9e16a-8312-42ea-869f-783eaff8ee6b",
             "displayName": "{{ metrics }}",
             "descriptions": {
                 "singular": "Metrics"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/7fe25654-6e5d-4835-9959-cca764fe560b",
+            "@id": "\/api\/3\/attribute_metadatas\/a6c7f685-4e2c-4cee-97c0-cf84e9d9cedd",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "name",
@@ -123,23 +123,102 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "7fe25654-6e5d-4835-9959-cca764fe560b",
+            "uuid": "a6c7f685-4e2c-4cee-97c0-cf84e9d9cedd",
             "displayName": "{{ name }}",
             "descriptions": {
                 "singular": "Name"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/3ea7c56e-e768-47b6-af40-c8f1e9746a4b",
+            "@id": "\/api\/3\/attribute_metadatas\/bdb5a9de-77ad-4a9c-86f4-1a564a6d9875",
             "@type": "AttributeMetadata",
-            "type": "notes",
-            "name": "notes",
+            "type": "string",
+            "name": "nextsteps",
             "length": null,
-            "orderIndex": 58,
+            "orderIndex": 57,
+            "formType": "richtext",
+            "dataSource": [],
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "_enableRange": false,
+                "maxlength": 10485761,
+                "minlength": 0,
+                "required": [
+                    {
+                        "filters": [
+                            {
+                                "_value": {
+                                    "itemValue": "Resolved"
+                                },
+                                "field": "status",
+                                "operator": "eq",
+                                "type": "object",
+                                "value": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae"
+                            }
+                        ],
+                        "limit": 30,
+                        "logic": "OR",
+                        "sort": []
+                    }
+                ]
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonClass": "",
+                "buttonIcon": "",
+                "buttonText": ""
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": [
+                {
+                    "filters": [
+                        {
+                            "_value": {
+                                "itemValue": "Resolved"
+                            },
+                            "field": "status",
+                            "operator": "eq",
+                            "type": "object",
+                            "value": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae"
+                        }
+                    ],
+                    "limit": 30,
+                    "logic": "OR",
+                    "sort": []
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "bdb5a9de-77ad-4a9c-86f4-1a564a6d9875",
+            "displayName": "{{ nextsteps }}",
+            "descriptions": {
+                "singular": "Next Steps"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/5c92b781-8f83-40f4-a2af-c3172cc2752d",
+            "@type": "AttributeMetadata",
+            "type": "people",
+            "name": "persons",
+            "length": null,
+            "orderIndex": 59,
             "formType": "manyToMany",
             "dataSource": {
-                "model": "notes"
+                "model": "people"
             },
             "searchable": false,
             "peerReplicable": true,
@@ -169,15 +248,409 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "3ea7c56e-e768-47b6-af40-c8f1e9746a4b",
-            "displayName": "{{ notes }}",
+            "uuid": "5c92b781-8f83-40f4-a2af-c3172cc2752d",
+            "displayName": "{{ persons }}",
             "descriptions": {
-                "singular": "Notes"
+                "singular": "People"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/fbdb6008-42bc-4fbe-9a6e-b0ca44dbc066",
+            "@id": "\/api\/3\/attribute_metadatas\/5b78051b-2d63-4aea-ae05-759f334249b0",
+            "@type": "AttributeMetadata",
+            "type": "picklists",
+            "name": "phase",
+            "length": null,
+            "orderIndex": 60,
+            "formType": "picklist",
+            "dataSource": {
+                "displayConditions": {
+                    "10b77cd3-0ba5-4c2e-83bb-d665430a9287": {
+                        "conditions": null,
+                        "visibility": "visible"
+                    },
+                    "37f637f0-2e7a-41cc-a6e4-502d7263b2d0": {
+                        "conditions": null,
+                        "visibility": "visible"
+                    },
+                    "bb740542-f699-11e7-8c3f-9a214cf093ae": {
+                        "conditions": null,
+                        "visibility": "visible"
+                    },
+                    "bb7407e0-f699-11e7-8c3f-9a214cf093ae": {
+                        "conditions": null,
+                        "visibility": "visible"
+                    },
+                    "bb740a06-f699-11e7-8c3f-9a214cf093ae": {
+                        "conditions": null,
+                        "visibility": "visible"
+                    },
+                    "bb740d30-f699-11e7-8c3f-9a214cf093ae": {
+                        "conditions": null,
+                        "visibility": "visible"
+                    },
+                    "cbaa92d2-6fd7-4dbe-88f6-0e0d17e8b430": {
+                        "conditions": null,
+                        "visibility": "visible"
+                    }
+                },
+                "model": "picklists",
+                "query": {
+                    "filters": [
+                        {
+                            "field": "listName__name",
+                            "operator": "eq",
+                            "value": "IncidentPhase"
+                        }
+                    ],
+                    "logic": "AND",
+                    "sort": [
+                        {
+                            "direction": "ASC",
+                            "field": "orderIndex"
+                        }
+                    ]
+                }
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": true,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "_enableRange": false,
+                "maxlength": 10485761,
+                "minlength": 0,
+                "required": true
+            },
+            "bulkAction": {
+                "allow": false
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "\/api\/3\/picklists\/bb740542-f699-11e7-8c3f-9a214cf093ae",
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "5b78051b-2d63-4aea-ae05-759f334249b0",
+            "displayName": "{{ phase }}",
+            "descriptions": {
+                "singular": "Phase"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/e1a2d955-c64d-4a73-a91f-57ca75dabadf",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "incidentphase",
+            "length": 0,
+            "orderIndex": 61,
+            "formType": "html",
+            "dataSource": [],
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "_enableRange": false,
+                "maxlength": 10485761,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonClass": "btn btn-default btn-sm",
+                "buttonIcon": "",
+                "buttonText": ""
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "incidentphase",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "e1a2d955-c64d-4a73-a91f-57ca75dabadf",
+            "displayName": "{{ incidentphase }}",
+            "descriptions": {
+                "singular": "Phase Infographics"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/8a6f0e07-212a-4c69-ab2a-24fc8d0bc939",
+            "@type": "AttributeMetadata",
+            "type": "integer",
+            "name": "recoveryDate",
+            "length": 0,
+            "orderIndex": 62,
+            "formType": "datetime",
+            "dataSource": [],
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "_enableRange": false,
+                "maxlength": 10485761,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonClass": "btn btn-default btn-sm",
+                "buttonIcon": "",
+                "buttonText": ""
+            },
+            "dataSourceFilters": [],
+            "defaultValue": null,
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "8a6f0e07-212a-4c69-ab2a-24fc8d0bc939",
+            "displayName": "{{ recoveryDate }}",
+            "descriptions": {
+                "singular": "Recovery Date"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/c69e3deb-e496-4edf-8843-6ff1113b0efd",
+            "@type": "AttributeMetadata",
+            "type": "integer",
+            "name": "resDate",
+            "length": 0,
+            "orderIndex": 63,
+            "formType": "datetime",
+            "dataSource": [],
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "_enableRange": false,
+                "maxlength": 10485761,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonClass": "btn btn-default btn-sm",
+                "buttonIcon": "",
+                "buttonText": ""
+            },
+            "dataSourceFilters": [],
+            "defaultValue": null,
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "c69e3deb-e496-4edf-8843-6ff1113b0efd",
+            "displayName": "{{ resDate }}",
+            "descriptions": {
+                "singular": "Response Date"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/8e889e3a-8ed5-4a1a-a3e8-d3c7061dfdd3",
+            "@type": "AttributeMetadata",
+            "type": "integer",
+            "name": "resDueBy",
+            "length": 0,
+            "orderIndex": 64,
+            "formType": "datetime",
+            "dataSource": [],
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "_enableRange": false,
+                "maxlength": 10485761,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonClass": "btn btn-default btn-sm",
+                "buttonIcon": "",
+                "buttonText": ""
+            },
+            "dataSourceFilters": [],
+            "defaultValue": null,
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "8e889e3a-8ed5-4a1a-a3e8-d3c7061dfdd3",
+            "displayName": "{{ resDueBy }}",
+            "descriptions": {
+                "singular": "Response Due Date"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/52f2a58f-bf86-40b6-bf9c-a670c0cddf0d",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "receipientEmailAddress",
+            "length": null,
+            "orderIndex": 65,
+            "formType": "text",
+            "dataSource": [],
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "maxlength": 1024,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonClass": "btn btn-default btn-sm",
+                "buttonIcon": "",
+                "buttonText": ""
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": [
+                {
+                    "filters": [
+                        {
+                            "_value": {
+                                "itemValue": "Phishing"
+                            },
+                            "field": "category",
+                            "operator": "eq",
+                            "type": "object",
+                            "value": "\/api\/3\/picklists\/703222e8-f69a-11e7-8c3f-9a214cf093ae"
+                        }
+                    ],
+                    "limit": 30,
+                    "logic": "OR",
+                    "sort": []
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "52f2a58f-bf86-40b6-bf9c-a670c0cddf0d",
+            "displayName": "{{ receipientEmailAddress }}",
+            "descriptions": {
+                "singular": "Recipient Email Address"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/b3ec1bf4-4f11-4757-bb54-0478a9d25ae4",
+            "@type": "AttributeMetadata",
+            "type": "integer",
+            "name": "recoveryTime",
+            "length": null,
+            "orderIndex": 66,
+            "formType": "integer",
+            "dataSource": [],
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "_enableRange": false,
+                "maxlength": 10485761,
+                "minlength": -2147483648,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "b3ec1bf4-4f11-4757-bb54-0478a9d25ae4",
+            "displayName": "{{ recoveryTime }}",
+            "descriptions": {
+                "singular": "Recovery Time (Minutes)"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/3f1c0e52-5339-4940-8f9e-49e9095a4080",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "resolution",
@@ -265,893 +738,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "fbdb6008-42bc-4fbe-9a6e-b0ca44dbc066",
+            "uuid": "3f1c0e52-5339-4940-8f9e-49e9095a4080",
             "displayName": "{{ resolution }}",
             "descriptions": {
                 "singular": "Resolution"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/beb5f2d3-73eb-48ec-aed0-56866c2de813",
-            "@type": "AttributeMetadata",
-            "type": "people",
-            "name": "incidentLead",
-            "length": null,
-            "orderIndex": 52,
-            "formType": "lookup",
-            "dataSource": {
-                "model": "people"
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": true,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": true,
-                "buttonClass": "btn btn-default btn-sm",
-                "buttonIcon": "fa fa-users",
-                "buttonText": "Change Lead"
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "beb5f2d3-73eb-48ec-aed0-56866c2de813",
-            "displayName": "{{ incidentLead }}",
-            "descriptions": {
-                "singular": "Incident Lead"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/31cc3b6b-e660-4f7c-a2db-bcd4fb0ed79d",
-            "@type": "AttributeMetadata",
-            "type": "string",
-            "name": "incidentsummary",
-            "length": null,
-            "orderIndex": 53,
-            "formType": "richtext",
-            "dataSource": [],
-            "searchable": true,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": true,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": [
-                    {
-                        "filters": [
-                            {
-                                "_value": {
-                                    "itemValue": "Resolved"
-                                },
-                                "field": "status",
-                                "operator": "eq",
-                                "type": "object",
-                                "value": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae"
-                            }
-                        ],
-                        "limit": 30,
-                        "logic": "AND",
-                        "sort": []
-                    }
-                ]
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonClass": "",
-                "buttonIcon": "",
-                "buttonText": ""
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": [
-                {
-                    "filters": [
-                        {
-                            "_value": {
-                                "itemValue": "Resolved"
-                            },
-                            "field": "status",
-                            "operator": "eq",
-                            "type": "object",
-                            "value": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae"
-                        }
-                    ],
-                    "limit": 30,
-                    "logic": "AND",
-                    "sort": []
-                }
-            ],
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "31cc3b6b-e660-4f7c-a2db-bcd4fb0ed79d",
-            "displayName": "{{ incidentsummary }}",
-            "descriptions": {
-                "singular": "Incident Summary"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/120e56a2-4f80-4690-97b8-2058f62d7b80",
-            "@type": "AttributeMetadata",
-            "type": "indicators",
-            "name": "indicators",
-            "length": null,
-            "orderIndex": 54,
-            "formType": "manyToMany",
-            "dataSource": {
-                "model": "indicators"
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": true,
-            "inversedField": "incidents",
-            "ownsRelationship": true,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "120e56a2-4f80-4690-97b8-2058f62d7b80",
-            "displayName": "{{ indicators }}",
-            "descriptions": {
-                "singular": "Indicators"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/37f6b5e2-535d-4b0a-935f-3ee8b5f6b296",
-            "@type": "AttributeMetadata",
-            "type": "string",
-            "name": "nextsteps",
-            "length": null,
-            "orderIndex": 57,
-            "formType": "richtext",
-            "dataSource": [],
-            "searchable": true,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": [
-                    {
-                        "filters": [
-                            {
-                                "_value": {
-                                    "itemValue": "Resolved"
-                                },
-                                "field": "status",
-                                "operator": "eq",
-                                "type": "object",
-                                "value": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae"
-                            }
-                        ],
-                        "limit": 30,
-                        "logic": "OR",
-                        "sort": []
-                    }
-                ]
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonClass": "",
-                "buttonIcon": "",
-                "buttonText": ""
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": [
-                {
-                    "filters": [
-                        {
-                            "_value": {
-                                "itemValue": "Resolved"
-                            },
-                            "field": "status",
-                            "operator": "eq",
-                            "type": "object",
-                            "value": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae"
-                        }
-                    ],
-                    "limit": 30,
-                    "logic": "OR",
-                    "sort": []
-                }
-            ],
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "37f6b5e2-535d-4b0a-935f-3ee8b5f6b296",
-            "displayName": "{{ nextsteps }}",
-            "descriptions": {
-                "singular": "Next Steps"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/1bc8e4dc-1eb0-4021-a81a-9c0dc6c61f40",
-            "@type": "AttributeMetadata",
-            "type": "people",
-            "name": "persons",
-            "length": null,
-            "orderIndex": 59,
-            "formType": "manyToMany",
-            "dataSource": {
-                "model": "people"
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": true,
-            "inversedField": "incidents",
-            "ownsRelationship": true,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "1bc8e4dc-1eb0-4021-a81a-9c0dc6c61f40",
-            "displayName": "{{ persons }}",
-            "descriptions": {
-                "singular": "People"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/13ef44e0-488e-49eb-b6fc-533894ce46dd",
-            "@type": "AttributeMetadata",
-            "type": "picklists",
-            "name": "phase",
-            "length": null,
-            "orderIndex": 60,
-            "formType": "picklist",
-            "dataSource": {
-                "displayConditions": {
-                    "10b77cd3-0ba5-4c2e-83bb-d665430a9287": {
-                        "conditions": null,
-                        "visibility": "visible"
-                    },
-                    "37f637f0-2e7a-41cc-a6e4-502d7263b2d0": {
-                        "conditions": null,
-                        "visibility": "visible"
-                    },
-                    "bb740542-f699-11e7-8c3f-9a214cf093ae": {
-                        "conditions": null,
-                        "visibility": "visible"
-                    },
-                    "bb7407e0-f699-11e7-8c3f-9a214cf093ae": {
-                        "conditions": null,
-                        "visibility": "visible"
-                    },
-                    "bb740a06-f699-11e7-8c3f-9a214cf093ae": {
-                        "conditions": null,
-                        "visibility": "visible"
-                    },
-                    "bb740d30-f699-11e7-8c3f-9a214cf093ae": {
-                        "conditions": null,
-                        "visibility": "visible"
-                    },
-                    "cbaa92d2-6fd7-4dbe-88f6-0e0d17e8b430": {
-                        "conditions": null,
-                        "visibility": "visible"
-                    }
-                },
-                "model": "picklists",
-                "query": {
-                    "filters": [
-                        {
-                            "field": "listName__name",
-                            "operator": "eq",
-                            "value": "IncidentPhase"
-                        }
-                    ],
-                    "logic": "AND",
-                    "sort": [
-                        {
-                            "direction": "ASC",
-                            "field": "orderIndex"
-                        }
-                    ]
-                }
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": true,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": true
-            },
-            "bulkAction": {
-                "allow": false
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "\/api\/3\/picklists\/bb740542-f699-11e7-8c3f-9a214cf093ae",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "13ef44e0-488e-49eb-b6fc-533894ce46dd",
-            "displayName": "{{ phase }}",
-            "descriptions": {
-                "singular": "Phase"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/563e5490-2821-47a0-ae63-805f3ef6f119",
-            "@type": "AttributeMetadata",
-            "type": "string",
-            "name": "incidentphase",
-            "length": 0,
-            "orderIndex": 61,
-            "formType": "html",
-            "dataSource": [],
-            "searchable": true,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonClass": "btn btn-default btn-sm",
-                "buttonIcon": "",
-                "buttonText": ""
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": [
-                {
-                    "sort": [],
-                    "limit": 30,
-                    "logic": "AND",
-                    "filters": [
-                        {
-                            "field": "incidentphase",
-                            "operator": "isnull",
-                            "_operator": "isnull",
-                            "value": "false",
-                            "type": "primitive"
-                        }
-                    ]
-                }
-            ],
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "563e5490-2821-47a0-ae63-805f3ef6f119",
-            "displayName": "{{ incidentphase }}",
-            "descriptions": {
-                "singular": "Phase Infographics"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/6f7a5100-d29d-4911-888d-fc8394738618",
-            "@type": "AttributeMetadata",
-            "type": "integer",
-            "name": "recoveryDate",
-            "length": 0,
-            "orderIndex": 62,
-            "formType": "datetime",
-            "dataSource": [],
-            "searchable": true,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonClass": "btn btn-default btn-sm",
-                "buttonIcon": "",
-                "buttonText": ""
-            },
-            "dataSourceFilters": [],
-            "defaultValue": null,
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "6f7a5100-d29d-4911-888d-fc8394738618",
-            "displayName": "{{ recoveryDate }}",
-            "descriptions": {
-                "singular": "Recovery Date"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/c011333a-4e38-46ab-828e-b429ef6aa969",
-            "@type": "AttributeMetadata",
-            "type": "integer",
-            "name": "resDate",
-            "length": 0,
-            "orderIndex": 63,
-            "formType": "datetime",
-            "dataSource": [],
-            "searchable": true,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonClass": "btn btn-default btn-sm",
-                "buttonIcon": "",
-                "buttonText": ""
-            },
-            "dataSourceFilters": [],
-            "defaultValue": null,
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "c011333a-4e38-46ab-828e-b429ef6aa969",
-            "displayName": "{{ resDate }}",
-            "descriptions": {
-                "singular": "Response Date"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/93776005-6c1f-4ed2-beae-5b754ec0c98e",
-            "@type": "AttributeMetadata",
-            "type": "integer",
-            "name": "resDueBy",
-            "length": 0,
-            "orderIndex": 64,
-            "formType": "datetime",
-            "dataSource": [],
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonClass": "btn btn-default btn-sm",
-                "buttonIcon": "",
-                "buttonText": ""
-            },
-            "dataSourceFilters": [],
-            "defaultValue": null,
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "93776005-6c1f-4ed2-beae-5b754ec0c98e",
-            "displayName": "{{ resDueBy }}",
-            "descriptions": {
-                "singular": "Response Due Date"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/579d5e47-71ff-4729-a4d4-8a675af87301",
-            "@type": "AttributeMetadata",
-            "type": "string",
-            "name": "receipientEmailAddress",
-            "length": null,
-            "orderIndex": 65,
-            "formType": "text",
-            "dataSource": [],
-            "searchable": true,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "maxlength": 1024,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonClass": "btn btn-default btn-sm",
-                "buttonIcon": "",
-                "buttonText": ""
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": [
-                {
-                    "filters": [
-                        {
-                            "_value": {
-                                "itemValue": "Phishing"
-                            },
-                            "field": "category",
-                            "operator": "eq",
-                            "type": "object",
-                            "value": "\/api\/3\/picklists\/703222e8-f69a-11e7-8c3f-9a214cf093ae"
-                        }
-                    ],
-                    "limit": 30,
-                    "logic": "OR",
-                    "sort": []
-                }
-            ],
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "579d5e47-71ff-4729-a4d4-8a675af87301",
-            "displayName": "{{ receipientEmailAddress }}",
-            "descriptions": {
-                "singular": "Recipient Email Address"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/58956d7b-660c-4923-ac33-c5131fb20d44",
-            "@type": "AttributeMetadata",
-            "type": "integer",
-            "name": "recoveryTime",
-            "length": null,
-            "orderIndex": 66,
-            "formType": "integer",
-            "dataSource": [],
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": -2147483648,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "58956d7b-660c-4923-ac33-c5131fb20d44",
-            "displayName": "{{ recoveryTime }}",
-            "descriptions": {
-                "singular": "Recovery Time (Minutes)"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/04337c97-30bd-4a89-aa29-bdc8d9af9fbc",
-            "@type": "AttributeMetadata",
-            "type": "string",
-            "name": "senderEmailAddress",
-            "length": null,
-            "orderIndex": 71,
-            "formType": "text",
-            "dataSource": [],
-            "searchable": true,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": true,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "maxlength": 1024,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonClass": "btn btn-default btn-sm",
-                "buttonIcon": "",
-                "buttonText": ""
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": [
-                {
-                    "filters": [
-                        {
-                            "_value": {
-                                "itemValue": "Phishing"
-                            },
-                            "field": "category",
-                            "operator": "eq",
-                            "type": "object",
-                            "value": "\/api\/3\/picklists\/703222e8-f69a-11e7-8c3f-9a214cf093ae"
-                        }
-                    ],
-                    "limit": 30,
-                    "logic": "OR",
-                    "sort": []
-                }
-            ],
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "04337c97-30bd-4a89-aa29-bdc8d9af9fbc",
-            "displayName": "{{ senderEmailAddress }}",
-            "descriptions": {
-                "singular": "Sender Email Address"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/44549df7-6e16-4803-ace6-e191164a5c15",
-            "@type": "AttributeMetadata",
-            "type": "string",
-            "name": "senderDomain",
-            "length": null,
-            "orderIndex": 72,
-            "formType": "text",
-            "dataSource": [],
-            "searchable": true,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": true,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "maxlength": 1024,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonClass": "btn btn-default btn-sm",
-                "buttonIcon": "",
-                "buttonText": ""
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": [
-                {
-                    "filters": [
-                        {
-                            "_value": {
-                                "itemValue": "Phishing"
-                            },
-                            "field": "category",
-                            "operator": "eq",
-                            "type": "object",
-                            "value": "\/api\/3\/picklists\/703222e8-f69a-11e7-8c3f-9a214cf093ae"
-                        }
-                    ],
-                    "limit": 30,
-                    "logic": "OR",
-                    "sort": []
-                }
-            ],
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "44549df7-6e16-4803-ace6-e191164a5c15",
-            "displayName": "{{ senderDomain }}",
-            "descriptions": {
-                "singular": "Sender Domain"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/822cec08-5acc-498c-8d1f-1b7c16151ec0",
-            "@type": "AttributeMetadata",
-            "type": "integer",
-            "name": "responseDate",
-            "length": 0,
-            "orderIndex": 81,
-            "formType": "datetime",
-            "dataSource": [],
-            "searchable": true,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonClass": "btn btn-default btn-sm",
-                "buttonIcon": "",
-                "buttonText": ""
-            },
-            "dataSourceFilters": [],
-            "defaultValue": null,
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "822cec08-5acc-498c-8d1f-1b7c16151ec0",
-            "displayName": "{{ responseDate }}",
-            "descriptions": {
-                "singular": "Response Date"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/1584d372-3324-418f-8ef3-62d353e3a4bc",
+            "@id": "\/api\/3\/attribute_metadatas\/743d354c-a73d-4e5d-9c9a-7cf01939c628",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "resolveddate",
@@ -1190,15 +784,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "1584d372-3324-418f-8ef3-62d353e3a4bc",
+            "uuid": "743d354c-a73d-4e5d-9c9a-7cf01939c628",
             "displayName": "{{ resolveddate }}",
             "descriptions": {
                 "singular": "Resolved Date"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/87a54642-6caa-40c7-8cce-b01902ff696f",
+            "@id": "\/api\/3\/attribute_metadatas\/051e4c32-cdd6-4dcd-9ce0-7037a3a046a7",
             "@type": "AttributeMetadata",
             "type": "picklists",
             "name": "resSla",
@@ -1273,15 +866,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "87a54642-6caa-40c7-8cce-b01902ff696f",
+            "uuid": "051e4c32-cdd6-4dcd-9ce0-7037a3a046a7",
             "displayName": "{{ resSla }}",
             "descriptions": {
                 "singular": "Response SLA"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/b26f84ef-bca8-48b3-9d94-e8124ded034f",
+            "@id": "\/api\/3\/attribute_metadatas\/2fb2ffaa-3782-40a7-b9c1-bf538772b7ad",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "resPercentSla",
@@ -1320,15 +912,76 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "b26f84ef-bca8-48b3-9d94-e8124ded034f",
+            "uuid": "2fb2ffaa-3782-40a7-b9c1-bf538772b7ad",
             "displayName": "{{ resPercentSla }}",
             "descriptions": {
                 "singular": "Response SLA Percentage Missed"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/fcf5a9a8-9801-4f65-b0a6-9ff5d6cc87ec",
+            "@id": "\/api\/3\/attribute_metadatas\/12dc18df-032e-4aab-8993-82edd0e9e8f1",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "senderDomain",
+            "length": null,
+            "orderIndex": 72,
+            "formType": "text",
+            "dataSource": [],
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": true,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "maxlength": 1024,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonClass": "btn btn-default btn-sm",
+                "buttonIcon": "",
+                "buttonText": ""
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": [
+                {
+                    "filters": [
+                        {
+                            "_value": {
+                                "itemValue": "Phishing"
+                            },
+                            "field": "category",
+                            "operator": "eq",
+                            "type": "object",
+                            "value": "\/api\/3\/picklists\/703222e8-f69a-11e7-8c3f-9a214cf093ae"
+                        }
+                    ],
+                    "limit": 30,
+                    "logic": "OR",
+                    "sort": []
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "12dc18df-032e-4aab-8993-82edd0e9e8f1",
+            "displayName": "{{ senderDomain }}",
+            "descriptions": {
+                "singular": "Sender Domain"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/de5b61d0-8e5a-46d6-a71e-cca72d40eaa8",
             "@type": "AttributeMetadata",
             "type": "picklists",
             "name": "severity",
@@ -1411,15 +1064,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "fcf5a9a8-9801-4f65-b0a6-9ff5d6cc87ec",
+            "uuid": "de5b61d0-8e5a-46d6-a71e-cca72d40eaa8",
             "displayName": "{{ severity }}",
             "descriptions": {
                 "singular": "Severity"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/179f7332-321c-4dc8-95f5-565fa7c7695a",
+            "@id": "\/api\/3\/attribute_metadatas\/8869ed94-7dba-4e32-8164-b1cb47d3cfc0",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "source",
@@ -1457,15 +1109,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "179f7332-321c-4dc8-95f5-565fa7c7695a",
+            "uuid": "8869ed94-7dba-4e32-8164-b1cb47d3cfc0",
             "displayName": "{{ source }}",
             "descriptions": {
                 "singular": "Source"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/f4b880bc-baa7-4932-9c38-bd4dc49b28e1",
+            "@id": "\/api\/3\/attribute_metadatas\/5abb80ce-9103-40fc-acce-904009caf874",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "sourcedata",
@@ -1519,15 +1170,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "f4b880bc-baa7-4932-9c38-bd4dc49b28e1",
+            "uuid": "5abb80ce-9103-40fc-acce-904009caf874",
             "displayName": "{{ sourcedata }}",
             "descriptions": {
                 "singular": "Source Data"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/d2347c16-1fae-477f-a37b-237046799560",
+            "@id": "\/api\/3\/attribute_metadatas\/56d4e941-1a54-49c5-b296-892eaa0d2210",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "sourceId",
@@ -1565,15 +1215,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "d2347c16-1fae-477f-a37b-237046799560",
+            "uuid": "56d4e941-1a54-49c5-b296-892eaa0d2210",
             "displayName": "{{ sourceId }}",
             "descriptions": {
                 "singular": "Source ID"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/d018f514-1e8f-427f-af56-e7f045b5ea77",
+            "@id": "\/api\/3\/attribute_metadatas\/3d659870-45ef-40b4-b2e6-f0ff7944962b",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "sourceIP",
@@ -1646,15 +1295,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "d018f514-1e8f-427f-af56-e7f045b5ea77",
+            "uuid": "3d659870-45ef-40b4-b2e6-f0ff7944962b",
             "displayName": "{{ sourceIP }}",
             "descriptions": {
                 "singular": "Source IP"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/b76c023f-9cb1-4043-89b6-658740a6043b",
+            "@id": "\/api\/3\/attribute_metadatas\/95bb8254-45ca-4403-abfd-41c286fcb8b6",
             "@type": "AttributeMetadata",
             "type": "picklists",
             "name": "status",
@@ -1733,61 +1381,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "b76c023f-9cb1-4043-89b6-658740a6043b",
+            "uuid": "95bb8254-45ca-4403-abfd-41c286fcb8b6",
             "displayName": "{{ status }}",
             "descriptions": {
                 "singular": "Status"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/254aa3c2-9264-4409-bf91-666dbbbdac98",
-            "@type": "AttributeMetadata",
-            "type": "system_assigned_queues",
-            "name": "systemAssignedQueue",
-            "length": null,
-            "orderIndex": 78,
-            "formType": "lookup",
-            "dataSource": {
-                "model": "system_assigned_queues"
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "254aa3c2-9264-4409-bf91-666dbbbdac98",
-            "displayName": "{{ systemAssignedQueue }}",
-            "descriptions": {
-                "singular": "System Assigned Queue"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/ec10196b-8911-415e-b6bf-3de924e1dd7b",
+            "@id": "\/api\/3\/attribute_metadatas\/7528a095-4123-46b7-be52-e670cd11822d",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "targetAsset",
@@ -1861,15 +1462,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "ec10196b-8911-415e-b6bf-3de924e1dd7b",
+            "uuid": "7528a095-4123-46b7-be52-e670cd11822d",
             "displayName": "{{ targetAsset }}",
             "descriptions": {
                 "singular": "Target Asset"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/82743dc5-974a-4566-ae18-20f57337d7db",
+            "@id": "\/api\/3\/attribute_metadatas\/36124b74-78f3-4699-86e3-21654627fc07",
             "@type": "AttributeMetadata",
             "type": "tasks",
             "name": "tasks",
@@ -1886,7 +1486,7 @@
             "gridColumn": false,
             "collection": true,
             "inversedField": "incidents",
-            "ownsRelationship": false,
+            "ownsRelationship": true,
             "validation": {
                 "_enableRange": false,
                 "maxlength": 10485761,
@@ -1907,15 +1507,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "82743dc5-974a-4566-ae18-20f57337d7db",
+            "uuid": "36124b74-78f3-4699-86e3-21654627fc07",
             "displayName": "{{ tasks }}",
             "descriptions": {
                 "singular": "Tasks"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/c7ffec62-dba1-46b3-a4b9-dd393c994d55",
+            "@id": "\/api\/3\/attribute_metadatas\/7394d487-24c9-4b40-94fc-098b27c18e10",
             "@type": "AttributeMetadata",
             "type": "picklists",
             "name": "category",
@@ -2047,61 +1646,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "c7ffec62-dba1-46b3-a4b9-dd393c994d55",
+            "uuid": "7394d487-24c9-4b40-94fc-098b27c18e10",
             "displayName": "{{ category }}",
             "descriptions": {
                 "singular": "Type"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/55cffa2c-4fb3-4484-88d4-db4dc8da5a04",
-            "@type": "AttributeMetadata",
-            "type": "vulnerabilities",
-            "name": "vulnerabilities",
-            "length": null,
-            "orderIndex": 86,
-            "formType": "manyToMany",
-            "dataSource": {
-                "model": "vulnerabilities"
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": true,
-            "inversedField": "incidents",
-            "ownsRelationship": false,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "55cffa2c-4fb3-4484-88d4-db4dc8da5a04",
-            "displayName": "{{ vulnerabilities }}",
-            "descriptions": {
-                "singular": "Vulnerabilities"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/84490b3d-f2dc-4d33-b3f5-ec10203f05ae",
+            "@id": "\/api\/3\/attribute_metadatas\/da33d8be-f5e3-425c-9cc8-ceca70b80ec4",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "ackDueDate",
@@ -2140,15 +1692,328 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "84490b3d-f2dc-4d33-b3f5-ec10203f05ae",
+            "uuid": "da33d8be-f5e3-425c-9cc8-ceca70b80ec4",
             "displayName": "{{ ackDueDate }}",
             "descriptions": {
                 "singular": "Ack Due Date"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/52b589c1-2561-4574-818a-d443fcd6cdbd",
+            "@id": "\/api\/3\/attribute_metadatas\/b70a3add-1199-4a35-ade5-6caa445e2b01",
+            "@type": "AttributeMetadata",
+            "type": "integer",
+            "name": "responseDate",
+            "length": 0,
+            "orderIndex": 81,
+            "formType": "datetime",
+            "dataSource": [],
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "_enableRange": false,
+                "maxlength": 10485761,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonClass": "btn btn-default btn-sm",
+                "buttonIcon": "",
+                "buttonText": ""
+            },
+            "dataSourceFilters": [],
+            "defaultValue": null,
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "b70a3add-1199-4a35-ade5-6caa445e2b01",
+            "displayName": "{{ responseDate }}",
+            "descriptions": {
+                "singular": "Response Date"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/e02f251d-1783-4cf7-a41f-38bb0d9d5b96",
+            "@type": "AttributeMetadata",
+            "type": "users",
+            "name": "users",
+            "length": 0,
+            "orderIndex": 13,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "users"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "incidents",
+            "ownsRelationship": true,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761
+            },
+            "bulkAction": [],
+            "dataSourceFilters": [],
+            "defaultValue": null,
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "e02f251d-1783-4cf7-a41f-38bb0d9d5b96",
+            "displayName": "{{ users }}",
+            "descriptions": {
+                "singular": "Users"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/dc0f436d-98d4-4e73-a8a3-2a90170b1795",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "filePreview",
+            "length": null,
+            "orderIndex": 2,
+            "formType": "html",
+            "dataSource": null,
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "dc0f436d-98d4-4e73-a8a3-2a90170b1795",
+            "displayName": "{{ filePreview }}",
+            "descriptions": {
+                "singular": "File Preview"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/3a2ad2bd-9272-4e98-8173-3e652377340a",
+            "@type": "AttributeMetadata",
+            "type": "hunt",
+            "name": "hunts",
+            "length": null,
+            "orderIndex": 1,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "hunt"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "incidents",
+            "ownsRelationship": true,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": [],
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "3a2ad2bd-9272-4e98-8173-3e652377340a",
+            "displayName": "{{ hunts }}",
+            "descriptions": {
+                "singular": "Hunts"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/f0d1e61f-0db8-4363-9142-7c2b245a2910",
+            "@type": "AttributeMetadata",
+            "type": "vulnerabilities",
+            "name": "vulnerabilities",
+            "length": null,
+            "orderIndex": 86,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "vulnerabilities"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "incidents",
+            "ownsRelationship": false,
+            "validation": {
+                "_enableRange": false,
+                "maxlength": 10485761,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "f0d1e61f-0db8-4363-9142-7c2b245a2910",
+            "displayName": "{{ vulnerabilities }}",
+            "descriptions": {
+                "singular": "Vulnerabilities"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/257e7f76-5b10-4b3b-b30a-cb862b5c50df",
+            "@type": "AttributeMetadata",
+            "type": "integer",
+            "name": "ackSLApausedon",
+            "length": null,
+            "orderIndex": 11,
+            "formType": "datetime",
+            "dataSource": null,
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": null,
+            "orphanRemoval": null,
+            "readable": null,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "257e7f76-5b10-4b3b-b30a-cb862b5c50df",
+            "displayName": "{{ ackSLApausedon }}",
+            "descriptions": {
+                "singular": "Ack SLA Paused Date"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/789a042c-d107-41c0-875b-047a0f1d2fae",
+            "@type": "AttributeMetadata",
+            "type": "integer",
+            "name": "respSLApausedon",
+            "length": null,
+            "orderIndex": 10,
+            "formType": "datetime",
+            "dataSource": null,
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": null,
+            "orphanRemoval": null,
+            "readable": null,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "789a042c-d107-41c0-875b-047a0f1d2fae",
+            "displayName": "{{ respSLApausedon }}",
+            "descriptions": {
+                "singular": "Response SLA Paused Date"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/c0f0ecc7-64f2-497b-b935-80eb5773da6e",
             "@type": "AttributeMetadata",
             "type": "mitre_techniques",
             "name": "mitretechniques",
@@ -2184,15 +2049,14 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "52b589c1-2561-4574-818a-d443fcd6cdbd",
+            "uuid": "c0f0ecc7-64f2-497b-b935-80eb5773da6e",
             "displayName": "{{ mitretechniques }}",
             "descriptions": {
                 "singular": "Techniques"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/f91dbb10-e20c-4c18-ad39-83886cdd3df3",
+            "@id": "\/api\/3\/attribute_metadatas\/5b829424-6510-4a33-b78d-ae1f9114538d",
             "@type": "AttributeMetadata",
             "type": "mitre_sub_techniques",
             "name": "mitresubtechniques",
@@ -2228,15 +2092,14 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "f91dbb10-e20c-4c18-ad39-83886cdd3df3",
+            "uuid": "5b829424-6510-4a33-b78d-ae1f9114538d",
             "displayName": "{{ mitresubtechniques }}",
             "descriptions": {
                 "singular": "Sub-techniques"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/9e069e12-5dbf-4d96-9c11-81e9b6d6067c",
+            "@id": "\/api\/3\/attribute_metadatas\/46cf19fb-4f77-416a-b19b-1c131e77c98e",
             "@type": "AttributeMetadata",
             "type": "mitre_mitigations",
             "name": "mitremitigations",
@@ -2272,15 +2135,14 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "9e069e12-5dbf-4d96-9c11-81e9b6d6067c",
+            "uuid": "46cf19fb-4f77-416a-b19b-1c131e77c98e",
             "displayName": "{{ mitremitigations }}",
             "descriptions": {
                 "singular": "Mitigations"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/778a96c9-7472-4dd3-be61-b746ba7dcd3f",
+            "@id": "\/api\/3\/attribute_metadatas\/7f38bca7-dace-4c4a-8135-1a44f90af56f",
             "@type": "AttributeMetadata",
             "type": "mitre_groups",
             "name": "mitregroups",
@@ -2320,15 +2182,14 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "778a96c9-7472-4dd3-be61-b746ba7dcd3f",
+            "uuid": "7f38bca7-dace-4c4a-8135-1a44f90af56f",
             "displayName": "{{ mitregroups }}",
             "descriptions": {
                 "singular": "Groups"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/bd51eb4f-5721-4e5f-9dad-13b007e92eab",
+            "@id": "\/api\/3\/attribute_metadatas\/423c110a-e870-4794-8365-c09504f3b70c",
             "@type": "AttributeMetadata",
             "type": "mitre_tactics",
             "name": "mitretactics",
@@ -2368,15 +2229,14 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "bd51eb4f-5721-4e5f-9dad-13b007e92eab",
+            "uuid": "423c110a-e870-4794-8365-c09504f3b70c",
             "displayName": "{{ mitretactics }}",
             "descriptions": {
                 "singular": "Tactics"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/456d4228-782b-474b-96a2-6bbf64690657",
+            "@id": "\/api\/3\/attribute_metadatas\/c6aca83e-a295-492a-bc41-e5f5c5451cf1",
             "@type": "AttributeMetadata",
             "type": "mitre_software",
             "name": "mitresoftware",
@@ -2412,23 +2272,22 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "456d4228-782b-474b-96a2-6bbf64690657",
+            "uuid": "c6aca83e-a295-492a-bc41-e5f5c5451cf1",
             "displayName": "{{ mitresoftware }}",
             "descriptions": {
                 "singular": "Software"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/3c0d4e8e-16ef-46e2-a7c0-aa4c4aa115b2",
+            "@id": "\/api\/3\/attribute_metadatas\/ffba528c-a36d-4f91-84d0-441714767e7f",
             "@type": "AttributeMetadata",
-            "type": "users",
-            "name": "users",
-            "length": 0,
-            "orderIndex": 13,
+            "type": "alerts",
+            "name": "alerts",
+            "length": null,
+            "orderIndex": 22,
             "formType": "manyToMany",
             "dataSource": {
-                "model": "users"
+                "model": "alerts"
             },
             "searchable": false,
             "peerReplicable": true,
@@ -2438,148 +2297,17 @@
             "collection": true,
             "inversedField": "incidents",
             "ownsRelationship": true,
-            "validation": {
-                "required": false,
-                "minlength": 0,
-                "maxlength": 10485761
-            },
-            "bulkAction": [],
-            "dataSourceFilters": [],
-            "defaultValue": null,
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "3c0d4e8e-16ef-46e2-a7c0-aa4c4aa115b2",
-            "displayName": "{{ users }}",
-            "descriptions": {
-                "singular": "Users"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/63f4c9a6-f63b-42f9-86c3-cef4ead3d1b6",
-            "@type": "AttributeMetadata",
-            "type": "emails",
-            "name": "emails",
-            "length": null,
-            "orderIndex": 47,
-            "formType": "manyToMany",
-            "dataSource": {
-                "model": "emails"
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": true,
-            "inversedField": "incidents",
-            "ownsRelationship": false,
             "validation": {
                 "_enableRange": false,
                 "maxlength": 10485761,
                 "minlength": 0,
                 "required": false
             },
-            "bulkAction": [],
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "63f4c9a6-f63b-42f9-86c3-cef4ead3d1b6",
-            "displayName": "{{ emails }}",
-            "descriptions": {
-                "singular": "Email"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/d608d4a7-5261-40fe-a095-18a9c3baab35",
-            "@type": "AttributeMetadata",
-            "type": "string",
-            "name": "filePreview",
-            "length": null,
-            "orderIndex": 2,
-            "formType": "html",
-            "dataSource": null,
-            "searchable": true,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "required": false,
-                "minlength": 0,
-                "maxlength": 10485761,
-                "_enableRange": false
-            },
             "bulkAction": {
-                "allow": false,
-                "buttonText": "",
-                "buttonIcon": "",
-                "buttonClass": "btn btn-default btn-sm"
+                "allow": false
             },
-            "dataSourceFilters": null,
-            "defaultValue": "",
-            "tooltip": null,
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": null,
-            "readable": true,
-            "writeable": true,
-            "identifier": null,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "d608d4a7-5261-40fe-a095-18a9c3baab35",
-            "displayName": "{{ filePreview }}",
-            "descriptions": {
-                "singular": "File Preview"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/e8dba089-ff10-49bb-afaa-87c16e011df9",
-            "@type": "AttributeMetadata",
-            "type": "warrooms",
-            "name": "warrooms",
-            "length": 0,
-            "orderIndex": 84,
-            "formType": "manyToMany",
-            "dataSource": {
-                "model": "warrooms"
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": true,
-            "inversedField": "incidents",
-            "ownsRelationship": true,
-            "validation": {
-                "required": false,
-                "minlength": 0,
-                "maxlength": 10485761
-            },
-            "bulkAction": [],
             "dataSourceFilters": [],
-            "defaultValue": null,
+            "defaultValue": "",
             "tooltip": "",
             "visibility": true,
             "htmlEscape": false,
@@ -2589,15 +2317,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "e8dba089-ff10-49bb-afaa-87c16e011df9",
-            "displayName": "{{ warrooms }}",
+            "uuid": "ffba528c-a36d-4f91-84d0-441714767e7f",
+            "displayName": "{{ alerts }}",
             "descriptions": {
-                "singular": "War Rooms"
+                "singular": "Alerts"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/e5f76ef3-fea4-4da3-ab8b-5f3943a25f9c",
+            "@id": "\/api\/3\/attribute_metadatas\/14156edf-1bb1-4ae1-a270-bd149caea043",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "mitreattackid",
@@ -2651,63 +2378,19 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "e5f76ef3-fea4-4da3-ab8b-5f3943a25f9c",
+            "uuid": "14156edf-1bb1-4ae1-a270-bd149caea043",
             "displayName": "{{ mitreattackid }}",
             "descriptions": {
                 "singular": "MITRE ATT&CK ID"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/bf7f41a4-63a0-4906-9a7f-813a355ee907",
-            "@type": "AttributeMetadata",
-            "type": "communication",
-            "name": "communications",
-            "length": 0,
-            "orderIndex": 15,
-            "formType": "manyToMany",
-            "dataSource": {
-                "model": "communication"
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": true,
-            "inversedField": "incidents",
-            "ownsRelationship": true,
-            "validation": {
-                "required": false,
-                "minlength": 0,
-                "maxlength": 10485761
-            },
-            "bulkAction": [],
-            "dataSourceFilters": [],
-            "defaultValue": null,
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "bf7f41a4-63a0-4906-9a7f-813a355ee907",
-            "displayName": "{{ communications }}",
-            "descriptions": {
-                "singular": "Communications"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/cb08c2b8-3b70-404e-9afd-9be8288e24e2",
+            "@id": "\/api\/3\/attribute_metadatas\/a1df7805-8c8d-4013-8719-969757e970d7",
             "@type": "AttributeMetadata",
             "type": "string",
-            "name": "businessImpact",
+            "name": "fileName",
             "length": 0,
-            "orderIndex": 89,
+            "orderIndex": 18,
             "formType": "text",
             "dataSource": [],
             "searchable": false,
@@ -2740,150 +2423,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "cb08c2b8-3b70-404e-9afd-9be8288e24e2",
-            "displayName": "{{ businessImpact }}",
+            "uuid": "a1df7805-8c8d-4013-8719-969757e970d7",
+            "displayName": "{{ fileName }}",
             "descriptions": {
-                "singular": "Business Impact"
+                "singular": "File Name"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/bfffe148-114a-410d-af72-2e7ccdb05d79",
-            "@type": "AttributeMetadata",
-            "type": "string",
-            "name": "uuid",
-            "length": 36,
-            "orderIndex": 79,
-            "formType": null,
-            "dataSource": [],
-            "searchable": false,
-            "peerReplicable": true,
-            "system": true,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "maxlength": 1024,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": true,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "bfffe148-114a-410d-af72-2e7ccdb05d79",
-            "displayName": "{{ uuid }}",
-            "descriptions": {
-                "singular": "UUID"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/0b1ba71d-518f-4977-8879-4c9bcde20685",
-            "@type": "AttributeMetadata",
-            "type": "assets",
-            "name": "assets",
-            "length": null,
-            "orderIndex": 25,
-            "formType": "manyToMany",
-            "dataSource": {
-                "model": "assets"
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": true,
-            "inversedField": "incidents",
-            "ownsRelationship": true,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "0b1ba71d-518f-4977-8879-4c9bcde20685",
-            "displayName": "{{ assets }}",
-            "descriptions": {
-                "singular": "Assets"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/867644c1-7d61-47db-a352-e69c5842fa76",
-            "@type": "AttributeMetadata",
-            "type": "alerts",
-            "name": "alerts",
-            "length": null,
-            "orderIndex": 22,
-            "formType": "manyToMany",
-            "dataSource": {
-                "model": "alerts"
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": true,
-            "inversedField": "incidents",
-            "ownsRelationship": true,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": {
-                "allow": false
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "867644c1-7d61-47db-a352-e69c5842fa76",
-            "displayName": "{{ alerts }}",
-            "descriptions": {
-                "singular": "Alerts"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/75d16c0b-6f25-4bcb-bb09-97d5f8cf85a0",
+            "@id": "\/api\/3\/attribute_metadatas\/fa190e63-90d0-4309-8b09-03ceb9030759",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "incRemainingRespSLA",
@@ -2921,15 +2468,14 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "75d16c0b-6f25-4bcb-bb09-97d5f8cf85a0",
+            "uuid": "fa190e63-90d0-4309-8b09-03ceb9030759",
             "displayName": "{{ incRemainingRespSLA }}",
             "descriptions": {
                 "singular": "Remaining Response SLA on Pause"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/af944986-09be-4a11-b5d7-06f98ad9a956",
+            "@id": "\/api\/3\/attribute_metadatas\/583d595a-465d-4b30-8cd6-b222203a1145",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "incRemainingAckSLA",
@@ -2967,109 +2513,14 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "af944986-09be-4a11-b5d7-06f98ad9a956",
+            "uuid": "583d595a-465d-4b30-8cd6-b222203a1145",
             "displayName": "{{ incRemainingAckSLA }}",
             "descriptions": {
                 "singular": "Remaining Ack SLA on Pause"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/d93f14b8-ab5e-48d1-9107-8797cc71f640",
-            "@type": "AttributeMetadata",
-            "type": "integer",
-            "name": "respSLApausedon",
-            "length": null,
-            "orderIndex": 10,
-            "formType": "datetime",
-            "dataSource": null,
-            "searchable": true,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "required": false,
-                "minlength": 0,
-                "maxlength": 10485761,
-                "_enableRange": false
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonText": "",
-                "buttonIcon": "",
-                "buttonClass": "btn btn-default btn-sm"
-            },
-            "dataSourceFilters": null,
-            "defaultValue": null,
-            "tooltip": null,
-            "visibility": true,
-            "htmlEscape": null,
-            "orphanRemoval": null,
-            "readable": null,
-            "writeable": true,
-            "identifier": null,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "d93f14b8-ab5e-48d1-9107-8797cc71f640",
-            "displayName": "{{ respSLApausedon }}",
-            "descriptions": {
-                "singular": "Response SLA Paused Date"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/09a9e9af-23a4-4468-a9ad-bda277c610cd",
-            "@type": "AttributeMetadata",
-            "type": "integer",
-            "name": "ackSLApausedon",
-            "length": null,
-            "orderIndex": 11,
-            "formType": "datetime",
-            "dataSource": null,
-            "searchable": true,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "required": false,
-                "minlength": 0,
-                "maxlength": 10485761,
-                "_enableRange": false
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonText": "",
-                "buttonIcon": "",
-                "buttonClass": "btn btn-default btn-sm"
-            },
-            "dataSourceFilters": null,
-            "defaultValue": null,
-            "tooltip": null,
-            "visibility": true,
-            "htmlEscape": null,
-            "orphanRemoval": null,
-            "readable": null,
-            "writeable": true,
-            "identifier": null,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "09a9e9af-23a4-4468-a9ad-bda277c610cd",
-            "displayName": "{{ ackSLApausedon }}",
-            "descriptions": {
-                "singular": "Ack SLA Paused Date"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/b0affff0-e7fa-4085-ad8b-fca91e6c1fd5",
+            "@id": "\/api\/3\/attribute_metadatas\/9d62c90c-779c-43dd-8553-f11e09b02bee",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "c2server",
@@ -3108,61 +2559,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "b0affff0-e7fa-4085-ad8b-fca91e6c1fd5",
+            "uuid": "9d62c90c-779c-43dd-8553-f11e09b02bee",
             "displayName": "{{ c2server }}",
             "descriptions": {
                 "singular": "Command And Control Server"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/8a07845d-71d6-4f58-a026-1c8ef4edbba5",
-            "@type": "AttributeMetadata",
-            "type": "string",
-            "name": "fileName",
-            "length": 0,
-            "orderIndex": 18,
-            "formType": "text",
-            "dataSource": [],
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "required": false,
-                "minlength": 0,
-                "maxlength": 10485761
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonText": "",
-                "buttonIcon": "",
-                "buttonClass": "btn btn-default btn-sm"
-            },
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "8a07845d-71d6-4f58-a026-1c8ef4edbba5",
-            "displayName": "{{ fileName }}",
-            "descriptions": {
-                "singular": "File Name"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/be4e78f1-406b-498e-bee3-6df488b6eecc",
+            "@id": "\/api\/3\/attribute_metadatas\/b20d7436-6179-470e-8745-d8affc0825db",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "dLLName",
@@ -3201,15 +2605,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "be4e78f1-406b-498e-bee3-6df488b6eecc",
+            "uuid": "b20d7436-6179-470e-8745-d8affc0825db",
             "displayName": "{{ dLLName }}",
             "descriptions": {
                 "singular": "DLL Name"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/ed64a259-d880-4bab-a95c-e8bd897dff61",
+            "@id": "\/api\/3\/attribute_metadatas\/9023a3e0-b191-449d-bc43-43fbbf6f1fb8",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "processName",
@@ -3247,15 +2650,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "ed64a259-d880-4bab-a95c-e8bd897dff61",
+            "uuid": "9023a3e0-b191-449d-bc43-43fbbf6f1fb8",
             "displayName": "{{ processName }}",
             "descriptions": {
                 "singular": "Process Name"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/1e086e80-f1f7-4641-8eec-ca723cfe9afb",
+            "@id": "\/api\/3\/attribute_metadatas\/edd6e422-71d8-4fcb-8184-ce686f7a69a8",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "affectedUser",
@@ -3294,15 +2696,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "1e086e80-f1f7-4641-8eec-ca723cfe9afb",
+            "uuid": "edd6e422-71d8-4fcb-8184-ce686f7a69a8",
             "displayName": "{{ affectedUser }}",
             "descriptions": {
                 "singular": "Affected User"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/9f0b123f-259f-4f26-85e6-a02e682bc7d2",
+            "@id": "\/api\/3\/attribute_metadatas\/7a36c8e5-39ef-40e1-91ed-f4e89ff3a644",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "affectedHost",
@@ -3341,15 +2742,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "9f0b123f-259f-4f26-85e6-a02e682bc7d2",
+            "uuid": "7a36c8e5-39ef-40e1-91ed-f4e89ff3a644",
             "displayName": "{{ affectedHost }}",
             "descriptions": {
                 "singular": "Affected Host"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/f9a89119-71c6-4e2a-96b0-833a47f0b396",
+            "@id": "\/api\/3\/attribute_metadatas\/d1914bff-3ef1-4cb4-a131-c9011f013a16",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "pcapFile",
@@ -3388,15 +2788,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "f9a89119-71c6-4e2a-96b0-833a47f0b396",
+            "uuid": "d1914bff-3ef1-4cb4-a131-c9011f013a16",
             "displayName": "{{ pcapFile }}",
             "descriptions": {
                 "singular": "PCAP File"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/8a81f12b-28ff-4625-8d0a-2161c0ab1d3d",
+            "@id": "\/api\/3\/attribute_metadatas\/9298682d-15ef-4a19-8675-8aff31953278",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "otherLogs",
@@ -3435,15 +2834,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "8a81f12b-28ff-4625-8d0a-2161c0ab1d3d",
+            "uuid": "9298682d-15ef-4a19-8675-8aff31953278",
             "displayName": "{{ otherLogs }}",
             "descriptions": {
                 "singular": "Other Logs"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/5727c824-03ea-4810-8e0d-8a84747aa97d",
+            "@id": "\/api\/3\/attribute_metadatas\/6652d8f5-513f-4277-b930-6fb4514db551",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "siemQuery",
@@ -3482,15 +2880,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "5727c824-03ea-4810-8e0d-8a84747aa97d",
+            "uuid": "6652d8f5-513f-4277-b930-6fb4514db551",
             "displayName": "{{ siemQuery }}",
             "descriptions": {
                 "singular": "SIEM Query"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/93cd474b-56a2-4d96-8db5-ae1976241701",
+            "@id": "\/api\/3\/attribute_metadatas\/11bbb397-abac-4922-89ef-1407de4fe823",
             "@type": "AttributeMetadata",
             "type": "campaigns",
             "name": "campaigns",
@@ -3526,15 +2923,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "93cd474b-56a2-4d96-8db5-ae1976241701",
+            "uuid": "11bbb397-abac-4922-89ef-1407de4fe823",
             "displayName": "{{ campaigns }}",
             "descriptions": {
                 "singular": "Campaigns"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/7917ebcd-98ee-4088-bf39-84644afcc6ec",
+            "@id": "\/api\/3\/attribute_metadatas\/7e7f8e7b-0e39-44cd-aa57-e86acfe4eda1",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "volatileData",
@@ -3573,15 +2969,101 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "7917ebcd-98ee-4088-bf39-84644afcc6ec",
+            "uuid": "7e7f8e7b-0e39-44cd-aa57-e86acfe4eda1",
             "displayName": "{{ volatileData }}",
             "descriptions": {
                 "singular": "Volatile Data"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/3acaee03-213a-4a42-9d03-f7a2b18772b2",
+            "@id": "\/api\/3\/attribute_metadatas\/fcd0dadb-7678-4e4a-a9cf-f5be0fca8681",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "businessImpact",
+            "length": 0,
+            "orderIndex": 89,
+            "formType": "text",
+            "dataSource": [],
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "fcd0dadb-7678-4e4a-a9cf-f5be0fca8681",
+            "displayName": "{{ businessImpact }}",
+            "descriptions": {
+                "singular": "Business Impact"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/634c0532-5ff6-460c-906d-26b8a99b4487",
+            "@type": "AttributeMetadata",
+            "type": "communication",
+            "name": "communications",
+            "length": 0,
+            "orderIndex": 15,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "communication"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "incidents",
+            "ownsRelationship": true,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761
+            },
+            "bulkAction": [],
+            "dataSourceFilters": [],
+            "defaultValue": null,
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "634c0532-5ff6-460c-906d-26b8a99b4487",
+            "displayName": "{{ communications }}",
+            "descriptions": {
+                "singular": "Communications"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/065401fc-8949-475c-912f-77f50ec2e4e0",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "ackDate",
@@ -3620,15 +3102,76 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "3acaee03-213a-4a42-9d03-f7a2b18772b2",
+            "uuid": "065401fc-8949-475c-912f-77f50ec2e4e0",
             "displayName": "{{ ackDate }}",
             "descriptions": {
                 "singular": "Ack Date"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/5bb580ff-b30c-4b69-a560-a6f64383bd12",
+            "@id": "\/api\/3\/attribute_metadatas\/4857b4f2-8aa8-4d0f-a97a-896daf78f12b",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "senderEmailAddress",
+            "length": null,
+            "orderIndex": 71,
+            "formType": "text",
+            "dataSource": [],
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": true,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "maxlength": 1024,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonClass": "btn btn-default btn-sm",
+                "buttonIcon": "",
+                "buttonText": ""
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": [
+                {
+                    "filters": [
+                        {
+                            "_value": {
+                                "itemValue": "Phishing"
+                            },
+                            "field": "category",
+                            "operator": "eq",
+                            "type": "object",
+                            "value": "\/api\/3\/picklists\/703222e8-f69a-11e7-8c3f-9a214cf093ae"
+                        }
+                    ],
+                    "limit": 30,
+                    "logic": "OR",
+                    "sort": []
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "4857b4f2-8aa8-4d0f-a97a-896daf78f12b",
+            "displayName": "{{ senderEmailAddress }}",
+            "descriptions": {
+                "singular": "Sender Email Address"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/2f38e4a8-f171-4f08-82af-dcc3532a3f8c",
             "@type": "AttributeMetadata",
             "type": "picklists",
             "name": "slaState",
@@ -3703,15 +3246,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "5bb580ff-b30c-4b69-a560-a6f64383bd12",
+            "uuid": "2f38e4a8-f171-4f08-82af-dcc3532a3f8c",
             "displayName": "{{ slaState }}",
             "descriptions": {
                 "singular": "Ack SLA"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/07a7ff51-3f99-4223-a600-a493f2124d72",
+            "@id": "\/api\/3\/attribute_metadatas\/4d8686df-bf35-4bad-bfd0-a163f42f67b0",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "slaPercentage",
@@ -3750,15 +3292,56 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "07a7ff51-3f99-4223-a600-a493f2124d72",
+            "uuid": "4d8686df-bf35-4bad-bfd0-a163f42f67b0",
             "displayName": "{{ slaPercentage }}",
             "descriptions": {
                 "singular": "Ack SLA Percentage Missed"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/1fd06da7-855b-46e5-a4e1-2c3f95039a9a",
+            "@id": "\/api\/3\/attribute_metadatas\/4ecc9d76-d369-4c8f-9e93-a594fd762aa2",
+            "@type": "AttributeMetadata",
+            "type": "warrooms",
+            "name": "warrooms",
+            "length": 0,
+            "orderIndex": 84,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "warrooms"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "incidents",
+            "ownsRelationship": true,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761
+            },
+            "bulkAction": [],
+            "dataSourceFilters": [],
+            "defaultValue": null,
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "4ecc9d76-d369-4c8f-9e93-a594fd762aa2",
+            "displayName": "{{ warrooms }}",
+            "descriptions": {
+                "singular": "War Rooms"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/98ae1845-acfb-4433-9a73-59ce77691cab",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "aftermathDate",
@@ -3797,15 +3380,59 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "1fd06da7-855b-46e5-a4e1-2c3f95039a9a",
+            "uuid": "98ae1845-acfb-4433-9a73-59ce77691cab",
             "displayName": "{{ aftermathDate }}",
             "descriptions": {
                 "singular": "Aftermath Date"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/06f0571f-6202-4b06-b20c-579ed2d3f046",
+            "@id": "\/api\/3\/attribute_metadatas\/0ca0ca72-78bf-438c-a4c4-9c9ef63fea6f",
+            "@type": "AttributeMetadata",
+            "type": "assets",
+            "name": "assets",
+            "length": null,
+            "orderIndex": 25,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "assets"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "incidents",
+            "ownsRelationship": true,
+            "validation": {
+                "_enableRange": false,
+                "maxlength": 10485761,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "0ca0ca72-78bf-438c-a4c4-9c9ef63fea6f",
+            "displayName": "{{ assets }}",
+            "descriptions": {
+                "singular": "Assets"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/2fac711b-54b1-4369-8407-f7efacbf3108",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "assigneddate",
@@ -3844,15 +3471,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "06f0571f-6202-4b06-b20c-579ed2d3f046",
+            "uuid": "2fac711b-54b1-4369-8407-f7efacbf3108",
             "displayName": "{{ assigneddate }}",
             "descriptions": {
                 "singular": "Assigned Date"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/170d5f9c-407a-4097-ba78-c7091e4be9f3",
+            "@id": "\/api\/3\/attribute_metadatas\/34462217-0e63-4b50-87f1-ea21e6b36881",
             "@type": "AttributeMetadata",
             "type": "attachments",
             "name": "attachments",
@@ -3890,59 +3516,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "170d5f9c-407a-4097-ba78-c7091e4be9f3",
+            "uuid": "34462217-0e63-4b50-87f1-ea21e6b36881",
             "displayName": "{{ attachments }}",
             "descriptions": {
                 "singular": "Attachments"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/1282a4a1-0f66-4291-a8fa-fa2e7cb6319f",
-            "@type": "AttributeMetadata",
-            "type": "mitreattack",
-            "name": "mitreincidentlink",
-            "length": 0,
-            "orderIndex": 30,
-            "formType": "manyToMany",
-            "dataSource": {
-                "model": "mitreattack"
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": true,
-            "inversedField": "incidentlink",
-            "ownsRelationship": true,
-            "validation": {
-                "_enableRange": false,
-                "maxlength": 10485761,
-                "minlength": 0,
-                "required": false
-            },
-            "bulkAction": [],
-            "dataSourceFilters": [],
-            "defaultValue": null,
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "1282a4a1-0f66-4291-a8fa-fa2e7cb6319f",
-            "displayName": "{{ mitreincidentlink }}",
-            "descriptions": {
-                "singular": "ATT&CK Techniques"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/4c8cc849-71be-4395-8657-9cd983ddbbfc",
+            "@id": "\/api\/3\/attribute_metadatas\/a2e7f7e3-3d21-4b94-839c-edb556703cdf",
             "@type": "AttributeMetadata",
             "type": "comments",
             "name": "comments",
@@ -3980,15 +3561,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "4c8cc849-71be-4395-8657-9cd983ddbbfc",
+            "uuid": "a2e7f7e3-3d21-4b94-839c-edb556703cdf",
             "displayName": "{{ comments }}",
             "descriptions": {
                 "singular": "Comments"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/0e748982-87a2-445e-84c0-ce060f2eede0",
+            "@id": "\/api\/3\/attribute_metadatas\/b7751e17-ebeb-4923-b620-bac0fc52d3d6",
             "@type": "AttributeMetadata",
             "type": "companies",
             "name": "companies",
@@ -4026,15 +3606,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "0e748982-87a2-445e-84c0-ce060f2eede0",
+            "uuid": "b7751e17-ebeb-4923-b620-bac0fc52d3d6",
             "displayName": "{{ companies }}",
             "descriptions": {
                 "singular": "Companies"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/1e80d3af-257f-4ad7-9d3b-9c52d9da9576",
+            "@id": "\/api\/3\/attribute_metadatas\/19242632-a542-46b2-9813-028f3d89442b",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "confirmationDate",
@@ -4073,15 +3652,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "1e80d3af-257f-4ad7-9d3b-9c52d9da9576",
+            "uuid": "19242632-a542-46b2-9813-028f3d89442b",
             "displayName": "{{ confirmationDate }}",
             "descriptions": {
                 "singular": "Confirmation Date"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/4f9dc528-a789-403f-97d8-d0ea7eb53ebf",
+            "@id": "\/api\/3\/attribute_metadatas\/fc18671e-691e-4b80-b1bc-c9bb6459d825",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "containmentDate",
@@ -4120,15 +3698,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "4f9dc528-a789-403f-97d8-d0ea7eb53ebf",
+            "uuid": "fc18671e-691e-4b80-b1bc-c9bb6459d825",
             "displayName": "{{ containmentDate }}",
             "descriptions": {
                 "singular": "Containment Date"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/e4de06a6-fc90-4d95-b546-818c51a293d1",
+            "@id": "\/api\/3\/attribute_metadatas\/d6ddc2c6-bb97-42e0-9ab2-98a3ce5239cf",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "containmentTime",
@@ -4164,15 +3741,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "e4de06a6-fc90-4d95-b546-818c51a293d1",
+            "uuid": "d6ddc2c6-bb97-42e0-9ab2-98a3ce5239cf",
             "displayName": "{{ containmentTime }}",
             "descriptions": {
                 "singular": "Containment Time (Minutes)"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/a6173ed8-7080-4207-826d-38dce96ec3d6",
+            "@id": "\/api\/3\/attribute_metadatas\/765b2a15-d140-4ef6-a5cc-ccefcf42caea",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "dateOfIncident",
@@ -4208,15 +3784,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "a6173ed8-7080-4207-826d-38dce96ec3d6",
+            "uuid": "765b2a15-d140-4ef6-a5cc-ccefcf42caea",
             "displayName": "{{ dateOfIncident }}",
             "descriptions": {
                 "singular": "Date of Incident"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/0b3f45b5-616f-4228-9a2c-9b7b2984d306",
+            "@id": "\/api\/3\/attribute_metadatas\/987d05c5-91b2-4031-a338-162647444c75",
             "@type": "AttributeMetadata",
             "type": "picklists",
             "name": "deliveryVector",
@@ -4304,15 +3879,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "0b3f45b5-616f-4228-9a2c-9b7b2984d306",
+            "uuid": "987d05c5-91b2-4031-a338-162647444c75",
             "displayName": "{{ deliveryVector }}",
             "descriptions": {
                 "singular": "Delivery Vector"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/6421e4bc-5d69-4a6a-9e75-ea87fe6429ce",
+            "@id": "\/api\/3\/attribute_metadatas\/d5354bf3-7348-4759-ab66-9a5e886d523c",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "description",
@@ -4348,15 +3922,56 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "6421e4bc-5d69-4a6a-9e75-ea87fe6429ce",
+            "uuid": "d5354bf3-7348-4759-ab66-9a5e886d523c",
             "displayName": "{{ description }}",
             "descriptions": {
                 "singular": "Description"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/39b7e8e9-11dd-484c-8d55-5d20086b0298",
+            "@id": "\/api\/3\/attribute_metadatas\/4d09cf20-09f0-48b1-972d-14504bc220e1",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "uuid",
+            "length": 36,
+            "orderIndex": 64,
+            "formType": null,
+            "dataSource": [],
+            "searchable": false,
+            "peerReplicable": true,
+            "system": true,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "maxlength": 1024,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": false
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": true,
+            "unique": false,
+            "recommend": false,
+            "uuid": "4d09cf20-09f0-48b1-972d-14504bc220e1",
+            "displayName": "{{ uuid }}",
+            "descriptions": {
+                "singular": "UUID"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/5a26cd8a-4272-4ad0-aea9-5572b83717f1",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "destinationIP",
@@ -4429,15 +4044,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "39b7e8e9-11dd-484c-8d55-5d20086b0298",
+            "uuid": "5a26cd8a-4272-4ad0-aea9-5572b83717f1",
             "displayName": "{{ destinationIP }}",
             "descriptions": {
                 "singular": "Destination IP"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/2602249e-d591-4542-ac55-e879147b30d4",
+            "@id": "\/api\/3\/attribute_metadatas\/862d6793-53d5-4264-88a2-941e27a1e00c",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "deviceUID",
@@ -4492,15 +4106,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "2602249e-d591-4542-ac55-e879147b30d4",
+            "uuid": "862d6793-53d5-4264-88a2-941e27a1e00c",
             "displayName": "{{ deviceUID }}",
             "descriptions": {
                 "singular": "Device UID"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/90757377-b4e1-4b52-8ffb-c51252c0e263",
+            "@id": "\/api\/3\/attribute_metadatas\/5fa209e9-4cfe-465a-a160-c6a9e3f93ee2",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "discoveredOn",
@@ -4536,15 +4149,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "90757377-b4e1-4b52-8ffb-c51252c0e263",
+            "uuid": "5fa209e9-4cfe-465a-a160-c6a9e3f93ee2",
             "displayName": "{{ discoveredOn }}",
             "descriptions": {
                 "singular": "Discovered Date"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/f6f59bfb-ab86-41a7-b5dc-1d08fb920b90",
+            "@id": "\/api\/3\/attribute_metadatas\/3d0eae87-4d02-4a6a-b536-f6858e5a1b2e",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "dwellTime",
@@ -4580,15 +4192,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "f6f59bfb-ab86-41a7-b5dc-1d08fb920b90",
+            "uuid": "3d0eae87-4d02-4a6a-b536-f6858e5a1b2e",
             "displayName": "{{ dwellTime }}",
             "descriptions": {
                 "singular": "Dwell Time (Minutes)"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/f33d37de-de2a-4b8d-873d-3528dea6acc6",
+            "@id": "\/api\/3\/attribute_metadatas\/83b5e39f-8f24-4dc6-b21b-7da862095faa",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "eradicationDate",
@@ -4627,15 +4238,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "f33d37de-de2a-4b8d-873d-3528dea6acc6",
+            "uuid": "83b5e39f-8f24-4dc6-b21b-7da862095faa",
             "displayName": "{{ eradicationDate }}",
             "descriptions": {
                 "singular": "Eradication Date"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/386411d0-aa2d-4490-9916-d83c1d26188d",
+            "@id": "\/api\/3\/attribute_metadatas\/4859ca75-7957-481e-9d95-fdf3b03f9fe3",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "filehash",
@@ -4699,15 +4309,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "386411d0-aa2d-4490-9916-d83c1d26188d",
+            "uuid": "4859ca75-7957-481e-9d95-fdf3b03f9fe3",
             "displayName": "{{ filehash }}",
             "descriptions": {
                 "singular": "File Hash"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/d5062417-312d-4c5e-8871-69e7bc490fec",
+            "@id": "\/api\/3\/attribute_metadatas\/febd853f-4bf2-4de6-8c0f-70cbc95317ed",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "identificationDate",
@@ -4746,15 +4355,14 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "d5062417-312d-4c5e-8871-69e7bc490fec",
+            "uuid": "febd853f-4bf2-4de6-8c0f-70cbc95317ed",
             "displayName": "{{ identificationDate }}",
             "descriptions": {
                 "singular": "Identification Date"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/85a64bca-890f-4a68-8e09-b7d79bde269e",
+            "@id": "\/api\/3\/attribute_metadatas\/adef4c56-47e7-4dcf-91c2-b476be2321f1",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "impactAssessments",
@@ -4793,23 +4401,150 @@
             "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "85a64bca-890f-4a68-8e09-b7d79bde269e",
+            "uuid": "adef4c56-47e7-4dcf-91c2-b476be2321f1",
             "displayName": "{{ impactAssessments }}",
             "descriptions": {
                 "singular": "Impact Assessments"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/332d75c5-ccc2-4b55-b45b-af2a0b0513f9",
+            "@id": "\/api\/3\/attribute_metadatas\/b316ac38-4487-45f1-81a2-21a2371d3394",
             "@type": "AttributeMetadata",
-            "type": "hunt",
-            "name": "hunts",
+            "type": "people",
+            "name": "incidentLead",
             "length": null,
-            "orderIndex": 1,
+            "orderIndex": 52,
+            "formType": "lookup",
+            "dataSource": {
+                "model": "people"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": true,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "_enableRange": false,
+                "maxlength": 10485761,
+                "minlength": 0,
+                "required": false
+            },
+            "bulkAction": {
+                "allow": true,
+                "buttonClass": "btn btn-default btn-sm",
+                "buttonIcon": "fa fa-users",
+                "buttonText": "Change Lead"
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "b316ac38-4487-45f1-81a2-21a2371d3394",
+            "displayName": "{{ incidentLead }}",
+            "descriptions": {
+                "singular": "Incident Lead"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/2981d3a5-9fd1-48c7-807c-2df2728fdd16",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "incidentsummary",
+            "length": null,
+            "orderIndex": 53,
+            "formType": "richtext",
+            "dataSource": [],
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": true,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "_enableRange": false,
+                "maxlength": 10485761,
+                "minlength": 0,
+                "required": [
+                    {
+                        "filters": [
+                            {
+                                "_value": {
+                                    "itemValue": "Resolved"
+                                },
+                                "field": "status",
+                                "operator": "eq",
+                                "type": "object",
+                                "value": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae"
+                            }
+                        ],
+                        "limit": 30,
+                        "logic": "AND",
+                        "sort": []
+                    }
+                ]
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonClass": "",
+                "buttonIcon": "",
+                "buttonText": ""
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": [
+                {
+                    "filters": [
+                        {
+                            "_value": {
+                                "itemValue": "Resolved"
+                            },
+                            "field": "status",
+                            "operator": "eq",
+                            "type": "object",
+                            "value": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae"
+                        }
+                    ],
+                    "limit": 30,
+                    "logic": "AND",
+                    "sort": []
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "2981d3a5-9fd1-48c7-807c-2df2728fdd16",
+            "displayName": "{{ incidentsummary }}",
+            "descriptions": {
+                "singular": "Incident Summary"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/38d5d7bb-0d42-42b8-ac3e-c63dfa90f452",
+            "@type": "AttributeMetadata",
+            "type": "indicators",
+            "name": "indicators",
+            "length": null,
+            "orderIndex": 54,
             "formType": "manyToMany",
             "dataSource": {
-                "model": "hunt"
+                "model": "indicators"
             },
             "searchable": false,
             "peerReplicable": true,
@@ -4820,34 +4555,44 @@
             "inversedField": "incidents",
             "ownsRelationship": true,
             "validation": {
-                "required": false,
-                "minlength": 0,
+                "_enableRange": false,
                 "maxlength": 10485761,
-                "_enableRange": false
+                "minlength": 0,
+                "required": false
             },
-            "bulkAction": [],
-            "dataSourceFilters": null,
-            "defaultValue": null,
-            "tooltip": null,
+            "bulkAction": {
+                "allow": false
+            },
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
             "visibility": true,
             "htmlEscape": false,
-            "orphanRemoval": null,
+            "orphanRemoval": false,
             "readable": true,
             "writeable": true,
-            "identifier": null,
+            "identifier": false,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-            "uuid": "332d75c5-ccc2-4b55-b45b-af2a0b0513f9",
-            "displayName": "{{ hunts }}",
+            "uuid": "38d5d7bb-0d42-42b8-ac3e-c63dfa90f452",
+            "displayName": "{{ indicators }}",
             "descriptions": {
-                "singular": "Hunts"
+                "singular": "Indicators"
             }
         }
     ],
     "system": false,
     "module": "incidents",
-    "uuid": "0c9dd816-b1e1-432f-9454-458ecbed1c46",
+    "softDeleteable": false,
+    "archivable": false,
+    "paused": false,
+    "partitionBy": "modifyDate",
+    "archivalCriteria": {
+        "keep_primary_data_for": 24,
+        "delete_primary_data_after": 60
+    },
+    "archivalFilters": [],
+    "uuid": "d9f4e630-4b91-4b4f-b95b-05475576abb4",
     "displayName": "{{ name }}",
     "descriptions": {
         "plural": "Incidents",

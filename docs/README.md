@@ -1,28 +1,26 @@
 # Phishing Incident Management
 
-Guided Simulation where a series of automation workflows guides your investigation via the Workspace comments. Comments tagged as *Actions* represent the tasks the analyst must do. *Hints* are simply suggestions
+Scripted Simulation where a series of automation workflows guide your investigation via the workspace comments. Comments tagged as *Actions* represent the tasks the analyst must do. *Hints* are simply suggestions
 
 |  |  |
 | --- | --- |
 |[![Solution Pack Video](https://img.youtube.com/vi/eQ0G_Tgr_4M/0.jpg)](https://www.youtube.com/embed/eQ0G_Tgr_4M)|[![Solution Pack Video](https://img.youtube.com/vi/nO4wxCDoxd0/0.jpg)](https://www.youtube.com/embed/nO4wxCDoxd0)
 |[Solution Pack Video Introduction](https://www.youtube.com/embed/eQ0G_Tgr_4M)|[Solution Pack Video Part 2](https://www.youtube.com/embed/nO4wxCDoxd0)|
 
-
-
-
                                    
 ### 1) Prerequisites
 
 **Generic Prerequisites:**
-- Incident Response Content Pack: `yum install -y fsr-ir-content-pack.x86_64`
-- SLA Connector configured (part of this solution pack)
-- File Content Extraction connector (part of this solution pack)
+- SOAR Essentials Solution Pack
+- SLA Connector configured 
+- File Content Extraction connector 
 - MITRE ATT&CK Connector configured with scheduled ingestion
-- Solution Pack: [alt-enrichment-playbooks](https://github.com/ftnt-cse/solution-pack-alt-enrichment-playbooks) (Optional)
+- Solution Pack: [Modular Enrichment](https://github.com/fortinet-fortisoar/solution-pack-enrichment-modular) (Optional)
 
 **For Simulation mode (Fake mock data):**
 - Make sure your global variable: `Demo_mode` is set to `true` (Playbook editors > Tools > Global Variables)
-- FortiSOAR SOC Simulator Connector configured (1.0.9+)
+- Active Directory Connector installed
+- FortiSOAR SOC Simulator Connector configured (2.0.0+)
 - FortiGuard Connector configured
 - VirusTotal Connector configured
 
@@ -42,21 +40,35 @@ You need to set the below global variables in the playbook editor (**Automation 
 - **Default_Email:** used as email sender
 
 ### 3) Installation/Deployment:
+#### 3.1) Manual Installation:
 - Download the repo's zip from this page, click on: **Code > Download ZIP** and save the ZIP file to your workstation
-- Open FortiSOAR import wizard located at: **Settings > Import Wizard**. Click on ![Import From File](import_from_file.png)
-- Drag and drop the zip file you downloaded and follow the wizard
+- Open FortiSOAR **Content Hub**
+- Click on the **Upload** button and select **Solution Pack**, drag and drop the zip file you downloaded 
+
+#### 3.2) Automatic Installation:
+- Install it directly from the **Content Hub**
 
 ### 4) Simulation Steps:
 #### 4.1) False Positive Alert: **Immediate action required**
-- The email is parsed, you will have to set the status to **Investigating** so the acknowledgment SLA will be computed
+
+Browset to **Simulations**, Open the simualtion record and click the **Simulate Scenario** button. Alternatively you can brows to **Alerts**, Click **Execute** and select **1 - Create False Positive Alert**
+
+- Once the alert is created, leave it for some time to allow the enrichment playbooks to be completed, then set the status to **Investigating** so the acknowledgment SLA will be computed
 - Inspect the various parsed email field such as Body and Headers 
-- Run Investigation Playbook < Phishing Alert Enrichment and Investigation >
-- Notice The Alert Description, the email is tagged <Internal>
+- Run Investigation Playbook **Phishing Alert Enrichment and Investigation**
+- Notice The Alert Description, the email is tagged **Internal**
 - No malicious indicators found
 - The alert is closed as a false positive with a closure note: *Alert closed as False Positive, No Malicious component found*
 
 #### 4.2) True Positive Alert: **Fw: Vulnerability Patching Instructions**
-- The email is parsed, you will have to set the status to **Investigating** so the acknowledgment SLA will be computed
+
+Similar to the first alert, select **2 - Create True Positive Phishing Email**
+
+- Once the alert is created, leave it for some time to allow the enrichment playbooks to be completed
+
+> The malicious indicators are fetched from a CTI, Sometimes all indicators are false positives. You will need to run the step again until you get at least one malicious indicator
+
+- Set the status to **Investigating** so the acknowledgment SLA will be computed
 - Inspect the various parsed email field such as Body and Headers 
 - Run Investigation Playbook **Phishing Alert Enrichment and Investigation**
 - Open the Playbook logs and follow the execution of the above playbook
@@ -84,15 +96,17 @@ You need to set the below global variables in the playbook editor (**Automation 
   - Next Steps: *Create a KB entry for future reference*
   - Incident Summary: *4 employees were targeted with a spear phishing attack, one of them detonated the malicious code (dricardo) and got his asset infected. incident response completed*
 
+- Click on **Generate Incident Summary Report** and open it once it's generated (takes a couple of minutes)
 
+#### 4.3) Fully automated case management with true Positive Alert: **Fw: Vulnerability Patching Instructions**
 
-### 5) Known issues (7.0.2)
-- Fix Playbook "08 Case management / >> Incident - Set Phase Dates"
-    - Step: Update Incident Phase
-    - Field: Eradication Date
-    - Current Value: `{% if vars.currentValue == "Eradication and vars.eradicationdate is none" %} {{@Current_Date}}{% else %}{{vars.eradicationdate}}{% endif %}`
-    - Correct Value: `{% if vars.currentValue == "Eradication" and vars.eradicationdate is none %} {{@Current_Date}}{% else %}{{vars.eradicationdate}}{% endif %}`
-- Fix Playbook: Case management / Alert > [05] Update Ack and Response Due dates (Post Severity Change)
-    - Open the step: **Update Reset Resp SLA Condition** and replace its content with:
-```(vars.input.records[0].respSlaStatus.itemValue == ("SLAState" | picklist("Awaiting Action", "itemValue")) and 'Closed' not in vars.input.records[0].status.itemValue) or vars.input.records[0].respSlaStatus.itemValue == ("SLAState" | picklist("NA", "itemValue")) and (vars.input.records[0].status.itemValue != vars.sla_time_list.alertResTrackedOn)```
-- If you use on the default enrichment playbooks the list of indicators in `/opt/cyops-integrations/integrations/connectors/fortisoar-soc-simulator_1_0_9/threat_intelligence` must be populated with known indicators to VirusTotal(tm). Alternatively you can use the modular enrichment collection available [here](https://github.com/fortinet-fortisoar/solution-pack-enrichment-modular)
+Similar to the first alert, select **3 - Create True Positive Phishing Email - Fully Automated** to create the 3rd alert. This Alert is not meant for a detailed walk through but rather a demonstration how the previous alert case management can be fully automated
+
+  - Open the alert, check the playbooks logs to track all the executed ones. 
+  - Open the escalated record and check all the executed playbooks for the incident, indicators and assets.
+  - Notice all time metrics to see how long the automated process took
+
+#### 4.4) Dashboard
+
+- Browse to **Automation > Playbooks > 12 - Solution Pack Advanced Phishing** then locate and run the playbook: **E - Generate Demo Records** to populate the system with records which is useful for this step. Keep in mind this process might take few minutes.
+- Browse to Dashboard and select **Phishing Case Management**. Walk through the different widgets
