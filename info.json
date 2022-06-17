@@ -35,12 +35,12 @@
         "Email Security"
     ],
     "supportInfo": null,
-    "iconLarge": null,
+    "iconLarge": "fsr-icon-large.png",
     "recordTags": [
         "Phishing"
     ],
     "fsrMinCompatibility": "7.2.0",
-    "date": "2022-06-08T17:21:04+00:00",
+    "date": "2022-06-17T03:24:37+00:00",
     "contents": {
         "picklistNames": [
             {
@@ -183,6 +183,11 @@
                 ]
             }
         },
+        "roles": [
+            {
+                "name": "Full App Permissions"
+            }
+        ],
         "playbooks": [
             {
                 "name": "03 - Enrich"
@@ -192,18 +197,6 @@
             }
         ],
         "globalVariables": [
-            {
-                "id": 20,
-                "name": "Demo_mode",
-                "value": "true",
-                "default_value": "true"
-            },
-            {
-                "id": 8,
-                "name": "Default_Indicator_TTL_Days",
-                "value": "20",
-                "default_value": "20"
-            },
             {
                 "id": 12,
                 "name": "Excludelist_IPs",
@@ -221,6 +214,24 @@
                 "name": "Excludelist_Domains",
                 "value": "google.com,yahoo.com,fortinet.net,cybersponse.com,gmail.com,outlook.com,microsoft.com,fortinet.com,twitter.com,facebook.com,linkedin.com,instagram.com,fortiguard.com,forticloud.comm,fortielab.com",
                 "default_value": "google.com,yahoo.com,fortinet.net,cybersponse.com,gmail.com,outlook.com,microsoft.com,fortinet.com,twitter.com,facebook.com,linkedin.com,instagram.com,fortiguard.com,forticloud.com"
+            },
+            {
+                "id": 20,
+                "name": "Demo_mode",
+                "value": "true",
+                "default_value": "true"
+            },
+            {
+                "id": 21,
+                "name": "Excludelist_Hosts",
+                "value": "www.fortielab.com,NA",
+                "default_value": "www.fortielab.com"
+            },
+            {
+                "id": 8,
+                "name": "Default_Indicator_TTL_Days",
+                "value": "20",
+                "default_value": "20"
             },
             {
                 "id": 11,

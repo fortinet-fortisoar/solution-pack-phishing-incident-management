@@ -1,17 +1,5 @@
 [
     {
-        "id": 20,
-        "name": "Demo_mode",
-        "value": "true",
-        "default_value": "true"
-    },
-    {
-        "id": 8,
-        "name": "Default_Indicator_TTL_Days",
-        "value": "20",
-        "default_value": "20"
-    },
-    {
         "id": 12,
         "name": "Excludelist_IPs",
         "value": "8.8.8.8,10.1.1.2",
@@ -28,6 +16,24 @@
         "name": "Excludelist_Domains",
         "value": "google.com,yahoo.com,fortinet.net,cybersponse.com,gmail.com,outlook.com,microsoft.com,fortinet.com,twitter.com,facebook.com,linkedin.com,instagram.com,fortiguard.com,forticloud.comm,fortielab.com",
         "default_value": "google.com,yahoo.com,fortinet.net,cybersponse.com,gmail.com,outlook.com,microsoft.com,fortinet.com,twitter.com,facebook.com,linkedin.com,instagram.com,fortiguard.com,forticloud.com"
+    },
+    {
+        "id": 20,
+        "name": "Demo_mode",
+        "value": "true",
+        "default_value": "true"
+    },
+    {
+        "id": 21,
+        "name": "Excludelist_Hosts",
+        "value": "www.fortielab.com,NA",
+        "default_value": "www.fortielab.com"
+    },
+    {
+        "id": 8,
+        "name": "Default_Indicator_TTL_Days",
+        "value": "20",
+        "default_value": "20"
     },
     {
         "id": 11,
