@@ -1,0 +1,108 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "A - Phishing Alert Enrichment and Investigation",
+    "aliasName": null,
+    "tag": null,
+    "description": "Phishing alert parsing and triage",
+    "isActive": true,
+    "debug": true,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "collection": "\/api\/3\/workflow_collections\/c1ca92eb-8ec4-4dba-9a3d-156bf0a1abc2",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/37d59a07-927b-40c0-b98c-9f739d827118",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "route": "404064e1-fcf2-4e65-9fc0-bbb49ba9531f",
+                "resources": [
+                    "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                    "input": {
+                        "params": [],
+                        "records": "{{vars.input.records}}"
+                    },
+                    "source_data": "{{vars.input.records[0].sourcedata|toDict}}",
+                    "useMockOutput": "{{globalVars.Demo_mode}}"
+                },
+                "displayConditions": {
+                    "alerts": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "OR",
+                        "filters": [
+                            {
+                                "type": "primitive",
+                                "field": "source",
+                                "value": "User Reported",
+                                "operator": "eq",
+                                "_operator": "eq"
+                            },
+                            {
+                                "type": "primitive",
+                                "field": "source",
+                                "value": "Email Server",
+                                "operator": "eq",
+                                "_operator": "eq"
+                            }
+                        ]
+                    }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "singleRecordExecution": true
+            },
+            "status": null,
+            "top": "30",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "uuid": "37d59a07-927b-40c0-b98c-9f739d827118"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Phishing Enrichment and Investigation",
+            "description": null,
+            "arguments": {
+                "arguments": {
+                    "alert_data": "{{vars.input.records[0]}}"
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/6836fe92-07fb-4dab-bb57-e584782e2e13"
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "c72bbc13-3bd9-4958-a541-39b8ad8fb437"
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Phishing Enrichment and Investigation",
+            "targetStep": "\/api\/3\/workflow_steps\/c72bbc13-3bd9-4958-a541-39b8ad8fb437",
+            "sourceStep": "\/api\/3\/workflow_steps\/37d59a07-927b-40c0-b98c-9f739d827118",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "5b725438-07e6-47c5-9928-c6f0f8185f49"
+        }
+    ],
+    "priority": null,
+    "uuid": "25185a2f-0dbc-4f6a-8375-1dc48c9646e8",
+    "owners": [],
+    "isPrivate": false,
+    "deletedAt": null,
+    "recordTags": [
+        "Parsing",
+        "Investigation"
+    ]
+}

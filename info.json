@@ -1,6 +1,6 @@
 {
     "name": "phishingIncidentManagement",
-    "version": "3.0.0",
+    "version": "1.0.0",
     "type": "solutionpack",
     "local": true,
     "label": "Phishing Incident Management",
@@ -25,9 +25,16 @@
             "label": "MITRE ATT&CK Enrichment Framework",
             "version": "2.0.2",
             "minVersion": null
+        },
+        {
+            "name": "fileContentExtraction",
+            "type": "solutionpack",
+            "label": "File Content Extraction",
+            "version": "1.0.1",
+            "minVersion": null
         }
     ],
-    "prerequisite": null,
+    "prerequisite": "- Configure Connector: SOC Simulator\n- Configure Connector: Fortinet FortiGuard Threat Intelligence\n- Configure Connector: VirusTotal\n- Configure Connector: File Content Extraction",
     "publisher": "Fortinet CSE",
     "description": "Scripted simulation where a series of automation workflows guide your investigation via the workspace comments. Comments tagged as *Actions* represent the tasks the analyst must do. *Hints* are simply suggestions",
     "help": null,
@@ -40,78 +47,10 @@
         "Phishing"
     ],
     "fsrMinCompatibility": "7.2.0",
-    "date": "2022-06-17T03:24:37+00:00",
+    "date": "2022-06-28T10:52:10+00:00",
     "contents": {
-        "picklistNames": [
-            {
-                "name": "AssetCategory"
-            },
-            {
-                "name": "AssetClass"
-            },
-            {
-                "name": "AssetState"
-            },
-            {
-                "name": "AssetStatus"
-            },
-            {
-                "name": "Criticality"
-            },
-            {
-                "name": "DeliveryVector"
-            },
-            {
-                "name": "IncidentPhase"
-            },
-            {
-                "name": "IncidentStatus"
-            },
-            {
-                "name": "IncidentType"
-            },
-            {
-                "name": "IndicatorExpiryStatus"
-            },
-            {
-                "name": "IndicatorReputation"
-            },
-            {
-                "name": "IndicatorStatus"
-            },
-            {
-                "name": "IndicatorType"
-            },
-            {
-                "name": "OperatingSystem"
-            },
-            {
-                "name": "Severity"
-            },
-            {
-                "name": "SIEMs"
-            },
-            {
-                "name": "SLAState"
-            },
-            {
-                "name": "TrafficLightProtocol"
-            }
-        ],
         "modules": {
-            "assets": {
-                "name": "Assets",
-                "apiName": "assets"
-            },
-            "hunt": {
-                "name": "Hunts",
-                "apiName": "hunt"
-            },
-            "incidents": {
-                "name": "Incidents",
-                "apiName": "incidents"
-            },
-            "indicators": {
+            "": {
                 "name": "Indicators",
                 "apiName": "indicators"
             },
@@ -125,16 +64,6 @@
             }
         },
         "viewTemplates": {
-            "assets": {
-                "name": "Assets",
-                "apiName": "assets",
-                "views": [
-                    "list",
-                    "detail",
-                    "form",
-                    "settings"
-                ]
-            },
             "hunt": {
                 "name": "Hunts",
                 "apiName": "hunt",
@@ -142,16 +71,6 @@
                     "list",
                     "detail",
                     "form"
-                ]
-            },
-            "incidents": {
-                "name": "Incidents",
-                "apiName": "incidents",
-                "views": [
-                    "list",
-                    "detail",
-                    "form",
-                    "settings"
                 ]
             },
             "indicators": {
@@ -162,15 +81,6 @@
                     "detail",
                     "form",
                     "settings"
-                ]
-            },
-            "scenario": {
-                "name": "Scenario",
-                "apiName": "scenario",
-                "views": [
-                    "list",
-                    "detail",
-                    "form"
                 ]
             },
             "users": {
@@ -190,10 +100,7 @@
         ],
         "playbooks": [
             {
-                "name": "03 - Enrich"
-            },
-            {
-                "name": "12 - Solution Pack Advanced Phishing"
+                "name": "02 - Use Case - Phishing Incident Management"
             }
         ],
         "globalVariables": [
@@ -226,18 +133,6 @@
                 "name": "Excludelist_Hosts",
                 "value": "www.fortielab.com,NA",
                 "default_value": "www.fortielab.com"
-            },
-            {
-                "id": 8,
-                "name": "Default_Indicator_TTL_Days",
-                "value": "20",
-                "default_value": "20"
-            },
-            {
-                "id": 11,
-                "name": "Indicator_Type_Map",
-                "value": "{ \"attachmentNames\":\"File\",\"commandLine\": \"Process\",\"computerName\":\"Host\",\"decodedCommandLine\":\"Process\",\"destinationIp\": \"IP Address\",\"destinationPort\":\"Port\",\"domain\":\"Domain\",\"dllLoaded\": \"Process\",\"emailFrom\":\"Email Address\",\"emailCc\":\"Email Address\",\"emailTo\":\"Email Address\",\"fileHash\": \"FileHash-MD5\",\"parentProcessCmdLine\": \"Process\",\"parentProcessName\": \"Process\",\"recipientEmailAddress\":\"Email Address\",\"registryKey\": \"Registry\",\"registryKeyValue\": \"Registry\",\"reporter\":\"Email Address\",\"returnPath\":\"Email Address\",\"senderDomain\":\"Domain\",\"senderEmailAddress\": \"Email Address\",\"services\": \"Process\",\"sourceIp\": \"IP Address\",\"sourcePort\":\"Port\",\"sourceProcess\": \"Process\",\"targetAsset\":\"Host\",\"targetProcess\": \"Process\",\"url\": \"URL\",\"userName\": \"User\",\"userDetails\": \"User\",\"urlFull\": \"URL\",\"parentProcessName\": \"Process\",\"otherRecipients\": \"Email Address\"}",
-                "default_value": "{ \"attachmentNames\":\"File\",\"commandLine\": \"Process\",\"computerName\":\"Host\",\"decodedCommandLine\":\"Process\",\"destinationIp\": \"IP Address\",\"destinationPort\":\"Port\",\"domain\":\"Domain\",\"dllLoaded\": \"Process\",\"emailFrom\":\"Email Address\",\"emailCc\":\"Email Address\",\"emailTo\":\"Email Address\",\"fileHash\": \"FileHash-MD5\",\"parentProcessCmdLine\": \"Process\",\"parentProcessName\": \"Process\",\"recipientEmailAddress\":\"Email Address\",\"registryKey\": \"Registry\",\"registryKeyValue\": \"Registry\",\"reporter\":\"Email Address\",\"returnPath\":\"Email Address\",\"senderDomain\":\"Domain\",\"senderEmailAddress\": \"Email Address\",\"services\": \"Process\",\"sourceIp\": \"IP Address\",\"sourcePort\":\"Port\",\"sourceProcess\": \"Process\",\"targetAsset\":\"Host\",\"targetProcess\": \"Process\",\"url\": \"URL\",\"userName\": \"User\",\"userDetails\": \"User\",\"urlFull\": \"URL\",\"parentProcessName\": \"Process\",\"otherRecipients\": \"Email Address\"}"
             },
             {
                 "id": 26,
@@ -273,6 +168,24 @@
         "dashboards": [
             {
                 "name": "Phishing Case Management"
+            }
+        ],
+        "connectors": [
+            {
+                "name": "File Content Extraction",
+                "apiName": "file-content-extraction"
+            },
+            {
+                "name": "Fortinet FortiGuard Threat Intelligence",
+                "apiName": "fortinet-fortiguard-threat-intelligence"
+            },
+            {
+                "name": "FortiSOAR SOC Simulator",
+                "apiName": "fortisoar-soc-simulator"
+            },
+            {
+                "name": "VirusTotal",
+                "apiName": "virustotal"
             }
         ],
         "recordSets": [

@@ -3,9 +3,8 @@
         "name": "file-content-extraction",
         "label": "File Content Extraction",
         "category": "utilities",
-        "description": "Utility to Extract Text, Artifacts and Metadata from almost any file",
+        "description": "Utility to Extract Text, Artifacts and Metadata from almost any file. Internet connectivity is required for the connector to download dependent packages",
         "publisher": null,
-        "version": "1.0.1",
         "operation_roles": {
             "extract_text": [],
             "extract_indicators": [],
@@ -13,557 +12,65 @@
         },
         "configurations": [],
         "dataImports": [],
-        "rpm_name": "cyops-connector-file-content-extraction-1.0.1",
-        "install_mode": "rpm",
-        "installer_path": "cyops-connector-file-content-extraction-1.0.1"
+        "install_mode": "rpm"
     },
     {
-        "name": "mitre-attack",
-        "label": "MITRE ATT&CK",
-        "category": "Information",
-        "description": "The MITRE ATT&CK knowledge base is used as a foundation for the development of specific threat models and methodologies. Connector helps to replicate knowledge base of adversary tactics and techniques based on real-world observations",
+        "name": "fortinet-fortiguard-threat-intelligence",
+        "label": "Fortinet FortiGuard Threat Intelligence",
+        "category": "Threat Intelligence",
+        "description": "FortiGuard Threat Intelligence is the global threat intelligence and research organization at Fortinet. This connector facilitates automated operations to check IP, URL, Domain and File Hash Lookup\u2019s and ingestion of daily threat feeds.<br\/><br\/>This connector has a dependency on the <a href=\"\/content-hub\/all-content\/?contentType=solutionpack&amp;tag=ThreatIntelManagement\" target=\"_blank\" rel=\"noopener\">Threat Intel Management Solution Pack<\/a>. Install the Solution Pack before enabling ingestion of Threat Feeds from this source.",
         "publisher": null,
-        "version": "2.0.1",
         "operation_roles": {
-            "get_mitre_data": [],
-            "get_mitre_data_sample": []
+            "threat_intel_search": [],
+            "get_threat_categories": [],
+            "get_encyclopedia_lookup": [],
+            "ingest_feeds": []
         },
-        "configurations": [
-            {
-                "id": 106,
-                "config_id": "a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                "status": 1,
-                "name": "MitreC",
-                "default": true,
-                "config": {
-                    "matrices": [
-                        "Enterprise"
-                    ],
-                    "upload_json": false
-                },
-                "remote_status": [],
-                "health_status": [],
-                "connector": 133,
-                "agent": "3cf41bceb1a51d3ac60b1b1f1e4e2d7f",
-                "teams": []
-            }
-        ],
-        "dataImports": [
-            {
-                "id": 15,
-                "name": "Ingestion_mitre-attack_MitreC_a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                "description": "Metadata for Ingestion_mitre-attack_MitreC_a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                "status": null,
-                "created_by": "3451141c-bac6-467c-8d72-85e0fab569ce",
-                "modified_by": "3451141c-bac6-467c-8d72-85e0fab569ce",
-                "owners": [
-                    "public"
-                ],
-                "sample_data": [],
-                "data_mapping": [],
-                "playbooks": [],
-                "created_at": "2022-03-22T11:12:03.316953Z",
-                "modified_at": "2022-03-22T11:12:03.316985Z",
-                "metadata": {
-                    "scheduleId": "gAAAAABiOa8Dmb_Y1Pgpnh4DApGpQmg8QngKBQ_syD0wc0ymXiGqAGZ4vc37K3rF-8WiQL-ePkjkJh2ssPLfQW8fE2LvO_vUww==",
-                    "scheduleName": "Ingestion_mitre-attack_MitreC_a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                    "scheduleStatus": true
-                },
-                "configuration": "a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                "schedule": {
-                    "id": "gAAAAABiPG9xvZzaSa7mMbJcBNHi_fp2AextnVyGU-Vyft9EkcLL0FLGgaVgxYyMvaabUhKmHCBA9Qyh7WX2Fj59DtsyPQphqw==",
-                    "crontab": {
-                        "id": 4,
-                        "minute": "*\/5",
-                        "hour": "*",
-                        "day_of_week": "*",
-                        "day_of_month": "*",
-                        "month_of_year": "*",
-                        "timezone": "UTC"
-                    },
-                    "interval": null,
-                    "name": "Ingestion_mitre-attack_MitreC_a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                    "task": "workflow.tasks.periodic_task",
-                    "args": "[]",
-                    "kwargs": {
-                        "exit_if_running": true,
-                        "wf_iri": "\/api\/3\/workflows\/12e4cceb-5c3b-4258-9e1f-803cf12fd09d",
-                        "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                        "name": "Ingestion_mitre-attack_MitreC_a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                        "description": "Ingestion_mitre-attack_MitreC_a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                        "auth": {
-                            "auth_method": "CS HMAC"
-                        },
-                        "referenceid": null,
-                        "schedule_entry_name": "Ingestion_mitre-attack_MitreC_a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                        "schedule_id": "fedcf1b8-a23c-49f4-9a88-ee00f7fa0732",
-                        "expired": false
-                    },
-                    "queue": null,
-                    "exchange": null,
-                    "routing_key": null,
-                    "headers": "{}",
-                    "priority": 3,
-                    "expires": null,
-                    "expire_seconds": null,
-                    "one_off": false,
-                    "start_time": null,
-                    "enabled": false,
-                    "last_run_at": null,
-                    "total_run_count": 0,
-                    "date_changed": "2022-03-22T11:12:03.211582Z",
-                    "description": "Ingestion_mitre-attack_MitreC_a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                    "solar": null,
-                    "clocked": null
-                }
-            }
-        ],
-        "rpm_name": "cyops-connector-mitre-attack-2.0.1",
-        "install_mode": "rpm",
-        "installer_path": "cyops-connector-mitre-attack-2.0.1",
-        "ingestionPlaybooks": {
-            "collections": [
-                {
-                    "@context": "\/api\/3\/contexts\/WorkflowCollection",
-                    "@type": "WorkflowCollection",
-                    "name": "MITRE ATT&CK 2.0.0 MitreCIngestion(a542cd6c-a9b1-42aa-abe6-4f9390f89e71)",
-                    "description": null,
-                    "visible": false,
-                    "workflows": [
-                        {
-                            "@type": "Workflow",
-                            "triggerLimit": null,
-                            "name": "> MITRE ATT&CK > Fetch",
-                            "aliasName": null,
-                            "tag": "#mitre-attack #fetch #dataingestion",
-                            "description": "Fetches sample data from MITRE",
-                            "isActive": true,
-                            "debug": false,
-                            "singleRecordExecution": false,
-                            "remoteExecutableFlag": false,
-                            "parameters": [],
-                            "synchronous": false,
-                            "lastModifyDate": 1647947522,
-                            "collection": "\/api\/3\/workflow_collections\/a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                            "versions": [],
-                            "triggerStep": "\/api\/3\/workflow_steps\/2d54ab53-e904-44ac-aeb3-c4fd277b007b",
-                            "steps": [
-                                {
-                                    "@type": "WorkflowStep",
-                                    "name": "Start",
-                                    "description": null,
-                                    "arguments": {
-                                        "step_variables": {
-                                            "input": {
-                                                "params": []
-                                            },
-                                            "_configuration_schema": "[\n  {\n    \"title\": \"Matriced to pull\",\n    \"name\": \"matrices\",\n    \"type\": \"multiselect\",\n    \"tooltip\": \"Select one or more matrices\",\n    \"required\": true,\n    \"editable\": true,\n    \"visible\": true,\n    \"options\": [\n      \"Enterprise\",\n      \"Mobile\",\n      \"ICS\"\n    ],\n    \"options\": [\"Enterprise\", \"Mobile\", \"ICS\"],\n    \"value\": [\"Enterprise\"]\n  }\n]"
-                                        }
-                                    },
-                                    "status": null,
-                                    "top": "30",
-                                    "left": "125",
-                                    "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
-                                    "uuid": "2d54ab53-e904-44ac-aeb3-c4fd277b007b",
-                                    "id": 15442
-                                },
-                                {
-                                    "@type": "WorkflowStep",
-                                    "name": "Fetch Sample Data",
-                                    "description": null,
-                                    "arguments": {
-                                        "name": "MITRE ATT&CK",
-                                        "config": "a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                                        "params": [],
-                                        "version": "2.0.0",
-                                        "connector": "mitre-attack",
-                                        "operation": "get_mitre_data_sample",
-                                        "operationTitle": "Get MITRE Sample Data",
-                                        "pickFromTenant": false,
-                                        "step_variables": []
-                                    },
-                                    "status": null,
-                                    "top": "120",
-                                    "left": "320",
-                                    "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-                                    "uuid": "734ebb52-3c3d-4855-8af4-ebdbf262be19",
-                                    "id": 15441
-                                },
-                                {
-                                    "@type": "WorkflowStep",
-                                    "name": "Configuration",
-                                    "description": null,
-                                    "arguments": {
-                                        "data": "{{ vars.result.data }}",
-                                        "matrices": [
-                                            "Enterprise"
-                                        ]
-                                    },
-                                    "status": null,
-                                    "top": "240",
-                                    "left": "480",
-                                    "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-                                    "uuid": "bd7cb554-9612-4f39-a6ca-fb55918ef024",
-                                    "id": 15443
-                                }
-                            ],
-                            "routes": [
-                                {
-                                    "@type": "WorkflowRoute",
-                                    "name": "Start -> Fetch Sample Data",
-                                    "targetStep": "\/api\/3\/workflow_steps\/734ebb52-3c3d-4855-8af4-ebdbf262be19",
-                                    "sourceStep": "\/api\/3\/workflow_steps\/2d54ab53-e904-44ac-aeb3-c4fd277b007b",
-                                    "label": null,
-                                    "isExecuted": false,
-                                    "uuid": "021a9a3d-bf3e-40e9-ad8e-5248f4076456"
-                                },
-                                {
-                                    "@type": "WorkflowRoute",
-                                    "name": "Fetch Sample Data -> Configuration",
-                                    "targetStep": "\/api\/3\/workflow_steps\/bd7cb554-9612-4f39-a6ca-fb55918ef024",
-                                    "sourceStep": "\/api\/3\/workflow_steps\/734ebb52-3c3d-4855-8af4-ebdbf262be19",
-                                    "label": null,
-                                    "isExecuted": false,
-                                    "uuid": "0cb6d4c3-a6a9-45e2-92d6-11ca1b347ff7"
-                                }
-                            ],
-                            "priority": null,
-                            "uuid": "b58bd09e-6bfc-4184-b0e9-8c829e2a3349",
-                            "recordTags": [
-                                "dataingestion",
-                                "fetch",
-                                "mitre-attack"
-                            ],
-                            "id": 2918,
-                            "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                            "createDate": 1647947522,
-                            "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                            "modifyDate": 1647947522,
-                            "owners": [],
-                            "isPrivate": false
-                        },
-                        {
-                            "@type": "Workflow",
-                            "triggerLimit": null,
-                            "name": "MITRE ATT&CK > Create",
-                            "aliasName": null,
-                            "tag": "#dataingestion #mitre-attack",
-                            "description": "Creates a sample MITRE record",
-                            "isActive": true,
-                            "debug": false,
-                            "singleRecordExecution": false,
-                            "remoteExecutableFlag": false,
-                            "parameters": [],
-                            "synchronous": false,
-                            "lastModifyDate": 1647947522,
-                            "collection": "\/api\/3\/workflow_collections\/a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                            "versions": [],
-                            "triggerStep": "\/api\/3\/workflow_steps\/c347308b-d5c1-4d91-ab28-de07c05deac6",
-                            "steps": [
-                                {
-                                    "@type": "WorkflowStep",
-                                    "name": "Create Record",
-                                    "description": null,
-                                    "arguments": {
-                                        "resource": {
-                                            "url": "{{vars.sourcedata[\"external_references\"][0][\"url\"]}}",
-                                            "name": "{{vars.sourcedata[\"name\"]}}",
-                                            "created": "{{vars.sourcedata[\"created\"]}}",
-                                            "mitreId": "<System Mapping. Do not modify>",
-                                            "version": "{{vars.sourcedata[\"x_mitre_version\"]}}",
-                                            "__replace": "",
-                                            "description": "{{vars.sourcedata[\"description\"]}}",
-                                            "lastModified": "{{vars.sourcedata[\"modified\"]}}"
-                                        },
-                                        "_showJson": false,
-                                        "operation": "Overwrite",
-                                        "collection": "\/api\/3\/mitre_groups",
-                                        "__recommend": [],
-                                        "fieldOperation": {
-                                            "recordTags": "Overwrite"
-                                        },
-                                        "step_variables": []
-                                    },
-                                    "status": null,
-                                    "top": "120",
-                                    "left": "320",
-                                    "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
-                                    "uuid": "42df169c-a59e-4e44-887f-85fcc1a54e53",
-                                    "id": 15444
-                                },
-                                {
-                                    "@type": "WorkflowStep",
-                                    "name": "Start",
-                                    "description": null,
-                                    "arguments": {
-                                        "step_variables": {
-                                            "input": {
-                                                "params": []
-                                            }
-                                        }
-                                    },
-                                    "status": null,
-                                    "top": "30",
-                                    "left": "125",
-                                    "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
-                                    "uuid": "c347308b-d5c1-4d91-ab28-de07c05deac6",
-                                    "id": 15445
-                                }
-                            ],
-                            "routes": [
-                                {
-                                    "@type": "WorkflowRoute",
-                                    "name": "Start -> Create Record",
-                                    "targetStep": "\/api\/3\/workflow_steps\/42df169c-a59e-4e44-887f-85fcc1a54e53",
-                                    "sourceStep": "\/api\/3\/workflow_steps\/c347308b-d5c1-4d91-ab28-de07c05deac6",
-                                    "label": null,
-                                    "isExecuted": false,
-                                    "uuid": "e4fce65a-f9bc-406e-b5c6-b5c4f7ba2ef8"
-                                }
-                            ],
-                            "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-                            "uuid": "f9da720d-0067-4e15-bd84-a246c9e585b6",
-                            "recordTags": [
-                                "dataingestion",
-                                "create",
-                                "mitre-attack"
-                            ],
-                            "id": 2919,
-                            "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                            "createDate": 1647947522,
-                            "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                            "modifyDate": 1647947522,
-                            "owners": [],
-                            "isPrivate": false
-                        },
-                        {
-                            "@type": "Workflow",
-                            "triggerLimit": null,
-                            "name": "MITRE ATT&CK > Ingest",
-                            "aliasName": null,
-                            "tag": "#mitre-attack #dataingestion",
-                            "description": "Ingests latest data from MITRE as part of the ingestion wizard process",
-                            "isActive": true,
-                            "debug": false,
-                            "singleRecordExecution": false,
-                            "remoteExecutableFlag": false,
-                            "parameters": [],
-                            "synchronous": false,
-                            "lastModifyDate": 1647947522,
-                            "collection": "\/api\/3\/workflow_collections\/a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                            "versions": [],
-                            "triggerStep": "\/api\/3\/workflow_steps\/0136c754-35db-4ba1-a900-10fbc68acb9c",
-                            "steps": [
-                                {
-                                    "@type": "WorkflowStep",
-                                    "name": "Start",
-                                    "description": null,
-                                    "arguments": {
-                                        "step_variables": {
-                                            "input": {
-                                                "params": []
-                                            }
-                                        }
-                                    },
-                                    "status": null,
-                                    "top": "40",
-                                    "left": "40",
-                                    "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
-                                    "uuid": "0136c754-35db-4ba1-a900-10fbc68acb9c",
-                                    "id": 15446
-                                },
-                                {
-                                    "@type": "WorkflowStep",
-                                    "name": "Fetch",
-                                    "description": null,
-                                    "arguments": {
-                                        "arguments": [],
-                                        "apply_async": false,
-                                        "step_variables": [],
-                                        "workflowReference": "\/api\/3\/workflows\/b58bd09e-6bfc-4184-b0e9-8c829e2a3349"
-                                    },
-                                    "status": null,
-                                    "top": "140",
-                                    "left": "240",
-                                    "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-                                    "uuid": "90961aab-244f-4ad0-8254-0bde11d1cddf",
-                                    "id": 15448
-                                },
-                                {
-                                    "@type": "WorkflowStep",
-                                    "name": "Fetch And Create",
-                                    "description": null,
-                                    "arguments": {
-                                        "name": "MITRE ATT&CK",
-                                        "config": "a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                                        "params": {
-                                            "modules": [
-                                                "Tactics",
-                                                "Groups",
-                                                "Techniques",
-                                                "Subtechniques",
-                                                "Mitigations",
-                                                "Software"
-                                            ],
-                                            "matrices": "{{ vars.result.matrices }}",
-                                            "upload_json": false,
-                                            "force_ingestion": ""
-                                        },
-                                        "version": "2.0.0",
-                                        "connector": "mitre-attack",
-                                        "operation": "get_mitre_data",
-                                        "operationTitle": "Get MITRE Data",
-                                        "pickFromTenant": false,
-                                        "step_variables": []
-                                    },
-                                    "status": null,
-                                    "top": "280",
-                                    "left": "440",
-                                    "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-                                    "uuid": "ef08bc30-6b74-44c2-ba5c-5959dd764404",
-                                    "id": 15447
-                                }
-                            ],
-                            "routes": [
-                                {
-                                    "@type": "WorkflowRoute",
-                                    "name": "Fetch -> Fetch And Create",
-                                    "targetStep": "\/api\/3\/workflow_steps\/ef08bc30-6b74-44c2-ba5c-5959dd764404",
-                                    "sourceStep": "\/api\/3\/workflow_steps\/90961aab-244f-4ad0-8254-0bde11d1cddf",
-                                    "label": null,
-                                    "isExecuted": false,
-                                    "uuid": "0bca5c8c-fd82-4c00-b297-69a912265c3d"
-                                },
-                                {
-                                    "@type": "WorkflowRoute",
-                                    "name": "Start -> Fetch",
-                                    "targetStep": "\/api\/3\/workflow_steps\/90961aab-244f-4ad0-8254-0bde11d1cddf",
-                                    "sourceStep": "\/api\/3\/workflow_steps\/0136c754-35db-4ba1-a900-10fbc68acb9c",
-                                    "label": null,
-                                    "isExecuted": false,
-                                    "uuid": "a2972245-fe6b-42c6-867a-688ca8737a44"
-                                }
-                            ],
-                            "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-                            "uuid": "12e4cceb-5c3b-4258-9e1f-803cf12fd09d",
-                            "recordTags": [
-                                "dataingestion",
-                                "ingest",
-                                "mitre-attack"
-                            ],
-                            "id": 2920,
-                            "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                            "createDate": 1647947522,
-                            "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                            "modifyDate": 1647947522,
-                            "owners": [],
-                            "isPrivate": false,
-                            "schedules": [
-                                {
-                                    "id": "gAAAAABiPG9xfiA0dojGL0kgTURn6VsM8V_CPKEv-mH2ixnMl9qW-t09z8r2PHxhQEmLRBpuDz1lvkTrXGvqgBxOEiRb69WHaw==",
-                                    "crontab": {
-                                        "id": 4,
-                                        "minute": "*\/5",
-                                        "hour": "*",
-                                        "day_of_week": "*",
-                                        "day_of_month": "*",
-                                        "month_of_year": "*",
-                                        "timezone": "UTC"
-                                    },
-                                    "interval": null,
-                                    "name": "Ingestion_mitre-attack_MitreC_a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                                    "task": "workflow.tasks.periodic_task",
-                                    "args": "[]",
-                                    "kwargs": {
-                                        "exit_if_running": true,
-                                        "wf_iri": "\/api\/3\/workflows\/12e4cceb-5c3b-4258-9e1f-803cf12fd09d",
-                                        "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                                        "name": "Ingestion_mitre-attack_MitreC_a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                                        "description": "Ingestion_mitre-attack_MitreC_a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                                        "auth": {
-                                            "auth_method": "CS HMAC"
-                                        },
-                                        "referenceid": null,
-                                        "schedule_entry_name": "Ingestion_mitre-attack_MitreC_a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                                        "schedule_id": "fedcf1b8-a23c-49f4-9a88-ee00f7fa0732",
-                                        "expired": false
-                                    },
-                                    "queue": null,
-                                    "exchange": null,
-                                    "routing_key": null,
-                                    "headers": "{}",
-                                    "priority": 3,
-                                    "expires": null,
-                                    "expire_seconds": null,
-                                    "one_off": false,
-                                    "start_time": null,
-                                    "enabled": false,
-                                    "last_run_at": null,
-                                    "total_run_count": 0,
-                                    "date_changed": "2022-03-22T11:12:03.211582Z",
-                                    "description": "Ingestion_mitre-attack_MitreC_a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                                    "solar": null,
-                                    "clocked": null
-                                }
-                            ]
-                        }
-                    ],
-                    "image": null,
-                    "uuid": "a542cd6c-a9b1-42aa-abe6-4f9390f89e71",
-                    "id": 262,
-                    "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                    "createDate": 1647947522,
-                    "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                    "modifyDate": 1647947522,
-                    "recordTags": []
-                }
-            ],
-            "exported_tags": [
-                "dataingestion",
-                "fetch",
-                "mitre-attack",
-                "create",
-                "ingest"
-            ],
-            "globalVariables": []
-        }
-    },
-    {
-        "name": "slacalculator",
-        "label": "SLA Calculator",
-        "category": "Information",
-        "description": "Calculates\u00a0SLA\u00a0due\u00a0date\u00a0based\u00a0on\u00a0locale\u00a0and\u00a0work hours. This connector needs content pack for supporting playbooks and module changes",
-        "publisher": null,
-        "version": "1.0.0",
-        "operation_roles": {
-            "calculateSLA": []
-        },
-        "configurations": [
-            {
-                "id": 107,
-                "config_id": "f2c545de-65df-43c5-bfe1-40c8e8a3300b",
-                "status": 1,
-                "name": "Demo",
-                "default": true,
-                "config": {
-                    "timezone": "Europe\/London",
-                    "full_time": true
-                },
-                "remote_status": [],
-                "health_status": [],
-                "connector": 62,
-                "agent": "3cf41bceb1a51d3ac60b1b1f1e4e2d7f",
-                "teams": []
-            }
-        ],
+        "configurations": [],
         "dataImports": [],
-        "rpm_name": "cyops-connector-slacalculator-1.0.0",
-        "install_mode": "rpm",
-        "installer_path": "cyops-connector-slacalculator-1.0.0",
-        "ingestionPlaybooks": {
-            "collections": [],
-            "exported_tags": [],
-            "globalVariables": []
-        }
+        "install_mode": "rpm"
+    },
+    {
+        "name": "fortisoar-soc-simulator",
+        "label": "FortiSOAR SOC Simulator",
+        "category": "information",
+        "description": "The FortiSOAR SOC Simulator connector is a special type of connector that is used to simulate a SOC environment. It creates various scenarios-based artifacts such as alerts, incidents, etc. in FortiSOAR\u2122",
+        "publisher": null,
+        "operation_roles": {
+            "bad_ip": [],
+            "bad_url": [],
+            "bad_filehash": [],
+            "bad_domain": [],
+            "replace_variables": [],
+            "malicious_file_indicator": [],
+            "create_simulated_alert": []
+        },
+        "configurations": [],
+        "dataImports": [],
+        "install_mode": "rpm"
+    },
+    {
+        "name": "virustotal",
+        "label": "VirusTotal",
+        "category": "Sandbox",
+        "description": "VirusTotal provides a service that analyzes suspicious files and URLs and facilitates the quick detection of viruses, worms, trojans, and all kinds of malware. This connector facilitates automated operations such as scanning and analyzing suspicious files and URLs and retrieving reports from VirusTotal for files, IP addresses, and domains.",
+        "publisher": null,
+        "operation_roles": {
+            "upload_sample": [],
+            "scan_url": [],
+            "query_ip": [],
+            "query_domain": [],
+            "query_url": [],
+            "file_reputation": [],
+            "analysis_file": [],
+            "custom_endpoint": [],
+            "get_output_schema_ip": [],
+            "get_output_schema_domain": [],
+            "get_output_schema_url": [],
+            "get_output_schema_file": []
+        },
+        "configurations": [],
+        "dataImports": [],
+        "install_mode": "rpm"
     }
 ]

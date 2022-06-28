@@ -1,0 +1,11 @@
+{
+    "@context": "\/api\/3\/contexts\/WorkflowCollection",
+    "@type": "WorkflowCollection",
+    "name": "02 - Use Case - Phishing Incident Management",
+    "description": null,
+    "visible": true,
+    "image": null,
+    "uuid": "c1ca92eb-8ec4-4dba-9a3d-156bf0a1abc2",
+    "deletedAt": null,
+    "recordTags": []
+}

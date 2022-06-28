@@ -290,6 +290,23 @@
                                     },
                                     "cardLayout": true
                                 }
+                            },
+                            {
+                                "type": "performanceMetrics",
+                                "config": {
+                                    "wid": "84346926-9303-4e9e-bb72-9d7c81c1caec",
+                                    "grouping": {
+                                        "primary": [],
+                                        "secondary": []
+                                    },
+                                    "showSavings": "dollar",
+                                    "includeFailedPlaybooks": true,
+                                    "excludeConfigActions": false,
+                                    "days": 15,
+                                    "showPercentageChanges": true,
+                                    "metricsType": "paCount",
+                                    "title": "Executed Playbook Actions"
+                                }
                             }
                         ],
                         "style": "col-lg-4"
@@ -336,6 +353,43 @@
                                     },
                                     "cardLayout": true
                                 }
+                            },
+                            {
+                                "type": "performanceMetrics",
+                                "config": {
+                                    "wid": "db1c23fe-0b5a-4817-b60f-2a7226b7a8f6",
+                                    "grouping": {
+                                        "primary": [],
+                                        "secondary": []
+                                    },
+                                    "showSavings": "dollar",
+                                    "includeFailedPlaybooks": true,
+                                    "excludeConfigActions": true,
+                                    "days": 15,
+                                    "showPercentageChanges": true,
+                                    "metricsType": "totalCount",
+                                    "title": "Quarantined Infected Assets",
+                                    "resource": "assets",
+                                    "query": {
+                                        "sort": [],
+                                        "limit": 30,
+                                        "logic": "AND",
+                                        "filters": [
+                                            {
+                                                "field": "state",
+                                                "operator": "eq",
+                                                "value": "\/api\/3\/picklists\/321ad354-42ce-42b6-8636-2fa184a7dcd5",
+                                                "_value": {
+                                                    "display": "Isolated",
+                                                    "itemValue": "Isolated",
+                                                    "@id": "\/api\/3\/picklists\/321ad354-42ce-42b6-8636-2fa184a7dcd5"
+                                                },
+                                                "type": "object"
+                                            }
+                                        ]
+                                    },
+                                    "timeRange": "modifyDate"
+                                }
                             }
                         ],
                         "style": "col-lg-4"
@@ -343,35 +397,52 @@
                     {
                         "widgets": [
                             {
-                                "type": "lineItem",
+                                "type": "chart",
                                 "config": {
-                                    "wid": "72765ccb-5ec1-4534-9210-ddd6910fb12b",
+                                    "wid": "b121de17-25c3-406f-9e77-6cd795b1f772",
+                                    "widgetAlwaysDisplay": true,
                                     "query": {
                                         "sort": [],
-                                        "limit": 5,
+                                        "limit": 2147483647,
                                         "logic": "AND",
                                         "filters": [
                                             {
                                                 "field": "type",
                                                 "operator": "eq",
-                                                "value": "\/api\/3\/picklists\/c145394b-069a-449b-a05e-67980d0f4b82",
+                                                "value": "{{lbl_alert_type}}",
                                                 "_value": {
-                                                    "itemValue": "Suspicious Email",
-                                                    "@id": "\/api\/3\/picklists\/c145394b-069a-449b-a05e-67980d0f4b82"
+                                                    "display": "",
+                                                    "itemValue": "",
+                                                    "@id": "{{lbl_alert_type}}"
                                                 },
                                                 "type": "object"
+                                            }
+                                        ],
+                                        "aggregates": [
+                                            {
+                                                "operator": "countdistinct",
+                                                "field": "*",
+                                                "alias": "total"
+                                            },
+                                            {
+                                                "operator": "groupby",
+                                                "alias": "userName",
+                                                "field": "userName"
                                             }
                                         ]
                                     },
                                     "mapping": {
-                                        "assignedToPerson": ""
+                                        "assignedToPerson": "",
+                                        "firstGrouping": "",
+                                        "secondGrouping": "type",
+                                        "fieldName": "userName"
                                     },
-                                    "columns": [
-                                        "userName"
-                                    ],
-                                    "title": "Targeted Users",
-                                    "module": "alerts",
-                                    "assignedToSetting": "onlyMe"
+                                    "assignedToSetting": "onlyMe",
+                                    "aggregate": true,
+                                    "title": "Top Targeted Users",
+                                    "resource": "alerts",
+                                    "chart": "pie",
+                                    "barStyle": "horizontal"
                                 }
                             }
                         ],
@@ -444,7 +515,7 @@
                                         "dateFieldName": "alertDetectionDate"
                                     },
                                     "aggregate": true,
-                                    "wid": "e6e3f129-6109-4816-bca4-f641e5c34aa5",
+                                    "wid": "15ed23a1-9392-43be-b790-55634ea6b9fa",
                                     "resource": "alerts",
                                     "chart": "timeseries",
                                     "title": "Alerts Timeline",
@@ -453,7 +524,76 @@
                                 }
                             }
                         ],
-                        "style": "col-lg-9"
+                        "style": "col-lg-4"
+                    },
+                    {
+                        "widgets": [
+                            {
+                                "type": "chart",
+                                "config": {
+                                    "query": {
+                                        "sort": [
+                                            {
+                                                "field": "severity.orderIndex",
+                                                "direction": "ASC"
+                                            }
+                                        ],
+                                        "limit": 2147483647,
+                                        "logic": "AND",
+                                        "filters": [
+                                            {
+                                                "field": "category",
+                                                "operator": "eq",
+                                                "value": "{{lbl_Incident_Type}}",
+                                                "_value": {
+                                                    "display": "",
+                                                    "itemValue": "",
+                                                    "@id": "{{lbl_Incident_Type}}"
+                                                },
+                                                "type": "object"
+                                            }
+                                        ],
+                                        "aggregates": [
+                                            {
+                                                "operator": "select",
+                                                "alias": "severity",
+                                                "field": "severity.itemValue"
+                                            },
+                                            {
+                                                "operator": "select",
+                                                "alias": "color",
+                                                "field": "severity.color"
+                                            },
+                                            {
+                                                "operator": "select",
+                                                "alias": "orderIndex",
+                                                "field": "severity.orderIndex"
+                                            },
+                                            {
+                                                "operator": "select",
+                                                "alias": "dateOfIncident",
+                                                "field": "dateOfIncident"
+                                            }
+                                        ]
+                                    },
+                                    "mapping": {
+                                        "assignedToPerson": "",
+                                        "fieldName": "severity",
+                                        "timeScope": "day",
+                                        "dateFormat": "%b %e",
+                                        "dateFieldName": "dateOfIncident"
+                                    },
+                                    "aggregate": true,
+                                    "wid": "e6e3f129-6109-4816-bca4-f641e5c34aa5",
+                                    "resource": "incidents",
+                                    "chart": "timeseries",
+                                    "title": "Incidents Timeline",
+                                    "widgetAlwaysDisplay": true,
+                                    "assignedToSetting": "onlyMe"
+                                }
+                            }
+                        ],
+                        "style": "col-lg-4"
                     },
                     {
                         "widgets": [
@@ -513,7 +653,7 @@
                                 }
                             }
                         ],
-                        "style": "col-lg-3"
+                        "style": "col-lg-4"
                     }
                 ],
                 "wid": "d6a95850-ac9f-42f7-b364-bfbd6f9bdd10",
