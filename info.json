@@ -13,13 +13,6 @@
             "minVersion": null
         },
         {
-            "name": "socSimulator",
-            "type": "solutionpack",
-            "label": "SOC Simulator",
-            "version": "1.0.1",
-            "minVersion": null
-        },
-        {
             "name": "mITREATT&CKEnrichmentFramework",
             "type": "solutionpack",
             "label": "MITRE ATT&CK Enrichment Framework",
@@ -30,6 +23,13 @@
             "name": "fileContentExtraction",
             "type": "solutionpack",
             "label": "File Content Extraction",
+            "version": "1.0.0",
+            "minVersion": null
+        },
+        {
+            "name": "socSimulator",
+            "type": "solutionpack",
+            "label": "SOC Simulator",
             "version": "1.0.1",
             "minVersion": null
         }
@@ -46,8 +46,8 @@
     "recordTags": [
         "Phishing"
     ],
-    "fsrMinCompatibility": "7.2.0",
-    "date": "2022-06-28T10:52:10+00:00",
+    "fsrMinCompatibility": "7.2.1",
+    "date": "2022-07-04T11:04:50+00:00",
     "contents": {
         "modules": {
             "": {
@@ -68,19 +68,14 @@
                 "name": "Hunts",
                 "apiName": "hunt",
                 "views": [
-                    "list",
-                    "detail",
-                    "form"
+                    "detail"
                 ]
             },
             "indicators": {
                 "name": "Indicators",
                 "apiName": "indicators",
                 "views": [
-                    "list",
-                    "detail",
-                    "form",
-                    "settings"
+                    "detail"
                 ]
             },
             "users": {
@@ -135,12 +130,6 @@
                 "default_value": "www.fortielab.com"
             },
             {
-                "id": 26,
-                "name": "Tomorrow_Date",
-                "value": "{{arrow.utcnow().shift(hours=+24).timestamp}}",
-                "default_value": "{{arrow.utcnow().shift(hours=+24).timestamp}}"
-            },
-            {
                 "id": 24,
                 "name": "Hint_Icon",
                 "value": "<span style=\"background-color:orange;color:black;border-radius: 4px;font-size:8mm;\">&#9788;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Hint</font></span>",
@@ -151,6 +140,12 @@
                 "name": "Action_Icon",
                 "value": "<span style=\"background-color:red;color:black;border-radius: 4px;font-size:8mm;\">&#10159;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Action</font></span>",
                 "default_value": "<span style=\"background-color:red;color:black;border-radius: 4px;font-size:8mm;\">&#10159;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Action</font></span>"
+            },
+            {
+                "id": 26,
+                "name": "Tomorrow_Date",
+                "value": "{{arrow.utcnow().shift(hours=+24).timestamp}}",
+                "default_value": "{{arrow.utcnow().shift(hours=+24).timestamp}}"
             },
             {
                 "id": 10,
@@ -172,16 +167,8 @@
         ],
         "connectors": [
             {
-                "name": "File Content Extraction",
-                "apiName": "file-content-extraction"
-            },
-            {
                 "name": "Fortinet FortiGuard Threat Intelligence",
                 "apiName": "fortinet-fortiguard-threat-intelligence"
-            },
-            {
-                "name": "FortiSOAR SOC Simulator",
-                "apiName": "fortisoar-soc-simulator"
             },
             {
                 "name": "VirusTotal",
