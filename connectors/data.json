@@ -1,20 +1,5 @@
 [
     {
-        "name": "file-content-extraction",
-        "label": "File Content Extraction",
-        "category": "utilities",
-        "description": "Utility to Extract Text, Artifacts and Metadata from almost any file. Internet connectivity is required for the connector to download dependent packages",
-        "publisher": null,
-        "operation_roles": {
-            "extract_text": [],
-            "extract_indicators": [],
-            "get_backend_config": []
-        },
-        "configurations": [],
-        "dataImports": [],
-        "install_mode": "rpm"
-    },
-    {
         "name": "fortinet-fortiguard-threat-intelligence",
         "label": "Fortinet FortiGuard Threat Intelligence",
         "category": "Threat Intelligence",
@@ -25,25 +10,6 @@
             "get_threat_categories": [],
             "get_encyclopedia_lookup": [],
             "ingest_feeds": []
-        },
-        "configurations": [],
-        "dataImports": [],
-        "install_mode": "rpm"
-    },
-    {
-        "name": "fortisoar-soc-simulator",
-        "label": "FortiSOAR SOC Simulator",
-        "category": "information",
-        "description": "The FortiSOAR SOC Simulator connector is a special type of connector that is used to simulate a SOC environment. It creates various scenarios-based artifacts such as alerts, incidents, etc. in FortiSOAR\u2122",
-        "publisher": null,
-        "operation_roles": {
-            "bad_ip": [],
-            "bad_url": [],
-            "bad_filehash": [],
-            "bad_domain": [],
-            "replace_variables": [],
-            "malicious_file_indicator": [],
-            "create_simulated_alert": []
         },
         "configurations": [],
         "dataImports": [],
