@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "type": "solutionpack",
     "local": true,
+    "certified": "false",
     "label": "Phishing Incident Management",
     "dependencies": [
         {
