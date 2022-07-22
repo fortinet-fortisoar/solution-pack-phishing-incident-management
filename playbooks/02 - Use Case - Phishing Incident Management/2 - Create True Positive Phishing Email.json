@@ -42,6 +42,7 @@
             "top": "840",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "group": null,
             "uuid": "1fc649ff-06c5-4f26-901e-6c35d238d65a"
         },
         {
@@ -68,6 +69,7 @@
             "top": "705",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "group": null,
             "uuid": "4391a005-840b-4ea6-a1de-a3618998396b"
         },
         {
@@ -97,7 +99,22 @@
             "top": "435",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "group": null,
             "uuid": "54b09575-4a4f-4201-a3b9-6467ee031bb8"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Configuration",
+            "description": null,
+            "arguments": {
+                "mydomain": "fortielab.com"
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "5d929303-4fb5-4f45-bd8e-ff38cade0318"
         },
         {
             "@type": "WorkflowStep",
@@ -123,6 +140,7 @@
             "top": "30",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "group": null,
             "uuid": "71d8104a-d7ca-45b5-9855-a71c6258a819"
         },
         {
@@ -136,6 +154,7 @@
             "top": "1110",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
             "uuid": "90f5be64-4f50-4b0e-b796-14c5551f72e4"
         },
         {
@@ -149,6 +168,7 @@
             "top": "570",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
             "uuid": "c3cc8859-4439-4dc8-96ff-cde58fb7b05d"
         },
         {
@@ -182,6 +202,7 @@
             "top": "975",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/4c0019b2-055c-44d0-968c-678a0c2d762e",
+            "group": null,
             "uuid": "cc5135bc-f2e7-4d7d-a83d-0e683f6f0f97"
         },
         {
@@ -194,36 +215,51 @@
                 "params": {
                     "random": true
                 },
-                "version": "1.0.8",
+                "version": "2.0.0",
                 "connector": "fortisoar-soc-simulator",
                 "operation": "bad_url",
                 "operationTitle": "Fetch Malicious URL",
                 "pickFromTenant": false,
                 "step_variables": {
-                    "malicious_url": "{{vars.result.data}}"
+                    "malicious_url": "{%if 'https:\/\/' in vars.result.data or 'http:\/\/' in vars.result.data%}{{vars.result.data}}{%else%}https:\/\/{{vars.result.data}}{%endif%}"
                 }
             },
             "status": null,
             "top": "300",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "group": null,
             "uuid": "f9b28df6-9e9a-43ec-89df-6b19f591c974"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Configuration",
-            "description": null,
-            "arguments": {
-                "mydomain": "fortinet.com"
-            },
-            "status": null,
-            "top": "165",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "5d929303-4fb5-4f45-bd8e-ff38cade0318"
         }
     ],
     "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "True Positive Create Alert -> Link Attachment File",
+            "targetStep": "\/api\/3\/workflow_steps\/1fc649ff-06c5-4f26-901e-6c35d238d65a",
+            "sourceStep": "\/api\/3\/workflow_steps\/4391a005-840b-4ea6-a1de-a3618998396b",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "02d76312-d433-4349-9e94-758e50f8f5ef"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Configuration",
+            "targetStep": "\/api\/3\/workflow_steps\/5d929303-4fb5-4f45-bd8e-ff38cade0318",
+            "sourceStep": "\/api\/3\/workflow_steps\/71d8104a-d7ca-45b5-9855-a71c6258a819",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "04f017c8-743c-4863-ab70-40bd60f4ceee"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Notify Sender -> Data Output",
+            "targetStep": "\/api\/3\/workflow_steps\/90f5be64-4f50-4b0e-b796-14c5551f72e4",
+            "sourceStep": "\/api\/3\/workflow_steps\/cc5135bc-f2e7-4d7d-a83d-0e683f6f0f97",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "093dedba-fba9-4d2d-8e61-9b6ab3dbb0bc"
+        },
         {
             "@type": "WorkflowRoute",
             "name": "Get Attachment -> Malicious Email Data",
@@ -244,21 +280,12 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "True Positive Create Alert -> Link Attachment File",
-            "targetStep": "\/api\/3\/workflow_steps\/1fc649ff-06c5-4f26-901e-6c35d238d65a",
-            "sourceStep": "\/api\/3\/workflow_steps\/4391a005-840b-4ea6-a1de-a3618998396b",
+            "name": "Configuration -> Get Malicious URL",
+            "targetStep": "\/api\/3\/workflow_steps\/f9b28df6-9e9a-43ec-89df-6b19f591c974",
+            "sourceStep": "\/api\/3\/workflow_steps\/5d929303-4fb5-4f45-bd8e-ff38cade0318",
             "label": null,
             "isExecuted": false,
-            "uuid": "02d76312-d433-4349-9e94-758e50f8f5ef"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Notify Sender -> Data Output",
-            "targetStep": "\/api\/3\/workflow_steps\/90f5be64-4f50-4b0e-b796-14c5551f72e4",
-            "sourceStep": "\/api\/3\/workflow_steps\/cc5135bc-f2e7-4d7d-a83d-0e683f6f0f97",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "093dedba-fba9-4d2d-8e61-9b6ab3dbb0bc"
+            "uuid": "5564f042-0360-4d46-8cd9-a7e2dbe835ca"
         },
         {
             "@type": "WorkflowRoute",
@@ -277,26 +304,9 @@
             "label": null,
             "isExecuted": false,
             "uuid": "ffe7db5b-7429-43c2-a297-9c16329fa4f3"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Start -> Configuration",
-            "targetStep": "\/api\/3\/workflow_steps\/5d929303-4fb5-4f45-bd8e-ff38cade0318",
-            "sourceStep": "\/api\/3\/workflow_steps\/71d8104a-d7ca-45b5-9855-a71c6258a819",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "04f017c8-743c-4863-ab70-40bd60f4ceee"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Configuration -> Get Malicious URL",
-            "targetStep": "\/api\/3\/workflow_steps\/f9b28df6-9e9a-43ec-89df-6b19f591c974",
-            "sourceStep": "\/api\/3\/workflow_steps\/5d929303-4fb5-4f45-bd8e-ff38cade0318",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "5564f042-0360-4d46-8cd9-a7e2dbe835ca"
         }
     ],
+    "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
     "uuid": "bb5c924b-28b8-41c3-b41d-9152d8a78b7d",
     "owners": [],

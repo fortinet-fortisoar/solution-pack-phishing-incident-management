@@ -21,13 +21,14 @@
             "description": null,
             "arguments": {
                 "action": "<span style=\"background-color:red;color:black;border-radius: 4px;font-size:8mm;\">&#10159;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Action<\/font><\/span>",
-                "mydomain": "fortinet.com",
+                "mydomain": "fortielab.com",
                 "email_reporter": "asmith@fortielab.com"
             },
             "status": null,
             "top": "165",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
             "uuid": "93b03547-ded7-4cbc-88dd-97fa6f901b5f"
         },
         {
@@ -41,6 +42,7 @@
             "top": "300",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
             "uuid": "9b83d71b-64f6-4d96-ba75-eeecbca9fb1c"
         },
         {
@@ -64,6 +66,7 @@
             "top": "435",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "group": null,
             "uuid": "b2d96a4d-664c-4684-9d2d-192268d797a0"
         },
         {
@@ -77,6 +80,7 @@
             "top": "570",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
             "uuid": "de5a78bc-f533-42d0-8725-aecdbd727137"
         },
         {
@@ -103,6 +107,7 @@
             "top": "30",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "group": null,
             "uuid": "f132d010-d6df-41d1-80ca-532c48c18018"
         }
     ],
@@ -144,6 +149,7 @@
             "uuid": "347d3047-9b9d-4731-98bf-7a115f69d4cc"
         }
     ],
+    "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
     "uuid": "d896e0a9-63ea-402b-aa07-7017bde985e3",
     "owners": [],

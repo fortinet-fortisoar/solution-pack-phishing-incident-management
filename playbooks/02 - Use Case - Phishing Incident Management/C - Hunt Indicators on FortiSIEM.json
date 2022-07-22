@@ -17,6 +17,25 @@
     "steps": [
         {
             "@type": "WorkflowStep",
+            "name": "Hunt Indicator on FortiSIEM",
+            "description": null,
+            "arguments": {
+                "arguments": {
+                    "indicator_data": "{{vars.input.records[0]}}"
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/c0ebaeff-69fa-41b8-ad0a-52701d3f4c46"
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "group": null,
+            "uuid": "6aef8169-17ff-4dd2-a81e-b6ef3141b4a5"
+        },
+        {
+            "@type": "WorkflowStep",
             "name": "Start",
             "description": null,
             "arguments": {
@@ -56,25 +75,8 @@
             "top": "30",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "group": null,
             "uuid": "c1234151-3a97-4688-b1b8-d8817872815e"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Hunt Indicator on FortiSIEM",
-            "description": null,
-            "arguments": {
-                "arguments": {
-                    "indicator_data": "{{vars.input.records[0]}}"
-                },
-                "apply_async": false,
-                "step_variables": [],
-                "workflowReference": "\/api\/3\/workflows\/c0ebaeff-69fa-41b8-ad0a-52701d3f4c46"
-            },
-            "status": null,
-            "top": "165",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "6aef8169-17ff-4dd2-a81e-b6ef3141b4a5"
         }
     ],
     "routes": [
@@ -88,6 +90,7 @@
             "uuid": "b930a348-2443-4172-8caa-5f7c2950c81a"
         }
     ],
+    "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
     "uuid": "34991a82-7944-46fc-b3a5-afd16f58dc0c",
     "owners": [],

@@ -8,14 +8,14 @@
     {
         "id": 13,
         "name": "Excludelist_URLs",
-        "value": "https:\/\/www.google.com,https:\/\/mail.yahoo.com\/login.html,https:\/\/www.office.com\/",
+        "value": "https:\/\/www.google.com,https:\/\/mail.yahoo.com\/login.html,https:\/\/www.office.com\/,http:\/\/www.w3.org\/1999\/xhtml",
         "default_value": "https:\/\/www.google.com,https:\/\/mail.yahoo.com\/login.html,https:\/\/www.office.com\/"
     },
     {
         "id": 14,
         "name": "Excludelist_Domains",
-        "value": "google.com,yahoo.com,fortinet.net,cybersponse.com,gmail.com,outlook.com,microsoft.com,fortinet.com,twitter.com,facebook.com,linkedin.com,instagram.com,fortiguard.com,forticloud.comm,fortielab.com",
-        "default_value": "google.com,yahoo.com,fortinet.net,cybersponse.com,gmail.com,outlook.com,microsoft.com,fortinet.com,twitter.com,facebook.com,linkedin.com,instagram.com,fortiguard.com,forticloud.com"
+        "value": "google.com,yahoo.com,fortinet.net,cybersponse.com,gmail.com,outlook.com,microsoft.com,ndari.orange-sonatel.com,fortielab.com",
+        "default_value": "google.com,yahoo.com,fortinet.net,cybersponse.com,gmail.com,outlook.com,microsoft.com"
     },
     {
         "id": 20,
@@ -26,14 +26,8 @@
     {
         "id": 21,
         "name": "Excludelist_Hosts",
-        "value": "www.fortielab.com,NA",
+        "value": "www.w3.org,www.fortielab.com",
         "default_value": "www.fortielab.com"
-    },
-    {
-        "id": 26,
-        "name": "Tomorrow_Date",
-        "value": "{{arrow.utcnow().shift(hours=+24).timestamp}}",
-        "default_value": "{{arrow.utcnow().shift(hours=+24).timestamp}}"
     },
     {
         "id": 24,
@@ -48,15 +42,21 @@
         "default_value": "<span style=\"background-color:red;color:black;border-radius: 4px;font-size:8mm;\">&#10159;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Action<\/font><\/span>"
     },
     {
-        "id": 10,
-        "name": "Current_Date",
-        "value": "{{arrow.utcnow().timestamp}}",
-        "default_value": "{{arrow.utcnow().timestamp}}"
+        "id": 26,
+        "name": "Tomorrow_Date",
+        "value": "{{arrow.utcnow().shift(hours=+24).timestamp}}",
+        "default_value": "{{arrow.utcnow().shift(hours=+24).timestamp}}"
     },
     {
         "id": 22,
         "name": "Exclamation_Icon",
         "value": "<span style=\"color: red; font-size: 6mm;\">\u26a0<\/span>",
         "default_value": "<span style=\"color: red; font-size: 6mm;\">\u26a0<\/span>"
+    },
+    {
+        "id": 10,
+        "name": "Current_Date",
+        "value": "{{arrow.utcnow().timestamp}}",
+        "default_value": "{{arrow.utcnow().timestamp}}"
     }
 ]

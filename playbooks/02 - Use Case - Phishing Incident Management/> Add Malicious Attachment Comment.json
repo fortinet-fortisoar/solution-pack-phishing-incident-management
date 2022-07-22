@@ -1,0 +1,160 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "> Add Malicious Attachment Comment",
+    "aliasName": null,
+    "tag": null,
+    "description": null,
+    "isActive": true,
+    "debug": true,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "collection": "\/api\/3\/workflow_collections\/c1ca92eb-8ec4-4dba-9a3d-156bf0a1abc2",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/f4222a03-40e9-475b-8fc5-aaf5bba6a4c1",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Add Guiding Comment",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                    "people": [],
+                    "content": "<p>{{vars.action}} if the case is confirmed <strong>True Positive<\/strong> browse to <span style=\"font-size: 12pt;\"><strong>Incident <\/strong><span style=\"font-size: 10pt;\">module, set the <span style=\"text-decoration: underline;\">Phase<\/span> to <span style=\"font-size: 12pt;\"><strong>&lt; Containment &gt; <\/strong><\/span>and use the<\/span><strong> <\/strong><strong>Execute <\/strong><span style=\"font-size: 10pt;\">button <\/span><\/span>to run the containment <span style=\"text-decoration: underline;\">Playbook<\/span> <span style=\"font-size: 12pt;\"><strong>&lt; Phishing Incident Response &gt;&nbsp;<\/strong><\/span><\/p>",
+                    "__replace": "",
+                    "incidents": "{{vars.incident_iri}}",
+                    "indicators": "{{vars.input.records[0]['@id']}}",
+                    "isImportant": false,
+                    "peopleUpdated": false
+                },
+                "_showJson": false,
+                "operation": "Overwrite",
+                "collection": "\/api\/3\/comments",
+                "__recommend": [],
+                "fieldOperation": {
+                    "recordTags": "Overwrite"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "300",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
+            "group": null,
+            "uuid": "4b99a4c1-62ce-4ff1-818b-af5bc5e80eb9"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Related Incident Data",
+            "description": null,
+            "arguments": {
+                "incident_iri": "{%set raw_data=(vars.input.records[0]['@id']+\"\/incidents?&__selectFields=name\")|fromIRI%}{{raw_data[\"hydra:member\"][0][\"@id\"]}}"
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "c42c649c-44e6-4305-bd5b-7866e0c32e93"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "resource": "indicators",
+                "resources": [
+                    "indicators"
+                ],
+                "step_variables": {
+                    "input": {
+                        "params": [],
+                        "records": [
+                            "{{vars.input.records[0]}}"
+                        ]
+                    },
+                    "action": "<span style=\"background-color:red;color:black;border-radius: 4px;font-size:8mm;\">&#10159;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Action<\/font><\/span>"
+                },
+                "fieldbasedtrigger": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "object",
+                            "field": "typeofindicator",
+                            "value": "\/api\/3\/picklists\/0162241b-f5bf-4917-a150-00e920be47bd",
+                            "_value": {
+                                "@id": "\/api\/3\/picklists\/0162241b-f5bf-4917-a150-00e920be47bd",
+                                "itemValue": "File"
+                            },
+                            "operator": "eq"
+                        },
+                        {
+                            "type": "primitive",
+                            "field": "file",
+                            "value": "false",
+                            "operator": "isnull",
+                            "_operator": "isnull"
+                        },
+                        {
+                            "type": "datetime",
+                            "field": "modifyDate",
+                            "value": null,
+                            "operator": "changed"
+                        },
+                        {
+                            "type": "object",
+                            "field": "reputation",
+                            "value": "\/api\/3\/picklists\/7074e547-7785-4979-be32-c6d0c863e4bd",
+                            "_value": {
+                                "@id": "\/api\/3\/picklists\/7074e547-7785-4979-be32-c6d0c863e4bd",
+                                "display": "Malicious",
+                                "itemValue": "Malicious"
+                            },
+                            "operator": "eq"
+                        }
+                    ]
+                }
+            },
+            "status": null,
+            "top": "30",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/9300bf69-5063-486d-b3a6-47eb9da24872",
+            "group": null,
+            "uuid": "f4222a03-40e9-475b-8fc5-aaf5bba6a4c1"
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Related Incident Data -> Add Guiding Comment",
+            "targetStep": "\/api\/3\/workflow_steps\/4b99a4c1-62ce-4ff1-818b-af5bc5e80eb9",
+            "sourceStep": "\/api\/3\/workflow_steps\/c42c649c-44e6-4305-bd5b-7866e0c32e93",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "b78ee10f-e2b7-4db7-9cc9-b416cd0cedc6"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Get Related Incident Data",
+            "targetStep": "\/api\/3\/workflow_steps\/c42c649c-44e6-4305-bd5b-7866e0c32e93",
+            "sourceStep": "\/api\/3\/workflow_steps\/f4222a03-40e9-475b-8fc5-aaf5bba6a4c1",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "0b25aa4e-5a9a-4441-a031-eebf3cb38460"
+        }
+    ],
+    "groups": [],
+    "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "uuid": "24fb7931-499f-452f-b5db-c9c5e40e8f98",
+    "owners": [],
+    "isPrivate": false,
+    "deletedAt": null,
+    "recordTags": [
+        "Comments"
+    ]
+}
