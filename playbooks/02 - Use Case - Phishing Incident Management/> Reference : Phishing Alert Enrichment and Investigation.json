@@ -376,7 +376,7 @@
                 "external_email": "<p><span style=\"background-color:red;color:white;font-weight:bold; border: 1px solid; padding: 5px; box-shadow: 0px 2px 8px red;\">External Email<\/span><\/p>",
                 "internal_email": "<p><span style=\"background-color:green;color:white;font-weight:bold; border: 1px solid; padding: 5px; box-shadow: 0px 2px 8px green;\">Internal Email<\/span><\/p>",
                 "mitre_attack_id": "T1598.002",
-                "alert_description": "{}"
+                "alert_description": "{'Email Sender':'None'}"
             },
             "status": null,
             "top": "165",
