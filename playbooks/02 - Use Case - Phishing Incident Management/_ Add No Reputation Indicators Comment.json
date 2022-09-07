@@ -54,6 +54,7 @@
             "top": "165",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
+            "group": null,
             "uuid": "24c0c8c4-cea5-4a66-b58e-816282822865"
         },
         {
@@ -137,6 +138,7 @@
             "top": "30",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/9300bf69-5063-486d-b3a6-47eb9da24872",
+            "group": null,
             "uuid": "cf11345e-cd7a-43f4-917e-d52987e52b6a"
         }
     ],
@@ -151,6 +153,7 @@
             "uuid": "248657a4-38a3-4a6b-b4f1-35ad3390d28a"
         }
     ],
+    "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
     "uuid": "5505be4b-0265-45f0-a9cb-11d455e87cda",
     "owners": [],

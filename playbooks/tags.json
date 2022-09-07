@@ -1,18 +1,18 @@
 [
+    "Threat_Hunting",
     "IncidentResponse",
+    "Automation",
+    "Comments",
+    "Parsing",
+    "Investigation",
     "Remediation",
-    "Use-Case",
-    "FortiSOAR SOC Simulator",
     "Phishing",
     "Escalation",
     "Utility",
-    "Threat_Hunting",
-    "Comments",
-    "Subroutine",
-    "Demo_Data",
+    "Use-Case",
     "ManualAction",
     "Enrichment",
-    "Parsing",
-    "Investigation",
-    "Automation"
+    "Subroutine",
+    "Demo_Data",
+    "FortiSOAR SOC Simulator"
 ]

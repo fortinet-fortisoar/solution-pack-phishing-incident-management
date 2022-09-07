@@ -21,22 +21,11 @@
             "description": null,
             "arguments": {
                 "resource": {
-                    "type": {
-                        "id": 248,
-                        "@id": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
-                        "icon": null,
-                        "uuid": "ff599189-3eeb-4c86-acb0-a7915e85ac3b",
-                        "@type": "Picklist",
-                        "color": null,
-                        "display": "Comment",
-                        "@context": "\/api\/3\/contexts\/Picklist",
-                        "listName": "\/api\/3\/picklist_names\/0841c1eb-a0a3-4abd-b29c-9f68e4d9b14f",
-                        "itemValue": "Comment",
-                        "orderIndex": 1
-                    },
+                    "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "people": [],
                     "content": "<p>{{vars.action}} if the case is confirmed <strong>True Positive<\/strong> browse to <span style=\"font-size: 12pt;\"><strong>Incident <\/strong><span style=\"font-size: 10pt;\">module, set the <span style=\"text-decoration: underline;\">Phase<\/span> to <span style=\"font-size: 12pt;\"><strong>&lt; Containment &gt; <\/strong><\/span>and use the<\/span><strong> <\/strong><strong>Execute <\/strong><span style=\"font-size: 10pt;\">button <\/span><\/span>to run the containment <span style=\"text-decoration: underline;\">Playbook<\/span> <span style=\"font-size: 12pt;\"><strong>&lt; Phishing Incident Response &gt;&nbsp;<\/strong><\/span><\/p>",
                     "__replace": "",
+                    "incidents": "{{vars.incident_iri}}",
                     "indicators": "{{vars.input.records[0]['@id']}}",
                     "isImportant": false,
                     "peopleUpdated": false
@@ -51,10 +40,25 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "165",
+            "top": "300",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
+            "group": null,
             "uuid": "4b99a4c1-62ce-4ff1-818b-af5bc5e80eb9"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Related Incident Data",
+            "description": null,
+            "arguments": {
+                "incident_iri": "{%set raw_data=(vars.input.records[0]['@id']+\"\/incidents?&__selectFields=name\")|fromIRI%}{{raw_data[\"hydra:member\"][0][\"@id\"]}}"
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "c42c649c-44e6-4305-bd5b-7866e0c32e93"
         },
         {
             "@type": "WorkflowStep",
@@ -120,20 +124,31 @@
             "top": "30",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/9300bf69-5063-486d-b3a6-47eb9da24872",
+            "group": null,
             "uuid": "f4222a03-40e9-475b-8fc5-aaf5bba6a4c1"
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Start -> Add Guiding Comment",
+            "name": "Get Related Incident Data -> Add Guiding Comment",
             "targetStep": "\/api\/3\/workflow_steps\/4b99a4c1-62ce-4ff1-818b-af5bc5e80eb9",
+            "sourceStep": "\/api\/3\/workflow_steps\/c42c649c-44e6-4305-bd5b-7866e0c32e93",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "b78ee10f-e2b7-4db7-9cc9-b416cd0cedc6"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Get Related Incident Data",
+            "targetStep": "\/api\/3\/workflow_steps\/c42c649c-44e6-4305-bd5b-7866e0c32e93",
             "sourceStep": "\/api\/3\/workflow_steps\/f4222a03-40e9-475b-8fc5-aaf5bba6a4c1",
             "label": null,
             "isExecuted": false,
-            "uuid": "4b770a1b-f314-401e-b7be-c23ae2352522"
+            "uuid": "0b25aa4e-5a9a-4441-a031-eebf3cb38460"
         }
     ],
+    "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
     "uuid": "24fb7931-499f-452f-b5db-c9c5e40e8f98",
     "owners": [],
