@@ -161,15 +161,6 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Search Target Inbox -> Copy  of Compute Message IDs",
-            "targetStep": "\/api\/3\/workflow_steps\/35a49175-9446-4fc9-be93-a263d903ec47",
-            "sourceStep": "\/api\/3\/workflow_steps\/4790e98b-bfd2-4b81-9360-74237a141e9f",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "66ba6017-cdde-414b-81ae-1d4abd38025f"
-        },
-        {
-            "@type": "WorkflowRoute",
             "name": "Compute Message IDs -> Move to trash",
             "targetStep": "\/api\/3\/workflow_steps\/2ef6b8ab-1d86-4a3b-8087-93308d06854d",
             "sourceStep": "\/api\/3\/workflow_steps\/1dfdbad3-bb4b-4b17-82de-25c57147cc6a",
@@ -179,12 +170,21 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Copy  of Compute Message IDs -> Compute Message IDs",
-            "targetStep": "\/api\/3\/workflow_steps\/1dfdbad3-bb4b-4b17-82de-25c57147cc6a",
-            "sourceStep": "\/api\/3\/workflow_steps\/35a49175-9446-4fc9-be93-a263d903ec47",
+            "name": "Search Target Inbox -> Copy  of Compute Message IDs",
+            "targetStep": "\/api\/3\/workflow_steps\/35a49175-9446-4fc9-be93-a263d903ec47",
+            "sourceStep": "\/api\/3\/workflow_steps\/4790e98b-bfd2-4b81-9360-74237a141e9f",
             "label": null,
             "isExecuted": false,
-            "uuid": "d5c56d3a-1e84-4596-9739-7f47d47642bb"
+            "uuid": "66ba6017-cdde-414b-81ae-1d4abd38025f"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Email Address -> Search Target Inbox",
+            "targetStep": "\/api\/3\/workflow_steps\/4790e98b-bfd2-4b81-9360-74237a141e9f",
+            "sourceStep": "\/api\/3\/workflow_steps\/9d6217b1-a347-4a2c-8b88-e098848c62f6",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "7ab04e7f-6ed1-4546-a67d-08ca5b435821"
         },
         {
             "@type": "WorkflowRoute",
@@ -197,12 +197,12 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Get Email Address -> Search Target Inbox",
-            "targetStep": "\/api\/3\/workflow_steps\/4790e98b-bfd2-4b81-9360-74237a141e9f",
-            "sourceStep": "\/api\/3\/workflow_steps\/9d6217b1-a347-4a2c-8b88-e098848c62f6",
+            "name": "Copy  of Compute Message IDs -> Compute Message IDs",
+            "targetStep": "\/api\/3\/workflow_steps\/1dfdbad3-bb4b-4b17-82de-25c57147cc6a",
+            "sourceStep": "\/api\/3\/workflow_steps\/35a49175-9446-4fc9-be93-a263d903ec47",
             "label": null,
             "isExecuted": false,
-            "uuid": "7ab04e7f-6ed1-4546-a67d-08ca5b435821"
+            "uuid": "d5c56d3a-1e84-4596-9739-7f47d47642bb"
         }
     ],
     "groups": [],

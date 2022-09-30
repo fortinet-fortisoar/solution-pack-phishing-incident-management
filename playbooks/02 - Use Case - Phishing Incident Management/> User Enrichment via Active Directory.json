@@ -196,21 +196,21 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
+            "name": "Compute Results -> Update User",
+            "targetStep": "\/api\/3\/workflow_steps\/d97d1a2c-3f5d-4754-9022-2e0db8504915",
+            "sourceStep": "\/api\/3\/workflow_steps\/f74e5d27-84f5-467c-b2ec-fcee50040a16",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "140c6a50-cf88-4d6a-ba74-aea778e2499a"
+        },
+        {
+            "@type": "WorkflowRoute",
             "name": "Get User Attributes -> Get Manager Attributes",
             "targetStep": "\/api\/3\/workflow_steps\/eb496204-4c41-4705-b5c4-8ccc375d1383",
             "sourceStep": "\/api\/3\/workflow_steps\/94fcde62-e30c-4268-a901-e089acc089b1",
             "label": null,
             "isExecuted": false,
             "uuid": "1f31afc9-9952-4cdd-a64e-7b617d437e4d"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Get User Attributes -> Compute Results",
-            "targetStep": "\/api\/3\/workflow_steps\/f74e5d27-84f5-467c-b2ec-fcee50040a16",
-            "sourceStep": "\/api\/3\/workflow_steps\/94fcde62-e30c-4268-a901-e089acc089b1",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "8c7ee533-5bcc-440f-b306-57d43e9ba78d"
         },
         {
             "@type": "WorkflowRoute",
@@ -223,12 +223,12 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Compute Results -> Update User",
-            "targetStep": "\/api\/3\/workflow_steps\/d97d1a2c-3f5d-4754-9022-2e0db8504915",
-            "sourceStep": "\/api\/3\/workflow_steps\/f74e5d27-84f5-467c-b2ec-fcee50040a16",
+            "name": "Get User Attributes -> Compute Results",
+            "targetStep": "\/api\/3\/workflow_steps\/f74e5d27-84f5-467c-b2ec-fcee50040a16",
+            "sourceStep": "\/api\/3\/workflow_steps\/94fcde62-e30c-4268-a901-e089acc089b1",
             "label": null,
             "isExecuted": false,
-            "uuid": "140c6a50-cf88-4d6a-ba74-aea778e2499a"
+            "uuid": "8c7ee533-5bcc-440f-b306-57d43e9ba78d"
         },
         {
             "@type": "WorkflowRoute",

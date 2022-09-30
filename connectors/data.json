@@ -5,12 +5,7 @@
         "category": "Threat Intelligence",
         "description": "FortiGuard Threat Intelligence is the global threat intelligence and research organization at Fortinet. This connector facilitates automated operations to check IP, URL, Domain and File Hash Lookup\u2019s and ingestion of daily threat feeds.<br\/><br\/>This connector has a dependency on the <a href=\"\/content-hub\/all-content\/?contentType=solutionpack&amp;tag=ThreatIntelManagement\" target=\"_blank\" rel=\"noopener\">Threat Intel Management Solution Pack<\/a>. Install the Solution Pack before enabling ingestion of Threat Feeds from this source.",
         "publisher": null,
-        "operation_roles": {
-            "threat_intel_search": [],
-            "get_threat_categories": [],
-            "get_encyclopedia_lookup": [],
-            "ingest_feeds": []
-        },
+        "operation_roles": [],
         "configurations": [],
         "dataImports": [],
         "install_mode": "rpm"
@@ -21,20 +16,7 @@
         "category": "Sandbox",
         "description": "VirusTotal provides a service that analyzes suspicious files and URLs and facilitates the quick detection of viruses, worms, trojans, and all kinds of malware. This connector facilitates automated operations such as scanning and analyzing suspicious files and URLs and retrieving reports from VirusTotal for files, IP addresses, and domains.",
         "publisher": null,
-        "operation_roles": {
-            "upload_sample": [],
-            "scan_url": [],
-            "query_ip": [],
-            "query_domain": [],
-            "query_url": [],
-            "file_reputation": [],
-            "analysis_file": [],
-            "custom_endpoint": [],
-            "get_output_schema_ip": [],
-            "get_output_schema_domain": [],
-            "get_output_schema_url": [],
-            "get_output_schema_file": []
-        },
+        "operation_roles": [],
         "configurations": [],
         "dataImports": [],
         "install_mode": "rpm"

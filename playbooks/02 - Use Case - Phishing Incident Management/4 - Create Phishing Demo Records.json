@@ -174,12 +174,12 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Start -> Copy of Config",
-            "targetStep": "\/api\/3\/workflow_steps\/65002523-48b2-41b4-be56-0da8adf2394a",
-            "sourceStep": "\/api\/3\/workflow_steps\/9bd94b52-56e5-43dc-b6ec-5b951d585747",
+            "name": "Config -> INSERT Incident",
+            "targetStep": "\/api\/3\/workflow_steps\/049f3634-d975-4ea6-8141-ca329e427cdb",
+            "sourceStep": "\/api\/3\/workflow_steps\/65002523-48b2-41b4-be56-0da8adf2394a",
             "label": null,
             "isExecuted": false,
-            "uuid": "cd38a396-d8c9-4380-b4cb-b2acde2bc1c3"
+            "uuid": "1aa94129-7be3-4b98-8411-29731f64a2fb"
         },
         {
             "@type": "WorkflowRoute",
@@ -192,12 +192,12 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Config -> INSERT Incident",
-            "targetStep": "\/api\/3\/workflow_steps\/049f3634-d975-4ea6-8141-ca329e427cdb",
-            "sourceStep": "\/api\/3\/workflow_steps\/65002523-48b2-41b4-be56-0da8adf2394a",
+            "name": "Start -> Copy of Config",
+            "targetStep": "\/api\/3\/workflow_steps\/65002523-48b2-41b4-be56-0da8adf2394a",
+            "sourceStep": "\/api\/3\/workflow_steps\/9bd94b52-56e5-43dc-b6ec-5b951d585747",
             "label": null,
             "isExecuted": false,
-            "uuid": "1aa94129-7be3-4b98-8411-29731f64a2fb"
+            "uuid": "cd38a396-d8c9-4380-b4cb-b2acde2bc1c3"
         }
     ],
     "groups": [],
