@@ -50,6 +50,28 @@
     "fsrMinCompatibility": "7.2.1",
     "date": "2022-07-04T11:04:50+00:00",
     "contents": {
+        "modules": {
+            "users": {
+                "name": "Users",
+                "apiName": "users"
+            }
+        },
+        "viewTemplates": {
+            "users": {
+                "name": "Users",
+                "apiName": "users",
+                "views": [
+                    "list",
+                    "detail",
+                    "form"
+                ]
+            }
+        },
+        "roles": [
+            {
+                "name": "Full App Permissions"
+            }
+        ],
         "playbooks": [
             {
                 "name": "02 - Use Case - Phishing Incident Management"

@@ -63,8 +63,7 @@
 | > Phishing Incident Management - Fully Automated          | Manage incidents in a fully automated manner                                               |
 | > Phishing Incident Response                              | Tracks affected mailboxes and neutralizes the malicious content                            |
 | > Quarantine Infected Asset                               | Block Infected Asset on FortiGate                                                          |
-| > Subroutine: Create or Link Recipient User               | Creates or link alert related users                                                        |
-| > Subroutine: Escalate Alert to Incident                  | Copy alert content to incident                                                             |
-| > Subroutine: Track and Delete Phishing Emails            | Delete malicious content from Mailboxes                                                    |
+| > Create or Link Recipient User                           | Creates or link alert related users                                                        |
+| > Escalate Alert to Incident                              | Copy alert content to incident                                                             |
+| > Track and Delete Phishing Emails                        | Delete malicious content from Mailboxes                                                    |
 | > User Enrichment via Active Directory                    | Fetches user data from AD                                                                  |
-| \<Utility> Delete All Records                             | Erase all data from DB                                                                     |

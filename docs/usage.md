@@ -58,7 +58,7 @@ In case the alert is escalated, it appears as an incident for the next-level SOC
 2. As a next-tier analyst start the Incident Management by setting the incident status to **In Progress** and its phase status to **Confirmation**.
 3. Browse to the **Indicators** tab and review the malicious indicators.
 4. Users' Active Directory details can be found at **Correlations >  Users**.
-5. Open the file Attachment indicator and set its reputation based on the file content displayed in the **File Preview**.
+5. Open the file Attachment indicator and set its reputation based on the file content displayed in the description of the indicator.
 6. Identify the indicator risk and set the Reputation to **Malicious**, if required.
 7. Set the Phase to **Eradication** and use the **Execute** button to run the remediation Playbook **Phishing Incident Response**.
     - Notice how the email sender is blocked on the email gateway and the phishing email is deleted from all recipients mailboxes.
@@ -90,6 +90,6 @@ Select **3 - Create True Positive Phishing Email - Fully Automated** to create a
 
 The following helps you experience the Dashboard interface.
 
-1. Navigate to **Automation > Playbooks > 12 - Solution Pack Advanced Phishing**.
-2. Run the playbook **E - Generate Demo Records** to populate the system with demo records useful for this step.
+1. Navigate to **Incident Response > Alerts** or **Incident Response > Incidents**.
+2. Click **Execute > 4 - Create Phishing Demo Records** to populate the system with demo records useful for this step.
 3. Browse to **Dashboard** and select **Phishing Case Management**.

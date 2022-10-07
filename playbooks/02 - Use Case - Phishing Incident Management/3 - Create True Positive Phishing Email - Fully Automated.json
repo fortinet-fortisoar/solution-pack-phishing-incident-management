@@ -368,15 +368,6 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Wait for Indicators Extraction -> Phishing Investigation",
-            "targetStep": "\/api\/3\/workflow_steps\/35d7286a-4cae-40c2-9fa0-61f82b053cac",
-            "sourceStep": "\/api\/3\/workflow_steps\/12323b80-7532-4d82-9868-b26ec6fb285c",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "2b02805f-b90b-45f1-9f89-a3419f7823e0"
-        },
-        {
-            "@type": "WorkflowRoute",
             "name": "Get Attachment -> Malicious Email Data",
             "targetStep": "\/api\/3\/workflow_steps\/8bb13683-8843-44b1-93f3-fcdbe5199999",
             "sourceStep": "\/api\/3\/workflow_steps\/c58ef89f-f9c8-43f2-8744-016ea055454c",
@@ -440,6 +431,15 @@
         },
         {
             "@type": "WorkflowRoute",
+            "name": "True Positive Create Alert -> Link Attachment File",
+            "targetStep": "\/api\/3\/workflow_steps\/bc0565e8-da86-435d-8941-2c313d0b80f3",
+            "sourceStep": "\/api\/3\/workflow_steps\/49df7f66-af4f-494d-8e43-72ec62739810",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "f20bed2d-3630-40fd-a5ba-f682c508fe1d"
+        },
+        {
+            "@type": "WorkflowRoute",
             "name": "Notify Sender -> Wait for Indicators Extraction",
             "targetStep": "\/api\/3\/workflow_steps\/12323b80-7532-4d82-9868-b26ec6fb285c",
             "sourceStep": "\/api\/3\/workflow_steps\/78a42f7e-d49f-450d-b055-2a8bf0150b7e",
@@ -449,12 +449,12 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "True Positive Create Alert -> Link Attachment File",
-            "targetStep": "\/api\/3\/workflow_steps\/bc0565e8-da86-435d-8941-2c313d0b80f3",
-            "sourceStep": "\/api\/3\/workflow_steps\/49df7f66-af4f-494d-8e43-72ec62739810",
+            "name": "Wait for Indicators Extraction -> Phishing Investigation",
+            "targetStep": "\/api\/3\/workflow_steps\/35d7286a-4cae-40c2-9fa0-61f82b053cac",
+            "sourceStep": "\/api\/3\/workflow_steps\/12323b80-7532-4d82-9868-b26ec6fb285c",
             "label": null,
             "isExecuted": false,
-            "uuid": "f20bed2d-3630-40fd-a5ba-f682c508fe1d"
+            "uuid": "2b02805f-b90b-45f1-9f89-a3419f7823e0"
         }
     ],
     "groups": [],

@@ -9,16 +9,5 @@
         "configurations": [],
         "dataImports": [],
         "install_mode": "rpm"
-    },
-    {
-        "name": "virustotal",
-        "label": "VirusTotal",
-        "category": "Sandbox",
-        "description": "VirusTotal provides a service that analyzes suspicious files and URLs and facilitates the quick detection of viruses, worms, trojans, and all kinds of malware. This connector facilitates automated operations such as scanning and analyzing suspicious files and URLs and retrieving reports from VirusTotal for files, IP addresses, and domains.",
-        "publisher": null,
-        "operation_roles": [],
-        "configurations": [],
-        "dataImports": [],
-        "install_mode": "rpm"
     }
 ]
