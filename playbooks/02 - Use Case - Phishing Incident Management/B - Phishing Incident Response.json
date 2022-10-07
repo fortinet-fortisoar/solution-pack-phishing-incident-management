@@ -6,7 +6,7 @@
     "tag": null,
     "description": "Tracks affected mailboxes and neutralizes the malicious content",
     "isActive": true,
-    "debug": true,
+    "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [

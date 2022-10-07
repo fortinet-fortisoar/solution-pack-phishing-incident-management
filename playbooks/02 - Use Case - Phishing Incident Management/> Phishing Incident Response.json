@@ -6,7 +6,7 @@
     "tag": null,
     "description": "Tracks affected mailboxes and neutralize the malicious content",
     "isActive": true,
-    "debug": true,
+    "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [
@@ -144,10 +144,10 @@
             "name": "Get Alert Attributes",
             "description": null,
             "arguments": {
-                "source_data": "{{vars.incident_data.sourcedata|toDict}}",
-                "email_sender": "{{vars.incident_data.senderEmailAddress}}",
-                "email_recipients": "{{vars.incident_data.receipientEmailAddress.split(', ')}}",
-                "indicators_reputation_iri": "{{ vars.incident_data.indicators|json_query(\"[].reputation\") }}"
+                "source_data": "{% if vars.incident_data.sourcedata %}{{vars.incident_data.sourcedata|toDict}}{% endif %}",
+                "email_sender": "{% if vars.incident_data.senderEmailAddress %}{{vars.incident_data.senderEmailAddress}}{% endif %}",
+                "email_recipients": "{% if vars.incident_data.receipientEmailAddress %}{{vars.incident_data.receipientEmailAddress.split(', ')}}{% endif %}",
+                "indicators_reputation_iri": "{% if vars.incident_data.indicators | length > 0 %}{{ vars.incident_data.indicators|json_query(\"[].reputation\") }}{% endif %}"
             },
             "status": null,
             "top": "300",
@@ -235,7 +235,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "160",
+            "top": "165",
             "left": "300",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
@@ -278,14 +278,15 @@
                     "tags": [],
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
-                    "content": "<ul>\n<li>Email recipients <span style=\"font-size: 12pt;\"><strong>&lt; notified &gt;<\/strong><\/span><\/li>\n<li><span style=\"letter-spacing: 0.76px;\">Email blocked on the secure email gateway<\/span><\/li>\n<li><span style=\"letter-spacing: 0.76px;\">Received email will be <span style=\"font-size: 12pt;\"><span class=\"badge badge-pill badge-danger\" style=\"background: #e31b1d; color: #fff;\">Deleted<\/span><\/span>&nbsp;(moved to Trash).<\/span><\/li>\n<\/ul>",
+                    "content": "<ul>\n<li>Email recipients <span style=\"font-size: 12pt;\"><strong>&lt; notified &gt;<\/strong><\/span><\/li>\n<li><span style=\"letter-spacing: 0.76px;\">Email blocked on the secure email gateway<\/span><\/li>\n<li><span style=\"letter-spacing: 0.76px;\">Received email will be <span style=\"font-size: 12pt;\"><span style=\"background: #e31b1d; color: #fff;\" class=\"badge badge-pill badge-danger\">Deleted<\/span><\/span>&nbsp;(moved to Trash).<\/span><\/li>\n<\/ul>",
                     "records": ""
                 },
-                "version": "2.4.2",
+                "version": "2.4.4",
                 "from_str": "admin@example.com",
                 "connector": "smtp",
                 "operation": "send_email_new",
                 "mock_result": "{\n  \"data\": null,\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
+                "ignore_errors": true,
                 "operationTitle": "Send Email",
                 "step_variables": []
             },
@@ -374,15 +375,6 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Notify Recipients -> Delete Phishing Emails",
-            "targetStep": "\/api\/3\/workflow_steps\/9e771305-6952-45ee-a996-019ebdf8f02e",
-            "sourceStep": "\/api\/3\/workflow_steps\/d8e5b7bf-b3d6-4d51-9f37-b141b7bfbdcb",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "0c0104b6-6772-41ff-8a9e-fc0c3c75536d"
-        },
-        {
-            "@type": "WorkflowRoute",
             "name": "Get Alert Attributes -> Get Indicators Reputation",
             "targetStep": "\/api\/3\/workflow_steps\/d4c2579e-5ede-4471-91a4-59e7454259b4",
             "sourceStep": "\/api\/3\/workflow_steps\/aa14ea33-9d9e-4e49-9eec-f9558f36b65b",
@@ -401,6 +393,24 @@
         },
         {
             "@type": "WorkflowRoute",
+            "name": "Block Email Sender -> Notify Recipients",
+            "targetStep": "\/api\/3\/workflow_steps\/d8e5b7bf-b3d6-4d51-9f37-b141b7bfbdcb",
+            "sourceStep": "\/api\/3\/workflow_steps\/64e861b8-0764-4e77-bba3-7952225ec234",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "59eaff76-45ca-4368-b014-01c8d537ed42"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Notify Recipients -> Delete Phishing Emails",
+            "targetStep": "\/api\/3\/workflow_steps\/9e771305-6952-45ee-a996-019ebdf8f02e",
+            "sourceStep": "\/api\/3\/workflow_steps\/d8e5b7bf-b3d6-4d51-9f37-b141b7bfbdcb",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "71c8f517-d74b-4129-ae2c-ba53e273c017"
+        },
+        {
+            "@type": "WorkflowRoute",
             "name": "Update Incident Phase -> Get Alert Attributes",
             "targetStep": "\/api\/3\/workflow_steps\/aa14ea33-9d9e-4e49-9eec-f9558f36b65b",
             "sourceStep": "\/api\/3\/workflow_steps\/c325af6f-e014-47eb-8223-c3255b312d60",
@@ -416,15 +426,6 @@
             "label": null,
             "isExecuted": false,
             "uuid": "7e7527e7-b96d-4132-bb0c-c3ebb8385885"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Block Email Sender -> Notify Recipients",
-            "targetStep": "\/api\/3\/workflow_steps\/d8e5b7bf-b3d6-4d51-9f37-b141b7bfbdcb",
-            "sourceStep": "\/api\/3\/workflow_steps\/64e861b8-0764-4e77-bba3-7952225ec234",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "9ed870c0-a2f7-4bc4-9280-5c4de975de7d"
         },
         {
             "@type": "WorkflowRoute",

@@ -35,7 +35,7 @@
             "minVersion": null
         }
     ],
-    "prerequisite": "- Configure Connector: SOC Simulator\n- Configure Connector: Fortinet FortiGuard Threat Intelligence\n- Configure Connector: VirusTotal\n- Configure Connector: File Content Extraction",
+    "prerequisite": "- Configure Connector: SOC Simulator\n- Configure Connector: Fortinet FortiGuard Threat Intelligence\n- Configure Connector: VirusTotal\n- Configure Connector: File Content Extraction\n- Configure Connector: Microsoft Active Directory",
     "publisher": "Fortinet CSE",
     "description": "Scripted simulation where a series of automation workflows guide your investigation via the workspace comments. Comments tagged as *Actions* represent the tasks the analyst must do. *Hints* are simply suggestions",
     "help": "https://github.com/fortinet-fortisoar/solution-pack-phishing-incident-management/blob/release/1.0.0/README.md",
@@ -47,7 +47,7 @@
     "recordTags": [
         "Phishing"
     ],
-    "fsrMinCompatibility": "7.2.1",
+    "fsrMinCompatibility": "7.2.2",
     "date": "2022-07-04T11:04:50+00:00",
     "contents": {
         "modules": {
@@ -85,10 +85,10 @@
                 "default_value": "<span style=\"background-color:red;color:black;border-radius: 4px;font-size:8mm;\">&#10159;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Action</font></span>"
             },
             {
-                "id": 16,
-                "name": "Demo_mode",
-                "value": "false",
-                "default_value": "false"
+                "id": 50,
+                "name": "Tomorrow_Date",
+                "value": "{{arrow.utcnow().shift(hours=+24).timestamp}}",
+                "default_value": "{{arrow.utcnow().shift(hours=+24).timestamp}}"
             },
             {
                 "id": 25,
@@ -118,10 +118,6 @@
             {
                 "name": "Fortinet FortiGuard Threat Intelligence",
                 "apiName": "fortinet-fortiguard-threat-intelligence"
-            },
-            {
-                "name": "VirusTotal",
-                "apiName": "virustotal"
             }
         ],
         "recordSets": [

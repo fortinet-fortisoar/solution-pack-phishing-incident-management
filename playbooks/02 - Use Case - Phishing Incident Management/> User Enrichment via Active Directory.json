@@ -6,7 +6,7 @@
     "tag": null,
     "description": "Fetches user data from AD",
     "isActive": true,
-    "debug": true,
+    "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],
@@ -42,8 +42,8 @@
                 }
             },
             "status": null,
-            "top": "20",
-            "left": "120",
+            "top": "30",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/ea155646-3821-4542-9702-b246da430a8d",
             "group": null,
             "uuid": "4d8ceda9-62de-4ac1-b19d-621b55e5ace5"
@@ -71,8 +71,8 @@
                 }
             },
             "status": null,
-            "top": "160",
-            "left": "120",
+            "top": "165",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
             "group": null,
             "uuid": "63aabd86-4647-4114-b0a2-7b8b9d3287a6"
@@ -99,7 +99,7 @@
             },
             "status": null,
             "top": "300",
-            "left": "120",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
             "group": null,
             "uuid": "94fcde62-e30c-4268-a901-e089acc089b1"
@@ -141,8 +141,8 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "700",
-            "left": "120",
+            "top": "705",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
             "uuid": "d97d1a2c-3f5d-4754-9022-2e0db8504915"
@@ -171,8 +171,8 @@
                 }
             },
             "status": null,
-            "top": "440",
-            "left": "460",
+            "top": "420",
+            "left": "420",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
             "group": null,
             "uuid": "eb496204-4c41-4705-b5c4-8ccc375d1383"
@@ -186,8 +186,8 @@
                 "source_data": "{\"User Atrributes\":{{vars.gua}},\"Manager Attributes\":{{vars.gma}}}"
             },
             "status": null,
-            "top": "560",
-            "left": "120",
+            "top": "570",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
             "group": null,
             "uuid": "f74e5d27-84f5-467c-b2ec-fcee50040a16"
@@ -214,6 +214,15 @@
         },
         {
             "@type": "WorkflowRoute",
+            "name": "Start -> Get Groups Definition",
+            "targetStep": "\/api\/3\/workflow_steps\/63aabd86-4647-4114-b0a2-7b8b9d3287a6",
+            "sourceStep": "\/api\/3\/workflow_steps\/4d8ceda9-62de-4ac1-b19d-621b55e5ace5",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "6774aa26-4f3b-4041-b659-f25dd0a74db2"
+        },
+        {
+            "@type": "WorkflowRoute",
             "name": "Get Groups Definition -> Get User Attributes",
             "targetStep": "\/api\/3\/workflow_steps\/94fcde62-e30c-4268-a901-e089acc089b1",
             "sourceStep": "\/api\/3\/workflow_steps\/63aabd86-4647-4114-b0a2-7b8b9d3287a6",
@@ -229,15 +238,6 @@
             "label": null,
             "isExecuted": false,
             "uuid": "8c7ee533-5bcc-440f-b306-57d43e9ba78d"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Start -> Get Groups Definition",
-            "targetStep": "\/api\/3\/workflow_steps\/63aabd86-4647-4114-b0a2-7b8b9d3287a6",
-            "sourceStep": "\/api\/3\/workflow_steps\/4d8ceda9-62de-4ac1-b19d-621b55e5ace5",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "e5f030b9-7314-47dd-9128-179082dc4d1d"
         },
         {
             "@type": "WorkflowRoute",

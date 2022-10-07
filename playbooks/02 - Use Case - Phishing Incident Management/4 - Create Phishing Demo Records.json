@@ -6,7 +6,7 @@
     "tag": null,
     "description": "Creates records to populate dashboards and reports",
     "isActive": true,
-    "debug": true,
+    "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],

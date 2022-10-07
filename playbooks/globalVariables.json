@@ -1,24 +1,48 @@
 [
     {
-        "id": 24,
-        "name": "Action_Icon",
-        "value": "<span style=\"background-color:red;color:black;border-radius: 4px;font-size:8mm;\">&#10159;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Action<\/font><\/span>",
-        "default_value": "<span style=\"background-color:red;color:black;border-radius: 4px;font-size:8mm;\">&#10159;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Action<\/font><\/span>"
-    },
-    {
-        "id": 25,
+        "id": 49,
         "name": "Hint_Icon",
         "value": "<span style=\"background-color:orange;color:black;border-radius: 4px;font-size:8mm;\">&#9788;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Hint<\/font><\/span>",
         "default_value": "<span style=\"background-color:orange;color:black;border-radius: 4px;font-size:8mm;\">&#9788;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Hint<\/font><\/span>"
     },
     {
-        "id": 26,
+        "id": 48,
+        "name": "Action_Icon",
+        "value": "<span style=\"background-color:red;color:black;border-radius: 4px;font-size:8mm;\">&#10159;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Action<\/font><\/span>",
+        "default_value": "<span style=\"background-color:red;color:black;border-radius: 4px;font-size:8mm;\">&#10159;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Action<\/font><\/span>"
+    },
+    {
+        "id": 50,
         "name": "Tomorrow_Date",
         "value": "{{arrow.utcnow().shift(hours=+24).timestamp}}",
         "default_value": "{{arrow.utcnow().shift(hours=+24).timestamp}}"
     },
     {
-        "id": 27,
+        "id": 16,
+        "name": "Demo_mode",
+        "value": "true",
+        "default_value": "false"
+    },
+    {
+        "id": 10,
+        "name": "Current_Date",
+        "value": "{{arrow.utcnow().timestamp}}",
+        "default_value": "{{arrow.utcnow().timestamp}}"
+    },
+    {
+        "id": 13,
+        "name": "Excludelist_URLs",
+        "value": "https:\/\/www.google.com,https:\/\/mail.yahoo.com\/login.html,https:\/\/www.office.com\/,https:\/\/www.fortielab.com\/patches\/09870987.php,http:\/\/www.w3.org\/1999\/xhtml",
+        "default_value": "https:\/\/www.google.com,https:\/\/mail.yahoo.com\/login.html,https:\/\/www.office.com\/"
+    },
+    {
+        "id": 14,
+        "name": "Excludelist_Domains",
+        "value": "google.com,yahoo.com,fortinet.net,cybersponse.com,gmail.com,outlook.com,microsoft.com,fortinet.com,twitter.com,facebook.com,linkedin.com,instagram.com,fortiguard.com,forticloud.com,fortielab.com",
+        "default_value": "google.com,yahoo.com,fortinet.net,cybersponse.com,gmail.com,outlook.com,microsoft.com,fortinet.com,twitter.com,facebook.com,linkedin.com,instagram.com,fortiguard.com,forticloud.com"
+    },
+    {
+        "id": 51,
         "name": "Exclamation_Icon",
         "value": "<span style=\"color: red; font-size: 6mm;\">\u26a0<\/span>",
         "default_value": "<span style=\"color: red; font-size: 6mm;\">\u26a0<\/span>"
