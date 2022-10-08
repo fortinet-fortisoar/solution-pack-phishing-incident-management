@@ -1,12 +1,12 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "> Reference: Create or Link Recipient User",
+    "name": "> Create or Link Recipient User",
     "aliasName": null,
     "tag": null,
     "description": "Creates or link alert related users",
     "isActive": true,
-    "debug": true,
+    "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [
@@ -164,24 +164,6 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Record Exists -> Create Record",
-            "targetStep": "\/api\/3\/workflow_steps\/95c228e3-7a43-4bcb-acba-2942de8fc2b6",
-            "sourceStep": "\/api\/3\/workflow_steps\/f1c988c8-59a2-4f07-b2d2-294446c1ddf9",
-            "label": "no",
-            "isExecuted": false,
-            "uuid": "412ddfa5-4da4-48da-9eae-280ad3e3a93a"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Find Record -> Record Exists",
-            "targetStep": "\/api\/3\/workflow_steps\/f1c988c8-59a2-4f07-b2d2-294446c1ddf9",
-            "sourceStep": "\/api\/3\/workflow_steps\/dd7e7ace-0243-473f-9098-f2bf45735e09",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "9e5697a5-75b0-453b-81ba-423a7a1df74a"
-        },
-        {
-            "@type": "WorkflowRoute",
             "name": "Record Exists -> Link Record",
             "targetStep": "\/api\/3\/workflow_steps\/25fb668f-2364-456f-9be3-69b1fac49dd6",
             "sourceStep": "\/api\/3\/workflow_steps\/f1c988c8-59a2-4f07-b2d2-294446c1ddf9",
@@ -191,12 +173,30 @@
         },
         {
             "@type": "WorkflowRoute",
+            "name": "Record Exists -> Create Record",
+            "targetStep": "\/api\/3\/workflow_steps\/95c228e3-7a43-4bcb-acba-2942de8fc2b6",
+            "sourceStep": "\/api\/3\/workflow_steps\/f1c988c8-59a2-4f07-b2d2-294446c1ddf9",
+            "label": "no",
+            "isExecuted": false,
+            "uuid": "412ddfa5-4da4-48da-9eae-280ad3e3a93a"
+        },
+        {
+            "@type": "WorkflowRoute",
             "name": "Start -> Find Record",
             "targetStep": "\/api\/3\/workflow_steps\/dd7e7ace-0243-473f-9098-f2bf45735e09",
             "sourceStep": "\/api\/3\/workflow_steps\/27c1c55f-9727-467c-b63a-0ae85ba19a39",
             "label": null,
             "isExecuted": false,
             "uuid": "45d15d98-c28e-4449-85b8-f62c4c77479b"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Find Record -> Record Exists",
+            "targetStep": "\/api\/3\/workflow_steps\/f1c988c8-59a2-4f07-b2d2-294446c1ddf9",
+            "sourceStep": "\/api\/3\/workflow_steps\/dd7e7ace-0243-473f-9098-f2bf45735e09",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "9e5697a5-75b0-453b-81ba-423a7a1df74a"
         }
     ],
     "groups": [],

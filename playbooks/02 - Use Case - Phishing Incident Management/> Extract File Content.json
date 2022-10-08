@@ -6,7 +6,7 @@
     "tag": null,
     "description": "Extract File Content and Metadata",
     "isActive": true,
-    "debug": true,
+    "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],
@@ -23,7 +23,8 @@
                 "arguments": [],
                 "apply_async": false,
                 "step_variables": [],
-                "workflowReference": "\/api\/3\/workflows\/cddbc41c-740e-48f0-9657-9867b9254a4b"
+                "pass_input_record": true,
+                "workflowReference": "\/api\/3\/workflows\/730564d3-6c1b-4391-afcb-f09aa279e5da"
             },
             "status": null,
             "top": "166",

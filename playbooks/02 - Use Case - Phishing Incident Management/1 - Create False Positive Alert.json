@@ -6,7 +6,7 @@
     "tag": null,
     "description": "Create False Positive Phishing Email",
     "isActive": true,
-    "debug": true,
+    "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],
@@ -15,6 +15,49 @@
     "versions": [],
     "triggerStep": "\/api\/3\/workflow_steps\/f132d010-d6df-41d1-80ca-532c48c18018",
     "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Update URL Exceptions",
+            "description": null,
+            "arguments": {
+                "params": {
+                    "macro": "Excludelist_URLs",
+                    "value": "{{globalVars.Excludelist_URLs}},{{vars.item}}"
+                },
+                "version": "3.2.1",
+                "for_each": {
+                    "item": "{{vars.local_urls.split(\",\")}}",
+                    "parallel": false,
+                    "condition": "{{vars.item not in globalVars.Excludelist_URLs}}"
+                },
+                "connector": "cyops_utilities",
+                "operation": "updatemacro",
+                "operationTitle": "FSR: Create\/Update Global Variables",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "440",
+            "left": "100",
+            "stepType": "\/api\/3\/workflow_step_types\/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+            "group": null,
+            "uuid": "35e92e71-9b57-4788-8800-dc9d59c87139"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Set Local Attributes",
+            "description": null,
+            "arguments": {
+                "local_urls": "https:\/\/www.{{vars.mydomain}}\/patches\/09870987.php,http:\/\/www.w3.org\/1999\/xhtml",
+                "local_domains": "{{vars.mydomain}}",
+                "email_reporter": "asmith@{{vars.mydomain}}"
+            },
+            "status": null,
+            "top": "300",
+            "left": "300",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "56457983-4a5a-422a-9ea7-6f26a8944f58"
+        },
         {
             "@type": "WorkflowStep",
             "name": "Configuration",
@@ -69,6 +112,33 @@
         },
         {
             "@type": "WorkflowStep",
+            "name": "Update Domain Exceptions",
+            "description": null,
+            "arguments": {
+                "params": {
+                    "macro": "Excludelist_Domains",
+                    "value": "{{globalVars.Excludelist_Domains}},{{vars.item}}"
+                },
+                "version": "3.2.1",
+                "for_each": {
+                    "item": "{{vars.local_domains.split(\",\")}}",
+                    "parallel": false,
+                    "condition": "{{vars.item not in globalVars.Excludelist_Domains}}"
+                },
+                "connector": "cyops_utilities",
+                "operation": "updatemacro",
+                "operationTitle": "FSR: Create\/Update Global Variables",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "440",
+            "left": "500",
+            "stepType": "\/api\/3\/workflow_step_types\/0109f35d-090b-4a2b-bd8a-94cbc3508562",
+            "group": null,
+            "uuid": "b995aa55-c15f-44e1-8ac6-76f1b7558dcb"
+        },
+        {
+            "@type": "WorkflowStep",
             "name": "Data Output",
             "description": null,
             "arguments": {
@@ -108,87 +178,17 @@
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
             "group": null,
             "uuid": "f132d010-d6df-41d1-80ca-532c48c18018"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Set Local Attributes",
-            "description": null,
-            "arguments": {
-                "local_urls": "https:\/\/www.{{vars.mydomain}}\/patches\/09870987.php,http:\/\/www.w3.org\/1999\/xhtml",
-                "local_domains": "{{vars.mydomain}}",
-                "email_reporter": "asmith@{{vars.mydomain}}"
-            },
-            "status": null,
-            "top": "300",
-            "left": "300",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "group": null,
-            "uuid": "56457983-4a5a-422a-9ea7-6f26a8944f58"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Update URL Exceptions",
-            "description": null,
-            "arguments": {
-                "params": {
-                    "macro": "Excludelist_URLs",
-                    "value": "{{globalVars.Excludelist_URLs}},{{vars.item}}"
-                },
-                "version": "3.2.1",
-                "for_each": {
-                    "item": "{{vars.local_urls.split(\",\")}}",
-                    "parallel": false,
-                    "condition": "{{vars.item not in globalVars.Excludelist_URLs}}"
-                },
-                "connector": "cyops_utilities",
-                "operation": "updatemacro",
-                "operationTitle": "FSR: Create\/Update Global Variables",
-                "step_variables": []
-            },
-            "status": null,
-            "top": "440",
-            "left": "100",
-            "stepType": "\/api\/3\/workflow_step_types\/0109f35d-090b-4a2b-bd8a-94cbc3508562",
-            "group": null,
-            "uuid": "35e92e71-9b57-4788-8800-dc9d59c87139"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Update Domain Exceptions",
-            "description": null,
-            "arguments": {
-                "params": {
-                    "macro": "Excludelist_Domains",
-                    "value": "{{globalVars.Excludelist_Domains}},{{vars.item}}"
-                },
-                "version": "3.2.1",
-                "for_each": {
-                    "item": "{{vars.local_domains.split(\",\")}}",
-                    "parallel": false,
-                    "condition": "{{vars.item not in globalVars.Excludelist_Domains}}"
-                },
-                "connector": "cyops_utilities",
-                "operation": "updatemacro",
-                "operationTitle": "FSR: Create\/Update Global Variables",
-                "step_variables": []
-            },
-            "status": null,
-            "top": "440",
-            "left": "500",
-            "stepType": "\/api\/3\/workflow_step_types\/0109f35d-090b-4a2b-bd8a-94cbc3508562",
-            "group": null,
-            "uuid": "b995aa55-c15f-44e1-8ac6-76f1b7558dcb"
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Start -> Configuration",
-            "targetStep": "\/api\/3\/workflow_steps\/93b03547-ded7-4cbc-88dd-97fa6f901b5f",
-            "sourceStep": "\/api\/3\/workflow_steps\/f132d010-d6df-41d1-80ca-532c48c18018",
+            "name": "Set Local Attributes -> Update Domain Exceptions",
+            "targetStep": "\/api\/3\/workflow_steps\/b995aa55-c15f-44e1-8ac6-76f1b7558dcb",
+            "sourceStep": "\/api\/3\/workflow_steps\/56457983-4a5a-422a-9ea7-6f26a8944f58",
             "label": null,
             "isExecuted": false,
-            "uuid": "bd6922e5-de4a-4c5a-8a01-49eae5db2829"
+            "uuid": "1c4acbe6-5e0e-4f31-a467-f825d682427f"
         },
         {
             "@type": "WorkflowRoute",
@@ -210,6 +210,15 @@
         },
         {
             "@type": "WorkflowRoute",
+            "name": "Update URL Exceptions -> Compute Email Alert Payload",
+            "targetStep": "\/api\/3\/workflow_steps\/9b83d71b-64f6-4d96-ba75-eeecbca9fb1c",
+            "sourceStep": "\/api\/3\/workflow_steps\/35e92e71-9b57-4788-8800-dc9d59c87139",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "6fe2a9c4-1a32-4d4c-8c63-c44e9f5d7ed2"
+        },
+        {
+            "@type": "WorkflowRoute",
             "name": "Configuration -> Copy of Configuration",
             "targetStep": "\/api\/3\/workflow_steps\/56457983-4a5a-422a-9ea7-6f26a8944f58",
             "sourceStep": "\/api\/3\/workflow_steps\/93b03547-ded7-4cbc-88dd-97fa6f901b5f",
@@ -228,21 +237,12 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Update URL Exceptions -> Compute Email Alert Payload",
-            "targetStep": "\/api\/3\/workflow_steps\/9b83d71b-64f6-4d96-ba75-eeecbca9fb1c",
-            "sourceStep": "\/api\/3\/workflow_steps\/35e92e71-9b57-4788-8800-dc9d59c87139",
+            "name": "Start -> Configuration",
+            "targetStep": "\/api\/3\/workflow_steps\/93b03547-ded7-4cbc-88dd-97fa6f901b5f",
+            "sourceStep": "\/api\/3\/workflow_steps\/f132d010-d6df-41d1-80ca-532c48c18018",
             "label": null,
             "isExecuted": false,
-            "uuid": "6fe2a9c4-1a32-4d4c-8c63-c44e9f5d7ed2"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Set Local Attributes -> Update Domain Exceptions",
-            "targetStep": "\/api\/3\/workflow_steps\/b995aa55-c15f-44e1-8ac6-76f1b7558dcb",
-            "sourceStep": "\/api\/3\/workflow_steps\/56457983-4a5a-422a-9ea7-6f26a8944f58",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "1c4acbe6-5e0e-4f31-a467-f825d682427f"
+            "uuid": "bd6922e5-de4a-4c5a-8a01-49eae5db2829"
         },
         {
             "@type": "WorkflowRoute",

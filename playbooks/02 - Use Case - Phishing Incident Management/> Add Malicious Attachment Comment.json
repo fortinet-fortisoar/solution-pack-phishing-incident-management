@@ -6,7 +6,7 @@
     "tag": null,
     "description": null,
     "isActive": true,
-    "debug": true,
+    "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],
@@ -131,21 +131,21 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Get Related Incident Data -> Add Guiding Comment",
-            "targetStep": "\/api\/3\/workflow_steps\/4b99a4c1-62ce-4ff1-818b-af5bc5e80eb9",
-            "sourceStep": "\/api\/3\/workflow_steps\/c42c649c-44e6-4305-bd5b-7866e0c32e93",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "b78ee10f-e2b7-4db7-9cc9-b416cd0cedc6"
-        },
-        {
-            "@type": "WorkflowRoute",
             "name": "Start -> Get Related Incident Data",
             "targetStep": "\/api\/3\/workflow_steps\/c42c649c-44e6-4305-bd5b-7866e0c32e93",
             "sourceStep": "\/api\/3\/workflow_steps\/f4222a03-40e9-475b-8fc5-aaf5bba6a4c1",
             "label": null,
             "isExecuted": false,
             "uuid": "0b25aa4e-5a9a-4441-a031-eebf3cb38460"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Related Incident Data -> Add Guiding Comment",
+            "targetStep": "\/api\/3\/workflow_steps\/4b99a4c1-62ce-4ff1-818b-af5bc5e80eb9",
+            "sourceStep": "\/api\/3\/workflow_steps\/c42c649c-44e6-4305-bd5b-7866e0c32e93",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "b78ee10f-e2b7-4db7-9cc9-b416cd0cedc6"
         }
     ],
     "groups": [],

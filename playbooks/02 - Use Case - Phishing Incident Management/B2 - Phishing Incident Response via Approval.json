@@ -157,21 +157,21 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Start -> Get Approval",
-            "targetStep": "\/api\/3\/workflow_steps\/a1b365c0-1d38-4d36-a028-41e6de0e37bf",
-            "sourceStep": "\/api\/3\/workflow_steps\/66df016e-a5df-458c-9e1c-d2ad43226d00",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "4299b5a6-39ce-40ab-ac82-777bdaf49cbd"
-        },
-        {
-            "@type": "WorkflowRoute",
             "name": "Get Approval -> Run Incident Remediation",
             "targetStep": "\/api\/3\/workflow_steps\/428818dd-fea8-41eb-aafc-572336d2e2d3",
             "sourceStep": "\/api\/3\/workflow_steps\/a1b365c0-1d38-4d36-a028-41e6de0e37bf",
             "label": "Approved",
             "isExecuted": false,
             "uuid": "0b907fc4-97e4-4132-81de-9e97f460f0df"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Get Approval",
+            "targetStep": "\/api\/3\/workflow_steps\/a1b365c0-1d38-4d36-a028-41e6de0e37bf",
+            "sourceStep": "\/api\/3\/workflow_steps\/66df016e-a5df-458c-9e1c-d2ad43226d00",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "4299b5a6-39ce-40ab-ac82-777bdaf49cbd"
         },
         {
             "@type": "WorkflowRoute",

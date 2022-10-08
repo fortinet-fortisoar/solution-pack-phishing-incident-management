@@ -1,7 +1,7 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "> Reference: Get Alert Related Indicators Reputations",
+    "name": "> Get Alert Related Indicators Reputations",
     "aliasName": null,
     "tag": null,
     "description": "Retrieves Reputations values and status for each indicator related to the input Alert",
@@ -108,6 +108,15 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
+            "name": "Start -> Get Related Indicators",
+            "targetStep": "\/api\/3\/workflow_steps\/e7067c60-48f2-49c8-ad4c-2bdfa75f23c3",
+            "sourceStep": "\/api\/3\/workflow_steps\/e1d90f84-e880-43cb-9328-2006d3ef2424",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "465b1e37-b26e-4114-b484-6939a1af65fc"
+        },
+        {
+            "@type": "WorkflowRoute",
             "name": "Get Related Indicators -> Update Indicators Reputation for Demo Mode",
             "targetStep": "\/api\/3\/workflow_steps\/fe241fe5-e3bf-408e-92ea-7e62744832d6",
             "sourceStep": "\/api\/3\/workflow_steps\/e7067c60-48f2-49c8-ad4c-2bdfa75f23c3",
@@ -123,15 +132,6 @@
             "label": null,
             "isExecuted": false,
             "uuid": "d1c17691-0d3a-4d6b-9187-d172d70d46f2"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Start -> Get Related Indicators",
-            "targetStep": "\/api\/3\/workflow_steps\/e7067c60-48f2-49c8-ad4c-2bdfa75f23c3",
-            "sourceStep": "\/api\/3\/workflow_steps\/e1d90f84-e880-43cb-9328-2006d3ef2424",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "465b1e37-b26e-4114-b484-6939a1af65fc"
         }
     ],
     "groups": [],
@@ -141,6 +141,7 @@
     "isPrivate": false,
     "deletedAt": null,
     "recordTags": [
+        "Subroutine",
         "Utility"
     ]
 }

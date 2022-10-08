@@ -1,12 +1,12 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "> Reference: Escalate Alert to Incident",
+    "name": "> Escalate Alert to Incident",
     "aliasName": null,
     "tag": null,
     "description": "Copy alert content to incident",
     "isActive": true,
-    "debug": true,
+    "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [

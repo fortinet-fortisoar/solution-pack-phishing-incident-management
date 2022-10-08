@@ -6,7 +6,7 @@
     "tag": null,
     "description": null,
     "isActive": true,
-    "debug": true,
+    "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],
@@ -169,21 +169,21 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Add Status Guiding Comment -> Wait for a sec",
-            "targetStep": "\/api\/3\/workflow_steps\/33e6f7db-8ad8-4e58-8414-166de27b8c35",
-            "sourceStep": "\/api\/3\/workflow_steps\/f14ca6dc-4ad3-4591-8b16-a95f992f9560",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "7c7c06fa-05e1-4bd9-aede-441db8666c96"
-        },
-        {
-            "@type": "WorkflowRoute",
             "name": "Wait for a sec -> Add Guiding Comment",
             "targetStep": "\/api\/3\/workflow_steps\/84e205cf-46e7-404d-b67e-d98771079854",
             "sourceStep": "\/api\/3\/workflow_steps\/33e6f7db-8ad8-4e58-8414-166de27b8c35",
             "label": null,
             "isExecuted": false,
             "uuid": "126ec4fe-5550-4b4c-9c2e-43b1deef7937"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Add Status Guiding Comment -> Wait for a sec",
+            "targetStep": "\/api\/3\/workflow_steps\/33e6f7db-8ad8-4e58-8414-166de27b8c35",
+            "sourceStep": "\/api\/3\/workflow_steps\/f14ca6dc-4ad3-4591-8b16-a95f992f9560",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "7c7c06fa-05e1-4bd9-aede-441db8666c96"
         },
         {
             "@type": "WorkflowRoute",
