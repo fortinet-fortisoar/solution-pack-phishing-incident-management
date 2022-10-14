@@ -1,6 +1,6 @@
 {
     "@context": "\/api\/3\/contexts\/StagingModelMetadata",
-    "@id": "\/api\/3\/staging_model_metadatas\/a477b64f-fea1-4568-93cb-0c844be2e4b4",
+    "@id": "\/api\/3\/staging_model_metadatas\/3b599ddc-229d-4a7a-8e2a-a08c56225890",
     "@type": "StagingModelMetadata",
     "type": "users",
     "parentType": null,
@@ -34,7 +34,7 @@
             "gridColumn": false,
             "collection": true,
             "inversedField": "users",
-            "ownsRelationship": false,
+            "ownsRelationship": true,
             "validation": {
                 "required": false,
                 "minlength": 0,
@@ -874,7 +874,7 @@
         "delete_primary_data_after": 60
     },
     "archivalFilters": [],
-    "uuid": "a477b64f-fea1-4568-93cb-0c844be2e4b4",
+    "uuid": "3b599ddc-229d-4a7a-8e2a-a08c56225890",
     "displayName": "{{ securityid }}",
     "descriptions": {
         "singular": "User",

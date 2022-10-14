@@ -6,7 +6,7 @@
     "tag": null,
     "description": "Phishing alert parsing and triage",
     "isActive": true,
-    "debug": true,
+    "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],
@@ -64,6 +64,7 @@
             "top": "30",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "group": null,
             "uuid": "37d59a07-927b-40c0-b98c-9f739d827118"
         },
         {
@@ -82,6 +83,7 @@
             "top": "165",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "group": null,
             "uuid": "c72bbc13-3bd9-4958-a541-39b8ad8fb437"
         }
     ],
@@ -96,12 +98,14 @@
             "uuid": "5b725438-07e6-47c5-9928-c6f0f8185f49"
         }
     ],
+    "groups": [],
     "priority": null,
     "uuid": "25185a2f-0dbc-4f6a-8375-1dc48c9646e8",
     "owners": [],
     "isPrivate": false,
     "deletedAt": null,
     "recordTags": [
+        "ManualTrigger",
         "Parsing",
         "Investigation"
     ]
