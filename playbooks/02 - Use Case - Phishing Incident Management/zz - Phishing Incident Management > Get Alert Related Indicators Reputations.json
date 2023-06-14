@@ -1,7 +1,7 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "> Get Alert Related Indicators Reputations",
+    "name": "zz - Phishing Incident Management > Get Alert Related Indicators Reputations",
     "aliasName": null,
     "tag": null,
     "description": "Retrieves Reputations values and status for each indicator related to the input Alert",
@@ -13,9 +13,9 @@
         "alert_iri"
     ],
     "synchronous": false,
-    "collection": "\/api\/3\/workflow_collections\/c1ca92eb-8ec4-4dba-9a3d-156bf0a1abc2",
+    "collection": "\/api\/3\/workflow_collections\/6dadec2b-3024-4b1b-832c-c612f0bca071",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/e1d90f84-e880-43cb-9328-2006d3ef2424",
+    "triggerStep": "\/api\/3\/workflow_steps\/0ff761f1-44f3-49c4-bacd-a2c8c95be5e9",
     "steps": [
         {
             "@type": "WorkflowStep",
@@ -30,7 +30,21 @@
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
             "group": null,
-            "uuid": "74a36cb0-2f25-46fc-afd1-56bb9626ef0c"
+            "uuid": "94bd4cd9-3116-4d5b-9a0a-63efd8496758"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Related Indicators",
+            "description": null,
+            "arguments": {
+                "__append_indicators": "{%set raw_data=(vars.alert_iri+\"\/indicators?&__selectFields=reputation,indicatorStatus,typeofindicator\")|fromIRI%}\n{{vars.indicators_data.update({\"raw_data\":raw_data[\"hydra:member\"]})}}\n{% for indicator in vars.indicators_data.raw_data %}\n{% if indicator.indicatorStatus.itemValue not in ['Excluded'] %}\n{% if indicator.reputation is none or indicator.reputation.itemValue in ['TBD'] %}\n{{vars.indicators_rated.update({\"status\":false})}}\n{%else%}\n{{vars.reputations_list.append(indicator.reputation.itemValue)}}\n{% endif %}\n{% endif %}\n{% endfor %}\n\n## Prepare reputation settings if demo mode is on\n{%for entry in vars.indicators_data.raw_data%}\n{{vars.indicators_iris.append({\"iri\":entry[\"@id\"],\"status\":entry.indicatorStatus.itemValue,\"type\":entry.typeofindicator.itemValue})}}\n{%endfor%}"
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "4a3b5f12-84fe-4608-a827-aaeee26ad697"
         },
         {
             "@type": "WorkflowStep",
@@ -56,21 +70,7 @@
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
             "group": null,
-            "uuid": "e1d90f84-e880-43cb-9328-2006d3ef2424"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Get Related Indicators",
-            "description": null,
-            "arguments": {
-                "__append_indicators": "{%set raw_data=(vars.alert_iri+\"\/indicators?&__selectFields=reputation,indicatorStatus,typeofindicator\")|fromIRI%}\n{{vars.indicators_data.update({\"raw_data\":raw_data[\"hydra:member\"]})}}\n{% for indicator in vars.indicators_data.raw_data %}\n{% if indicator.indicatorStatus.itemValue not in ['Excluded'] %}\n{% if indicator.reputation is none or indicator.reputation.itemValue in ['TBD'] %}\n{{vars.indicators_rated.update({\"status\":false})}}\n{%else%}\n{{vars.reputations_list.append(indicator.reputation.itemValue)}}\n{% endif %}\n{% endif %}\n{% endfor %}\n\n## Prepare reputation settings if demo mode is on\n{%for entry in vars.indicators_data.raw_data%}\n{{vars.indicators_iris.append({\"iri\":entry[\"@id\"],\"status\":entry.indicatorStatus.itemValue,\"type\":entry.typeofindicator.itemValue})}}\n{%endfor%}"
-            },
-            "status": null,
-            "top": "165",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "group": null,
-            "uuid": "e7067c60-48f2-49c8-ad4c-2bdfa75f23c3"
+            "uuid": "0ff761f1-44f3-49c4-bacd-a2c8c95be5e9"
         },
         {
             "@type": "WorkflowStep",
@@ -102,41 +102,44 @@
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
-            "uuid": "fe241fe5-e3bf-408e-92ea-7e62744832d6"
+            "uuid": "c4b7c4c3-4cf6-430c-9b30-9da14dbe1a8b"
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Start -> Get Related Indicators",
-            "targetStep": "\/api\/3\/workflow_steps\/e7067c60-48f2-49c8-ad4c-2bdfa75f23c3",
-            "sourceStep": "\/api\/3\/workflow_steps\/e1d90f84-e880-43cb-9328-2006d3ef2424",
+            "name": "Get Related Indicators -> Update Indicators Reputation for Demo Mode",
+            "targetStep": "\/api\/3\/workflow_steps\/c4b7c4c3-4cf6-430c-9b30-9da14dbe1a8b",
+            "sourceStep": "\/api\/3\/workflow_steps\/4a3b5f12-84fe-4608-a827-aaeee26ad697",
             "label": null,
             "isExecuted": false,
-            "uuid": "465b1e37-b26e-4114-b484-6939a1af65fc"
+            "group": null,
+            "uuid": "9b085167-0ba6-46ea-9c06-ece3eaa560fc"
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Get Related Indicators -> Update Indicators Reputation for Demo Mode",
-            "targetStep": "\/api\/3\/workflow_steps\/fe241fe5-e3bf-408e-92ea-7e62744832d6",
-            "sourceStep": "\/api\/3\/workflow_steps\/e7067c60-48f2-49c8-ad4c-2bdfa75f23c3",
+            "name": "Start -> Get Related Indicators",
+            "targetStep": "\/api\/3\/workflow_steps\/4a3b5f12-84fe-4608-a827-aaeee26ad697",
+            "sourceStep": "\/api\/3\/workflow_steps\/0ff761f1-44f3-49c4-bacd-a2c8c95be5e9",
             "label": null,
             "isExecuted": false,
-            "uuid": "7207458e-9aca-44c7-b10e-43305a7fc65a"
+            "group": null,
+            "uuid": "95e45b55-501d-4901-84c7-519648329760"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Update Indicators Reputation for Demo Mode -> Configuration",
-            "targetStep": "\/api\/3\/workflow_steps\/74a36cb0-2f25-46fc-afd1-56bb9626ef0c",
-            "sourceStep": "\/api\/3\/workflow_steps\/fe241fe5-e3bf-408e-92ea-7e62744832d6",
+            "targetStep": "\/api\/3\/workflow_steps\/94bd4cd9-3116-4d5b-9a0a-63efd8496758",
+            "sourceStep": "\/api\/3\/workflow_steps\/c4b7c4c3-4cf6-430c-9b30-9da14dbe1a8b",
             "label": null,
             "isExecuted": false,
-            "uuid": "d1c17691-0d3a-4d6b-9187-d172d70d46f2"
+            "group": null,
+            "uuid": "d6b9eefd-6c13-442b-a614-59a5594091a2"
         }
     ],
     "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-    "uuid": "6aca3d2c-56ee-45a9-a153-7de3ed403e28",
+    "uuid": "375b0755-e5b1-43d9-878c-de889429ee9b",
     "owners": [],
     "isPrivate": false,
     "deletedAt": null,

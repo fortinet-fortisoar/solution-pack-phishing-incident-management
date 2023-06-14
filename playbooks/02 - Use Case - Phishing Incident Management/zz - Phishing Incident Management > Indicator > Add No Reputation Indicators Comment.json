@@ -1,7 +1,7 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "> Add Malicious Attachment Comment",
+    "name": "zz - Phishing Incident Management > Indicator > Add No Reputation Indicators Comment",
     "aliasName": null,
     "tag": null,
     "description": null,
@@ -11,9 +11,9 @@
     "remoteExecutableFlag": false,
     "parameters": [],
     "synchronous": false,
-    "collection": "\/api\/3\/workflow_collections\/c1ca92eb-8ec4-4dba-9a3d-156bf0a1abc2",
+    "collection": "\/api\/3\/workflow_collections\/6dadec2b-3024-4b1b-832c-c612f0bca071",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/f4222a03-40e9-475b-8fc5-aaf5bba6a4c1",
+    "triggerStep": "\/api\/3\/workflow_steps\/a21195b8-301b-4248-9103-99795bcc651c",
     "steps": [
         {
             "@type": "WorkflowStep",
@@ -23,10 +23,12 @@
                 "resource": {
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "people": [],
-                    "content": "<p>{{vars.action}} if the case is confirmed <strong>True Positive<\/strong> browse to <span style=\"font-size: 12pt;\"><strong>Incident <\/strong><span style=\"font-size: 10pt;\">module, set the <span style=\"text-decoration: underline;\">Phase<\/span> to <span style=\"font-size: 12pt;\"><strong>&lt; Containment &gt; <\/strong><\/span>and use the<\/span><strong> <\/strong><strong>Execute <\/strong><span style=\"font-size: 10pt;\">button <\/span><\/span>to run the containment <span style=\"text-decoration: underline;\">Playbook<\/span> <span style=\"font-size: 12pt;\"><strong>&lt; Phishing Incident Response &gt;&nbsp;<\/strong><\/span><\/p>",
+                    "content": "<p>{{vars.action}} <strong><span style=\"text-decoration: underline;\">No reputation<\/span> found<\/strong>, it has to be determined manually. Identify the indicator risk, if high set the <span style=\"text-decoration: underline;\">Reputation<\/span> to <span style=\"font-size: 12pt;\"><strong>&lt; Malicious &gt;<\/strong><\/span><\/p>",
                     "__replace": "",
-                    "incidents": "{{vars.incident_iri}}",
                     "indicators": "{{vars.input.records[0]['@id']}}",
+                    "recordTags": [
+                        "\/api\/3\/tags\/Scenario: Phishing Incident Management"
+                    ],
                     "isImportant": false,
                     "peopleUpdated": false
                 },
@@ -40,25 +42,11 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "300",
+            "top": "165",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
             "group": null,
-            "uuid": "4b99a4c1-62ce-4ff1-818b-af5bc5e80eb9"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Get Related Incident Data",
-            "description": null,
-            "arguments": {
-                "incident_iri": "{%set raw_data=(vars.input.records[0]['@id']+\"\/incidents?&__selectFields=name\")|fromIRI%}{{raw_data[\"hydra:member\"][0][\"@id\"]}}"
-            },
-            "status": null,
-            "top": "165",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "group": null,
-            "uuid": "c42c649c-44e6-4305-bd5b-7866e0c32e93"
+            "uuid": "78e7694f-5c76-4d80-9d83-d401d1c78c68"
         },
         {
             "@type": "WorkflowStep",
@@ -101,21 +89,51 @@
                             "_operator": "isnull"
                         },
                         {
-                            "type": "datetime",
-                            "field": "modifyDate",
-                            "value": null,
-                            "operator": "changed"
+                            "type": "primitive",
+                            "field": "file",
+                            "value": "",
+                            "operator": "changed",
+                            "_operator": "changed"
                         },
                         {
-                            "type": "object",
-                            "field": "reputation",
-                            "value": "\/api\/3\/picklists\/7074e547-7785-4979-be32-c6d0c863e4bd",
-                            "_value": {
-                                "@id": "\/api\/3\/picklists\/7074e547-7785-4979-be32-c6d0c863e4bd",
-                                "display": "Malicious",
-                                "itemValue": "Malicious"
-                            },
-                            "operator": "eq"
+                            "logic": "OR",
+                            "filters": [
+                                {
+                                    "type": "object",
+                                    "field": "reputation",
+                                    "value": "\/api\/3\/picklists\/9a611980-1b5e-4ae9-8062-eb2c0c433cff",
+                                    "_value": {
+                                        "@id": "\/api\/3\/picklists\/9a611980-1b5e-4ae9-8062-eb2c0c433cff",
+                                        "itemValue": "No Reputation Available"
+                                    },
+                                    "operator": "eq"
+                                },
+                                {
+                                    "type": "object",
+                                    "field": "reputation",
+                                    "value": "true",
+                                    "_value": {
+                                        "@id": "true",
+                                        "display": "",
+                                        "itemValue": ""
+                                    },
+                                    "operator": "isnull"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "array",
+                            "field": "recordTags",
+                            "value": [
+                                "\/api\/3\/tags\/Scenario: Phishing Incident Management"
+                            ],
+                            "module": "recordTags",
+                            "display": null,
+                            "operator": "in",
+                            "template": "tags",
+                            "OPERATOR_KEY": "$",
+                            "previousOperator": "in",
+                            "previousTemplate": "tags"
                         }
                     ]
                 }
@@ -125,32 +143,24 @@
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/9300bf69-5063-486d-b3a6-47eb9da24872",
             "group": null,
-            "uuid": "f4222a03-40e9-475b-8fc5-aaf5bba6a4c1"
+            "uuid": "a21195b8-301b-4248-9103-99795bcc651c"
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Start -> Get Related Incident Data",
-            "targetStep": "\/api\/3\/workflow_steps\/c42c649c-44e6-4305-bd5b-7866e0c32e93",
-            "sourceStep": "\/api\/3\/workflow_steps\/f4222a03-40e9-475b-8fc5-aaf5bba6a4c1",
+            "name": "Start -> Add Guiding Comment",
+            "targetStep": "\/api\/3\/workflow_steps\/78e7694f-5c76-4d80-9d83-d401d1c78c68",
+            "sourceStep": "\/api\/3\/workflow_steps\/a21195b8-301b-4248-9103-99795bcc651c",
             "label": null,
             "isExecuted": false,
-            "uuid": "0b25aa4e-5a9a-4441-a031-eebf3cb38460"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Get Related Incident Data -> Add Guiding Comment",
-            "targetStep": "\/api\/3\/workflow_steps\/4b99a4c1-62ce-4ff1-818b-af5bc5e80eb9",
-            "sourceStep": "\/api\/3\/workflow_steps\/c42c649c-44e6-4305-bd5b-7866e0c32e93",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "b78ee10f-e2b7-4db7-9cc9-b416cd0cedc6"
+            "group": null,
+            "uuid": "6715e6d1-81a8-438c-82c1-c1dc5c5f80fe"
         }
     ],
     "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-    "uuid": "24fb7931-499f-452f-b5db-c9c5e40e8f98",
+    "uuid": "58dbe7cd-0b1c-4981-bca0-5d12e4945de1",
     "owners": [],
     "isPrivate": false,
     "deletedAt": null,

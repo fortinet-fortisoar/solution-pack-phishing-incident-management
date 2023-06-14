@@ -1,7 +1,7 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "4 - Create Phishing Demo Records",
+    "name": "zz - Phishing Incident Management > 4 - Create Phishing Demo Records",
     "aliasName": null,
     "tag": null,
     "description": "Creates records to populate dashboards and reports",
@@ -11,10 +11,71 @@
     "remoteExecutableFlag": false,
     "parameters": [],
     "synchronous": false,
-    "collection": "\/api\/3\/workflow_collections\/c1ca92eb-8ec4-4dba-9a3d-156bf0a1abc2",
+    "collection": "\/api\/3\/workflow_collections\/6dadec2b-3024-4b1b-832c-c612f0bca071",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/9bd94b52-56e5-43dc-b6ec-5b951d585747",
+    "triggerStep": "\/api\/3\/workflow_steps\/1506c474-6407-4486-b2bf-e94b131efec7",
     "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Config",
+            "description": null,
+            "arguments": {
+                "domains": "['acuweather.com','amaazon.com','axieeninfinity.com','ayaubk.com','baiddu.com','bilibbili.com','being.com','t.me','turboopages.org','twitche.tv','twetter.com','verveforexx.com','vkk.com','weathers.com','whatsap.com','wikipeda.org','xhamster.com','xnx.com','xideos.com','yah0o.com','yendex.ru','youtoube.com','zoum.us']",
+                "usernames": "['Eros','Eryx','Evander','Ganymede','Griffin','Hades','Halcyon','Hector','Helios','Hercules','Hermes','Hero','Homer','Hyperion','Iapetos','Iason','Icarus','Janus','Jason','Jupiter','Leander']",
+                "__tmp_create_timestamps_list": "{%set now=arrow.utcnow().int_timestamp%}\n{% for n in range(vars.records_count|int) %}\n{%set x=range(1,84000)|random%}\n{{vars.records_timestamp_list.append(now - (x * (n\/20)))}}\n{% endfor %}"
+            },
+            "status": null,
+            "top": "160",
+            "left": "300",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "77ffaca3-1e7a-4d27-b0a7-fa5c295188ee"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "INSERT Alert",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.records_timestamp_list}}",
+                    "__bulk": true,
+                    "parallel": false,
+                    "condition": "",
+                    "batch_size": 100
+                },
+                "resource": {
+                    "name": "Suspected Phishing: Immediate action required ID: {{range(1,84000)|random}}",
+                    "type": "\/api\/3\/picklists\/c145394b-069a-449b-a05e-67980d0f4b82",
+                    "state": "\/api\/3\/picklists\/a1bac09b-1441-45aa-ad1b-c88744e48e72",
+                    "status": "{{\"AlertStatus\" | picklist(([\"Open\",\"Investigating\",\"Pending\",\"Closed\",\"Re-Opened\"]|random), \"@id\")}}",
+                    "reporter": "asmith@fortielab.com",
+                    "severity": "{{\"Severity\" | picklist(([\"Minimal\",\"Low\",\"Medium\",\"High\",\"Critical\"]|random), \"@id\")}}",
+                    "userName": "{{vars.usernames|random}}",
+                    "__replace": "",
+                    "emailFrom": "sysadmin \\u003Csysadmin@{{vars.domains|random}}\\u003E",
+                    "ackSlaStatus": "\/api\/3\/picklists\/72979f64-e8b9-4888-a965-957e0ec24818",
+                    "senderDomain": "{{vars.domains|random}}",
+                    "closureReason": "{{\"Closure Reason\" | picklist(([\"Duplicate\",\"Escalated to Incident\",\"False Positive\",\"Invalid\",\"Resolved\",\"Tasks Completed\"]|random), \"@id\")}}",
+                    "respSlaStatus": "\/api\/3\/picklists\/72979f64-e8b9-4888-a965-957e0ec24818",
+                    "priorityWeight": 1,
+                    "alertDetectionDate": "{{vars.item}}",
+                    "senderEmailAddress": "sysadmin \\u003Csysadmin@{{vars.domains|random}}\\u003E",
+                    "emailClassification": "\/api\/3\/picklists\/a1e5c01d-f703-4fa4-a5c4-b3a22f7591ab",
+                    "escalatedtoincident": "{{\"EscalatedToIncident\" | picklist(([\"Yes\",\"No\",\"No\"]|random), \"@id\")}}",
+                    "alertRemainingAckSLA": 0
+                },
+                "_showJson": false,
+                "collection": "\/api\/ingest-feeds\/alerts",
+                "__recommend": [],
+                "step_variables": []
+            },
+            "status": null,
+            "top": "320",
+            "left": "120",
+            "stepType": "\/api\/3\/workflow_step_types\/7b221880-716b-4726-a2ca-5e568d330b3e",
+            "group": null,
+            "uuid": "7912578f-6f3a-4656-815b-ce3920c5d360"
+        },
         {
             "@type": "WorkflowStep",
             "name": "INSERT Incident",
@@ -63,30 +124,14 @@
             "left": "480",
             "stepType": "\/api\/3\/workflow_step_types\/7b221880-716b-4726-a2ca-5e568d330b3e",
             "group": null,
-            "uuid": "049f3634-d975-4ea6-8141-ca329e427cdb"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Config",
-            "description": null,
-            "arguments": {
-                "domains": "['acuweather.com','amaazon.com','axieeninfinity.com','ayaubk.com','baiddu.com','bilibbili.com','being.com','t.me','turboopages.org','twitche.tv','twetter.com','verveforexx.com','vkk.com','weathers.com','whatsap.com','wikipeda.org','xhamster.com','xnx.com','xideos.com','yah0o.com','yendex.ru','youtoube.com','zoum.us']",
-                "usernames": "['Eros','Eryx','Evander','Ganymede','Griffin','Hades','Halcyon','Hector','Helios','Hercules','Hermes','Hero','Homer','Hyperion','Iapetos','Iason','Icarus','Janus','Jason','Jupiter','Leander']",
-                "__tmp_create_timestamps_list": "{%set now=arrow.utcnow().int_timestamp%}\n{% for n in range(vars.records_count|int) %}\n{%set x=range(1,84000)|random%}\n{{vars.records_timestamp_list.append(now - (x * (n\/20)))}}\n{% endfor %}"
-            },
-            "status": null,
-            "top": "160",
-            "left": "300",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "group": null,
-            "uuid": "65002523-48b2-41b4-be56-0da8adf2394a"
+            "uuid": "7d7ae37f-73d9-46a5-8a29-6e3fb557b540"
         },
         {
             "@type": "WorkflowStep",
             "name": "Start",
             "description": null,
             "arguments": {
-                "route": "45dbca70-b5d2-486d-a699-50ce4ef45884",
+                "route": "26f4b59f-72e7-4ae1-ad12-4849e72b505b",
                 "resources": [
                     "alerts",
                     "incidents"
@@ -123,86 +168,44 @@
             "left": "300",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
             "group": null,
-            "uuid": "9bd94b52-56e5-43dc-b6ec-5b951d585747"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "INSERT Alert",
-            "description": null,
-            "arguments": {
-                "for_each": {
-                    "item": "{{vars.records_timestamp_list}}",
-                    "__bulk": true,
-                    "parallel": false,
-                    "condition": "",
-                    "batch_size": 100
-                },
-                "resource": {
-                    "name": "Suspected Phishing: Immediate action required ID: {{range(1,84000)|random}}",
-                    "type": "\/api\/3\/picklists\/c145394b-069a-449b-a05e-67980d0f4b82",
-                    "state": "\/api\/3\/picklists\/a1bac09b-1441-45aa-ad1b-c88744e48e72",
-                    "status": "{{\"AlertStatus\" | picklist(([\"Open\",\"Investigating\",\"Pending\",\"Closed\",\"Re-Opened\"]|random), \"@id\")}}",
-                    "reporter": "asmith@fortielab.com",
-                    "severity": "{{\"Severity\" | picklist(([\"Minimal\",\"Low\",\"Medium\",\"High\",\"Critical\"]|random), \"@id\")}}",
-                    "userName": "{{vars.usernames|random}}",
-                    "__replace": "",
-                    "emailFrom": "sysadmin \\u003Csysadmin@{{vars.domains|random}}\\u003E",
-                    "ackSlaStatus": "\/api\/3\/picklists\/72979f64-e8b9-4888-a965-957e0ec24818",
-                    "senderDomain": "{{vars.domains|random}}",
-                    "closureReason": "{{\"Closure Reason\" | picklist(([\"Duplicate\",\"Escalated to Incident\",\"False Positive\",\"Invalid\",\"Resolved\",\"Tasks Completed\"]|random), \"@id\")}}",
-                    "respSlaStatus": "\/api\/3\/picklists\/72979f64-e8b9-4888-a965-957e0ec24818",
-                    "priorityWeight": 1,
-                    "alertDetectionDate": "{{vars.item}}",
-                    "senderEmailAddress": "sysadmin \\u003Csysadmin@{{vars.domains|random}}\\u003E",
-                    "emailClassification": "\/api\/3\/picklists\/a1e5c01d-f703-4fa4-a5c4-b3a22f7591ab",
-                    "escalatedtoincident": "{{\"EscalatedToIncident\" | picklist(([\"Yes\",\"No\",\"No\"]|random), \"@id\")}}",
-                    "alertRemainingAckSLA": 0
-                },
-                "_showJson": false,
-                "collection": "\/api\/ingest-feeds\/alerts",
-                "__recommend": [],
-                "step_variables": []
-            },
-            "status": null,
-            "top": "320",
-            "left": "120",
-            "stepType": "\/api\/3\/workflow_step_types\/7b221880-716b-4726-a2ca-5e568d330b3e",
-            "group": null,
-            "uuid": "d0d07ac1-05f7-4ecc-ac7d-9bbbde995b98"
+            "uuid": "1506c474-6407-4486-b2bf-e94b131efec7"
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Config -> INSERT Incident",
-            "targetStep": "\/api\/3\/workflow_steps\/049f3634-d975-4ea6-8141-ca329e427cdb",
-            "sourceStep": "\/api\/3\/workflow_steps\/65002523-48b2-41b4-be56-0da8adf2394a",
+            "name": "Config -> INSERT Alert",
+            "targetStep": "\/api\/3\/workflow_steps\/7912578f-6f3a-4656-815b-ce3920c5d360",
+            "sourceStep": "\/api\/3\/workflow_steps\/77ffaca3-1e7a-4d27-b0a7-fa5c295188ee",
             "label": null,
             "isExecuted": false,
-            "uuid": "1aa94129-7be3-4b98-8411-29731f64a2fb"
+            "group": null,
+            "uuid": "b92527cf-0d2a-4a93-84b6-055e369b1f56"
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Config -> INSERT Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/d0d07ac1-05f7-4ecc-ac7d-9bbbde995b98",
-            "sourceStep": "\/api\/3\/workflow_steps\/65002523-48b2-41b4-be56-0da8adf2394a",
+            "name": "Config -> INSERT Incident",
+            "targetStep": "\/api\/3\/workflow_steps\/7d7ae37f-73d9-46a5-8a29-6e3fb557b540",
+            "sourceStep": "\/api\/3\/workflow_steps\/77ffaca3-1e7a-4d27-b0a7-fa5c295188ee",
             "label": null,
             "isExecuted": false,
-            "uuid": "ad627e37-009a-4b01-a60f-038563ee0bb6"
+            "group": null,
+            "uuid": "dae62265-068c-4730-b6c6-472e1ba54a90"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Start -> Copy of Config",
-            "targetStep": "\/api\/3\/workflow_steps\/65002523-48b2-41b4-be56-0da8adf2394a",
-            "sourceStep": "\/api\/3\/workflow_steps\/9bd94b52-56e5-43dc-b6ec-5b951d585747",
+            "targetStep": "\/api\/3\/workflow_steps\/77ffaca3-1e7a-4d27-b0a7-fa5c295188ee",
+            "sourceStep": "\/api\/3\/workflow_steps\/1506c474-6407-4486-b2bf-e94b131efec7",
             "label": null,
             "isExecuted": false,
-            "uuid": "cd38a396-d8c9-4380-b4cb-b2acde2bc1c3"
+            "group": null,
+            "uuid": "0e3cd9b9-7537-4092-b1d8-b533e68a6ad2"
         }
     ],
     "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-    "uuid": "439b56a2-7480-41ba-82a6-a1612a1a92af",
+    "uuid": "ad99000e-feef-447b-8b67-f593c602ba8b",
     "owners": [],
     "isPrivate": false,
     "deletedAt": null,

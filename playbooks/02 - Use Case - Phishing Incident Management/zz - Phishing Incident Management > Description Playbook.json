@@ -1,0 +1,216 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "zz - Phishing Incident Management > Description Playbook",
+    "aliasName": null,
+    "tag": null,
+    "description": null,
+    "isActive": false,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "collection": "\/api\/3\/workflow_collections\/6dadec2b-3024-4b1b-832c-c612f0bca071",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/170669a6-2b5b-4c83-a280-52349a5208fa",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Alert Status to Investigating",
+            "description": null,
+            "arguments": {
+                "rule": {
+                    "actions": [
+                        {
+                            "type": "resume_playbook",
+                            "enabled": true,
+                            "channel_uuid": "e2ce87c2-c55a-11ec-9d64-0242ac120002"
+                        }
+                    ],
+                    "is_active": true,
+                    "event_type": "update",
+                    "entity_name": "Alerts",
+                    "entity_type": "alerts",
+                    "event_source": "crudhub",
+                    "trigger_condition": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": [
+                            {
+                                "type": "primitive",
+                                "field": "uuid",
+                                "value": "{{vars.alert_uuid}}",
+                                "operator": "eq",
+                                "_operator": "eq"
+                            },
+                            {
+                                "type": "object",
+                                "field": "status",
+                                "value": "\/api\/3\/picklists\/758925e7-629c-46d8-89db-fb36f5fbe88a",
+                                "_value": {
+                                    "@id": "\/api\/3\/picklists\/758925e7-629c-46d8-89db-fb36f5fbe88a",
+                                    "itemValue": "Investigating"
+                                },
+                                "operator": "eq"
+                            }
+                        ]
+                    }
+                },
+                "type": "ConditionBased",
+                "delay": {
+                    "days": 0,
+                    "hours": 0,
+                    "weeks": 0,
+                    "minutes": 0,
+                    "seconds": 0
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "600",
+            "left": "740",
+            "stepType": "\/api\/3\/workflow_step_types\/6832e556-b9c7-497a-babe-feda3bd27dbf",
+            "group": null,
+            "uuid": "f2b183ed-cb23-4cbc-9c16-4a3f2793e610"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Configure",
+            "description": null,
+            "arguments": {
+                "alert_uuid": "{{vars.input.records[0].uuid}}"
+            },
+            "status": null,
+            "top": "600",
+            "left": "420",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "f101f5d6-fd1f-4138-a8fd-1f1a24a533b0"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "resource": "alerts",
+                "resources": [
+                    "alerts"
+                ],
+                "step_variables": {
+                    "input": {
+                        "params": [],
+                        "records": [
+                            "{{vars.input.records[0]}}"
+                        ]
+                    }
+                },
+                "fieldbasedtrigger": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "primitive",
+                            "field": "source",
+                            "value": "User Reported",
+                            "operator": "eq",
+                            "_operator": "eq"
+                        },
+                        {
+                            "type": "object",
+                            "field": "type",
+                            "value": "\/api\/3\/picklists\/c145394b-069a-449b-a05e-67980d0f4b82",
+                            "_value": {
+                                "@id": "\/api\/3\/picklists\/c145394b-069a-449b-a05e-67980d0f4b82",
+                                "itemValue": "Suspicious Email"
+                            },
+                            "operator": "eq"
+                        },
+                        {
+                            "type": "object",
+                            "field": "status",
+                            "value": "\/api\/3\/picklists\/7de816ff-7140-4ee5-bd05-93ce22002146",
+                            "_value": {
+                                "@id": "\/api\/3\/picklists\/7de816ff-7140-4ee5-bd05-93ce22002146",
+                                "itemValue": "Open"
+                            },
+                            "operator": "eq"
+                        }
+                    ]
+                }
+            },
+            "status": null,
+            "top": "600",
+            "left": "80",
+            "stepType": "\/api\/3\/workflow_step_types\/ea155646-3821-4542-9702-b246da430a8d",
+            "group": null,
+            "uuid": "170669a6-2b5b-4c83-a280-52349a5208fa"
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Configure -> Alert Status to Investigating",
+            "targetStep": "\/api\/3\/workflow_steps\/f2b183ed-cb23-4cbc-9c16-4a3f2793e610",
+            "sourceStep": "\/api\/3\/workflow_steps\/f101f5d6-fd1f-4138-a8fd-1f1a24a533b0",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "8d888988-04a0-4470-8a14-c9fd7db8cdb3"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Configure",
+            "targetStep": "\/api\/3\/workflow_steps\/f101f5d6-fd1f-4138-a8fd-1f1a24a533b0",
+            "sourceStep": "\/api\/3\/workflow_steps\/170669a6-2b5b-4c83-a280-52349a5208fa",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "2b60b25b-365e-43f3-b510-2ed3d2fa3e49"
+        }
+    ],
+    "groups": [
+        {
+            "@type": "WorkflowGroup",
+            "name": "Step: 1",
+            "description": "Wait for User to change the status to investigation",
+            "type": "note",
+            "isCollapsed": false,
+            "hasTriggerStep": false,
+            "hideInLogs": false,
+            "metadata": [],
+            "reusable": false,
+            "top": "680",
+            "left": "740",
+            "height": "94",
+            "width": "239",
+            "uuid": "f8579d7d-48a5-4e46-a069-af8b8af16e08",
+            "recordTags": []
+        },
+        {
+            "@type": "WorkflowGroup",
+            "name": "Trigger Type",
+            "description": "source == 'User Reported'\ntype == 'Suspicious Email'\nstatus == 'Open'",
+            "type": "note",
+            "isCollapsed": false,
+            "hasTriggerStep": false,
+            "hideInLogs": false,
+            "metadata": [],
+            "reusable": false,
+            "top": "680",
+            "left": "80",
+            "height": "103",
+            "width": "265",
+            "uuid": "25582891-0b3e-499f-9b93-6fa015d333b4",
+            "recordTags": []
+        }
+    ],
+    "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "uuid": "62bf093f-b284-4827-8d0c-6f1e4c55509f",
+    "owners": [],
+    "isPrivate": false,
+    "deletedAt": null,
+    "recordTags": []
+}
