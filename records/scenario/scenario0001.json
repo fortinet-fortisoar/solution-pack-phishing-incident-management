@@ -32,12 +32,12 @@
                 }
             ]
         },
-        "createdAlertsID": "[\"\/api\/3\/alerts\/266a055f-8a62-4852-9e6a-0145f9b187b1\",\"\/api\/3\/alerts\/d998bcbb-7dcc-413e-ae97-814b79791428\",\"\/api\/3\/alerts\/6cfe1a53-a7c1-4047-8d71-a31c1438d800\"]",
+        "createdAlertsID": null,
         "uuid": "11b4d0a0-0bbf-427e-aee9-2008c4f92422",
         "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
         "createDate": 1643603315,
-        "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-        "modifyDate": 1691391431.149786,
+        "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
+        "modifyDate": 1691392598.576428,
         "id": 11,
         "recordTags": [
             "Phishing"
