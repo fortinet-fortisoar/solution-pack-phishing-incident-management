@@ -1,6 +1,6 @@
 {
     "name": "phishingIncidentManagement",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "type": "solutionpack",
     "local": true,
     "certified": "false",
@@ -10,35 +10,31 @@
             "name": "sOARFramework",
             "type": "solutionpack",
             "label": "SOAR Framework",
-            "version": "1.0.0",
             "minVersion": null
         },
         {
             "name": "mITREATT&CKEnrichmentFramework",
             "type": "solutionpack",
             "label": "MITRE ATT&CK Enrichment Framework",
-            "version": "2.0.2",
             "minVersion": null
         },
         {
             "name": "fileContentExtraction",
             "type": "solutionpack",
             "label": "File Content Extraction",
-            "version": "1.0.0",
             "minVersion": null
         },
         {
             "name": "socSimulator",
             "type": "solutionpack",
             "label": "SOC Simulator",
-            "version": "1.0.1",
             "minVersion": null
         }
     ],
     "prerequisite": "- Configure Connector: SOC Simulator\n- Configure Connector: Fortinet FortiGuard Threat Intelligence\n- Configure Connector: VirusTotal\n- Configure Connector: File Content Extraction\n- Configure Connector: Microsoft Active Directory",
     "publisher": "Fortinet CSE",
     "description": "Scripted simulation where a series of automation workflows guide your investigation via the workspace comments. Comments tagged as *Actions* represent the tasks the analyst must do. *Hints* are simply suggestions",
-    "help": "https://github.com/fortinet-fortisoar/solution-pack-phishing-incident-management/blob/release/1.0.0/README.md",
+    "help": "https://github.com/fortinet-fortisoar/solution-pack-phishing-incident-management/blob/release/1.1.0/README.md",
     "category": [
         "Email Security"
     ],
@@ -79,34 +75,52 @@
         ],
         "globalVariables": [
             {
-                "id": 24,
+                "id": 29,
                 "name": "Action_Icon",
                 "value": "<span style=\"background-color:red;color:black;border-radius: 4px;font-size:8mm;\">&#10159;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Action</font></span>",
                 "default_value": "<span style=\"background-color:red;color:black;border-radius: 4px;font-size:8mm;\">&#10159;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Action</font></span>"
             },
             {
-                "id": 50,
-                "name": "Tomorrow_Date",
-                "value": "{{arrow.utcnow().shift(hours=+24).timestamp}}",
-                "default_value": "{{arrow.utcnow().shift(hours=+24).timestamp}}"
+                "id": 13,
+                "name": "Excludelist_Domains",
+                "value": "google.com,yahoo.com,fortinet.net,cybersponse.com,gmail.com,outlook.com,microsoft.com,fortinet.com,twitter.com,facebook.com,linkedin.com,instagram.com,fortiguard.com,forticloud.com,fortielab.com",
+                "default_value": "google.com,yahoo.com,fortinet.net,cybersponse.com,gmail.com,outlook.com,microsoft.com,fortinet.com,twitter.com,facebook.com,linkedin.com,instagram.com,fortiguard.com,forticloud.com"
             },
             {
-                "id": 25,
+                "id": 12,
+                "name": "Excludelist_URLs",
+                "value": "https://www.google.com,https://mail.yahoo.com/login.html,https://www.office.com/,https://www.fortielab.com/patches/09870987.php,http://www.w3.org/1999/xhtml",
+                "default_value": "https://www.google.com,https://mail.yahoo.com/login.html,https://www.office.com/"
+            },
+            {
+                "id": 16,
+                "name": "Demo_mode",
+                "value": "false",
+                "default_value": "false"
+            },
+            {
+                "id": 28,
                 "name": "Hint_Icon",
                 "value": "<span style=\"background-color:orange;color:black;border-radius: 4px;font-size:8mm;\">&#9788;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Hint</font></span>",
                 "default_value": "<span style=\"background-color:orange;color:black;border-radius: 4px;font-size:8mm;\">&#9788;<font style=\"font-size:18px;font-weight: bold;font-family: 'Georgia', monospace;\">Hint</font></span>"
             },
             {
-                "id": 26,
-                "name": "Tomorrow_Date",
-                "value": "{{arrow.utcnow().shift(hours=+24).timestamp}}",
-                "default_value": "{{arrow.utcnow().shift(hours=+24).timestamp}}"
-            },
-            {
-                "id": 27,
+                "id": 31,
                 "name": "Exclamation_Icon",
                 "value": "<span style=\"color: red; font-size: 6mm;\">\u26a0</span>",
                 "default_value": "<span style=\"color: red; font-size: 6mm;\">\u26a0</span>"
+            },
+            {
+                "id": 14,
+                "name": "Current_Date",
+                "value": "{{arrow.utcnow().timestamp}}",
+                "default_value": "{{arrow.utcnow().timestamp}}"
+            },
+            {
+                "id": 30,
+                "name": "Tomorrow_Date",
+                "value": "{{arrow.utcnow().shift(hours=+24).timestamp}}",
+                "default_value": "{{arrow.utcnow().shift(hours=+24).timestamp}}"
             }
         ],
         "dashboards": [

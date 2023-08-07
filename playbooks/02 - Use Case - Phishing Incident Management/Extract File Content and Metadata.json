@@ -1,7 +1,7 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "> Extract File Content",
+    "name": "Extract File Content and Metadata",
     "aliasName": null,
     "tag": null,
     "description": "Extract File Content and Metadata",
@@ -11,9 +11,9 @@
     "remoteExecutableFlag": false,
     "parameters": [],
     "synchronous": false,
-    "collection": "\/api\/3\/workflow_collections\/c1ca92eb-8ec4-4dba-9a3d-156bf0a1abc2",
+    "collection": "\/api\/3\/workflow_collections\/6dadec2b-3024-4b1b-832c-c612f0bca071",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/fb7976a7-2bbb-4119-864d-703df41e855e",
+    "triggerStep": "\/api\/3\/workflow_steps\/ce04e7c4-2daf-44c7-a074-c53322a96065",
     "steps": [
         {
             "@type": "WorkflowStep",
@@ -24,14 +24,14 @@
                 "apply_async": false,
                 "step_variables": [],
                 "pass_input_record": true,
-                "workflowReference": "\/api\/3\/workflows\/730564d3-6c1b-4391-afcb-f09aa279e5da"
+                "workflowReference": "\/api\/3\/workflows\/cddbc41c-740e-48f0-9657-9867b9254a4b"
             },
             "status": null,
             "top": "166",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
             "group": null,
-            "uuid": "3526c129-5069-49c6-9f54-22ffeb5e704c"
+            "uuid": "ac0013e3-fe30-4661-aa95-d33784f3e394"
         },
         {
             "@type": "WorkflowStep",
@@ -61,7 +61,6 @@
                             "value": "\/api\/3\/picklists\/0162241b-f5bf-4917-a150-00e920be47bd",
                             "_value": {
                                 "@id": "\/api\/3\/picklists\/0162241b-f5bf-4917-a150-00e920be47bd",
-                                "display": "File",
                                 "itemValue": "File"
                             },
                             "operator": "eq"
@@ -72,6 +71,20 @@
                             "value": "false",
                             "operator": "isnull",
                             "_operator": "isnull"
+                        },
+                        {
+                            "type": "array",
+                            "field": "recordTags",
+                            "value": [
+                                "\/api\/3\/tags\/Scenario: Phishing Incident Management"
+                            ],
+                            "module": "recordTags",
+                            "display": null,
+                            "operator": "in",
+                            "template": "tags",
+                            "OPERATOR_KEY": "$",
+                            "previousOperator": "in",
+                            "previousTemplate": "tags"
                         }
                     ]
                 }
@@ -81,27 +94,30 @@
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/ea155646-3821-4542-9702-b246da430a8d",
             "group": null,
-            "uuid": "fb7976a7-2bbb-4119-864d-703df41e855e"
+            "uuid": "ce04e7c4-2daf-44c7-a074-c53322a96065"
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
             "name": "Start -> Extract File Content",
-            "targetStep": "\/api\/3\/workflow_steps\/3526c129-5069-49c6-9f54-22ffeb5e704c",
-            "sourceStep": "\/api\/3\/workflow_steps\/fb7976a7-2bbb-4119-864d-703df41e855e",
+            "targetStep": "\/api\/3\/workflow_steps\/ac0013e3-fe30-4661-aa95-d33784f3e394",
+            "sourceStep": "\/api\/3\/workflow_steps\/ce04e7c4-2daf-44c7-a074-c53322a96065",
             "label": null,
             "isExecuted": false,
-            "uuid": "44382d05-6fd0-4b3c-8a08-4c7cee6902b7"
+            "group": null,
+            "uuid": "46373bf5-e364-46e2-a96c-e60375f6b2da"
         }
     ],
     "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-    "uuid": "48b0e688-b7ce-4fbf-91b3-5b7d6dc8d2a8",
+    "uuid": "4520465f-4e3e-45ae-b1c1-2a4836bee6fd",
     "owners": [],
     "isPrivate": false,
     "deletedAt": null,
     "recordTags": [
+        "PostCreate",
+        "Indicators",
         "Use-Case"
     ]
 }
