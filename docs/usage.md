@@ -9,7 +9,7 @@ To understand the process FortiSOAR follows to manage phishing incidents, we hav
 
 ### Workflow
 
-![Workflow Overview](./docs/res/scenario_workflow.png)
+![Workflow Overview](../docs/res/scenario_workflow.png)
 
 ## Scenario - Advanced Phishing Incident Management
 
