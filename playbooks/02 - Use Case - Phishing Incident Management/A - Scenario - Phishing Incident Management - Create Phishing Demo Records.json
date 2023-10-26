@@ -17,7 +17,7 @@
     "steps": [
         {
             "@type": "WorkflowStep",
-            "name": "Config",
+            "name": "Configuration",
             "description": null,
             "arguments": {
                 "domains": "['acuweather.com','amaazon.com','axieeninfinity.com','ayaubk.com','baiddu.com','bilibbili.com','being.com','t.me','turboopages.org','twitche.tv','twetter.com','verveforexx.com','vkk.com','weathers.com','whatsap.com','wikipeda.org','xhamster.com','xnx.com','xideos.com','yah0o.com','yendex.ru','youtoube.com','zoum.us']",
@@ -136,6 +136,7 @@
                     "alerts",
                     "incidents"
                 ],
+                "__triggerLimit": true,
                 "inputVariables": [],
                 "step_variables": {
                     "input": {
@@ -145,6 +146,7 @@
                     "records_count": "100",
                     "records_timestamp_list": "[]"
                 },
+                "triggerOnSource": true,
                 "displayConditions": {
                     "alerts": {
                         "sort": [],
@@ -160,8 +162,13 @@
                     }
                 },
                 "executeButtonText": "Execute",
-                "noRecordExecution": false,
-                "singleRecordExecution": true
+                "noRecordExecution": true,
+                "showToasterMessage": {
+                    "visible": false,
+                    "messageVisible": true
+                },
+                "triggerOnReplicate": false,
+                "singleRecordExecution": false
             },
             "status": null,
             "top": "20",

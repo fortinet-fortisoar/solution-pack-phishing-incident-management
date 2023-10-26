@@ -1,9 +1,10 @@
 # Release Information
 
-- **Version**:  1.0.0
+- **Version**:  1.1.0
 - **Certified**: No
 - **Publisher**: Fortinet CSE
 - **Compatible Version**: FortiSOAR v7.2.2 and above
+- [Release Notes](./release_notes.md)
 
 # Overview
 
@@ -13,5 +14,5 @@ The **Phishing Incident Management** solution pack is a scripted simulation wher
 
 # Next Steps
 
-| [Installation](https://github.com/fortinet-fortisoar/solution-pack-phishing-incident-management/blob/release/1.0.0/docs/setup.md#installation) | [Configuration](https://github.com/fortinet-fortisoar/solution-pack-phishing-incident-management/blob/release/1.0.0/docs/setup.md#configuration) | [Usage](https://github.com/fortinet-fortisoar/solution-pack-phishing-incident-management/blob/release/1.0.0/docs/usage.md) | [Contents](https://github.com/fortinet-fortisoar/solution-pack-phishing-incident-management/blob/release/1.0.0/docs/contents.md) |
+| [Installation](./docs/setup.md#installation) | [Configuration](./docs/setup.md#configuration) | [Usage](./docs/usage.md) | [Contents](./docs/contents.md) |
 |------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|

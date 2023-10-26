@@ -1,4 +1,4 @@
-| [Home](https://github.com/fortinet-fortisoar/solution-pack-phishing-incident-management/blob/release/1.0.0/README.md) |
+| [Home](../README.md) |
 |-----------------------------------------------------------------------------------------------------------------|
 
 # Contents
@@ -44,26 +44,28 @@
 | 02 - Use Case - Phishing Incident Management |
 |:---------------------------------------------|
 
-| Playbook Name                                             | Description                                                                                |
-|:----------------------------------------------------------|:-------------------------------------------------------------------------------------------|
-| 1 - Create False Positive Alert                           | Create False Positive Phishing Email                                                       |
-| 2 - Create True Positive Phishing Email                   | Create scenario alert from a JSON alert record                                             |
-| 3 - Create True Positive Phishing Email - Fully Automated | Create scenario alert from a JSON alert record                                             |
-| A - Phishing Alert Enrichment and Investigation           | Phishing alert parsing and triage                                                          |
-| B - Phishing Incident Response                            | Tracks affected mailboxes and neutralizes the malicious content                            |
-| C - Hunt Indicators on FortiSIEM                          | Hunt indicator value on FortiSIEM for the past X Minutes                                   |
-| D - Quarantine Infected Assets                            | Block Infected Assets on FortiGate                                                         |
-| E - Generate Demo Records                                 | Creates records to populate dashboards and reports                                         |
-| > Add Malicious Attachment Comment                        | Adds a helpful guiding comment if the attachment is found to be malicious                  |
-| > Add No Reputation Indicators Comment                    | Adds a helpful guiding comment if the attachment's reputation is not available or is blank |
-| > Add Status Comments                                     | Adds helpful guiding comments as per the investigation status                              |
-| > Extract File Content                                    | Extract File Content and Metadata                                                          |
-| > Hunt Indicators on FortiSIEM                            | Hunt indicator value on FortiSIEM for the past X Minutes                                   |
-| > Phishing Alert Enrichment and Investigation             | Referenced playbook used to automate **Phishing Alert Enrichment and Investigation**       |
-| > Phishing Incident Management - Fully Automated          | Manage incidents in a fully automated manner                                               |
-| > Phishing Incident Response                              | Tracks affected mailboxes and neutralizes the malicious content                            |
-| > Quarantine Infected Asset                               | Block Infected Asset on FortiGate                                                          |
-| > Create or Link Recipient User                           | Creates or link alert related users                                                        |
-| > Escalate Alert to Incident                              | Copy alert content to incident                                                             |
-| > Track and Delete Phishing Emails                        | Delete malicious content from Mailboxes                                                    |
-| > User Enrichment via Active Directory                    | Fetches user data from AD                                                                  |
+| Playbook Name                                               | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- |
+| 01 - Phishing Alert- Enrichment and Investigation            | Phishing alert parsing and triage                          |
+| 02 - Phishing Incident Management - Investigation and Response | Tracks affected mailboxes and neutralizes the malicious content |
+| 03 - Phishing Incident Management - Phishing Incident Response via Approval | Implement Remediation Actions subject to SOC Approval (Requires Working Emails) |
+| 04 - Hunt Indicators (FortiSIEM)                          | Hunt indicator value on FortiSIEM for the past X Minutes   |
+| 05 - Quarantine Infected Assets                            | Block Infected Assets on FortiGate                         |
+| A - Scenario - Phishing Incident Management - Create Phishing Demo Records | Creates records to populate dashboards and reports         |
+| Add Malicious Attachment Comment to Incident and Indicator | Add malicious attachment comment to an indicator and an incident |
+| B - Scenario - Phishing Incident Management - Create True Positive Phishing Email | Create scenario alert from a JSON alert record            |
+| C - Scenario - Phishing Incident Management - Create False Positive Alert | Create False Positive Phishing Email                   |
+| D - Scenario - Phishing Incident Management - Create True Positive Phishing Email - Fully Automated | Create scenario alert from a JSON alert record |
+| Extract File Content and Metadata                           | Extract File Content and Metadata                          |
+| Indicators - Add No Reputation Comment                       | Add comment No reputation found, and analyst has to be determined manually. Identify the indicator risk, if high set the Reputation to Malicious |
+| Phishing Alert - Add Status Comments                       | Add status comments to alert                                |
+| Phishing Alert - Auto Enrichment                            | Extra Attributes Parsers and Alert Triage                    |
+| Phishing Alert - Create or Link Recipient User              | Creates or links alert-related users                         |
+| Phishing Alert - Escalate Alert to Incident                 | Malicious or Suspicious indicator found, hence escalate phishing alert to incident |
+| Phishing Alert - Get Related Indicators Reputations         | Retrieves Reputation values and status for each indicator related to the input Alert |
+| Phishing Incident Management - Hunt Indicators (FortiSIEM)  | Hunt indicator value on FortiSIEM for the past X Minutes    |
+| Phishing Incident Management - Incident Response            | Tracks affected mailboxes and neutralizes the malicious content |
+| Phishing Incident Management - Manage Incident (Fully Automated) | Manage the incident in a fully automated manner            |
+| Phishing Incident Management - Quarantine Infected Asset (FortiGate) | Block Infected Asset on FortiGate                  |
+| Phishing Incident Management - Track and Delete Phishing Emails | Delete malicious content from Mailboxes                   |
+| User Enrichment - Active Directory                         | Fetches user data from AD                                  |
