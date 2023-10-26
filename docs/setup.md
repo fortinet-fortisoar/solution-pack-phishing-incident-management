@@ -1,4 +1,4 @@
-| [Home](https://github.com/fortinet-fortisoar/solution-pack-phishing-incident-management/blob/release/1.0.0/README.md) |
+| [Home](../README.md) |
 |-----------------------------------------------------------------------------------------------------------------|
 
 # Installation
@@ -11,7 +11,7 @@
 ## Operation Modes
 The Solution Pack operates either in:
 
-- **Simulation Mode:** This mode allows you to run the case management process without configuring FortiSOAR integrations with the different systems the use case involves such as Email server, Cyber Threat Intelligence services ...etx. The workflows will generate fake data to populate the records, this is suitable for demo sessions or trainings. To turn demo mode on, you simply need to set the global variable `Demo_mode` to `true`
+- **Simulation Mode:** This mode allows you to run the case management process without configuring FortiSOAR integrations with the different systems the use case involves such as Email server, Cyber Threat Intelligence services etc. The workflows will generate fake data to populate the records, this is suitable for demo sessions or trainings. To turn demo mode on, you simply need to set the global variable `Demo_mode` to `true`
 - **Live Mode:** If you want to use the solution pack to handle your production phishing emails, the above global variable has to be set to `false`. Furthermore some prerequisites are required, the list is available under Prerequisites section of this document
 
 ## Prerequisites
@@ -26,8 +26,8 @@ The **Phishing Incident Management** solution pack depends on the following solu
 | File Content Extraction           | Required for the set of playbooks implementing file extraction use case |
 
 ### Prerequisites for Live Mode
-- MS Exchange/SMTP Connectors configured with your MS Exchange parameters (To send notifications and run remediation actions)
-- AD Connector configured with your DC parameters (For users enrichment)
+- Exchange/SMTP Connectors configured with your Exchange parameters (To send notifications and run remediation actions)
+- Active Directory Connector configured with your DC parameters (For users enrichment)
 - Cyber Threat Intelligence integrations for all types of indicators used in the use case. Indicators must be rated automatically either by the built-in Enrichment playbooks or any custom ones you might be using
 - Configured integration with FortiSIEM, FortiMail, FortiGate (For Threat Hunting and Incident Response)
 - Default Email Sender has to be set (So users would know from where the notifications origin)
