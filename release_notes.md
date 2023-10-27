@@ -1,4 +1,5 @@
 # What's New
 
-- Optimized and renamed existing playbooks
-- Updated description of the scenario record
+- Improved playbook naming.
+- Enhanced scenario descriptions with clearer explanations.
+- Added more helpful comments during playbook execution for investigation and response.
