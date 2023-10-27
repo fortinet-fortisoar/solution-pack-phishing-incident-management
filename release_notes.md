@@ -1,5 +1,4 @@
 # What's New
 
-- Improved playbook naming.
-- Enhanced scenario descriptions with clearer explanations.
-- Added more helpful comments during playbook execution for investigation and response.
+- Scenario **Advanced Phishing Incident Management** description now contains usecase workflow.
+- Investigation and response PB now record more information using comments.
