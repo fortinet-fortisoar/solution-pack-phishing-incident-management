@@ -15,7 +15,6 @@ To understand the process FortiSOAR follows to manage phishing incidents, we hav
 
 This scenario generates an example alert of **Type** *Suspicious Email* in FortiSOAR's Alerts module.
 
-
 ### False Positive Alert
 
 This section helps create a false positive alert to understand how this solution pack's automation addresses your needs.
@@ -54,28 +53,28 @@ Create a demonstration alert for this use case by simulating scenario. Or, Go to
     - Email Indicators are extracted and rated
     - Presence of malicious indicators ensures automatic escalation of alerts
     - Depending on the user's role, the alert is either escalated to an incident or marked as resolved and closed
-    > **NOTE**: The malicious indicators are fetched from a Cyber Threat Intelligence(CTI) platform and hence sometimes all indicators turn out to be false positives. You may need to repeat the steps until you get at least one malicious indicator.
 
-5. Browse to `Correlations > Incidents` and open the newly escalated incident.
-6. As a next-tier analyst start the Incident Management by setting the incident status to **In Progress** and its phase status to **Confirmation**.
-7. Browse to the **Indicators** tab and review the malicious indicators.
-8. Expand the Incident description and notice the email origin, check if any of the targeted users is a high profile one. 
+   > **NOTE**: The malicious indicators are fetched from a Cyber Threat Intelligence(CTI) platform and hence sometimes all indicators turn out to be false positives. You may need to repeat the steps until you get at least one malicious indicator.
+
+6. Browse to `Correlations > Incidents` and open the newly escalated incident.
+7. As a next-tier analyst start the Incident Management by setting the incident status to **In Progress** and its phase status to **Confirmation**.
+8. Browse to the **Indicators** tab and review the malicious indicators.
+9. Expand the Incident description and notice the email origin, check if any of the targeted users is a high profile one. 
     - Users Active Directory details can be found at **Correlations > Users**
 
-9. Open the file Attachment indicator which looks like: `Password_Update_Guide_XXXX.docx`
+10. Open the file Attachment indicator which looks like: `Password_Update_Guide_XXXX.docx`
     - Set its reputation based on the file content displayed on its File Preview field
 
-10. Notice there no reputation is found for the file because it is a 0-day file. The file's risk factor has to be determined manually.
+11. Notice there no reputation is found for the file because it is a 0-day file. The file's risk factor has to be determined manually.
     - Identify the indicator risk and set the Reputation to **Malicious**, if required.
 
-11. If the case is confirmed True Positive, Set the Phase to **Eradication** and Execute the remediation Playbook **02 - Phishing Incident Management - Investigation and Response**
+12. If the case is confirmed True Positive, Set the Phase to **Eradication** and Execute the remediation Playbook **02 - Phishing Incident Management - Investigation and Response**
 
-12. Notice how the email sender is blocked on the email gateway and the phishing email is deleted from all recipients mailboxes.
+13. Notice how the email sender is blocked on the email gateway and the phishing email is deleted from all recipients mailboxes.
     - Now to be sure none of the recipients have actually opened the email and got the asset infected we will hunt for threats in FortiSIEM using the extracted indicators. the presence of the extracted indicators (from various events such as NGFW, EDR...etc) indicates the source asset has been infected
 
-13. To run threat hunting playbook, select all indicators in the Incident Indicators TAB (use the select all button)
+14. To run threat hunting playbook, select all indicators in the Incident Indicators TAB (use the select all button)
    - Then execute playbook `04 - Hunt Indicators (FortiSIEM)`
-   - 
 
 14. When an indicator is found its `TLP` turns to `Red`.
     - Open such indicator and browse to its `Correlations > Hunts` tab and check the Source Data of each hunt which is the definitive proof the source asset has been infected
