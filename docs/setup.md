@@ -42,3 +42,7 @@ For optimal performance of the **Phishing Incident Management** solution pack, y
     - To configure and use the Microsoft Exchange connector for email ingestion, refer to [Configuring Exchange Connector](https://docs.fortinet.com/document/fortisoar/3.4.0/exchange/1/exchange-v3-4-0#Configuring_the_connector)
 - A user database solution to get users and asset details
     - To configure and use Microsoft's Active Directory connector, refer to [Configuring Microsoft's Active Directory](https://docs.fortinet.com/document/fortisoar/2.2.0/active-directory/154/active-directory-v2-2-0#Configuration_parameters)
+
+# Next Steps
+| [Usage](./usage.md) | [Contents](./contents.md) |
+|---------------------|---------------------------|
