@@ -69,3 +69,9 @@
 | Phishing Incident Management - Quarantine Infected Asset (FortiGate) | Block Infected Asset on FortiGate                  |
 | Phishing Incident Management - Track and Delete Phishing Emails | Delete malicious content from Mailboxes                   |
 | User Enrichment - Active Directory                         | Fetches user data from AD                                  |
+
+>**Warning:** We recommend that you clone these playbooks before customizing to avoid loss of information while upgrading the solution pack.
+
+# Next Steps
+| [Installation](./setup.md#installation) | [Configuration](./setup.md#configuration) | [Usage](./usage.md) |
+| ----------------------------------------- | ------------------------------------------- | --------------------- |

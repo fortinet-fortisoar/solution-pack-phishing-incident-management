@@ -110,3 +110,7 @@ The following helps you experience the Dashboard interface.
 - Navigate to **Incident Response > Alerts** or **Incident Response > Incidents**.
 - Execute the playbook: **A - Scenario - Phishing Incident Management - Create Phishing Demo Records** to populate the system with records which is useful for this step. Keep in mind this process might take few minutes.
 - Browse to Dashboard and select **Phishing Case Management**. Walk through the different widgets
+
+# Next Steps
+| [Installation](./setup.md#installation) | [Configuration](./setup.md#configuration) | [Contents](./contents.md) |
+| ----------------------------------------- | ------------------------------------------- | --------------------------- |
