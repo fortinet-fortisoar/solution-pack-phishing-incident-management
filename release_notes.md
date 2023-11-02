@@ -1,4 +1,4 @@
 # What's New
 
-- Scenario **Advanced Phishing Incident Management** description now contains usecase workflow.
-- Investigation and response PB now record more information using comments.
+- Scenario **Advanced Phishing Incident Management** description now contains a use case workflow.
+- Investigation and response playbook now records more information using comments.
