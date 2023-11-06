@@ -1,7 +1,7 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "> Track and Delete Phishing Emails",
+    "name": "Phishing Incident Management - Track and Delete Phishing Emails",
     "aliasName": null,
     "tag": null,
     "description": "Delete malicious content from Mailboxes",
@@ -14,9 +14,9 @@
         "Email_Subject"
     ],
     "synchronous": false,
-    "collection": "\/api\/3\/workflow_collections\/c1ca92eb-8ec4-4dba-9a3d-156bf0a1abc2",
+    "collection": "\/api\/3\/workflow_collections\/6dadec2b-3024-4b1b-832c-c612f0bca071",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/a03797ad-c16e-4781-b785-ceb0fd48214f",
+    "triggerStep": "\/api\/3\/workflow_steps\/33684472-4635-4444-88b6-8e3251b4a25e",
     "steps": [
         {
             "@type": "WorkflowStep",
@@ -30,7 +30,36 @@
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
             "group": null,
-            "uuid": "1dfdbad3-bb4b-4b17-82de-25c57147cc6a"
+            "uuid": "95484975-3636-4fd9-bc38-f2b2e275579a"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Email Address",
+            "description": null,
+            "arguments": {
+                "target_email": "{{vars.input.params['Target_Email']}}",
+                "email_subject": "{{vars.input.params['Email_Subject']}}"
+            },
+            "status": null,
+            "top": "167",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "2443ccba-5bd3-4e8e-a021-88c4bd7bb209"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Search Results",
+            "description": null,
+            "arguments": {
+                "email_search_results": "{{vars.steps.Search_Target_Inbox.data}}"
+            },
+            "status": null,
+            "top": "439",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "a43e5461-1ec9-44e7-a970-28d3047e3c36"
         },
         {
             "@type": "WorkflowStep",
@@ -72,21 +101,7 @@
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
             "group": null,
-            "uuid": "2ef6b8ab-1d86-4a3b-8087-93308d06854d"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Get Search Results",
-            "description": null,
-            "arguments": {
-                "email_search_results": "{{vars.steps.Search_Target_Inbox.data}}"
-            },
-            "status": null,
-            "top": "439",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "group": null,
-            "uuid": "35a49175-9446-4fc9-be93-a263d903ec47"
+            "uuid": "2260a3f4-bd07-4b1d-9296-52a04558f09e"
         },
         {
             "@type": "WorkflowStep",
@@ -121,22 +136,7 @@
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
             "group": null,
-            "uuid": "4790e98b-bfd2-4b81-9360-74237a141e9f"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Get Email Address",
-            "description": null,
-            "arguments": {
-                "target_email": "{{vars.input.params['Target_Email']}}",
-                "email_subject": "{{vars.input.params['Email_Subject']}}"
-            },
-            "status": null,
-            "top": "167",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "group": null,
-            "uuid": "9d6217b1-a347-4a2c-8b88-e098848c62f6"
+            "uuid": "0460e03c-3a92-4ebf-b906-39fea7979395"
         },
         {
             "@type": "WorkflowStep",
@@ -155,59 +155,64 @@
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
             "group": null,
-            "uuid": "a03797ad-c16e-4781-b785-ceb0fd48214f"
+            "uuid": "33684472-4635-4444-88b6-8e3251b4a25e"
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
             "name": "Compute Message IDs -> Move to trash",
-            "targetStep": "\/api\/3\/workflow_steps\/2ef6b8ab-1d86-4a3b-8087-93308d06854d",
-            "sourceStep": "\/api\/3\/workflow_steps\/1dfdbad3-bb4b-4b17-82de-25c57147cc6a",
+            "targetStep": "\/api\/3\/workflow_steps\/2260a3f4-bd07-4b1d-9296-52a04558f09e",
+            "sourceStep": "\/api\/3\/workflow_steps\/95484975-3636-4fd9-bc38-f2b2e275579a",
             "label": null,
             "isExecuted": false,
-            "uuid": "5fd730a5-b230-4da3-abde-8d73e6e856a3"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Search Target Inbox -> Copy  of Compute Message IDs",
-            "targetStep": "\/api\/3\/workflow_steps\/35a49175-9446-4fc9-be93-a263d903ec47",
-            "sourceStep": "\/api\/3\/workflow_steps\/4790e98b-bfd2-4b81-9360-74237a141e9f",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "66ba6017-cdde-414b-81ae-1d4abd38025f"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Get Email Address -> Search Target Inbox",
-            "targetStep": "\/api\/3\/workflow_steps\/4790e98b-bfd2-4b81-9360-74237a141e9f",
-            "sourceStep": "\/api\/3\/workflow_steps\/9d6217b1-a347-4a2c-8b88-e098848c62f6",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "7ab04e7f-6ed1-4546-a67d-08ca5b435821"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Start -> Get Email Address",
-            "targetStep": "\/api\/3\/workflow_steps\/9d6217b1-a347-4a2c-8b88-e098848c62f6",
-            "sourceStep": "\/api\/3\/workflow_steps\/a03797ad-c16e-4781-b785-ceb0fd48214f",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "cfbe3394-7222-4616-9c46-f6cca9cc3c8e"
+            "group": null,
+            "uuid": "d788c107-099c-4c5d-a0a3-9fcadeb0e2f8"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy  of Compute Message IDs -> Compute Message IDs",
-            "targetStep": "\/api\/3\/workflow_steps\/1dfdbad3-bb4b-4b17-82de-25c57147cc6a",
-            "sourceStep": "\/api\/3\/workflow_steps\/35a49175-9446-4fc9-be93-a263d903ec47",
+            "targetStep": "\/api\/3\/workflow_steps\/95484975-3636-4fd9-bc38-f2b2e275579a",
+            "sourceStep": "\/api\/3\/workflow_steps\/a43e5461-1ec9-44e7-a970-28d3047e3c36",
             "label": null,
             "isExecuted": false,
-            "uuid": "d5c56d3a-1e84-4596-9739-7f47d47642bb"
+            "group": null,
+            "uuid": "d83deede-2aa7-44b3-952c-d54736bc9bef"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Email Address -> Search Target Inbox",
+            "targetStep": "\/api\/3\/workflow_steps\/0460e03c-3a92-4ebf-b906-39fea7979395",
+            "sourceStep": "\/api\/3\/workflow_steps\/2443ccba-5bd3-4e8e-a021-88c4bd7bb209",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "2d61ed3e-241a-4fc3-885c-55d94ec9f7bd"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Search Target Inbox -> Copy  of Compute Message IDs",
+            "targetStep": "\/api\/3\/workflow_steps\/a43e5461-1ec9-44e7-a970-28d3047e3c36",
+            "sourceStep": "\/api\/3\/workflow_steps\/0460e03c-3a92-4ebf-b906-39fea7979395",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "ee1b6393-842b-41ec-a640-fc4ca2b19b71"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Get Email Address",
+            "targetStep": "\/api\/3\/workflow_steps\/2443ccba-5bd3-4e8e-a021-88c4bd7bb209",
+            "sourceStep": "\/api\/3\/workflow_steps\/33684472-4635-4444-88b6-8e3251b4a25e",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "6c86140b-b79b-4fa1-b4b2-e3b0dea4037e"
         }
     ],
     "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-    "uuid": "ce503dd0-73be-4a1f-9499-c545873a5519",
+    "uuid": "d57b6700-a5a7-4e10-b28b-85895be8f5b7",
     "owners": [],
     "isPrivate": false,
     "deletedAt": null,

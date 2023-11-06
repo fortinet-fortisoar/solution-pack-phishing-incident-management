@@ -1,47 +1,47 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "C - Hunt Indicators on FortiSIEM",
+    "name": "05 - Quarantine Infected Assets",
     "aliasName": null,
     "tag": null,
-    "description": "Hunt indicator value on FortiSIEM for the past X Minutes",
+    "description": "Block Infected Assets on FortiGate",
     "isActive": true,
     "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],
     "synchronous": false,
-    "collection": "\/api\/3\/workflow_collections\/c1ca92eb-8ec4-4dba-9a3d-156bf0a1abc2",
+    "collection": "\/api\/3\/workflow_collections\/6dadec2b-3024-4b1b-832c-c612f0bca071",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/c1234151-3a97-4688-b1b8-d8817872815e",
+    "triggerStep": "\/api\/3\/workflow_steps\/1873d42a-7891-4c31-82bc-4a7a0d8d4fcc",
     "steps": [
         {
             "@type": "WorkflowStep",
-            "name": "Hunt Indicator on FortiSIEM",
+            "name": "Quarantine Infected Machine",
             "description": null,
             "arguments": {
                 "arguments": {
-                    "indicator_data": "{{vars.input.records[0]}}"
+                    "asset_data": "{{vars.input.records[0]}}"
                 },
                 "apply_async": false,
                 "step_variables": [],
-                "workflowReference": "\/api\/3\/workflows\/c0ebaeff-69fa-41b8-ad0a-52701d3f4c46"
+                "workflowReference": "\/api\/3\/workflows\/a9f0a401-82b0-48fd-9fc2-2bec639d7ca0"
             },
             "status": null,
             "top": "165",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
             "group": null,
-            "uuid": "6aef8169-17ff-4dd2-a81e-b6ef3141b4a5"
+            "uuid": "25246508-c2d6-4932-9832-ee7693a4e1a7"
         },
         {
             "@type": "WorkflowStep",
             "name": "Start",
             "description": null,
             "arguments": {
-                "route": "8ec5b671-343a-4435-ae9a-2b13c83de8c2",
+                "route": "33f2dbaf-41da-4a42-b2f9-2a340c5d64f0",
                 "resources": [
-                    "indicators"
+                    "assets"
                 ],
                 "inputVariables": [],
                 "step_variables": {
@@ -52,14 +52,14 @@
                     "useMockOutput": "{{globalVars.Demo_mode}}"
                 },
                 "displayConditions": {
-                    "indicators": {
+                    "assets": {
                         "sort": [],
                         "limit": 30,
                         "logic": "AND",
                         "filters": [
                             {
                                 "type": "primitive",
-                                "field": "value",
+                                "field": "ip",
                                 "value": "false",
                                 "operator": "isnull",
                                 "_operator": "isnull"
@@ -76,27 +76,30 @@
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
             "group": null,
-            "uuid": "c1234151-3a97-4688-b1b8-d8817872815e"
+            "uuid": "1873d42a-7891-4c31-82bc-4a7a0d8d4fcc"
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Start -> Hunt Indicator on FortiSIEM",
-            "targetStep": "\/api\/3\/workflow_steps\/6aef8169-17ff-4dd2-a81e-b6ef3141b4a5",
-            "sourceStep": "\/api\/3\/workflow_steps\/c1234151-3a97-4688-b1b8-d8817872815e",
+            "name": "Start -> Quarantine Infected Machine",
+            "targetStep": "\/api\/3\/workflow_steps\/25246508-c2d6-4932-9832-ee7693a4e1a7",
+            "sourceStep": "\/api\/3\/workflow_steps\/1873d42a-7891-4c31-82bc-4a7a0d8d4fcc",
             "label": null,
             "isExecuted": false,
-            "uuid": "b930a348-2443-4172-8caa-5f7c2950c81a"
+            "group": null,
+            "uuid": "dfc6abab-c3cc-413a-86f4-3592df645ad8"
         }
     ],
     "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
-    "uuid": "34991a82-7944-46fc-b3a5-afd16f58dc0c",
+    "uuid": "9ba2a194-f5ad-44b5-8320-22405c7b465b",
     "owners": [],
     "isPrivate": false,
     "deletedAt": null,
     "recordTags": [
-        "Threat_Hunting"
+        "ManualTrigger",
+        "Assets",
+        "IncidentResponse"
     ]
 }

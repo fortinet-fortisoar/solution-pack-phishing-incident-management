@@ -1,7 +1,7 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "> User Enrichment via Active Directory",
+    "name": "User Enrichment - Active Directory",
     "aliasName": null,
     "tag": null,
     "description": "Fetches user data from AD",
@@ -11,42 +11,24 @@
     "remoteExecutableFlag": false,
     "parameters": [],
     "synchronous": false,
-    "collection": "\/api\/3\/workflow_collections\/c1ca92eb-8ec4-4dba-9a3d-156bf0a1abc2",
+    "collection": "\/api\/3\/workflow_collections\/6dadec2b-3024-4b1b-832c-c612f0bca071",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/4d8ceda9-62de-4ac1-b19d-621b55e5ace5",
+    "triggerStep": "\/api\/3\/workflow_steps\/ebeb5180-3d28-4916-b1f7-2a4fe472d92b",
     "steps": [
         {
             "@type": "WorkflowStep",
-            "name": "Start",
+            "name": "Compute Results",
             "description": null,
             "arguments": {
-                "resource": "users",
-                "resources": [
-                    "users"
-                ],
-                "step_variables": {
-                    "input": {
-                        "params": [],
-                        "records": [
-                            "{{vars.input.records[0]}}"
-                        ]
-                    },
-                    "mockout_data": "{\n   \"data\": {\n     \"cookie\": null,\n     \"entries\": [\n       {\n         \"dn\": \"CN={{vars.input.records[0].userName}},CN=Users,DC=fortielab,DC=com\",\n         \"attributes\": {\n           \"cn\": \"{{vars.input.records[0].userName}}\",\n           \"sn\": \"{{vars.input.records[0].userName}}\",\n           \"mail\": \"{{vars.input.records[0].userName}}@fortielab.com\",\n           \"name\": \"{{vars.input.records[0].userName}}\",\n           \"title\": \"CxO\",\n           \"homeMDB\": \"CN=Mailbox Database 1544102581,CN=Databases,CN=Exchange Administrative Group (FYDIBOHF23SPDLT),CN=Administrative Groups,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n           \"manager\": \"CN=masha,CN=Users,DC=fortielab,DC=com\",\n           \"codePage\": 0,\n           \"memberOf\": [\n             \"CN=Illium_remote_branch,CN=Users,DC=fortielab,DC=com\",\n             \"CN=Domain Users,CN=Users,DC=fortielab,DC=com\",\n             \"{%if 'asmith' in vars.input.records[0].userName%}CN=C_LEVEL,CN=Users,DC=fortielab,DC=com{%else%}CN=Users,CN=Users,DC=fortielab,DC=com{%endif%}\"\n           ],\n           \"givenName\": \"{{vars.input.records[0].userName}}\",\n           \"lastLogon\": 1602760753,\n           \"objectSid\": \"S-1-5-21-1057186202-1089730122-574899179-1{{ range(111, 999) | random }}}\",\n           \"lastLogoff\": null,\n           \"logonCount\": 6,\n           \"objectGUID\": \"{949b8c03-5c7d-4af0-a7b8-bce{{ range(111, 999) | random }}}\",\n           \"pwdLastSet\": 1588825508,\n           \"uSNChanged\": 196906,\n           \"uSNCreated\": 33409,\n           \"badPwdCount\": 0,\n           \"countryCode\": 0,\n           \"objectClass\": [\n             \"top\",\n             \"person\",\n             \"organizationalPerson\",\n             \"user\"\n           ],\n           \"whenChanged\": 1602676250,\n           \"whenCreated\": 1588825508,\n           \"instanceType\": 4,\n           \"mailNickname\": \"{{vars.input.records[0].userName}}\",\n           \"msExchVersion\": 88218628259840,\n           \"accountExpires\": 253402300799,\n           \"mDBUseDefaults\": true,\n           \"objectCategory\": \"CN=Person,CN=Schema,CN=Configuration,DC=fortielab,DC=com\",\n           \"primaryGroupID\": 1156,\n           \"proxyAddresses\": [\n             \"SMTP:{{vars.input.records[0].userName}}@fortielab.com\"\n           ],\n           \"sAMAccountName\": \"{{vars.input.records[0].userName}}\",\n           \"sAMAccountType\": \"SAM_NORMAL_USER_ACCOUNT\",\n           \"badPasswordTime\": null,\n           \"msExchUMDtmfMap\": [\n             \"emailAddress:37422736\",\n             \"lastNameFirstName:742273632843\",\n             \"firstNameLastName:328437422736\"\n           ],\n           \"legacyExchangeDN\": \"\/o=FORTIELAB\/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)\/cn=Recipients\/cn=50ec8aee08f14789b39afbf691942cea-david ricardo\",\n           \"distinguishedName\": \"CN=david ricardo,CN=Users,DC=fortielab,DC=com\",\n           \"msExchMailboxGuid\": {\n             \"encoded\": \"GPspdyB9WECdCIa4\/NL3pQ==\",\n             \"encoding\": \"base64\"\n           },\n           \"msExchUserCulture\": \"en-US\",\n           \"showInAddressBook\": [\n             \"CN=Mailboxes(VLV),CN=All System Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n             \"CN=All Mailboxes(VLV),CN=All System Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n             \"CN=All Recipients(VLV),CN=All System Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n             \"CN=Default Global Address List,CN=All Global Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n             \"CN=All Users,CN=All Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\"\n           ],\n           \"userPrincipalName\": \"{{vars.input.records[0].userName}}@fortielab.com\",\n           \"lastLogonTimestamp\": 1601975940,\n           \"msExchArchiveQuota\": 104857600,\n           \"userAccountControl\": \"NORMAL_ACCOUNT | DONT_EXPIRE_PASSWORD\",\n           \"msExchDumpsterQuota\": 31457280,\n           \"msExchHomeServerName\": \"\/o=FORTIELAB\/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)\/cn=Configuration\/cn=Servers\/cn=EXCH19\",\n           \"msExchRBACPolicyLink\": \"CN=Default Role Assignment Policy,CN=Policies,CN=RBAC,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n           \"dSCorePropagationData\": [\n             null\n           ],\n           \"msExchELCMailboxFlags\": 130,\n           \"msExchArchiveWarnQuota\": 94371840,\n           \"msExchPoliciesIncluded\": [\n             \"bf367958-d2e1-4db3-aac1-573cd3ce3f44\",\n             \"{26491cfc-9e50-4857-861b-0cb8df22b5d7}\"\n           ],\n           \"msExchTextMessagingState\": [\n             302120705,\n             16842751\n           ],\n           \"msExchUserAccountControl\": 0,\n           \"msExchWhenMailboxCreated\": 1588825565,\n           \"msExchCalendarLoggingQuota\": 6291456,\n           \"msExchDumpsterWarningQuota\": 20971520,\n           \"msExchRecipientDisplayType\": 1073741824,\n           \"msExchRecipientTypeDetails\": 1,\n           \"physicalDeliveryOfficeName\": \"HQ\",\n           \"msExchMailboxSecurityDescriptor\": {\n             \"encoded\": \"AQAEgBQAAAAgAAAAAAAAACwAAAABAQAAAAAABQoAAAABAQAAAAAABQoAAAAEABwAAQAAAAACFAABAAIAAQEAAAAAAAUKAAAA\",\n             \"encoding\": \"base64\"\n           }\n         }\n       }\n     ]\n   },\n   \"status\": \"Success\",\n   \"_status\": true,\n   \"message\": \"\",\n   \"operation\": null,\n   \"request_id\": null\n }",
-                    "useMockOutput": "{{globalVars.Demo_mode}}"
-                },
-                "fieldbasedtrigger": {
-                    "sort": [],
-                    "limit": 30,
-                    "logic": "AND",
-                    "filters": []
-                }
+                "user_attr": "{\n    \"email\": \"{{vars.gua.mail or vars.gua.userPrincipalName or None}}\",\n    \"whenUserCreated\": {{vars.gua.whenCreated or None}},\n    \"reportsTo\": \"{%if vars.gua.manager|length > 0%}{{vars.gua.manager.split('=')[1].split(',')[0]}}{%endif%}\",\n    \"jobTitle\": \"{{vars.gua.title or None}}\",\n    \"mobileNumber\": \"{{vars.gua.telephoneNumber or vars.gua.mobile or vars.gua.homePhone or '+97543548856'}}\",\n    \"memberOf\": \"{%if vars.gua.memberOf|length > 0%}{%for i in vars.gua.memberOf%}{{i.split('=')[1].split(',')[0]+', '}}{%endfor%}{%endif%}\",\n    \"department\": \"{{vars.gua.department or 'Marketing'}}\",\n    \"passwordLastSet\": {{vars.gua.pwdLastSet or None}},\n    \"lastLogin\": {{vars.gua.lastLogon or None}},\n    \"domain\": \"{%set tmp_dom=vars.gua.distinguishedName.split(',')%}{%for entry in tmp_dom%}{%if 'DC=' in entry%}{{entry.split('DC=')[1]+'.'}}{%endif%}{%endfor%}\",\n    \"securityId\": \"{{vars.gua.objectSid or None}}\",\n    \"managerEmail\": \"{{vars.gma.mail or vars.gma.userPrincipalName or None}}\",\n    \"managerPhoneNumber\": \"{{vars.gma.telephoneNumber or vars.gma.mobile or vars.gma.homePhone or None}}\",\n    \"primaryGroup\":\"{%for group in vars.ad_groups%}{%if '-'+vars.gua.primaryGroupID|string in group.attributes.objectSid%}{{group.attributes.name}}{%endif%}{%endfor%}\"\n}",
+                "source_data": "{\"User Atrributes\":{{vars.gua}},\"Manager Attributes\":{{vars.gma}}}"
             },
             "status": null,
-            "top": "30",
+            "top": "570",
             "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/ea155646-3821-4542-9702-b246da430a8d",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
             "group": null,
-            "uuid": "4d8ceda9-62de-4ac1-b19d-621b55e5ace5"
+            "uuid": "51918648-6995-4f3e-9d6a-88384d897da1"
         },
         {
             "@type": "WorkflowStep",
@@ -75,7 +57,37 @@
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
             "group": null,
-            "uuid": "63aabd86-4647-4114-b0a2-7b8b9d3287a6"
+            "uuid": "6d7ec8ae-b46f-45d5-848b-44991630e047"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Manager Attributes",
+            "description": null,
+            "arguments": {
+                "name": "Active Directory",
+                "when": "{{vars.gua.manager}}",
+                "config": "1b14150d-e5da-4fff-a71a-a2c18a3c7f7b",
+                "params": {
+                    "query": "(distinguishedName={{vars.gua.manager}})",
+                    "cookie": "",
+                    "page_size": "",
+                    "size_limit": ""
+                },
+                "version": "2.2.0",
+                "connector": "activedirectory",
+                "operation": "advanced_search",
+                "mock_result": "{\n  \"data\": {\n    \"cookie\": \"\",\n    \"entries\": [\n      {\n        \"dn\": \"CN={{vars.gua.manager}},CN=Users,DC=fortielab,DC=com\",\n        \"attributes\": {\n          \"cn\": \"{{vars.gua.manager}}\",\n          \"sn\": \"Simpson\",\n          \"mail\": \"{{vars.gua.manager}}@fortielab.com\",\n          \"name\": \"{{vars.gua.manager}}\",\n          \"title\": \"CTO\",\n          \"homeMDB\": \"CN=Mailbox Database 1544102581,CN=Databases,CN=Exchange Administrative Group (FYDIBOHF23SPDLT),CN=Administrative Groups,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n          \"codePage\": 0,\n          \"memberOf\": [\n            \"CN=Japan_remote_branch,CN=Users,DC=fortielab,DC=com\",\n            \"CN=Domain Users,CN=Users,DC=fortielab,DC=com\"\n          ],\n          \"givenName\": \"{{vars.gua.manager}}\",\n          \"lastLogon\": 1643634163,\n          \"objectSid\": \"S-1-5-21-1057186202-1089730122-574899179-1155\",\n          \"lastLogoff\": null,\n          \"logonCount\": 3,\n          \"objectGUID\": \"{fc4462a2-3d12-47d1-939d-ccd4649d29ea}\",\n          \"pwdLastSet\": 1595371711,\n          \"uSNChanged\": 662041,\n          \"uSNCreated\": 121251,\n          \"badPwdCount\": 0,\n          \"countryCode\": 0,\n          \"displayName\": \"{{vars.gua.manager}}\",\n          \"objectClass\": [\n            \"top\",\n            \"person\",\n            \"organizationalPerson\",\n            \"user\"\n          ],\n          \"whenChanged\": 1643381076,\n          \"whenCreated\": 1595371711,\n          \"instanceType\": 4,\n          \"mailNickname\": \"{{vars.gua.manager}}\",\n          \"directReports\": [\n            \"CN=david ricardo,CN=Users,DC=fortielab,DC=com\",\n            \"CN=adam smith,CN=Users,DC=fortielab,DC=com\"\n          ],\n          \"msExchVersion\": 88218628259840,\n          \"accountExpires\": 253402300799,\n          \"mDBUseDefaults\": true,\n          \"objectCategory\": \"CN=Person,CN=Schema,CN=Configuration,DC=fortielab,DC=com\",\n          \"primaryGroupID\": 1154,\n          \"proxyAddresses\": [\n            \"SMTP:{{vars.gua.manager}}@fortielab.com\"\n          ],\n          \"sAMAccountName\": \"{{vars.gua.manager}}\",\n          \"sAMAccountType\": \"SAM_NORMAL_USER_ACCOUNT\",\n          \"badPasswordTime\": null,\n          \"msExchUMDtmfMap\": [\n            \"emailAddress:62742\",\n            \"lastNameFirstName:62742\",\n            \"firstNameLastName:62742\"\n          ],\n          \"telephoneNumber\": \"+351915432233\",\n          \"legacyExchangeDN\": \"\/o=FORTIELAB\/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)\/cn=Recipients\/cn=f0ff06a5704041608d45e8ffab8a82e8-{{vars.gua.manager}}\",\n          \"distinguishedName\": \"CN={{vars.gua.manager}},CN=Users,DC=fortielab,DC=com\",\n          \"msExchMailboxGuid\": {\n            \"encoded\": \"b4C1v5gf8EC0x3NRB7m5Dg==\",\n            \"encoding\": \"base64\"\n          },\n          \"msExchUserCulture\": \"en-US\",\n          \"showInAddressBook\": [\n            \"CN=Mailboxes(VLV),CN=All System Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n            \"CN=All Mailboxes(VLV),CN=All System Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n            \"CN=All Recipients(VLV),CN=All System Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n            \"CN=Default Global Address List,CN=All Global Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n            \"CN=All Users,CN=All Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\"\n          ],\n          \"userPrincipalName\": \"{{vars.gua.manager}}@fortielab.com\",\n          \"lastLogonTimestamp\": 1643381056,\n          \"msExchArchiveQuota\": 104857600,\n          \"userAccountControl\": \"NORMAL_ACCOUNT | DONT_EXPIRE_PASSWORD\",\n          \"msExchDumpsterQuota\": 31457280,\n          \"msExchHomeServerName\": \"\/o=FORTIELAB\/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)\/cn=Configuration\/cn=Servers\/cn=EXCH19\",\n          \"msExchRBACPolicyLink\": \"CN=Default Role Assignment Policy,CN=Policies,CN=RBAC,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n          \"dSCorePropagationData\": [\n            null\n          ],\n          \"msExchELCMailboxFlags\": 130,\n          \"msExchArchiveWarnQuota\": 94371840,\n          \"msExchPoliciesIncluded\": [\n            \"bf367958-d2e1-4db3-aac1-573cd3ce3f44\",\n            \"{26491cfc-9e50-4857-861b-0cb8df22b5d7}\"\n          ],\n          \"msExchTextMessagingState\": [\n            302120705,\n            16842751\n          ],\n          \"msExchUserAccountControl\": 0,\n          \"msExchWhenMailboxCreated\": 1595864091,\n          \"msExchCalendarLoggingQuota\": 6291456,\n          \"msExchDumpsterWarningQuota\": 20971520,\n          \"msExchRecipientDisplayType\": 1073741824,\n          \"msExchRecipientTypeDetails\": 1,\n          \"msExchMailboxSecurityDescriptor\": {\n            \"encoded\": \"AQAEgBQAAAAgAAAAAAAAACwAAAABAQAAAAAABQoAAAABAQAAAAAABQoAAAAEABwAAQAAAAACFAABAAIAAQEAAAAAAAUKAAAA\",\n            \"encoding\": \"base64\"\n          }\n        }\n      }\n    ]\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
+                "operationTitle": "Advanced Search",
+                "step_variables": {
+                    "gma": "{{vars.result.data.entries[0].attributes}}"
+                }
+            },
+            "status": null,
+            "top": "420",
+            "left": "420",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "group": null,
+            "uuid": "4fe37379-0cb6-4a38-a9c8-4335db30ccbc"
         },
         {
             "@type": "WorkflowStep",
@@ -102,7 +114,56 @@
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
             "group": null,
-            "uuid": "94fcde62-e30c-4268-a901-e089acc089b1"
+            "uuid": "1d157955-aca3-4e3f-ae7d-43fd93eaf388"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "resource": "users",
+                "resources": [
+                    "users"
+                ],
+                "step_variables": {
+                    "input": {
+                        "params": [],
+                        "records": [
+                            "{{vars.input.records[0]}}"
+                        ]
+                    },
+                    "mockout_data": "{\n   \"data\": {\n     \"cookie\": null,\n     \"entries\": [\n       {\n         \"dn\": \"CN={{vars.input.records[0].userName}},CN=Users,DC=fortielab,DC=com\",\n         \"attributes\": {\n           \"cn\": \"{{vars.input.records[0].userName}}\",\n           \"sn\": \"{{vars.input.records[0].userName}}\",\n           \"mail\": \"{{vars.input.records[0].userName}}@fortielab.com\",\n           \"name\": \"{{vars.input.records[0].userName}}\",\n           \"title\": \"CxO\",\n           \"homeMDB\": \"CN=Mailbox Database 1544102581,CN=Databases,CN=Exchange Administrative Group (FYDIBOHF23SPDLT),CN=Administrative Groups,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n           \"manager\": \"CN=masha,CN=Users,DC=fortielab,DC=com\",\n           \"codePage\": 0,\n           \"memberOf\": [\n             \"CN=Illium_remote_branch,CN=Users,DC=fortielab,DC=com\",\n             \"CN=Domain Users,CN=Users,DC=fortielab,DC=com\",\n             \"{%if 'asmith' in vars.input.records[0].userName%}CN=C_LEVEL,CN=Users,DC=fortielab,DC=com{%else%}CN=Users,CN=Users,DC=fortielab,DC=com{%endif%}\"\n           ],\n           \"givenName\": \"{{vars.input.records[0].userName}}\",\n           \"lastLogon\": 1602760753,\n           \"objectSid\": \"S-1-5-21-1057186202-1089730122-574899179-1{{ range(111, 999) | random }}}\",\n           \"lastLogoff\": null,\n           \"logonCount\": 6,\n           \"objectGUID\": \"{949b8c03-5c7d-4af0-a7b8-bce{{ range(111, 999) | random }}}\",\n           \"pwdLastSet\": 1588825508,\n           \"uSNChanged\": 196906,\n           \"uSNCreated\": 33409,\n           \"badPwdCount\": 0,\n           \"countryCode\": 0,\n           \"objectClass\": [\n             \"top\",\n             \"person\",\n             \"organizationalPerson\",\n             \"user\"\n           ],\n           \"whenChanged\": 1602676250,\n           \"whenCreated\": 1588825508,\n           \"instanceType\": 4,\n           \"mailNickname\": \"{{vars.input.records[0].userName}}\",\n           \"msExchVersion\": 88218628259840,\n           \"accountExpires\": 253402300799,\n           \"mDBUseDefaults\": true,\n           \"objectCategory\": \"CN=Person,CN=Schema,CN=Configuration,DC=fortielab,DC=com\",\n           \"primaryGroupID\": 1156,\n           \"proxyAddresses\": [\n             \"SMTP:{{vars.input.records[0].userName}}@fortielab.com\"\n           ],\n           \"sAMAccountName\": \"{{vars.input.records[0].userName}}\",\n           \"sAMAccountType\": \"SAM_NORMAL_USER_ACCOUNT\",\n           \"badPasswordTime\": null,\n           \"msExchUMDtmfMap\": [\n             \"emailAddress:37422736\",\n             \"lastNameFirstName:742273632843\",\n             \"firstNameLastName:328437422736\"\n           ],\n           \"legacyExchangeDN\": \"\/o=FORTIELAB\/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)\/cn=Recipients\/cn=50ec8aee08f14789b39afbf691942cea-david ricardo\",\n           \"distinguishedName\": \"CN=david ricardo,CN=Users,DC=fortielab,DC=com\",\n           \"msExchMailboxGuid\": {\n             \"encoded\": \"GPspdyB9WECdCIa4\/NL3pQ==\",\n             \"encoding\": \"base64\"\n           },\n           \"msExchUserCulture\": \"en-US\",\n           \"showInAddressBook\": [\n             \"CN=Mailboxes(VLV),CN=All System Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n             \"CN=All Mailboxes(VLV),CN=All System Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n             \"CN=All Recipients(VLV),CN=All System Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n             \"CN=Default Global Address List,CN=All Global Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n             \"CN=All Users,CN=All Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\"\n           ],\n           \"userPrincipalName\": \"{{vars.input.records[0].userName}}@fortielab.com\",\n           \"lastLogonTimestamp\": 1601975940,\n           \"msExchArchiveQuota\": 104857600,\n           \"userAccountControl\": \"NORMAL_ACCOUNT | DONT_EXPIRE_PASSWORD\",\n           \"msExchDumpsterQuota\": 31457280,\n           \"msExchHomeServerName\": \"\/o=FORTIELAB\/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)\/cn=Configuration\/cn=Servers\/cn=EXCH19\",\n           \"msExchRBACPolicyLink\": \"CN=Default Role Assignment Policy,CN=Policies,CN=RBAC,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n           \"dSCorePropagationData\": [\n             null\n           ],\n           \"msExchELCMailboxFlags\": 130,\n           \"msExchArchiveWarnQuota\": 94371840,\n           \"msExchPoliciesIncluded\": [\n             \"bf367958-d2e1-4db3-aac1-573cd3ce3f44\",\n             \"{26491cfc-9e50-4857-861b-0cb8df22b5d7}\"\n           ],\n           \"msExchTextMessagingState\": [\n             302120705,\n             16842751\n           ],\n           \"msExchUserAccountControl\": 0,\n           \"msExchWhenMailboxCreated\": 1588825565,\n           \"msExchCalendarLoggingQuota\": 6291456,\n           \"msExchDumpsterWarningQuota\": 20971520,\n           \"msExchRecipientDisplayType\": 1073741824,\n           \"msExchRecipientTypeDetails\": 1,\n           \"physicalDeliveryOfficeName\": \"HQ\",\n           \"msExchMailboxSecurityDescriptor\": {\n             \"encoded\": \"AQAEgBQAAAAgAAAAAAAAACwAAAABAQAAAAAABQoAAAABAQAAAAAABQoAAAAEABwAAQAAAAACFAABAAIAAQEAAAAAAAUKAAAA\",\n             \"encoding\": \"base64\"\n           }\n         }\n       }\n     ]\n   },\n   \"status\": \"Success\",\n   \"_status\": true,\n   \"message\": \"\",\n   \"operation\": null,\n   \"request_id\": null\n }",
+                    "useMockOutput": "{{globalVars.Demo_mode}}"
+                },
+                "fieldbasedtrigger": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "array",
+                            "field": "recordTags",
+                            "value": [
+                                "\/api\/3\/tags\/Scenario: Phishing Incident Management"
+                            ],
+                            "module": "recordTags",
+                            "display": "",
+                            "operator": "in",
+                            "template": "tags",
+                            "OPERATOR_KEY": "$",
+                            "useInOperator": true,
+                            "previousOperator": "in",
+                            "previousTemplate": "tags"
+                        }
+                    ]
+                }
+            },
+            "status": null,
+            "top": "30",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/ea155646-3821-4542-9702-b246da430a8d",
+            "group": null,
+            "uuid": "ebeb5180-3d28-4916-b1f7-2a4fe472d92b"
         },
         {
             "@type": "WorkflowStep",
@@ -145,117 +206,80 @@
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
-            "uuid": "d97d1a2c-3f5d-4754-9022-2e0db8504915"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Get Manager Attributes",
-            "description": null,
-            "arguments": {
-                "name": "Active Directory",
-                "when": "{{vars.gua.manager}}",
-                "config": "1b14150d-e5da-4fff-a71a-a2c18a3c7f7b",
-                "params": {
-                    "query": "(distinguishedName={{vars.gua.manager}})",
-                    "cookie": "",
-                    "page_size": "",
-                    "size_limit": ""
-                },
-                "version": "2.2.0",
-                "connector": "activedirectory",
-                "operation": "advanced_search",
-                "mock_result": "{\n  \"data\": {\n    \"cookie\": \"\",\n    \"entries\": [\n      {\n        \"dn\": \"CN={{vars.gua.manager}},CN=Users,DC=fortielab,DC=com\",\n        \"attributes\": {\n          \"cn\": \"{{vars.gua.manager}}\",\n          \"sn\": \"Simpson\",\n          \"mail\": \"{{vars.gua.manager}}@fortielab.com\",\n          \"name\": \"{{vars.gua.manager}}\",\n          \"title\": \"CTO\",\n          \"homeMDB\": \"CN=Mailbox Database 1544102581,CN=Databases,CN=Exchange Administrative Group (FYDIBOHF23SPDLT),CN=Administrative Groups,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n          \"codePage\": 0,\n          \"memberOf\": [\n            \"CN=Japan_remote_branch,CN=Users,DC=fortielab,DC=com\",\n            \"CN=Domain Users,CN=Users,DC=fortielab,DC=com\"\n          ],\n          \"givenName\": \"{{vars.gua.manager}}\",\n          \"lastLogon\": 1643634163,\n          \"objectSid\": \"S-1-5-21-1057186202-1089730122-574899179-1155\",\n          \"lastLogoff\": null,\n          \"logonCount\": 3,\n          \"objectGUID\": \"{fc4462a2-3d12-47d1-939d-ccd4649d29ea}\",\n          \"pwdLastSet\": 1595371711,\n          \"uSNChanged\": 662041,\n          \"uSNCreated\": 121251,\n          \"badPwdCount\": 0,\n          \"countryCode\": 0,\n          \"displayName\": \"{{vars.gua.manager}}\",\n          \"objectClass\": [\n            \"top\",\n            \"person\",\n            \"organizationalPerson\",\n            \"user\"\n          ],\n          \"whenChanged\": 1643381076,\n          \"whenCreated\": 1595371711,\n          \"instanceType\": 4,\n          \"mailNickname\": \"{{vars.gua.manager}}\",\n          \"directReports\": [\n            \"CN=david ricardo,CN=Users,DC=fortielab,DC=com\",\n            \"CN=adam smith,CN=Users,DC=fortielab,DC=com\"\n          ],\n          \"msExchVersion\": 88218628259840,\n          \"accountExpires\": 253402300799,\n          \"mDBUseDefaults\": true,\n          \"objectCategory\": \"CN=Person,CN=Schema,CN=Configuration,DC=fortielab,DC=com\",\n          \"primaryGroupID\": 1154,\n          \"proxyAddresses\": [\n            \"SMTP:{{vars.gua.manager}}@fortielab.com\"\n          ],\n          \"sAMAccountName\": \"{{vars.gua.manager}}\",\n          \"sAMAccountType\": \"SAM_NORMAL_USER_ACCOUNT\",\n          \"badPasswordTime\": null,\n          \"msExchUMDtmfMap\": [\n            \"emailAddress:62742\",\n            \"lastNameFirstName:62742\",\n            \"firstNameLastName:62742\"\n          ],\n          \"telephoneNumber\": \"+351915432233\",\n          \"legacyExchangeDN\": \"\/o=FORTIELAB\/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)\/cn=Recipients\/cn=f0ff06a5704041608d45e8ffab8a82e8-{{vars.gua.manager}}\",\n          \"distinguishedName\": \"CN={{vars.gua.manager}},CN=Users,DC=fortielab,DC=com\",\n          \"msExchMailboxGuid\": {\n            \"encoded\": \"b4C1v5gf8EC0x3NRB7m5Dg==\",\n            \"encoding\": \"base64\"\n          },\n          \"msExchUserCulture\": \"en-US\",\n          \"showInAddressBook\": [\n            \"CN=Mailboxes(VLV),CN=All System Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n            \"CN=All Mailboxes(VLV),CN=All System Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n            \"CN=All Recipients(VLV),CN=All System Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n            \"CN=Default Global Address List,CN=All Global Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n            \"CN=All Users,CN=All Address Lists,CN=Address Lists Container,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\"\n          ],\n          \"userPrincipalName\": \"{{vars.gua.manager}}@fortielab.com\",\n          \"lastLogonTimestamp\": 1643381056,\n          \"msExchArchiveQuota\": 104857600,\n          \"userAccountControl\": \"NORMAL_ACCOUNT | DONT_EXPIRE_PASSWORD\",\n          \"msExchDumpsterQuota\": 31457280,\n          \"msExchHomeServerName\": \"\/o=FORTIELAB\/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)\/cn=Configuration\/cn=Servers\/cn=EXCH19\",\n          \"msExchRBACPolicyLink\": \"CN=Default Role Assignment Policy,CN=Policies,CN=RBAC,CN=FORTIELAB,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=fortielab,DC=com\",\n          \"dSCorePropagationData\": [\n            null\n          ],\n          \"msExchELCMailboxFlags\": 130,\n          \"msExchArchiveWarnQuota\": 94371840,\n          \"msExchPoliciesIncluded\": [\n            \"bf367958-d2e1-4db3-aac1-573cd3ce3f44\",\n            \"{26491cfc-9e50-4857-861b-0cb8df22b5d7}\"\n          ],\n          \"msExchTextMessagingState\": [\n            302120705,\n            16842751\n          ],\n          \"msExchUserAccountControl\": 0,\n          \"msExchWhenMailboxCreated\": 1595864091,\n          \"msExchCalendarLoggingQuota\": 6291456,\n          \"msExchDumpsterWarningQuota\": 20971520,\n          \"msExchRecipientDisplayType\": 1073741824,\n          \"msExchRecipientTypeDetails\": 1,\n          \"msExchMailboxSecurityDescriptor\": {\n            \"encoded\": \"AQAEgBQAAAAgAAAAAAAAACwAAAABAQAAAAAABQoAAAABAQAAAAAABQoAAAAEABwAAQAAAAACFAABAAIAAQEAAAAAAAUKAAAA\",\n            \"encoding\": \"base64\"\n          }\n        }\n      }\n    ]\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
-                "operationTitle": "Advanced Search",
-                "step_variables": {
-                    "gma": "{{vars.result.data.entries[0].attributes}}"
-                }
-            },
-            "status": null,
-            "top": "420",
-            "left": "420",
-            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "group": null,
-            "uuid": "eb496204-4c41-4705-b5c4-8ccc375d1383"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Compute Results",
-            "description": null,
-            "arguments": {
-                "user_attr": "{\n    \"email\": \"{{vars.gua.mail or vars.gua.userPrincipalName or None}}\",\n    \"whenUserCreated\": {{vars.gua.whenCreated or None}},\n    \"reportsTo\": \"{%if vars.gua.manager|length > 0%}{{vars.gua.manager.split('=')[1].split(',')[0]}}{%endif%}\",\n    \"jobTitle\": \"{{vars.gua.title or None}}\",\n    \"mobileNumber\": \"{{vars.gua.telephoneNumber or vars.gua.mobile or vars.gua.homePhone or '+97543548856'}}\",\n    \"memberOf\": \"{%if vars.gua.memberOf|length > 0%}{%for i in vars.gua.memberOf%}{{i.split('=')[1].split(',')[0]+', '}}{%endfor%}{%endif%}\",\n    \"department\": \"{{vars.gua.department or 'Marketing'}}\",\n    \"passwordLastSet\": {{vars.gua.pwdLastSet or None}},\n    \"lastLogin\": {{vars.gua.lastLogon or None}},\n    \"domain\": \"{%set tmp_dom=vars.gua.distinguishedName.split(',')%}{%for entry in tmp_dom%}{%if 'DC=' in entry%}{{entry.split('DC=')[1]+'.'}}{%endif%}{%endfor%}\",\n    \"securityId\": \"{{vars.gua.objectSid or None}}\",\n    \"managerEmail\": \"{{vars.gma.mail or vars.gma.userPrincipalName or None}}\",\n    \"managerPhoneNumber\": \"{{vars.gma.telephoneNumber or vars.gma.mobile or vars.gma.homePhone or None}}\",\n    \"primaryGroup\":\"{%for group in vars.ad_groups%}{%if '-'+vars.gua.primaryGroupID|string in group.attributes.objectSid%}{{group.attributes.name}}{%endif%}{%endfor%}\"\n}",
-                "source_data": "{\"User Atrributes\":{{vars.gua}},\"Manager Attributes\":{{vars.gma}}}"
-            },
-            "status": null,
-            "top": "570",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "group": null,
-            "uuid": "f74e5d27-84f5-467c-b2ec-fcee50040a16"
+            "uuid": "d2eea50d-5328-460f-a656-cc7122504c6f"
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
             "name": "Compute Results -> Update User",
-            "targetStep": "\/api\/3\/workflow_steps\/d97d1a2c-3f5d-4754-9022-2e0db8504915",
-            "sourceStep": "\/api\/3\/workflow_steps\/f74e5d27-84f5-467c-b2ec-fcee50040a16",
+            "targetStep": "\/api\/3\/workflow_steps\/d2eea50d-5328-460f-a656-cc7122504c6f",
+            "sourceStep": "\/api\/3\/workflow_steps\/51918648-6995-4f3e-9d6a-88384d897da1",
             "label": null,
             "isExecuted": false,
-            "uuid": "140c6a50-cf88-4d6a-ba74-aea778e2499a"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Get User Attributes -> Get Manager Attributes",
-            "targetStep": "\/api\/3\/workflow_steps\/eb496204-4c41-4705-b5c4-8ccc375d1383",
-            "sourceStep": "\/api\/3\/workflow_steps\/94fcde62-e30c-4268-a901-e089acc089b1",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "1f31afc9-9952-4cdd-a64e-7b617d437e4d"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Start -> Get Groups Definition",
-            "targetStep": "\/api\/3\/workflow_steps\/63aabd86-4647-4114-b0a2-7b8b9d3287a6",
-            "sourceStep": "\/api\/3\/workflow_steps\/4d8ceda9-62de-4ac1-b19d-621b55e5ace5",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "6774aa26-4f3b-4041-b659-f25dd0a74db2"
+            "group": null,
+            "uuid": "bf64b17e-bdac-484f-a95c-1d05f41d2ab0"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Get Groups Definition -> Get User Attributes",
-            "targetStep": "\/api\/3\/workflow_steps\/94fcde62-e30c-4268-a901-e089acc089b1",
-            "sourceStep": "\/api\/3\/workflow_steps\/63aabd86-4647-4114-b0a2-7b8b9d3287a6",
+            "targetStep": "\/api\/3\/workflow_steps\/1d157955-aca3-4e3f-ae7d-43fd93eaf388",
+            "sourceStep": "\/api\/3\/workflow_steps\/6d7ec8ae-b46f-45d5-848b-44991630e047",
             "label": null,
             "isExecuted": false,
-            "uuid": "6d524740-7b1e-4546-a128-86586a7354c8"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Get User Attributes -> Compute Results",
-            "targetStep": "\/api\/3\/workflow_steps\/f74e5d27-84f5-467c-b2ec-fcee50040a16",
-            "sourceStep": "\/api\/3\/workflow_steps\/94fcde62-e30c-4268-a901-e089acc089b1",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "8c7ee533-5bcc-440f-b306-57d43e9ba78d"
+            "group": null,
+            "uuid": "c71616d1-1e99-43ee-bbcb-bac198f87d63"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Get Manager Attributes -> Compute Results",
-            "targetStep": "\/api\/3\/workflow_steps\/f74e5d27-84f5-467c-b2ec-fcee50040a16",
-            "sourceStep": "\/api\/3\/workflow_steps\/eb496204-4c41-4705-b5c4-8ccc375d1383",
+            "targetStep": "\/api\/3\/workflow_steps\/51918648-6995-4f3e-9d6a-88384d897da1",
+            "sourceStep": "\/api\/3\/workflow_steps\/4fe37379-0cb6-4a38-a9c8-4335db30ccbc",
             "label": null,
             "isExecuted": false,
-            "uuid": "ffae7b31-dc3d-438b-885e-e8c1e0c1064b"
+            "group": null,
+            "uuid": "ee7c63d5-8900-4cf3-8fb7-96c19d33ecfd"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get User Attributes -> Compute Results",
+            "targetStep": "\/api\/3\/workflow_steps\/51918648-6995-4f3e-9d6a-88384d897da1",
+            "sourceStep": "\/api\/3\/workflow_steps\/1d157955-aca3-4e3f-ae7d-43fd93eaf388",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "ec4df4ca-3655-44ac-aff4-855109bd3778"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get User Attributes -> Get Manager Attributes",
+            "targetStep": "\/api\/3\/workflow_steps\/4fe37379-0cb6-4a38-a9c8-4335db30ccbc",
+            "sourceStep": "\/api\/3\/workflow_steps\/1d157955-aca3-4e3f-ae7d-43fd93eaf388",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "c9bfabcc-bb80-46ea-aede-c7714867793f"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Get Groups Definition",
+            "targetStep": "\/api\/3\/workflow_steps\/6d7ec8ae-b46f-45d5-848b-44991630e047",
+            "sourceStep": "\/api\/3\/workflow_steps\/ebeb5180-3d28-4916-b1f7-2a4fe472d92b",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "8019148e-b181-4c69-aaa0-feb29f95fd14"
         }
     ],
     "groups": [],
     "priority": null,
-    "uuid": "f757ba3e-e3d3-4b94-98e1-10461ecab6dd",
+    "uuid": "91c34c08-b7da-45e8-8587-e9220f9ebcc2",
     "owners": [],
     "isPrivate": false,
     "deletedAt": null,
     "recordTags": [
-        "Enrichment"
+        "PostCreate",
+        "Enrichment",
+        "Users"
     ]
 }
