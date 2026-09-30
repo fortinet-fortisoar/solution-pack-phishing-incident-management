@@ -1,6 +1,6 @@
 {
     "name": "phishingIncidentManagement",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "type": "solutionpack",
     "local": true,
     "certified": "false",
@@ -34,7 +34,7 @@
     "prerequisite": "- Configure Connector: SOC Simulator\n- Configure Connector: Fortinet FortiGuard Threat Intelligence\n- Configure Connector: VirusTotal\n- Configure Connector: File Content Extraction\n- Configure Connector: Microsoft Active Directory",
     "publisher": "Fortinet CSE",
     "description": "Scripted simulation where a series of automation workflows guide your investigation via the workspace comments. Comments tagged as *Actions* represent the tasks the analyst must do. *Hints* are simply suggestions",
-    "help": "https://github.com/fortinet-fortisoar/solution-pack-phishing-incident-management/blob/release/1.1.0/README.md",
+    "help": "https://github.com/fortinet-fortisoar/solution-pack-phishing-incident-management/blob/release/1.2.0/README.md",
     "category": [
         "Email Security"
     ],
@@ -43,8 +43,8 @@
     "recordTags": [
         "Phishing"
     ],
-    "fsrMinCompatibility": "7.2.2",
-    "date": "2022-07-04T11:04:50+00:00",
+    "fsrMinCompatibility": "8.0.0",
+    "date": "2026-07-04T11:04:50+00:00",
     "contents": {
         "modules": {
             "users": {
