@@ -741,6 +741,7 @@
     "groups": [],
     "priority": null,
     "uuid": "677d9dd0-fb9d-4f5c-ba2f-3f11c9b9fca8",
+    "isEditable": false,
     "owners": [],
     "isPrivate": false,
     "deletedAt": null,
