@@ -37,7 +37,7 @@
                 "recordIRI": "{{vars.steps.True_Positive_Create_Alert.data}}"
             },
             "status": null,
-            "top": "1380",
+            "top": "1515",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
             "group": null,
@@ -126,7 +126,7 @@
                 }
             },
             "status": null,
-            "top": "1110",
+            "top": "1245",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
@@ -145,6 +145,20 @@
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
             "group": null,
             "uuid": "6b9ba772-589f-4b6a-84a7-bbdaccec8cd6"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Modify EmailHeader for Epoch Date",
+            "description": null,
+            "arguments": {
+                "newEmailHeader": "{{vars.emailHeader| combine({'date': (arrow.get(vars.epochEmailHeaderDate).to('UTC').format('ddd, DD MMM YYYY HH:mm:ss ZZZ')) }) }}"
+            },
+            "status": null,
+            "top": "975",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "5c8705b5-9f8b-4787-a6ae-0b2462a1d78b"
         },
         {
             "@type": "WorkflowStep",
@@ -174,7 +188,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "1245",
+            "top": "1380",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/4c0019b2-055c-44d0-968c-678a0c2d762e",
             "group": null,
@@ -215,16 +229,19 @@
                 "name": "FortiSOAR SOC Simulator",
                 "config": "49e31d78-46c3-4d6a-be56-b0758bbf579c",
                 "params": {
-                    "alert_json": "{{vars.malicious_email_alert_json}}"
+                    "alert_json": "{{vars.malicious_email_alert_json}}",
+                    "fields_to_ignore": ""
                 },
-                "version": "1.0.8",
+                "version": "2.0.0",
                 "connector": "fortisoar-soc-simulator",
                 "operation": "create_simulated_alert",
                 "operationTitle": "Create Simulated Alert",
                 "pickFromTenant": false,
                 "step_variables": {
                     "alert_data": "{{vars.result.data}}",
-                    "source_data": "{{vars.result.data.sourcedata|toDict}}"
+                    "emailHeader": "{{vars.steps.True_Positive_Create_Alert.data.emailHeaders}}",
+                    "source_data": "{{vars.result.data.sourcedata|toDict}}",
+                    "epochEmailHeaderDate": "{{vars.steps.True_Positive_Create_Alert.data.get(\"emailHeaders\") | from_json | json_query('date')}}"
                 }
             },
             "status": null,
@@ -244,7 +261,8 @@
                         "recordTags": [
                             "\/api\/3\/tags\/Scenario: Phishing Incident Management"
                         ]
-                    }
+                    },
+                    "emailHeaders": "{{vars.newEmailHeader | toJSON}}"
                 },
                 "_showJson": true,
                 "operation": "Append",
@@ -257,7 +275,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "975",
+            "top": "1110",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
@@ -342,7 +360,17 @@
             "label": null,
             "isExecuted": false,
             "group": null,
-            "uuid": "2142c50d-2901-485f-8b3d-aef42ff023bc"
+            "uuid": "de16b9b5-a10b-499b-b400-46350286bf4a"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Modify EmailHeader for Date -> Update Alert Tag Scenario",
+            "targetStep": "\/api\/3\/workflow_steps\/b1f010c5-77a4-4554-8a20-6d94e5f54c32",
+            "sourceStep": "\/api\/3\/workflow_steps\/5c8705b5-9f8b-4787-a6ae-0b2462a1d78b",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "b20ec934-8b5e-4c5d-b921-b13f1d37d61b"
         },
         {
             "@type": "WorkflowRoute",
@@ -366,13 +394,13 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "True Positive Create Alert -> Update Alert Tag Scenario",
-            "targetStep": "\/api\/3\/workflow_steps\/b1f010c5-77a4-4554-8a20-6d94e5f54c32",
+            "name": "True Positive Create Alert -> Modify EmailHeader for Date",
+            "targetStep": "\/api\/3\/workflow_steps\/5c8705b5-9f8b-4787-a6ae-0b2462a1d78b",
             "sourceStep": "\/api\/3\/workflow_steps\/301b7be4-cf6e-42d2-aecf-cfc13257578a",
             "label": null,
             "isExecuted": false,
             "group": null,
-            "uuid": "26d7e778-38a9-48a6-9450-7ad450f3d9da"
+            "uuid": "0c08813a-bd73-4cbf-b702-0d7fa7d24be0"
         },
         {
             "@type": "WorkflowRoute",
@@ -382,7 +410,7 @@
             "label": null,
             "isExecuted": false,
             "group": null,
-            "uuid": "26e87a1f-ce2e-4e0b-835e-22351ff87631"
+            "uuid": "9d6bcde8-4521-4640-b7f2-dd082dca7537"
         },
         {
             "@type": "WorkflowRoute",
@@ -392,11 +420,13 @@
             "label": null,
             "isExecuted": false,
             "group": null,
-            "uuid": "421db760-6d67-4eac-823c-e08df416b25b"
+            "uuid": "bcf6d791-ec0b-4e25-9a99-32f2b4e0dbd2"
         }
     ],
     "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "playbookOrigin": "\/api\/3\/picklists\/b6d710a9-a8ec-41ec-8817-fe9fa062fcdd",
+    "isEditable": true,
     "uuid": "4324e12a-93a1-43aa-8116-63800e67f2ad",
     "owners": [],
     "isPrivate": false,
