@@ -122,6 +122,7 @@
         }
     ],
     "priority": null,
+    "isEditable": false,
     "uuid": "a492ce20-8e02-4912-9be5-1bdc257ceedd",
     "owners": [],
     "isPrivate": false,

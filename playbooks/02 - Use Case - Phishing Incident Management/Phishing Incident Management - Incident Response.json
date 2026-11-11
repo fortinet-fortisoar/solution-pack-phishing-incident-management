@@ -491,6 +491,7 @@
     ],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
     "uuid": "13f6010e-093f-4b28-ab40-2d509a103b35",
+    "isEditable": false,
     "owners": [],
     "isPrivate": false,
     "deletedAt": null,

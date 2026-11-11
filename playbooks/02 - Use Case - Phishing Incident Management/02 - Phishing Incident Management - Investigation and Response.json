@@ -97,6 +97,7 @@
     ],
     "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "isEditable": false,
     "uuid": "87ca44e2-6dd4-48c1-b801-6dbfbab28d23",
     "owners": [],
     "isPrivate": false,

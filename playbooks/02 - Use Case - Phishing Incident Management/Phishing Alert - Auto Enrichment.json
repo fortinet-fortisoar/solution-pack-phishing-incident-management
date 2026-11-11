@@ -971,6 +971,7 @@
     ],
     "priority": null,
     "uuid": "bc0b884e-6b1a-47fe-9644-1edb52ac700c",
+    "isEditable": false,
     "owners": [],
     "isPrivate": false,
     "deletedAt": null,

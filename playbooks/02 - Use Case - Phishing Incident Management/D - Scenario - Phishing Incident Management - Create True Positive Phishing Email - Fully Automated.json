@@ -37,7 +37,7 @@
                 "recordIRI": "{{vars.steps.True_Positive_Create_Alert.data}}"
             },
             "status": null,
-            "top": "1920",
+            "top": "2055",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
             "group": null,
@@ -126,7 +126,7 @@
                 }
             },
             "status": null,
-            "top": "1110",
+            "top": "1245",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
@@ -145,6 +145,20 @@
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
             "group": null,
             "uuid": "435d02c7-106a-4bb3-8ab2-5951e9254016"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Modify Email Header for Epoch Date",
+            "description": null,
+            "arguments": {
+                "newEmailHeader": "{{vars.emailHeader| combine({'date': (arrow.get(vars.epochEmailHeaderDate).to('UTC').format('ddd, DD MMM YYYY HH:mm:ss ZZZ')) }) }}"
+            },
+            "status": null,
+            "top": "975",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "d5bb17b0-b145-4133-826d-9cf1fcc06b85"
         },
         {
             "@type": "WorkflowStep",
@@ -174,7 +188,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "1245",
+            "top": "1380",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/4c0019b2-055c-44d0-968c-678a0c2d762e",
             "group": null,
@@ -194,7 +208,7 @@
                 "workflowReference": "\/api\/3\/workflows\/bc0b884e-6b1a-47fe-9644-1edb52ac700c"
             },
             "status": null,
-            "top": "1515",
+            "top": "1650",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
             "group": null,
@@ -219,7 +233,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "1785",
+            "top": "1920",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
@@ -260,16 +274,19 @@
                 "name": "FortiSOAR SOC Simulator",
                 "config": "49e31d78-46c3-4d6a-be56-b0758bbf579c",
                 "params": {
-                    "alert_json": "{{vars.malicious_email_alert_json}}"
+                    "alert_json": "{{vars.malicious_email_alert_json}}",
+                    "fields_to_ignore": ""
                 },
-                "version": "1.0.8",
+                "version": "2.0.0",
                 "connector": "fortisoar-soc-simulator",
                 "operation": "create_simulated_alert",
                 "operationTitle": "Create Simulated Alert",
                 "pickFromTenant": false,
                 "step_variables": {
                     "alert_data": "{{vars.result.data}}",
-                    "source_data": "{{vars.result.data.sourcedata|toDict}}"
+                    "emailHeader": "{{vars.steps.True_Positive_Create_Alert.data.emailHeaders}}",
+                    "source_data": "{{vars.result.data.sourcedata|toDict}}",
+                    "epochEmailHeaderDate": "{{vars.steps.True_Positive_Create_Alert.data.get(\"emailHeaders\") | from_json | json_query('date')}}"
                 }
             },
             "status": null,
@@ -289,7 +306,8 @@
                         "recordTags": [
                             "\/api\/3\/tags\/Scenario: Phishing Incident Management"
                         ]
-                    }
+                    },
+                    "emailHeaders": "{{vars.newEmailHeader | toJSON}}"
                 },
                 "_showJson": true,
                 "operation": "Append",
@@ -302,7 +320,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "975",
+            "top": "1110",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
@@ -366,7 +384,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "1650",
+            "top": "1785",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
             "group": null,
@@ -401,7 +419,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "1380",
+            "top": "1515",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
             "group": null,
@@ -461,6 +479,16 @@
         },
         {
             "@type": "WorkflowRoute",
+            "name": "Modify Email Header for date -> Update Alert Tag Scenario",
+            "targetStep": "\/api\/3\/workflow_steps\/e3d6d506-d5f7-45cf-aa03-491c295e04c7",
+            "sourceStep": "\/api\/3\/workflow_steps\/d5bb17b0-b145-4133-826d-9cf1fcc06b85",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "4c1cd65a-2761-4c1b-98b5-94d37391f92b"
+        },
+        {
+            "@type": "WorkflowRoute",
             "name": "Notify Sender -> Wait for Indicators Extraction",
             "targetStep": "\/api\/3\/workflow_steps\/0c1425b2-dc24-48a9-8222-587aacabcc05",
             "sourceStep": "\/api\/3\/workflow_steps\/d9092faa-b4a9-4866-89ea-0ac9cebbb448",
@@ -501,13 +529,13 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "True Positive Create Alert -> Update Alert Tag Scenario",
-            "targetStep": "\/api\/3\/workflow_steps\/e3d6d506-d5f7-45cf-aa03-491c295e04c7",
+            "name": "True Positive Create Alert -> Modify Email Header for date",
+            "targetStep": "\/api\/3\/workflow_steps\/d5bb17b0-b145-4133-826d-9cf1fcc06b85",
             "sourceStep": "\/api\/3\/workflow_steps\/7811085f-1995-4a20-ac5e-33694802356d",
             "label": null,
             "isExecuted": false,
             "group": null,
-            "uuid": "6325bfdc-0c55-45ca-8e2b-75d11b76dd16"
+            "uuid": "832db4d7-b895-4965-a05e-41508747a90e"
         },
         {
             "@type": "WorkflowRoute",
@@ -552,6 +580,8 @@
     ],
     "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "playbookOrigin": "\/api\/3\/picklists\/b6d710a9-a8ec-41ec-8817-fe9fa062fcdd",
+    "isEditable": false,
     "uuid": "93591cc9-a836-4014-a111-d96c9b9c9435",
     "owners": [],
     "isPrivate": false,
